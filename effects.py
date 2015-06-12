@@ -7,7 +7,7 @@ import locale
 from procgame import *
 import time
 
-game_path = game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+game_path = game_path = "/home/pi/VXtra_start/"
 speech_path = game_path +"sound/speech/"
 sound_path = game_path +"sound/fx/"
 music_path = game_path +"sound/music/"

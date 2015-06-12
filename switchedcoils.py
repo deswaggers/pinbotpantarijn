@@ -24,8 +24,8 @@ import logging
 from procgame import *
 
 
-base_path = "C:\P-ROC\pyprocgame-master/"
-game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+base_path = "/home/pi/VXtra_start/"
+game_path = base_path
 
 class SwitchedCoils(game.Mode):
 
