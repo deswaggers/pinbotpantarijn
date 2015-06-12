@@ -35,7 +35,7 @@ import yaml
 
 # Loader specific file is required; and expected to live in the same
 # directory.  Gross to load it globally?  Sure.
-loader_config_path = 'C:\P-ROC/pyprocgame-master/games/VXtra_start/config/Loader.yaml '
+loader_config_path = '/home/pi/VXtra_start/config/Loader.yaml '
 loaderconfig = None
 
 def format_score(number):

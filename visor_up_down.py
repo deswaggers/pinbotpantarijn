@@ -4,7 +4,7 @@ from procgame import *
 
 
 # all paths
-game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+game_path = "/home/pi/VXtra_start/"
 sound_path = game_path +"sound/fx/"
 dmd_path = game_path +"dmd/"
 lampshow_path = game_path +"lampshows/"

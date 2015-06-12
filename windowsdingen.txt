@@ -1,0 +1,11 @@
+./GameLauncher.py:38:loader_config_path = 'C:\P-ROC/pyprocgame-master/games/VXtra_start/config/Loader.yaml '
+./visor.py:7:game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+./oefeningen/tein.py:6:game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+./oefeningen/eerste_eigen_regels.py:6:game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+./oefeningen/mila.py:6:game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+./oefeningen/ElineJannekeregels.py:6:game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+./oefeningen/ket.py:6:game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+./oefeningen/corijn.py:6:game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+./visor_up_down.py:7:game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+./start.py:31:game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+./match.py:13:game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"

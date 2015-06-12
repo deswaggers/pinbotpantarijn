@@ -28,7 +28,7 @@ logging.basicConfig(level=logging.ERROR, format="%(asctime)s - %(name)s - %(leve
 #game_locale = config.value_for_key_path('std_locale')
 locale.setlocale(locale.LC_ALL,"USA") # used to put commas in the score.
 
-game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
+game_path = "/home/pi/VXtra_start/"
 print("Using game_path at: %s "%(game_path))
 logging.info("Game Path is: "+game_path)
 

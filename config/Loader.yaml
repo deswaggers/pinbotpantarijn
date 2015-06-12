@@ -17,22 +17,14 @@
 # whereas pinmame ROMs (Williams/FreeWPC) should have a ROM specified
 # ROMs should be placed in the pinmame path.
 ##################################################################### 
-machine_config_file: C:\P-ROC\pyprocgame-master\games\VXtra_start\config\Pinbot.yaml
+machine_config_file: /home/pi/VXtra_start/config/Pinbot.yaml
 title: 'PinBot 2'
 instructions_line_1: 'Choose game with flippers'
 instructions_line_2: 'then press START to select.'
-pinmame:
-    path: 'C:\P-ROC\pinmame_files\'
-    nvram: 'C:\P-ROC\pinmame_files\nvram\'
-    cmd: 'pinmamep.exe'
-    extra_args: '-alpha_on_dmd -window -skip_disclaimer -skip_gameinfo'
 python:
-    cmdpath: 'c:\Python26\python.exe'
+    cmdpath: 'python'
 games:
     - line1: 'PinBot 2'
       line2: '(using pyProcGame)'
       gamefile: start.py
-      gamepath: 'C:\P-ROC\pyprocgame-master\games\VXtra_start\'
-    - line1: 'Williams PinBot ROM'
-      line2: '(using Pinmame)'
-      ROM: 'C:\P-ROC\pinmame_files\pb_l5'
+      gamepath: '/home/pi/VXtra_start/'
