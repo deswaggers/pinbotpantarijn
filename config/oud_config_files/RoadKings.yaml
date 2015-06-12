@@ -1,0 +1,351 @@
+# P-ROC Game Description file for Road Kings
+
+PRPinmame:
+    keyboard: on
+    s11CreditDisplay: 21
+    s11BallDisplay: 1
+    autoPatterDetection: off
+
+PRGame:
+    machineType: wpc
+    numBalls: 3
+PRFlippers:
+    - flipperLwL
+    - flipperLwR
+
+PRBumpers:
+    - slingL
+    - slingR
+    - kickback
+
+PRSwitches:
+    # **** Format ****
+    # name:
+    #   number: <number>
+    #   type: <type>
+    #
+    #   <number> can be: SFx (Flipper switch, labeled Fx in WPC manual
+    #                    SDx (Dedicated switch, labeled SDx in WPC manual
+    #                    Sx  (Matrix switch, labeled x in WPC manual
+    #   <type> can be: 'NO' (normally open.  This is the default; so no need to use this)
+    #                  'NC' (normally closed.  Common for optos)
+
+    tilt:
+        number: S11
+    ballrollTilt:
+        number: S12
+    startButton:
+        number: S13
+    enter:
+        number: S14
+    down:
+        number: S15
+    exit:
+        number: S16
+    slamTilt:
+        number: S17
+    up:
+        number: S18
+
+    targetR:
+        number: S21
+    targetO:
+        number: S22
+    targetA:
+        number: S23
+    targetD:
+        number: S24
+    targetK:
+        number: S25
+    targetI:
+        number: S26
+    targetN:
+        number: S27
+    targetG:
+        number: S28
+
+    targetS:
+        number: S31
+    lane1:
+        number: S32
+    lane2:
+        number: S33
+    lane3:
+        number: S34
+    lane4:
+        number: S35
+    RrampEnter:
+        number: S36
+    rampRaise:
+        number: S37
+    bumperU:
+        number: S38
+
+    bumperL:
+        number: S41
+    bumperR:
+        number: S42
+    bumperD:
+        number: S43
+    outlaneL:
+        number: S44
+    outlaneR:
+        number: S45
+    dropTarget:
+        number: S46
+    CrampEnter:
+        number: S47
+    CrampRexit:
+        number: S48
+
+    Rtenpoint:
+        number: S51
+    upperLkicker:
+        number: S52
+    Rrollunder:
+        number: S53
+#    Lrollunder:
+    Lspinner:
+        number: S54
+    Leject:
+        number: S55
+    Ceject:
+        number: S56
+    shooterLane:
+        number: S57
+    outhole:
+        number: S58
+
+    trough1:
+        number: S61
+    trough2:
+        number: S62
+    slingL:
+        number: S63
+    slingR:
+        number: S64
+#    Ltenpoint used as trough3:
+    trough3:
+        number: S65
+#   playfieldtilt used as trough3:
+#    trough3:
+#        number: S66
+    flipperLwL:
+        number: S67
+    flipperLwR:
+        number: S68
+
+# Ltenpoint op een notused switch gezet
+    Ltenpoint:
+        number: S71
+    notused:
+        number: S72
+    notused:
+        number: S73
+    notused:
+        number: S74
+    notused:
+        number: S75
+    RrampExit:
+        number: S76
+
+PRCoils:
+    flipperLwRMain:
+        number: FLRM
+    flipperLwRHold:
+        number: FLRH
+    flipperLwLMain:
+        number: FLLM
+    flipperLwLHold:
+        number: FLLH
+
+    outhole:
+        number: C01
+    trough:
+        number: C02
+    Leject:
+        number: C03
+    Ceject:
+        number: C04
+    rearFlash_upLeftkicker:
+        number: C05
+    kickback:
+        number: C06
+    Llightningbolt:
+        number: C07
+    Rlightningbolt:
+        number: C08
+    Lgate:
+        number: C09
+    Rgate:
+        number: C10
+    GIrelay:
+        number: C11
+    ACselect:
+        number: C12
+    knocker_rampUp:
+        number: C13
+    midBikeFlash_rampDown:
+        number: C14
+    bikesFlash_dropTarget:
+        number: C15
+    coinRelais:
+        number: C16
+    flipperEnable:
+        number: C23
+    unused1:
+        number: C18
+    unused2:
+        number: C19
+    unused3:
+        number: C20
+    unused4:
+        number: C21
+    slingR:
+        number: C22
+    slingL:
+        number: C23
+    shooterR:
+        number: C24
+
+
+PRLamps:
+    raceChampion:
+        number: L11
+    easyRider:
+        number: L12
+    kickstartKing:
+        number: L13
+    bumperBastard:
+        number: L14
+    holdBonus:
+        number: L15
+    spotLetter:
+        number: L16
+    Llock:
+        number: L17
+    Clock:
+        number: L18
+    targetR:
+        number: L21
+    targetO:
+        number: L22
+    targetA:
+        number: L23
+    targetD:
+        number: L24
+    targetK:
+        number: L25
+    targetI:
+        number: L26
+    targetN:
+        number: L27
+    targetG:
+        number: L28
+    targetS:
+        number: L31
+    lane1:
+        number: L32
+    lane2:
+        number: L33
+    lane3:
+        number: L34
+    lane4:
+        number: L35
+    bonusholdWL:
+        number: L36
+    allScoresDouble:
+        number: L37
+    LcollectDetourValue:
+        number: L38
+    RcollectDetourValue:
+        number: L41
+    Ltimelock:
+        number: L42
+    Ctimelock:
+        number: L43
+    kickback:
+        number: L44
+    Rspecial:
+        number: L45
+    Lspecial:
+        number: L46
+    Rtimelock:
+        number: L47
+    Rlock:
+        number: L48
+    Rextraball:
+        number: L51
+    megaScore:
+        number: L52
+    bonus2x:
+        number: L53
+    bonus3x:
+        number: L54
+    bonus4x:
+        number: L55
+    bonus5x:
+        number: L56
+    bonus10k:
+        number: L57
+    bonus20k:
+        number: L58
+    bonus40k:
+        number: L61
+    bonus60k:
+        number: L62
+    bonus80k:
+        number: L63
+    cruiseAgain:
+        number: L64
+    bonus1k:
+        number: L65
+    bonus2k:
+        number: L66
+    bonus3k:
+        number: L67
+    bonus4k:
+        number: L68
+    bonus5k:
+        number: L71
+    bonus6k:
+        number: L72
+    bonus7k:
+        number: L73
+    bonus8k:
+        number: L74
+    bonus9k:
+        number: L75
+    Cextraball:
+        number: L76
+    detourWL:
+        number: L77
+    not_used:
+        number: L78
+    stoplight_green:
+        number: L82
+    stoplight_yellow:
+        number: L83
+    stoplight_red:
+        number: L88
+#startbutton niet verlicht in Roadkings, maar nodig voor WPC compatibiliteit.
+    startButton:
+        number: L98
+
+
+PRBallSave:
+
+    pulseCoils:
+
+    resetSwitches:
+#        shooterL: open
+#        outlaneL: open
+
+    stopSwitches:
+#        shooterR: closed
+#        shooterL: closed
+#        popperL: active
+#        popperR: active
+# don't ball search if a flipper button is pressed
+#        flipperLwL: closed
+#        flipperLwR: closed

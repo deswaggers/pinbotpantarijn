@@ -1,0 +1,383 @@
+# P-ROC Game Description file for Pinbot
+
+PRSys11Pinmame:
+    keyboard: on
+    creditDisplay: 21
+    ballDisplay: 1
+    autoPatterDetection: off
+PRGame:
+    machineType: wpc
+    numBalls: 2
+PRFlippers:
+    - flipperLwL
+    - flipperLwR
+
+PRBumpers:
+    - slingL
+    - slingR
+
+PRSwitches:
+    # **** Format ****
+    # name:
+    #   number: <number>
+    #   type: <type>
+    #
+    #   <number> can be: SFx (Flipper switch, labeled Fx in WPC manual
+    #                    SDx (Dedicated switch, labeled SDx in WPC manual
+    #                    Sx  (Matrix switch, labeled x in WPC manual
+    #   <type> can be: 'NO' (normally open.  This is the default; so no need to use this)
+    #                  'NC' (normally closed.  Common for optos)
+    
+    tilt:
+        number: S11
+    ballrolltilt:
+        number: S12
+    startButton:
+        number: S13
+    enter:
+        number: S14
+    down:
+        number: S15
+    exit:
+        number: S16
+    slamTilt:
+        number: S17
+    up:
+        number: S18
+
+    playfieldtilt:
+        number: S21
+    flipperLwL:
+        number: S22
+    flipperLwR:
+        number: S23
+    Loutlane:
+        number: S24
+    Linlane:
+        number: S25
+    Rinlane:
+        number: S26
+    Routlane:
+        number: S27
+    outhole:
+        number: S28
+
+    trough1:
+        number: S31
+    trough2:
+        number: S32
+    advanceplanet:
+        number: S33
+    shooterLane:
+        number: S34
+    unused:
+        number: S35
+    vortex20k:
+        number: S36
+    vortex100k:
+        number: S37
+    vortex5k:
+        number: S38
+
+    Leject:
+        number: S41
+    Reject:
+        number: S42
+    unused:
+        number: S43
+    visor1:
+        number: S44
+    visor2:
+        number: S45
+    visor3:
+        number: S46
+    visor4:
+        number: S47
+    visor5:
+        number: S48
+
+    Rbank1:
+        number: S51
+    Rbank2:
+        number: S52
+    Rbank3:
+        number: S53
+    Rbank4:
+        number: S54
+    Rbank5:
+        number: S55
+    eject: 
+        number: S56
+    rampexit:
+        number: S57
+    rampenter:
+        number: S58
+
+    unused: 
+        number: S61
+    unused: 
+        number: S62
+    unused:
+        number: S63
+    rampdown:
+        number: S64
+    scoreEnergy:
+        number: S65
+    visorClosed:
+        number: S66
+    visorOpen:
+        number: S67
+    Lbumper:
+        number: S68
+        
+    droptarget1: 
+        number: S71
+    droptarget2: 
+        number: S72        
+    droptarget3: 
+        number: S73
+    Ubumper: 
+        number: S74
+    Bbumper: 
+        number: S75
+    slingL: 
+        number: S76
+    slingR: 
+        number: S77
+    10point1:
+        number: S78
+
+#    fireR:
+#        number: S78
+
+    Ltenpoint:
+        number: S81
+    unused:
+        number: S81
+    unused:
+        number: S82
+    10point2:
+        number: S83
+    10point3:
+        number: S84
+    unused:
+        number: S85
+    trough3:
+        number: S90
+
+
+PRCoils:
+    flipperLwRMain: 
+        number: FLRM
+    flipperLwRHold: 
+        number: FLRH
+    flipperLwLMain: 
+        number: FLLM
+    flipperLwLHold: 
+        number: FLLH
+        
+    outhole_knocker:
+        number: C01
+    #Trough is trough_upplayfieldflash
+    trough:
+        number: C02
+    Ejecthole_LeftInsBFlash:
+        number: C03
+    Drops_RightInsBFlash:
+        number: C04
+        pulseTime: 90
+    RampRaise_LowPlFlash:
+        number: C05
+        pulseTime: 42
+    RampLow_EnergyFlash:
+        number: C06
+        pulseTime: 38
+    Lejecthole_LeftPlFlash:
+        number: C07
+    Rejecthole_SunFlash:
+        number: C08
+    RobotFaceInsB:
+        number: C09
+    RvisorGI:
+        number: C10
+    GIInsB:
+        number: C11
+    GIPlayfield:
+        number: C12
+    Visormotor: 
+        number: C13
+    Solenoidselect: 
+        number: C14
+    TopFlash3:
+        number: C15
+    TopFlash4:
+        number: C16
+    unused1:
+        number: C17
+    unused2:
+        number: C18
+    unused3:
+        number: C19
+    slingL:
+        number: C20
+    slingR:
+        number: C21
+    unused4:
+        number: C22
+    flipperEnable:
+        number: C23
+    shooterR:
+        number: C30
+
+
+PRLamps:
+    gameover:
+        number: L11
+    match:
+        number: L12
+    ballinplay:
+        number: L13
+    mouth1:
+        number: L14
+    mouth2:
+        number: L15
+    mouth3:
+        number: L16
+    mouth4:
+        number: L17
+    mouth5:
+        number: L18
+    2x:
+        number: L21
+    3x:
+        number: L22
+    4x:
+        number: L23
+    5x:
+        number: L24
+    eject1:
+        number: L25
+    eject2:
+        number: L26
+    eject3:
+        number: L27
+    eject0:
+        number: L28
+    drops:
+        number: L31
+    advance_planet:
+        number: L32
+    planet1:
+        number: L33
+    planet2:
+        number: L34
+    planet3:
+        number: L35
+    planet4:
+        number: L36
+    planet5:
+        number: L37
+    planet6:
+        number: L38
+    planet7:
+        number: L41
+    planet8:
+        number: L42
+    planet9:
+        number: L43
+    yellow1:
+        number: L44
+    yellow2:
+        number: L45
+    yellow3:
+        number: L46
+    yellow4:
+        number: L47
+    yellow5:
+        number: L48
+    shootAgain:
+        number: L51
+    score_energy:
+        number: L52
+    solar_energy:
+        number: L53
+    blue1:
+        number: L54
+    blue2:
+        number: L55
+    blue3:
+        number: L56
+    blue4:
+        number: L57
+    blue5:
+        number: L58
+    droptop:
+        number: L61
+    dropmid:
+        number: L62
+    dropbottom:
+        number: L63
+    orange1:
+        number: L64
+    orange2:
+        number: L65
+    orange3:
+        number: L66
+    orange4:
+        number: L67
+    orange5:
+        number: L68
+    Loutlane:
+        number: L71
+    Linlane:
+        number: L72
+    special:
+        number: L73
+    green1:
+        number: L74
+    green2:
+        number: L75
+    green3:
+        number: L76
+    green4:
+        number: L77
+    green5:
+        number: L78
+    Routlane:
+        number: L81
+    Rinlane:
+        number: L82
+    unused:
+        number: L83
+    red1:
+        number: L84
+    red2:
+        number: L85
+    red3:
+        number: L86
+    red4:
+        number: L87        
+    red5:
+        number: L88
+        
+    startButton:
+        number: L98
+
+
+PRBallSave:
+    
+    pulseCoils:
+
+    resetSwitches:
+#        dropTargetJ: open
+#        dropTargetU: open
+#        dropTargetD: open
+#        dropTargetG: open
+#        dropTargetE: open
+
+    stopSwitches:
+#        shooterR: closed
+#        popperL: active
+#        # don't ball search if a flipper button is pressed
+#        flipperLwL: closed
+#        flipperLwR: closed

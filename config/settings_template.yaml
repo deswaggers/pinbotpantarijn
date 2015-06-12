@@ -1,0 +1,172 @@
+# This file is a template for all of the settings used in the game.  The game code will
+# load this file along with a user_settings.yaml file.  Any settings not present in
+# the user_settings.yaml file will default to the default value specified here.  When
+# any setting is saved (via the in-game service menu), the user_settings.yaml file
+# will be updated with ALL of the entries here without overwriting existing settings.
+
+Machine (Standard):
+  'Balls Per Game':
+    options: [1,10]
+    increments: 1
+    default: 3
+  'Tilt Warnings':
+    options: [1,10]
+    increments: 1
+    default: 3
+  'Maximum Extra Balls':
+    options: [0,10]
+    increments: 1
+    default: 3
+  'Max Extra Balls/Ball In Play':
+    options: [0,10]
+    increments: 1
+    default: 3
+  'Game Restart':
+    options: [true,false]
+    default: true
+Sound:
+  'Initial volume':
+    options: [0.1,1.0]
+    increments: 0.1
+    default: 0.5
+  'Music volume offset':
+    options: [-0.4,0.4]
+    increments: 0.1
+    default: 0
+Display:
+  'Left side score justify':
+    # This example has no default.  The first option (right) will be used as the default.
+    options: [right, left]
+Replay:
+  'Replay Type':
+    options: ['none','auto','fixed','incremental']
+    default: 'auto'
+  'Replay Percentage':
+    options: [5,50]
+    increments: 1
+    default: 10
+  'Replay Award':
+    options: ['Audit', 'Extra Ball', 'Credit']
+    default: 'Audit'
+  'Replay Levels':
+    options: [1,2,3,4]
+    default: 1
+  'Replay Level 1':
+    options: [50000,5000000]
+    increments: 50000
+    default: 1000000
+  'Replay Level 2':
+    options: [100000,5000000]
+    increments: 50000
+    default: 2000000
+  'Replay Level 3':
+    options: [150000,5000000]
+    increments: 50000
+    default: 3000000
+  'Replay Level 4':
+    options: [200000,5000000]
+    increments: 50000
+    default: 4000000
+  'Replay Boost':
+    options: [50000,5000000]
+    increments: 50000
+    default: 100000
+  'Special':
+    options: ['Audit', 'Extra Ball','Points']
+    default: 'Audit'
+Highscore:
+  'Grand Champion':
+    options: [50000000,500000000]
+    increments: 50000000
+    default: 350000000
+Gameplay (Feature):
+  'Attract Mode Sounds':
+    options: ['Yes','No']
+    default: 'No'
+  'Attract Mode Music':
+    options: ['Yes','No']
+    default: 'No'
+  'Ballsave Timer':
+    options: [0,22]
+    increments: 2
+    default: 8
+  'Extraball Awarded':
+    options: [False, True]
+    default: True
+  'Bumpers Default':
+    options: [5,55]
+    increments: 5
+    default: 20
+  'Bumpers Raise':
+    options: [5,55]
+    increments: 5
+    default: 10
+  'Roadkings Targets Xball':
+    options: [1,10]
+    increments: 1
+    default: 2
+  'Roadkings Targets Xball Raise':
+    options: [1,5]
+    increments: 1
+    default: 2
+  'Mode Start Lit':
+    options: ['Always','Ball Start','Off']
+    default: 'Off'
+  'Spinner Count Per Revolution':
+    options: [1,5]
+    increments: 1
+    default: 1
+  'Jumps For Hurryup':
+    options: [6,16]
+    increments: 1
+    default: 10
+  'Jumps Hurryup Value':
+    options: [500000,50000000]
+    increments: 100000
+    default: 30000000
+  'Xramps For Hurryup':
+    options: [6,12]
+    increments: 1
+    default: 11
+  'Xramps Hurryup Value':
+    options: [1000000,20000000]
+    increments: 100000
+    default: 10000000
+  'Skillshot Timer':
+    options: [1,15]
+    increments: 1
+    default: 7
+  'Skillshot Start':
+    options: [50000,500000]
+    increments: 10000
+    default: 250000
+  'Skillshot Boost':
+    options: [50000,500000]
+    increments: 10000
+    default: 250000
+  'Quick Mball Spinner Value':
+    options: [200000,1000000]
+    increments: 50000
+    default: 250000
+  'Multiball Restart Time':
+    options: [5,20]
+    increments: 1
+    default: 10
+  'Easy Rider Knocker On':
+    options: [False, True]
+    default: True
+  'Easy Rider Timer':
+    options: [10,31]
+    increments: 1
+    default: 15
+  'Tunnel Trial Timer':
+    options: [10,65]
+    increments: 5
+    default: 40
+  'Tunnel Trial Shots':
+    options: [1,11]
+    increments: 1
+    default: 4
+  'Tournament Mode':
+    options: [False, True]
+    default: False

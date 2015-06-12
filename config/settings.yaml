@@ -1,0 +1,15 @@
+Display: {Left side score justify: right}
+Gameplay (Feature): {Attract Mode Music: 'Yes', Attract Mode Sounds: 'Yes', Ballsave Timer: 6,
+  Bumpers Default: 5, Bumpers Raise: 10, Easy Rider Knocker On: false, Easy Rider Timer: 15,
+  Extraball Awarded: true, Jumps For Hurryup: 10, Jumps Hurryup Value: 30000000, Mode Start Lit: 'Off',
+  Multiball Restart Time: 10, Quick Mball Spinner Value: 250000, Roadkings Targets Xball: 2,
+  Roadkings Targets Xball Raise: 2, Skillshot Boost: 250000, Skillshot Start: 250000,
+  Skillshot Timer: 8, Spinner Count Per Revolution: 2, Tournament Mode: false, Tunnel Trial Shots: 3,
+  Tunnel Trial Timer: 35, Xramps For Hurryup: 10, Xramps Hurryup Value: 10000000}
+Highscore: {Grand Champion: 350000000}
+Machine (Standard): {Balls Per Game: 3, Game Restart: true, Max Extra Balls/Ball In Play: 3,
+  Maximum Extra Balls: 3, Maximum Extra Balls/Ball In Play: 3, Tilt Warnings: 3}
+Replay: {Replay Award: Audit, Replay Boost: 100000, Replay Level 1: 1000000, Replay Level 2: 2000000,
+  Replay Level 3: 3000000, Replay Level 4: 4000000, Replay Levels: 1, Replay Percentage: 10,
+  Replay Type: auto, Special: Audit}
+Sound: {Initial volume: 0.5, Music volume offset: 0}
