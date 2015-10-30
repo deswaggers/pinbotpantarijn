@@ -26,7 +26,8 @@ logging.basicConfig(level=logging.ERROR, format="%(asctime)s - %(name)s - %(leve
 #logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
 #game_locale = config.value_for_key_path('std_locale')
-locale.setlocale(locale.LC_ALL,"USA") # used to put commas in the score.
+#locale.setlocale(locale.LC_ALL, ('en_US', 'UTF-8')) # used to put commas in the score.
+#NOTE: not needed on raspi
 
 game_path = "/home/pi/VXtra_start/"
 print("Using game_path at: %s "%(game_path))
@@ -36,7 +37,7 @@ logging.info("Game Path is: "+game_path)
 fonts_path = game_path + "dmd/fonts/"
 shared_sound_path = game_path + "sound/service/"
 
-machine_config_path = game_path + "config/pinbot.yaml"
+machine_config_path = game_path + "config/Pinbot.yaml"
 settings_path = game_path +"config/settings.yaml"
 game_data_path = game_path +"config/game_data.yaml"
 game_data_template_path = game_path +"config/game_data_template.yaml"
@@ -85,7 +86,7 @@ class Attract(game.Mode):
                 #create dmd attract screens
                 self.williams_logo = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/williams_animated.dmd').frames,frame_time=1,hold=True)
 
-                self.proc_logo = dmd.FrameLayer(opaque=True, frame=dmd.Animation().load(game_path+'dmd/splash.dmd').frames[0])
+                self.proc_logo = dmd.FrameLayer(opaque=True, frame=dmd.Animation().load(game_path+'dmd/Splash.dmd').frames[0])
                 self.proc_logo.transition = dmd.ExpandTransition(direction='vertical')
 
                 self.press_start = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("PRESS START", seconds=None, blink_frames=1)
