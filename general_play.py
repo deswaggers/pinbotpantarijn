@@ -21,7 +21,7 @@ from visor import *
 #from ElineJannekeregels import *
 
 # all paths
-game_path = "/home/pi/VXtra_start"
+game_path = "/home/pi/VXtra_start/"
 plugin_dir = game_path+"plugins/"
 speech_path = game_path+"sound/speech/"
 sound_path = game_path +"sound/fx/"
@@ -63,8 +63,8 @@ class Generalplay(game.Mode):
 
     def mode_started(self):
         # Bij het begin start ie dus de code uit het object ramprules
-        """startanim = dmd.Animation().load(dmd_path+'intro_starwars.dmd')
-"""
+        startanim = dmd.Animation().load(dmd_path+'intro_starwars.dmd')
+
         self.game.modes.add(self.bumper_rules)
         self.game.modes.add(self.visor_rules)
         """self.game.modes.add(self.ket_regels)
