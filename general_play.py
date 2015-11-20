@@ -21,7 +21,7 @@ from visor import *
 #from ElineJannekeregels import *
 
 # all paths
-game_path = "/home/pi/VXtra_start"
+game_path = "/home/pi/VXtra_start/"
 plugin_dir = game_path+"plugins/"
 speech_path = game_path+"sound/speech/"
 sound_path = game_path +"sound/fx/"
