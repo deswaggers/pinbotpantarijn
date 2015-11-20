@@ -14,11 +14,7 @@ from procgame import *
 # Dit importeert alle code uit het bestand 'ramprules.py' en andere 'regels'
 from bumpers import *
 from visor import *
-#from ket import *
-#from corijn import *
-#from mila import *
-#from tein import *
-#from ElineJannekeregels import *
+
 
 # all paths
 game_path = "/home/pi/VXtra_start/"
@@ -39,12 +35,6 @@ class Generalplay(game.Mode):
 
         self.bumper_rules = Bumpers(self.game, 20)
         self.visor_rules = Visor(self.game, 39)
-        """self.ket_regels=Ket(self.game, 41)
-        self.corijn_regels=Corijn(self.game, 42)
-        self.mila_regels=Mila(self.game, 43)
-        self.tein_regels=Tein(self.game, 44)
-        self.ej_regels=Ej_regels(self.game, 45)
-	"""
         self.game.current_player().mode_lamps = 0
 
         #self.modes = [None, Mode1 (self.game, 19), Mode2 (self.game, 18), Mode3(self.game, 70)]
@@ -62,16 +52,11 @@ class Generalplay(game.Mode):
         pass
 
     def mode_started(self):
-        # Bij het begin start ie dus de code uit het object ramprules
-        """startanim = dmd.Animation().load(dmd_path+'intro_starwars.dmd')
-"""
+        startanim = dmd.Animation().load(dmd_path+'intro_starwars.dmd')
+
         self.game.modes.add(self.bumper_rules)
         self.game.modes.add(self.visor_rules)
-        """self.game.modes.add(self.ket_regels)
-        self.game.modes.add(self.mila_regels)
-        self.game.modes.add(self.tein_regels)
-        self.game.modes.add(self.corijn_regels)
-        self.game.modes.add(self.ej_regels)"""
+
         if self.game.ball==1:
             self.animation_layer = dmd.AnimatedLayer(frames=startanim.frames, opaque=False, repeat=False, hold=False, frame_time=1)
             self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
@@ -131,11 +116,7 @@ class Generalplay(game.Mode):
     def mode_stopped(self):
         self.game.modes.remove(self.bumper_rules)
         self.game.modes.remove(self.visor_rules)
-        """self.game.modes.remove(self.ket_regels)
-        self.game.modes.remove(self.mila_regels)
-        self.game.modes.remove(self.tein_regels)
-        self.game.modes.remove(self.corijn_regels)
-        self.game.modes.remove(self.ej_regels)"""
+
         print 'generalplay stopped'
 
     def mode_tick(self):
