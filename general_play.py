@@ -42,11 +42,8 @@ class Generalplay(game.Mode):
         self.start_time = 0
 
         self.register_all_sounds()
-
         self.game.lampctrl.register_show('rampenter_show', lampshow_path+"rampenter.lampshow")
 
-        self.lamps_ramp = ['megaScore','Rtimelock','Rlock','Rextraball']
-        self.willekeurigevariabele=0
 
     def reset(self):
         pass
@@ -189,16 +186,6 @@ class Generalplay(game.Mode):
     def sw_shooterLane_open_for_100ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
         self.game.sound.play_music('music_starwars_theme', loops=-1)
-##    def sw_10point1_active(self,sw):
-##        self.game.sound.play("sound_hit")
-##        x=random.random()
-##        print x
-##        if x>0.66:
-##            self.start_mode(3)
-##        elif x<0.33:
-##            self.start_mode(2)
-##        else:
-##            self.start_mode(1)
 
 
     def sw_startButton_active_for_1s(self, sw):
