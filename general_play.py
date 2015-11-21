@@ -11,10 +11,10 @@ from time import time
 from random import randint
 from procgame import *
 
-# Dit importeert alle code uit het bestand 'ramprules.py' en andere 'regels'
+# Dit importeert alle regels tijdens het gewone spel. Modes worden elders gestart.
 from bumpers import *
 from visor import *
-
+from droptargets import *
 
 # all paths
 game_path = "/home/pi/VXtra_start/"
@@ -32,9 +32,11 @@ class Generalplay(game.Mode):
         super(Generalplay, self).__init__(game, priority)
 
         # register modes: hij maakt van de code die onder 'visor_rules' staat een object. Het nummer gaat over prioriteit die bv belangrijk is voor animaties:
-
-        self.bumper_rules = Bumpers(self.game, 20)
-        self.visor_rules = Visor(self.game, 39)
+        # Hogere prioriteit wordt als eerste behandeld, dus een 'mode' die voorrang heeft
+        # op het normale spel moet hoger zijn, hieronder daarom voor 10,11,12 gekozen.
+        self.bumper_rules = Bumpers(self.game, 10)
+        self.visor_rules = Visor(self.game, 11)
+        self.droptargets_rules = Droptargets(self.game, 12)
         self.game.current_player().mode_lamps = 0
 
         #self.modes = [None, Mode1 (self.game, 19), Mode2 (self.game, 18), Mode3(self.game, 70)]
@@ -53,6 +55,7 @@ class Generalplay(game.Mode):
 
         self.game.modes.add(self.bumper_rules)
         self.game.modes.add(self.visor_rules)
+        self.game.modes.add(self.droptarget_rules)
 
         if self.game.ball==1:
             self.animation_layer = dmd.AnimatedLayer(frames=startanim.frames, opaque=False, repeat=False, hold=False, frame_time=1)
@@ -113,6 +116,7 @@ class Generalplay(game.Mode):
     def mode_stopped(self):
         self.game.modes.remove(self.bumper_rules)
         self.game.modes.remove(self.visor_rules)
+        self.game.modes.remove(self.droptarget_rules)
 
         print 'generalplay stopped'
 
