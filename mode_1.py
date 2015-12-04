@@ -87,7 +87,7 @@ class Mode1(game.Mode):
                         self.text_layer.set_text('WHAM',True)
                 else:
                         self.text_layer.set_text('BOOM',True)
-                anim = dmd.Animation().load(dmd_path+'DMD_Mode1_1.png') #Als het goed is kan ie ook rechtstreeks png-bestanden aan
+                anim = dmd.Animation().load(dmd_path+'DMD_Mode1_1.gif') #Als het goed is kan ie ook rechtstreeks gif-bestanden aan
                 self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=True, frame_time=4)
                 self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.score_layer, self.raise_layer, self.text_layer])
                 self.shoot_bumpers_animation()
