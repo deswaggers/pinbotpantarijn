@@ -315,12 +315,6 @@ class BaseGameMode(game.Mode):
             #lower priority basic modes
             self.generalplay = Generalplay(self.game, 20)
 
-            #medium priority basic modes
-
-            #higher priority basic modes
-##            self.info = Info(self.game, 70)
-##            self.info.callback = self.info_callback
-
             #start modes
             self.game.modes.add(self.generalplay)
 
@@ -376,8 +370,6 @@ class BaseGameMode(game.Mode):
         if self.tilt_status and self.layer == self.tilt_layer:
             self.layer = None
 
-        # End modes that affect bonuscount
-        #self.game.modes.remove(self.bumpers)
 
         # Create the bonus mode so bonus can be calculated.
         #self.bonus = Bonus(self.game, 98)

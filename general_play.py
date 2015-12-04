@@ -11,7 +11,8 @@ from time import time
 from random import randint
 from procgame import *
 
-# Dit importeert alle regels tijdens het gewone spel. Modes worden elders gestart.
+# Dit importeert alle regels tijdens het gewone spel. Modes worden in ejectmodestart gestart.
+from ejectmodestart import *
 from bumpers import *
 from visor import *
 from droptargets import *
@@ -33,12 +34,17 @@ class Generalplay(game.Mode):
 
         # register modes: hij maakt van de code die onder 'visor_rules' staat een object. Het nummer gaat over prioriteit die bv belangrijk is voor animaties:
         # Hogere prioriteit wordt als eerste behandeld, dus een 'mode' die voorrang heeft
-        # op het normale spel moet hoger zijn, hieronder daarom voor 10,11,12 gekozen.
+        # op het normale spel moet hoger zijn, hieronder daarom voor 9,10,11,12 gekozen.
+        self.ejectModestart_rules = EjectModestart(self.game, 9)
         self.bumper_rules = Bumpers(self.game, 10)
         self.visor_rules = Visor(self.game, 11)
         self.droptargets_rules = Droptargets(self.game, 12)
+        
+        
         self.game.current_player().mode_lamps = 0
 
+
+        ## Modestart straks naar elders, veel zaken in general_play nog op te schonen.
         #self.modes = [None, Mode1 (self.game, 19), Mode2 (self.game, 18), Mode3(self.game, 70)]
         #self.register_all_plugins()
         self.start_time = 0
@@ -53,6 +59,7 @@ class Generalplay(game.Mode):
     def mode_started(self):
         startanim = dmd.Animation().load(dmd_path+'intro_starwars.dmd')
 
+        self.game.modes.add(self.ejectModestart_rules)
         self.game.modes.add(self.bumper_rules)
         self.game.modes.add(self.visor_rules)
         self.game.modes.add(self.droptarget_rules)
@@ -64,6 +71,7 @@ class Generalplay(game.Mode):
         self.game.sound.play_music('music_starwars_intro', loops=-1)
         self.game.sound.play('speech_Prepare_to_fire')
         self.game.effects.ramp_down()
+        print "general play gestart"
 
     def clear_layer(self):
         self.layer = None
@@ -72,7 +80,8 @@ class Generalplay(game.Mode):
         if not self.game.current_player().mode_running:
             self.game.current_player().mode_running = index
             self.game.modes.add(self.modes[index])
-            if self.game.current_player().mode_lamps < 10: self.game.current_player().mode_lamps += 1
+            if self.game.current_player().mode_lamps < 10:
+                self.game.current_player().mode_lamps += 1
             self.update_lamps()
         else:
             print "Mode", index, "werd geprobeerd te starten maar", self.game.current_player().mode_running, "draait al"
@@ -114,6 +123,7 @@ class Generalplay(game.Mode):
                     self.game.sound.register_music(sound, join(dirpath, filename))
 
     def mode_stopped(self):
+        self.game.modes.remove(self.ejectModestart_rules)
         self.game.modes.remove(self.bumper_rules)
         self.game.modes.remove(self.visor_rules)
         self.game.modes.remove(self.droptarget_rules)
@@ -131,7 +141,8 @@ class Generalplay(game.Mode):
             # @Jelle: hier even in de if gezet
             for x in range(self.game.current_player().mode_lamps):
                 self.game.effects.drive_lamp('planet' + str(x+1), 'on')
-                if x < 9: self.game.effects.drive_lamp('planet' + str(x+2), 'medium')
+                if x < 9:
+                    self.game.effects.drive_lamp('planet' + str(x+2), 'medium')
         #Steven (ook kan: if self.game.ramp_move.ramp_up:
         # wel gaan hier problemen komen met modes: als die ook de lampjes willen aansturen....daarnaast gaat de lampupdate niet vaak genoeg
         if self.game.current_player().mode_running:
@@ -146,10 +157,6 @@ class Generalplay(game.Mode):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
         self.start_time = time()
         self.game.sound.play_music('music_starwars_theme', loops=-1)
-
-    def sw_eject_active_for_1400ms(self, sw):
-            self.game.score(5000)
-            self.game.effects.eject_ball('eject')
 
     def sw_outhole_active_for_500ms(self, sw):
         self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
