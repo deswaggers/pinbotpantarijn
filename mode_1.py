@@ -1,5 +1,5 @@
 # Mode bumpers
-
+import procgame
 from procgame import *
 import locale
 import random
@@ -28,6 +28,7 @@ class Mode1(game.Mode):
                 self.bumperraise=0
                 self.time_left=20
                 self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
+                self.bumpers_hit()
         def mode_stopped(self):
                 self.layer = None
                 
@@ -42,7 +43,12 @@ class Mode1(game.Mode):
         def sw_Lbumper_active(self,sw):
                 self.bumpers_hit()   
                 return procgame.game.SwitchStop
-
+        def sw_slingR_active(self,sw):
+                self.bumpers_hit() 
+                return procgame.game.SwitchStop
+        def sw_slingL_active(self,sw):
+                self.bumpers_hit() 
+                return procgame.game.SwitchStop
 
 
 ## Lampen
@@ -58,10 +64,12 @@ class Mode1(game.Mode):
                 self.shoot_bumpers_animation()
                 if self.time_left<1:
                         self.game.modes.remove(self)
+                self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
+                
                 
         def bumpers_hit(self):
                 ## Score-systeem
-                self.energyflash()
+                #self.energyflash()
                 self.bumperraise+=1
                 if self.bumperraise>6:
                         self.bumperscore+=20
@@ -75,25 +83,27 @@ class Mode1(game.Mode):
                 else:
                         self.game.sound.play("sound_lasergun3")
                 ## Display
-                self.score_layer = dmd.TextLayer(110, 2, self.game.fonts['num_09Bx7'], "center", opaque=False)
+                self.score_layer = dmd.TextLayer(90, 20, self.game.fonts['num_09Bx7'], "center", opaque=False)
                 self.raise_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
                 self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
-                self.score_layer.set_text("Each bumper:" +str(self.bumperscore),True)
-                self.raise_layer.set_text("Raise at 6:" +str(self.bumperraise)+ 'time left:'+str(self.time_left),True) ## modetimer met healthbar doen?
-                x=random.randomint(0,2)
-                if x==0:
+                self.score_layer.set_text("EACH:: " +str(self.bumperscore),True)
+                self.raise_layer.set_text("RAISE AT 6:.  ." +str(self.bumperraise)+ 'time left:'+str(self.time_left),True) ## modetimer met healthbar doen?
+                x=random.random()
+                if x>0.7:
                         self.text_layer.set_text('BAM!',True)
-                elif x==1:
+                elif x>0.4:
                         self.text_layer.set_text('WHAM',True)
                 else:
                         self.text_layer.set_text('BOOM',True)
                 anim = dmd.Animation().load(dmd_path+'DMD_Mode1_1.gif') #Als het goed is kan ie ook rechtstreeks gif-bestanden aan
                 self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=True, frame_time=4)
+                self.animation_layer.composite_op = "blacksrc"
                 self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.score_layer, self.raise_layer, self.text_layer])
                 self.shoot_bumpers_animation()
 
         def shoot_bumpers_animation(self):
                 #self.text_layer.set_text('aim for the bumpers!',True)
-                anim = dmd.Animation().load(dmd_path+'DMD_Mode1_1.png') #Als het goed is kan ie ook rechtstreeks png-bestanden aan
+                anim = dmd.Animation().load(dmd_path+'DMD_Mode1_2.gif') #Als het goed is kan ie ook rechtstreeks png-bestanden aan
                 self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=True, frame_time=4)
+                self.animation_layer.composite_op = "blacksrc"
                 self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.score_layer, self.raise_layer, self.text_layer])
