@@ -1,8 +1,9 @@
-# Bumpers
+# Mode bumpers
 
 from procgame import *
 import locale
 import random
+
 
 # all paths
 game_path = "/home/pi/VXtra_start/"

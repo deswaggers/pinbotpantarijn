@@ -19,6 +19,7 @@ import copy
 import yaml
 import random
 import logging
+import Image
 
 
 logging.basicConfig(level=logging.ERROR, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
