@@ -1,4 +1,3 @@
-# -*- coding: cp1252 -*-
 import sys
 sys.path.append(sys.path[0]+'/../..') # Set the path so we can find procgame.  We are assuming (stupidly?) that the first member is our directory.
 import procgame
@@ -112,18 +111,14 @@ class Attract(game.Mode):
 
 #CREDITS#
 [VWOxtra:]
-[Eline]
 [Tein]
 [Mees]
 [Sypke]
 [Ket]
-[Casper]
 [Alvin]
 [Corijn]
-[Storm]
-[Eva]
-[Janneke]
-[Mila]
+[Teun]
+[Tibi]
 
 [Begeleiding:]
 [Jelle Besseling]
@@ -282,11 +277,6 @@ class BaseGameMode(game.Mode):
         for lamp in self.game.lamps:
             lamp.disable()
 
-        #Not SYS11: Turn on the GIs
-        #self.game.lamps.gi01.pulse(0)
-        #self.game.lamps.gi02.pulse(0)
-        #self.game.lamps.gi03.pulse(0)
-        #self.game.lamps.gi04.pulse(0)
 
         # Enable the flippers
         self.game.coils.flipperEnable.enable()
@@ -324,12 +314,6 @@ class BaseGameMode(game.Mode):
 
             #lower priority basic modes
             self.generalplay = Generalplay(self.game, 20)
-
-            #medium priority basic modes
-
-            #higher priority basic modes
-##            self.info = Info(self.game, 70)
-##            self.info.callback = self.info_callback
 
             #start modes
             self.game.modes.add(self.generalplay)
@@ -386,8 +370,6 @@ class BaseGameMode(game.Mode):
         if self.tilt_status and self.layer == self.tilt_layer:
             self.layer = None
 
-        # End modes that affect bonuscount
-        #self.game.modes.remove(self.bumpers)
 
         # Create the bonus mode so bonus can be calculated.
         #self.bonus = Bonus(self.game, 98)
@@ -433,16 +415,8 @@ class BaseGameMode(game.Mode):
             #ball_save_time = 10 VIA MENU
             self.game.ball_save.start(num_balls_to_save=1, time=self.ball_save_time, now=True, allow_multiple_saves=False)
 
-    def sw_shooterLane_active(self, sw):
-        pass
-##        if self.ball_starting:
-##            self.game.sound.play_music("shooterlane_loop", loops=-1)
 
-    def sw_shooterLane_open_for_100ms(self,sw):
-        pass
-##        self.game.sound.play("shooterlane")
-##        if self.ball_starting:
-##           self.game.effects.rk_play_music('main_theme')
+
 
     # Allow service mode to be entered during a game.
     def sw_enter_active(self, sw):
