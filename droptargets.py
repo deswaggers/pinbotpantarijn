@@ -3,15 +3,13 @@ from procgame import *
 import locale
 
 # all paths
-game_path = "/home/pi/VXtra_start/"
+game_path = "C:\P-ROC\pyprocgame-master\games\VXtra_start/"
 speech_path = game_path +"sound/speech/"
 sound_path = game_path +"sound/fx/"
 music_path = game_path +"sound/music/"
 dmd_path = game_path +"dmd/"
 
 class Droptargets(game.Mode):
-
-        ## Mees heeft een nieuwere, dus hieronder nog de oudere versie met alleen de locatieverwijzing aangepast
 
         def __init__(self, game, priority):
                 super(Droptargets, self).__init__(game, priority)
@@ -24,7 +22,7 @@ class Droptargets(game.Mode):
         def mode_started(self):
                 self.dropscount=0
                 self.game.effects.drive_lamp('drops','medium')
-
+                self.drops_reset()
 ##                self.energyscore=0
 ##                self.dropscount=0
 
@@ -47,6 +45,7 @@ class Droptargets(game.Mode):
                 if self.dropscount==0:
                         self.dropscount=1
                         self.game.score(200)
+                        #self.cancel_delayed('drop_timer')
                         print "eerste droptarget"
                         self.delay(name='drop_timer', event_type=None, delay=6, handler=self.drops_reset)
                         
@@ -54,6 +53,7 @@ class Droptargets(game.Mode):
                 elif self.dropscount==1:
                         self.dropscount=2
                         self.game.score(1000)
+                        #self.cancel_delayed('drop_timer')
                         self.delay(name='drop_timer', event_type=None, delay=6, handler=self.drops_reset)
                         print "2e droptarget"
 
@@ -63,6 +63,40 @@ class Droptargets(game.Mode):
                         self.cancel_delayed('drop_timer')
                         self.drops_reset()
                 self.game.sound.play("sound_lasergun1")
+                self.update_lamps()
+
+        def update_lamps(self):
+                if self.game.switches.droptarget1.is_active() or self.game.switches.droptarget2.is_active() or self.game.switches.droptarget3.is_active():
+                        if self.game.switches.droptarget1.is_active():
+                                self.game.effects.drive_lamp('droptop','on')
+                        elif self.drop_timer >= 4:
+                                self.game.effects.drive_lamp('droptop','fast')
+                        elif self.drop_timer >= 2:
+                                self.game.effects.drive_lamp('droptop','medium')
+                        else:
+                                self.game.effects.drive_lamp('droptop','slow')
+
+                        if self.game.switches.droptarget2.is_active():
+                                self.game.effects.drive_lamp('dropmid','on')
+                        elif self.drop_timer >= 4:
+                                self.game.effects.drive_lamp('dropmid','fast')
+                        elif self.drop_timer >= 2:
+                                self.game.effects.drive_lamp('dropmid','medium')
+                        else:
+                                self.game.effects.drive_lamp('dropmid','slow')
+
+                        if self.game.switches.droptarget3.is_active():
+                                self.game.effects.drive_lamp('dropbottom','on')
+                        elif self.drop_timer >= 4:
+                                self.game.effects.drive_lamp('dropbottom','fast')
+                        elif self.drop_timer >= 2:
+                                self.game.effects.drive_lamp('dropbottom','medium')
+                        else:
+                                self.game.effects.drive_lamp('dropbottom','slow')
+                else:
+                        self.game.effects.drive_lamp('drops','slow')
+                # We weten niet zeker of "self.drop_timer >= 2" werkt. Zo niet moeten we een nieuwe delay aanmaken die de lampjes regelt.
+                        
                 
 ## switches
                 
@@ -77,18 +111,6 @@ class Droptargets(game.Mode):
         
 
 
-#### Lampen
-##        
-##
-#### Mode functions
-##
-##        def check_drops(self, num):
-##            self.dropscount+=1
-##            self.game.score(10)
-##            self.energyflash()
-##            self.bumpers_animation()
-##            self.delay(name='display_multiball_layer', event_type=None, delay=0.3, handler=self.display_multiball_layer)
-##             
 ##        def energyflash(self):
 ##             self.game.coils.Solenoidselect.pulse(90)   
 ##             self.game.coils.RampLow_EnergyFlash.pulse(70)
