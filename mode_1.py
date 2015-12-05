@@ -24,12 +24,16 @@ class Mode1(game.Mode):
                 
         def mode_start_na_eject(self):
                 self.game.effects.eject_ball('eject')
+                self.game.sound.play_music('music_harp', loops=-1)
                 self.bumperscore=40
                 self.bumperraise=0
                 self.time_left=20
+                self.totalscore=0
                 self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
                 self.bumpers_hit()
+                self.shoot_message=True
         def mode_stopped(self):
+                self.game.sound.play_music('music_starwars_intro', loops=-1)
                 self.layer = None
                 
 ## switches
@@ -61,20 +65,35 @@ class Mode1(game.Mode):
                      
         def countdown(self):
                 self.time_left-=1
+                if self.shoot_message==True:
+                        self.shoot_message=False
+                else:
+                        self.shoot_message=True
                 self.shoot_bumpers_animation()
                 if self.time_left<1:
-                        self.game.modes.remove(self)
+                        self.displaytotalscore()
                 self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
                 
+        def displaytotalscore(self):
+                self.text_layer.set_text('TOTAL SCORE'+str(self.totalscore),True)
+                anim = dmd.Animation().load(dmd_path+'Frame_fadein_fadeout.gif') #Als het goed is kan ie ook rechtstreeks png-bestanden aan
+                self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=True, frame_time=4)
+                self.animation_layer.composite_op = "blacksrc"
+                self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.text_layer])
+                self.delay(name='End_mode', event_type=None, delay=2, handler=self.endmode)
+                self.game.sound.fadeout_music(1500)
+        def endmode(self):
+                self.game.modes.remove(self)
                 
         def bumpers_hit(self):
                 ## Score-systeem
-                #self.energyflash()
+                #self.energyflash() #Niet doen omdat dat de eject tegenhoudt met AC-relais. Duurzame oplossing voor vinden. solenoidselect en/of effects herschrijven.
                 self.bumperraise+=1
                 if self.bumperraise>6:
                         self.bumperscore+=20
                         self.bumperraise=0
                 self.game.score(self.bumperscore)
+                self.totalscore+=self.bumperscore
                 ##geluid
                 if self.bumperscore<=60:
                         self.game.sound.play("sound_lasergun1")
@@ -87,7 +106,7 @@ class Mode1(game.Mode):
                 self.raise_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
                 self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
                 self.score_layer.set_text("EACH:: " +str(self.bumperscore),True)
-                self.raise_layer.set_text("RAISE AT 6:.  ." +str(self.bumperraise)+ 'time left:'+str(self.time_left),True) ## modetimer met healthbar doen?
+                self.raise_layer.set_text("RAISE AT 6:.  ." +str(self.bumperraise)+ 'time left:'+str(self.time_left),True) ## modetimer met healthbar/tijdbalk doen?
                 x=random.random()
                 if x>0.7:
                         self.text_layer.set_text('BAM!',True)
@@ -96,14 +115,16 @@ class Mode1(game.Mode):
                 else:
                         self.text_layer.set_text('BOOM',True)
                 anim = dmd.Animation().load(dmd_path+'DMD_Mode1_1.gif') #Als het goed is kan ie ook rechtstreeks gif-bestanden aan
-                self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=True, frame_time=4)
+                self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
                 self.animation_layer.composite_op = "blacksrc"
                 self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.score_layer, self.raise_layer, self.text_layer])
-                self.shoot_bumpers_animation()
 
         def shoot_bumpers_animation(self):
-                #self.text_layer.set_text('aim for the bumpers!',True)
+                if self.shoot_message==True:
+                        self.text_layer.set_text('SHOOT THE BUMPERS',True)
+                else:
+                        self.text_layer.set_text('',True)                       
                 anim = dmd.Animation().load(dmd_path+'DMD_Mode1_2.gif') #Als het goed is kan ie ook rechtstreeks png-bestanden aan
-                self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=True, frame_time=4)
+                self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
                 self.animation_layer.composite_op = "blacksrc"
                 self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.score_layer, self.raise_layer, self.text_layer])
