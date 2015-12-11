@@ -15,15 +15,27 @@ dmd_path = game_path +"dmd/"
 class EjectModestart(game.Mode):
 
         def __init__(self, game, priority):
-            super(EjectModestart, self).__init__(game, priority)
-            
-            #self.game.lampctrl.register_show('rk_ramp_ready', lampshow_path+"ramp_ready.lampshow")
+                super(EjectModestart, self).__init__(game, priority)
+
+        def mode_started(self):
+                self.update_lamps()                
+                #self.game.lampctrl.register_show('rk_ramp_ready', lampshow_path+"ramp_ready.lampshow")
 
         def sw_eject_active_for_500ms(self, sw):
-            self.Mode1_object=Mode1(self.game,50)
-            self.game.modes.add(self.Mode1_object)
-            self.game.score(2500)
-            
+                if self.game.current_player().mode_running==False:
+                        self.Mode1_object=Mode1(self.game,50)
+                        self.game.modes.add(self.Mode1_object)
+                        self.game.score(2500)
+                        self.game.current_player().mode_running=True
+                else:
+                        self.game.score(2500)
+                self.update_lamps()
+                
+        def update_lamps(self):
+                if self.game.current_player().mode_running==False:
+                        self.game.effects.drive_lamp('eject0','medium')
+                else:
+                        self.game.effects.drive_lamp('eject0','off')
 
 ####            self.mission_lamps = ['bonus1k','bonus2k','bonus3k','bonus4k','bonus5k','bonus6k','bonus7k','bonus8k','bonus9k', 'bonus10k']
 ####            self.mission_list = [0,0,0,0,0,0,0,0,0,0]
