@@ -21,7 +21,7 @@ class EjectModestart(game.Mode):
                 self.update_lamps()                
                 #self.game.lampctrl.register_show('rk_ramp_ready', lampshow_path+"ramp_ready.lampshow")
 
-        def sw_eject_active_for_500ms(self, sw):
+        def sw_advanceplanet(self, sw):
                 if self.game.current_player().mode_running==False:
                         self.Mode1_object=Mode1(self.game,50)
                         self.game.modes.add(self.Mode1_object)
