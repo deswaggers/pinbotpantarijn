@@ -11,6 +11,7 @@ from mode_1 import *
 #all necessary paths
 game_path ="/home/pi/VXtra_start/"
 dmd_path = game_path +"dmd/"
+lampshow_path = game_path +"lampshows/"
 
 class EjectModestart(game.Mode):
 
@@ -18,24 +19,46 @@ class EjectModestart(game.Mode):
                 super(EjectModestart, self).__init__(game, priority)
 
         def mode_started(self):
-                self.update_lamps()                
-                #self.game.lampctrl.register_show('rk_ramp_ready', lampshow_path+"ramp_ready.lampshow")
+                self.update_lamps()
+                self.mode_enabled=True
+                self.game.lampctrl.register_show('startmode', lampshow_path+"Planeten_short_flasher.lampshow")
 
         def sw_eject_active_for_500ms(self, sw):
-                if self.game.current_player().mode_running==False:
-                        self.Mode1_object=Mode1(self.game,50)
-                        self.game.modes.add(self.Mode1_object)
-                        self.game.score(2500)
-                        self.game.current_player().mode_running=True
-                else:
-                        self.game.score(2500)
+                if self.mode_enabled==True:
+                        if self.game.current_player().mode_running==False:
+                                self.game.sound.fadeout_music(500)
+                                self.game.lampctrl.play_show('startmode', repeat=True)
+                                self.game.sound.play("sound_evillaugh")
+                                self.game.score(2500)
+                                self.start_mode()
+                                self.game.current_player().mode_running=True
+                                self.mode_enabled=False
+                        else:
+                                self.game.score(2500)
+
+        def sw_rampexit_active(self, sw):
+                if self.game.current_player().mode_running==False and self.mode_enabled==False:
+                        self.mode_enabled=True
+                        self.game.sound.play("sound_2clash")
+                        self.update_lamps()
+
+        def start_mode(self):
+                self.Mode1_object=Mode1(self.game,50)
+                self.game.modes.add(self.Mode1_object)
                 self.update_lamps()
                 
         def update_lamps(self):
-                if self.game.current_player().mode_running==False:
+                if self.game.current_player().mode_running==True:
+                        self.game.effects.drive_lamp('eject0','on')
+                elif self.mode_enabled==True:
                         self.game.effects.drive_lamp('eject0','medium')
+                        self.game.effects.drive_lamp('score_energy','on')
+                        self.game.effects.drive_lamp('solar_energy','on')
                 else:
                         self.game.effects.drive_lamp('eject0','off')
+                        self.game.effects.drive_lamp('score_energy','medium')
+                        self.game.effects.drive_lamp('solar_energy','medium')
+                        
 
 ####            self.mission_lamps = ['bonus1k','bonus2k','bonus3k','bonus4k','bonus5k','bonus6k','bonus7k','bonus8k','bonus9k', 'bonus10k']
 ####            self.mission_list = [0,0,0,0,0,0,0,0,0,0]
