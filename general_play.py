@@ -39,8 +39,8 @@ class Generalplay(game.Mode):
         self.bumper_rules = Bumpers(self.game, 10)
         self.visor_rules = Visor(self.game, 11)
         self.droptarget_rules = Droptargets(self.game, 12)
-        
-        
+
+
         self.game.current_player().mode_lamps = 0
 
 
@@ -195,10 +195,16 @@ class Generalplay(game.Mode):
         if self.game.switches.vortex100k.time_since_change()>2 and self.game.switches.vortex20k.time_since_change()>2:
             self.game.sound.play("speech_chewbacca_01")
             self.game.score(500)
-            
+
     def sw_shooterLane_open_for_100ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
         self.game.sound.play_music('music_starwars_theme', loops=-1)
+
+    def sw_advanceplanet_active(self,sw):
+        anim = dmd.Animation().load(dmd_path+'planeet.gif') #Als het goed is kan ie ook rechtstreeks png-bestanden aan
+        self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
+        self.animation_layer.composite_op = "blacksrc"
+        self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
 
 
     def sw_startButton_active_for_1s(self, sw):
