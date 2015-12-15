@@ -33,7 +33,7 @@ class EjectModestart(game.Mode):
                                 self.game.lampctrl.play_show('startmode', repeat=True)
                                 self.game.sound.play("sound_evillaugh")
                                 self.game.score(2500)
-                                self.start_mode(randint(0,len(self.modes)))
+                                self.start_mode(0)
                                 self.game.current_player().mode_running=True
                                 self.mode_enabled=False
                         else:
