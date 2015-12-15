@@ -3,6 +3,7 @@
 
 import procgame
 import random
+from random import randint
 from procgame import *
 
 from mode_1 import *
@@ -20,6 +21,8 @@ class EjectModestart(game.Mode):
 
         def mode_started(self):
                 self.Mode1_object=Mode1(self.game,50)
+                self.maxmodes = 1
+                self.modes = [self.Mode1_object]
                 self.update_lamps()
                 self.mode_enabled=True
                 self.game.lampctrl.register_show('startmode', lampshow_path+"Planeten_short_flasher.lampshow")
@@ -31,7 +34,7 @@ class EjectModestart(game.Mode):
                                 self.game.lampctrl.play_show('startmode', repeat=True)
                                 self.game.sound.play("sound_evillaugh")
                                 self.game.score(2500)
-                                self.start_mode()
+                                self.start_mode(randint(1,self.maxmodes))
                                 self.game.current_player().mode_running=True
                                 self.mode_enabled=False
                         else:
@@ -43,8 +46,8 @@ class EjectModestart(game.Mode):
                         self.game.sound.play("sound_2clash")
                         self.update_lamps()
 
-        def start_mode(self):
-                self.game.modes.add(self.Mode1_object)
+        def start_mode(self, mode):
+                self.game.modes.add(self.modes[mode])
                 self.update_lamps()
                 
         def update_lamps(self):
