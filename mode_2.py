@@ -15,7 +15,7 @@ dmd_path = game_path +"dmd/"
 class Mode2(game.Mode):
 
         def __init__(self, game, priority):
-                super(Mode2?, self).__init__(game, priority)
+                super(Mode2, self).__init__(game, priority)
 	
 	def mode_started(self):
 		test_layer = dmd.TextLayer(90, 20, self.game.fonts['num_09Bx7'], "center", opaque=False)
