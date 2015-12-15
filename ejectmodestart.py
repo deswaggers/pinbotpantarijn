@@ -24,7 +24,7 @@ class EjectModestart(game.Mode):
                 self.Mode1_object=Mode1(self.game,50)
                 self.Mode2_object=Mode2(self.game,51)
 
-                self.modes = [self.Mode1_object, Mode2_object]
+                self.modes = [self.Mode1_object, self.Mode2_object]
                 self.mode_enabled=True
                 self.game.lampctrl.register_show('startmode', lampshow_path+"Planeten_short_flasher.lampshow")
 
