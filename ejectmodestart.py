@@ -7,6 +7,7 @@ from random import randint
 from procgame import *
 
 from mode_1 import *
+from mode2? import *
 
 
 #all necessary paths
@@ -21,7 +22,9 @@ class EjectModestart(game.Mode):
 
         def mode_started(self):
                 self.Mode1_object=Mode1(self.game,50)
-                self.modes = [self.Mode1_object]
+                self.Mode2_object=Mode2?(self.game,51)
+
+                self.modes = [self.Mode1_object, Mode2_object]
                 self.mode_enabled=True
                 self.update_lamps()
                 self.game.lampctrl.register_show('startmode', lampshow_path+"Planeten_short_flasher.lampshow")
