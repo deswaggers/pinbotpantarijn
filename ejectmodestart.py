@@ -3,6 +3,7 @@
 
 import procgame
 import random
+from random import randint
 from procgame import *
 
 from mode_1 import *
@@ -20,22 +21,24 @@ class EjectModestart(game.Mode):
 
         def mode_started(self):
                 self.Mode1_object=Mode1(self.game,50)
-                self.update_lamps()
+                self.modes = [self.Mode1_object]
                 self.mode_enabled=True
+                self.update_lamps()
                 self.game.lampctrl.register_show('startmode', lampshow_path+"Planeten_short_flasher.lampshow")
 
         def sw_eject_active_for_500ms(self, sw):
                 if self.mode_enabled==True:
                         if self.game.current_player().mode_running==False:
                                 self.game.sound.fadeout_music(500)
-                                self.game.lampctrl.play_show('startmode', repeat=True)
+                                self.game.lampctrl.play_show('startmode', repeat=False)
                                 self.game.sound.play("sound_evillaugh")
                                 self.game.score(2500)
-                                self.start_mode()
+                                self.start_mode(randint(0, len(self.modes) - 1))
                                 self.game.current_player().mode_running=True
                                 self.mode_enabled=False
                         else:
                                 self.game.score(2500)
+                self.update_lamps()
 
         def sw_rampexit_active(self, sw):
                 if self.game.current_player().mode_running==False and self.mode_enabled==False:
@@ -43,10 +46,10 @@ class EjectModestart(game.Mode):
                         self.game.sound.play("sound_2clash")
                         self.update_lamps()
 
-        def start_mode(self):
-                self.game.modes.add(self.Mode1_object)
+        def start_mode(self, mode):
+                self.game.modes.add(self.modes[mode])
                 self.update_lamps()
-                
+
         def update_lamps(self):
                 if self.game.current_player().mode_running==True:
                         self.game.effects.drive_lamp('eject0','on')
