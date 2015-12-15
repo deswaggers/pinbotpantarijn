@@ -23,8 +23,8 @@ class EjectModestart(game.Mode):
                 self.Mode1_object=Mode1(self.game,50)
                 self.maxmodes = 1
                 self.modes = [self.Mode1_object]
-                self.update_lamps()
                 self.mode_enabled=True
+                self.update_lamps()
                 self.game.lampctrl.register_show('startmode', lampshow_path+"Planeten_short_flasher.lampshow")
 
         def sw_eject_active_for_500ms(self, sw):
@@ -49,7 +49,7 @@ class EjectModestart(game.Mode):
         def start_mode(self, mode):
                 self.game.modes.add(self.modes[mode])
                 self.update_lamps()
-                
+
         def update_lamps(self):
                 if self.game.current_player().mode_running==True:
                         self.game.effects.drive_lamp('eject0','on')
