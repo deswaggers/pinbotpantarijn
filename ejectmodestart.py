@@ -30,16 +30,15 @@ class EjectModestart(game.Mode):
                 if self.mode_enabled==True:
                         if self.game.current_player().mode_running==False:
                                 self.game.sound.fadeout_music(500)
-                                self.game.lampctrl.play_show('startmode', repeat=True)
+                                self.game.lampctrl.play_show('startmode', repeat=False)
                                 self.game.sound.play("sound_evillaugh")
                                 self.game.score(2500)
-                                self.start_mode(0)
+                                self.start_mode(randint(0, len(self.modes) - 1))
                                 self.game.current_player().mode_running=True
                                 self.mode_enabled=False
                         else:
                                 self.game.score(2500)
-                                self.update_lamps()
-                self.game.effects.drive_lamp("planet1", "fast")
+                self.update_lamps()
 
         def sw_rampexit_active(self, sw):
                 if self.game.current_player().mode_running==False and self.mode_enabled==False:
