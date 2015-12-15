@@ -201,7 +201,7 @@ class Generalplay(game.Mode):
         self.game.sound.play_music('music_starwars_theme', loops=-1)
 
     def sw_advanceplanet_active(self,sw):
-        anim = dmd.Animation().load(dmd_path+'planeet.gif') #Als het goed is kan ie ook rechtstreeks png-bestanden aan
+        anim = dmd.Animation().load(dmd_path+'Saturnus.gif') #Als het goed is kan ie ook rechtstreeks png-bestanden aan
         self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
         self.animation_layer.composite_op = "blacksrc"
         self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
