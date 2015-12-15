@@ -23,6 +23,6 @@ class Mode2(game.Mode):
         # Wtf
         def display_dinges(self):
                 self.test_layer.set_text('Hallo Wereld')
-                self.layer = self.test_layer.set_text
+                self.layer = self.test_layer
 
                 # dmd.GroupedLayer(128, 32, [self.animation_layer, self.text_layer])
