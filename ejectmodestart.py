@@ -38,6 +38,8 @@ class EjectModestart(game.Mode):
                                 self.mode_enabled=False
                         else:
                                 self.game.score(2500)
+                                self.update_lamps()
+                self.game.effects.drive_lamp("planet1", "fast")
 
         def sw_rampexit_active(self, sw):
                 if self.game.current_player().mode_running==False and self.mode_enabled==False:
