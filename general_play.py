@@ -201,11 +201,15 @@ class Generalplay(game.Mode):
         self.game.sound.play_music('music_starwars_theme', loops=-1)
 
     def sw_advanceplanet_active(self,sw):
-        anim = dmd.Animation().load(dmd_path+'Saturnus.dmd')
-        self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
+        anim = dmd.Animation().load(dmd_path+'saturnus.dmd')
+        self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=6)
         self.animation_layer.composite_op = "blacksrc"
         self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
-
+    def sw_rampenter_active(self,sw):
+        anim = dmd.Animation().load(dmd_path+'saturnusbmp.dmd')
+        self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=8)
+        self.animation_layer.composite_op = "blacksrc"
+        self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
 
     def sw_startButton_active_for_1s(self, sw):
         if self.game.switches.flipperLwR.is_active(1):
