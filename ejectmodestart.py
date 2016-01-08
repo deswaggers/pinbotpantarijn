@@ -19,6 +19,7 @@ class EjectModestart(game.Mode):
 
         def __init__(self, game, priority):
                 super(EjectModestart, self).__init__(game, priority)
+                self.played_modes = ()
 
         def mode_started(self):
                 self.Mode1_object=Mode1(self.game,50)
@@ -28,24 +29,20 @@ class EjectModestart(game.Mode):
                 self.mode_enabled=True
                 self.game.lampctrl.register_show('startmode', lampshow_path+"Planeten_short_flasher.lampshow")
 
-<<<<<<< HEAD
-        def sw_advanceplanet(self, sw):
-                if self.game.current_player().mode_running==False:
-                        self.Mode1_object=Mode1(self.game,50)
-                        self.game.modes.add(self.Mode1_object)
-                        self.game.score(2500)
-                        self.game.current_player().mode_running=True
-                else:
-                        self.game.score(2500)
-=======
         def sw_eject_active_for_500ms(self, sw):
                 if self.mode_enabled==True:
                         if self.game.current_player().mode_running==False:
+                                # Effects and score
                                 self.game.sound.fadeout_music(500)
                                 self.game.lampctrl.play_show('startmode', repeat=False)
                                 self.game.sound.play("sound_evillaugh")
                                 self.game.score(2500)
-                                self.start_mode(randint(0, len(self.modes) - 1))
+
+                                # Start mode
+                                while not self.played_modes.contains(index):
+                                        index = randint(0, len(self.modes) - 1)
+                                self.start_mode(index)
+                                self.played_modes.append(index)
                                 self.game.current_player().mode_running=True
                                 self.mode_enabled=False
                         else:
@@ -60,7 +57,6 @@ class EjectModestart(game.Mode):
 
         def start_mode(self, mode):
                 self.game.modes.add(self.modes[mode])
->>>>>>> 21c6f1bf9c0b4f5005b36972d15ee0ddbfe42da4
                 self.update_lamps()
 
         def update_lamps(self):
