@@ -16,7 +16,7 @@ class Mode1(game.Mode):
 
         def __init__(self, game, priority):
                 super(Mode1, self).__init__(game, priority)
-                
+
         def mode_started(self):
                 self.score_layer = dmd.TextLayer(90, 20, self.game.fonts['num_09Bx7'], "center", opaque=False)
                 self.raise_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
@@ -35,27 +35,28 @@ class Mode1(game.Mode):
                 self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
                 self.bumpers_hit()
                 self.shoot_message=True
+                
         def mode_stopped(self):
                 self.game.sound.play_music('music_starwars_intro', loops=-1)
                 self.game.current_player().mode_running=False
                 self.layer = None
-                
+
 ## switches
-                
+
         def sw_Ubumper_active(self,sw):
-                self.bumpers_hit() 
+                self.bumpers_hit()
                 return procgame.game.SwitchStop
         def sw_Bbumper_active(self,sw):
-                self.bumpers_hit() 
+                self.bumpers_hit()
                 return procgame.game.SwitchStop
         def sw_Lbumper_active(self,sw):
-                self.bumpers_hit()   
+                self.bumpers_hit()
                 return procgame.game.SwitchStop
         def sw_slingR_active(self,sw):
-                self.bumpers_hit() 
+                self.bumpers_hit()
                 return procgame.game.SwitchStop
         def sw_slingL_active(self,sw):
-                self.bumpers_hit() 
+                self.bumpers_hit()
                 return procgame.game.SwitchStop
 ## Ramp zorgt voor extra tijd:
         def sw_rampexit_active(self, sw):
@@ -78,14 +79,14 @@ class Mode1(game.Mode):
                 self.game.effects.drive_lamp('solar_energy','medium')
                 ## 'tijdbalk' voor hoeveel tijd je nog hebt bij elke getimede mode: planeten van allemaal aan (bovenste knipperen) tot
                 ## pluto, dan voorbij als pluto uit gaat? Bij sluiten mode moet dan de 'oude staat' van het gewone spel hersteld worden.
-                
-                
+
+
                 
 ## Mode functions
         def energyflash(self):
-                self.game.coils.Solenoidselect.pulse(90)   
+                self.game.coils.Solenoidselect.pulse(90)
                 self.game.coils.RampLow_EnergyFlash.pulse(70)
-                     
+
         def countdown(self):
                 self.time_left-=1
                 if self.shoot_message==True:
@@ -97,7 +98,7 @@ class Mode1(game.Mode):
                         self.displaytotalscore()
                 self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
                 self.update_lamps()
-                
+
         def displaytotalscore(self):
                 self.text_layer.set_text('TOTAL SCORE '+str(self.totalscore),True)
                 anim = dmd.Animation().load(dmd_path+'DMD_Mode1_2.gif') #Als het goed is kan ie ook rechtstreeks png-bestanden aan
@@ -110,7 +111,7 @@ class Mode1(game.Mode):
                 self.game.effects.drive_lamp('solar_energy','off')
         def endmode(self):
                 self.game.modes.remove(self)
-                
+
         def bumpers_hit(self):
                 ## Score-systeem
                 #self.energyflash() #Niet doen omdat dat de eject tegenhoudt met AC-relais. Duurzame oplossing voor vinden. solenoidselect en/of effects herschrijven.
