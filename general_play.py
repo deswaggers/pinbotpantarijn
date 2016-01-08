@@ -47,7 +47,6 @@ class Generalplay(game.Mode):
         ## Modestart straks naar elders, veel zaken in general_play nog op te schonen.
         #self.modes = [None, Mode1 (self.game, 19), Mode2 (self.game, 18), Mode3(self.game, 70)]
         #self.register_all_plugins()
-        self.start_time = 0
 
         self.register_all_sounds()
         self.game.lampctrl.register_show('rampenter_show', lampshow_path+"rampenter.lampshow")
@@ -157,8 +156,12 @@ class Generalplay(game.Mode):
 ## Switches regular gameplay
     def sw_shooterLane_open_for_100ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
-        self.start_time = time()
         self.game.sound.play_music('music_starwars_theme', loops=-1)
+        self.game.sound.play("sound_spin6")
+        anim = dmd.Animation().load(dmd_path+'ufo.dmd')
+        self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=8)
+        self.animation_layer.composite_op = "blacksrc"
+        self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
 
     def sw_outhole_active_for_500ms(self, sw):
         self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
@@ -182,23 +185,20 @@ class Generalplay(game.Mode):
 
     def sw_vortex20k_active(self,sw):
         self.clear_layer()
-        self.game.sound.play("speech_luke_learntheways")
+        self.game.sound.play("sound_starwars_gun")
         self.game.score(2000)
 
     def sw_vortex100k_active(self,sw):
         self.clear_layer()
-        self.game.sound.play("speech_darthvader_yourfather")
+        self.game.sound.play("sound_starwars_schieten")
         self.game.score(10000)
 
     def sw_vortex5k_active(self,sw):
         self.clear_layer()
         if self.game.switches.vortex100k.time_since_change()>2 and self.game.switches.vortex20k.time_since_change()>2:
-            self.game.sound.play("speech_chewbacca_01")
+            self.game.sound.play("sound_stormtrooper_laser")
             self.game.score(500)
 
-    def sw_shooterLane_open_for_100ms(self,sw):
-        self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
-        self.game.sound.play_music('music_starwars_theme', loops=-1)
 
     def sw_advanceplanet_active(self,sw):
         anim = dmd.Animation().load(dmd_path+'saturnus.dmd')
