@@ -36,7 +36,6 @@ class Droptargets(game.Mode):
                 self.dropscount=0
                 self.drop_timer = 0
                 self.game.effects.drive_lamp('drops','medium')
-                self.update_lamps() 
                 
 
 
