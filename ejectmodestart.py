@@ -51,6 +51,7 @@ class EjectModestart(game.Mode):
         self.update_lamps()
 
     def mode_running_changed(self, mode_running):
+        print "mode running changed"
         if not mode_running:
             # Mode has stopped running
             self.played_modes.append(self.next_mode)
@@ -63,6 +64,7 @@ class EjectModestart(game.Mode):
         for i in range(0, len(self.modes) - 1):
             if i not in self.played_modes:
                 unplayed_modes.append(i)
+        print "played modes:", self.played_modes
         print "unplayed modes: ", unplayed_modes
 
         # Als alle modes al gespeeld zijn
