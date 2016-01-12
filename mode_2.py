@@ -16,9 +16,17 @@ class Mode2(game.Mode):
         def __init__(self, game, priority):
                 super(Mode2, self).__init__(game, priority)
         def mode_started(self):
-                self.test_layer = dmd.TextLayer(90, 20, self.game.fonts['num_09Bx7'], "center", opaque=False)
+                self.test_layer = dmd.TextLayer(0, 0, self.game.fonts['num_09Bx7'], "center", opaque=False)
                 self.display_dinges()
+                self.delay(name='eject_ball', event_type=None, delay=1.5, handler=self.startmode2)
                 self.bumpers_hit()
+
+
+
+       def mode_stopped(self):
+                self.game.sound.play_music('music_starwars_intro', loops=-1)
+                self.game.current_player().mode_running=False
+                self.layer = None
 
         # Wtf
         def display_dinges(self):
@@ -26,8 +34,12 @@ class Mode2(game.Mode):
                 self.layer = self.test_layer
                 # dmd.GroupedLayer(128, 32, [self.animation_layer, self.text_layer])
                 
-        #Bumpers 
+        def startmode2(self):
+                self.game.effects.eject_ball('eject')
+                self.game.sound.play_music('music_starwars_cantina_band', loops=-1)
+                
+        #Bumpers         
         def bumpers_hit(self):
-            self.game.effects.drive_lamp('advance_planet','on')
+                self.game.effects.drive_lamp('advance_planet','on')
 
 
