@@ -95,7 +95,13 @@ class Mode3(game.Mode):
             self.verticaal_aan5()
             self.visor_count = 1
             # hierna uitbreiden voor horizontale lijnen.
-
+            
+    def sw_visor1_active(self,sw):
+         if self.visor_count == 1:
+            self.visor_count += 1
+            self.verticaal_uit1()
+            self.visor_check()
+            
     def hit(self):
         if self.visor_count == 1 and self.game.switches.visor1.is_active():
             self.visor_count += 1
