@@ -26,11 +26,14 @@ class Mode3(game.Mode):
         self.score_layer = dmd.TextLayer(90, 20, self.game.fonts['num_09Bx7'], "center", opaque=False)
         self.raise_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
+        self.delay(name='start_mode_delay', event_type=None, delay=1.5, handler=self.start_mode_delay)
 
         # Eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen
         self.visor_count = 1
         self.visor_check()
-       
+
+    def start_mode_delay(self):
+        self.game.effects.eject_ball('eject')
 
     def mode_stopped(self):
         self.game.sound.play_music('music_starwars_intro', loops=-1)
@@ -92,7 +95,7 @@ class Mode3(game.Mode):
 
         elif self.visor_count == 5:
             self.verticaal_aan5()
-            
+
             # hierna uitbreiden voor horizontale lijnen.
 
     def sw_visor1_active(self, sw):
@@ -101,32 +104,31 @@ class Mode3(game.Mode):
             self.verticaal_uit1()
             self.visor_check()
             return procgame.game.SwitchStop
-            
+
     def sw_visor2_active(self, sw):
         if self.visor_count == 2:
             self.visor_count += 1
             self.verticaal_uit2()
             self.visor_check()
             return procgame.game.SwitchStop
-    
+
     def sw_visor3_active(self, sw):
         if self.visor_count == 3:
             self.visor_count += 1
             self.verticaal_uit3()
             self.visor_check()
             return procgame.game.SwitchStop
-            
+
     def sw_visor4_active(self, sw):
-         if self.visor_count == 4:
+        if self.visor_count == 4:
             self.verticaal_uit4()
             self.visor_count += 1
             self.visor_check()
-           
+
             return procgame.game.SwitchStop
-            
+
     def sw_visor5_active(self, sw):
         if self.visor_count == 5:
             self.verticaal_uit5()
             self.game.score(100000)
             self.visor_count = 1
-    
