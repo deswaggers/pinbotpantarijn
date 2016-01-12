@@ -14,16 +14,19 @@ lampshow_path = game_path + "lampshows/"
 class EjectModestart(game.Mode):
     def __init__(self, game, priority):
         super(EjectModestart, self).__init__(game, priority)
-        self.played_modes = []
+        self.planets = ['planet1', 'planet2', 'planet3', 'planet4', 'planet5',
+                        'planet6', 'planet7', 'planet8', 'planet9']
 
     def mode_started(self):
         self.Mode1_object = Mode1(self.game, 50)
         self.Mode2_object = Mode2(self.game, 51)
 
+        self.game.current_player().eject_mode_object = self
+
         self.modes = [self.Mode1_object, self.Mode2_object]
+        self.played_modes = []
         self.mode_enabled = True
         self.random_next()
-        self.running_mode = 0
         self.game.lampctrl.register_show('startmode', lampshow_path + "Planeten_short_flasher.lampshow")
         self.update_lamps()
 
@@ -40,15 +43,20 @@ class EjectModestart(game.Mode):
                 self.game.score(2500)
 
                 self.start_mode(self.next_mode)
-                self.running_mode = self.next_mode
-                self.played_modes.append(self.next_mode)
-                self.game.current_player().mode_running = True
+                self.game.current_player().set_mode_running(True)
                 self.mode_enabled = False
                 self.random_next()
                 self.update_lamps()
             else:
                 self.game.score(2500)
         self.update_lamps()
+
+    def mode_running_changed(self, mode_running):
+        if not mode_running:
+            # Mode has stopped running
+            self.played_modes.append(self.running_mode)
+            self.random_next()
+            self.update_lamps()
 
     def random_next(self):
         # Ongespeelde modes zoeken
@@ -85,17 +93,13 @@ class EjectModestart(game.Mode):
             self.game.effects.drive_lamp('score_energy', 'medium')
             self.game.effects.drive_lamp('solar_energy', 'medium')
 
-        planets = ['planet1', 'planet2', 'planet3', 'planet4', 'planet5',
-                   'planet6', 'planet7', 'planet8', 'planet9']
-
         for mode_index in self.played_modes:
-            if self.running_mode == mode_index:
-                # Deze mode is nu bezig
-                self.game.effects.drive_lamp(planets[mode_index], 'fast')
-            else:
-                # Deze mode is al gespeeld
-                self.game.effects.drive_lamp(planets[mode_index], 'on')
-        self.game.effects
+            self.game.effects.drive_lamp(self.planets[mode_index], 'on')
+
+        if self.game.current_player().mode_running:
+            self.game.effects.drive_lamp(self.planets[self.next_mode], 'fast')
+        else:
+            self.game.effects.drive_lamp(self.planets[self.next_mode], 'medium')
 
 ####            self.mission_lamps = ['bonus1k','bonus2k','bonus3k','bonus4k','bonus5k','bonus6k','bonus7k','bonus8k','bonus9k', 'bonus10k']
 ####            self.mission_list = [0,0,0,0,0,0,0,0,0,0]

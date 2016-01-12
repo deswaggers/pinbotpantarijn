@@ -744,6 +744,13 @@ class rkPlayer(game.Player):
                 self.visor_lamps = [0,0,0,0,0]
                 self.visor_balls = 0
                 self.mode_running = False
+                self.mode_listener = None
+                self.eject_mode_object = None
+
+    def set_mode_running(self, mode_running):
+        self.mode_running = mode_running
+        if self.eject_mode_object is not None:
+            self.eject_mode_object.mode_running_changed(mode_running)
 
 
 def main():
