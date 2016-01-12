@@ -26,7 +26,6 @@ class Mode3(game.Mode):
         self.score_layer = dmd.TextLayer(90, 20, self.game.fonts['num_09Bx7'], "center", opaque=False)
         self.raise_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
-        self.update_lamps()
 
         # Eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen
         self.visor_count = 1
@@ -95,13 +94,14 @@ class Mode3(game.Mode):
             self.verticaal_aan5()
             self.visor_count = 1
             # hierna uitbreiden voor horizontale lijnen.
-            
-    def sw_visor1_active(self,sw):
-         if self.visor_count == 1:
+
+    def sw_visor1_active(self, sw):
+        if self.visor_count == 1:
             self.visor_count += 1
             self.verticaal_uit1()
             self.visor_check()
-            
+            return procgame.game.SwitchStop
+
     def hit(self):
         if self.visor_count == 1 and self.game.switches.visor1.is_active():
             self.visor_count += 1

@@ -37,7 +37,7 @@ class Generalplay(game.Mode):
         # op het normale spel moet hoger zijn, hieronder daarom voor 9,10,11,12 gekozen.
         self.ejectModestart_rules = EjectModestart(self.game, 9)
         self.bumper_rules = Bumpers(self.game, 10)
-        self.visor_rules = Visor(self.game, 11)
+        # self.visor_rules = Visor(self.game, 11)
         self.droptarget_rules = Droptargets(self.game, 12)
 
 
@@ -62,7 +62,7 @@ class Generalplay(game.Mode):
         self.game.modes.add(self.ejectModestart_rules)
 
         self.game.modes.add(self.bumper_rules)
-        self.game.modes.add(self.visor_rules)
+        # self.game.modes.add(self.visor_rules)
         self.game.modes.add(self.droptarget_rules)
 
         if self.game.ball==1:
@@ -126,7 +126,7 @@ class Generalplay(game.Mode):
     def mode_stopped(self):
         self.game.modes.remove(self.ejectModestart_rules)
         self.game.modes.remove(self.bumper_rules)
-        self.game.modes.remove(self.visor_rules)
+        # self.game.modes.remove(self.visor_rules)
         self.game.modes.remove(self.droptarget_rules)
 
         print 'generalplay stopped'
