@@ -26,8 +26,10 @@ class Mode2(game.Mode):
                 self.layer = self.test_layer
                 # dmd.GroupedLayer(128, 32, [self.animation_layer, self.text_layer])
                 
-        #Bumpers 
+        def eject_ball(self):
+                self.game.effects.eject_ball('eject')
+        #Bumpers         
         def bumpers_hit(self):
-            self.game.effects.drive_lamp('advance_planet','on')
+                self.game.effects.drive_lamp('advance_planet','on')
 
 
