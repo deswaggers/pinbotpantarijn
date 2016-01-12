@@ -22,7 +22,8 @@ class EjectModestart(game.Mode):
 
         self.modes = [self.Mode1_object, self.Mode2_object]
         self.mode_enabled = True
-        self.next_mode = random.randint(0, len(self.modes) - 1)
+        self.random_next()
+        self.running_mode = 0
         self.game.lampctrl.register_show('startmode', lampshow_path + "Planeten_short_flasher.lampshow")
         self.update_lamps()
 
@@ -38,20 +39,29 @@ class EjectModestart(game.Mode):
                 self.game.sound.play("sound_evillaugh")
                 self.game.score(2500)
 
-                print "effects done"
-
-                # Start mode
-                if len(self.played_modes) == len(self.modes):
-                    # All modes have been played
-                    # TODO start over again? self.played_modes = []
-                    pass
                 self.start_mode(self.next_mode)
-                self.played_modes.append(self.modes[self.next_mode])
+                self.running_mode = self.next_mode
+                self.played_modes.append(self.next_mode)
                 self.game.current_player().mode_running = True
                 self.mode_enabled = False
+                self.random_next()
+                self.update_lamps()
             else:
                 self.game.score(2500)
         self.update_lamps()
+
+    def random_next(self):
+        # Ongespeelde modes zoeken
+        unplayed_modes = []
+        for i in range(0, len(self.modes) - 1):
+            if i not in self.played_modes:
+                unplayed_modes.append(i)
+
+        # Als alle modes al gespeeld zijn
+        if len(unplayed_modes) == 0:
+            self.next_mode = -1  # TODO
+
+        self.next_mode = random.choice(unplayed_modes)
 
     def sw_rampexit_active(self, sw):
         if self.game.current_player().mode_running == False and self.mode_enabled == False:
@@ -61,8 +71,6 @@ class EjectModestart(game.Mode):
 
     def start_mode(self, mode):
         self.game.modes.add(self.modes[mode])
-        self.update_lamps()
-        self.next_mode = random.randint(0, len(self.modes) - 1)
         print "mode started"
 
     def update_lamps(self):
@@ -79,13 +87,15 @@ class EjectModestart(game.Mode):
 
         planets = ['planet1', 'planet2', 'planet3', 'planet4', 'planet5',
                    'planet6', 'planet7', 'planet8', 'planet9']
-        # for planet in range(0, len(self.modes)):
-        #     if self.modes[planet] in self.played_modes:
-        #         # Mode played, switch on lamp
-        #         self.game.effects.drive_lamp(planets[planet], 'on')
-                # TODO if mode is currently running...
 
-        self.game.effects.drive_lamp(planets[self.next_mode], 'medium')
+        for mode_index in self.played_modes:
+            if self.running_mode == mode_index:
+                # Deze mode is nu bezig
+                self.game.effects.drive_lamp(planets[mode_index], 'fast')
+            else:
+                # Deze mode is al gespeeld
+                self.game.effects.drive_lamp(planets[mode_index], 'on')
+        self.game.effects
 
 ####            self.mission_lamps = ['bonus1k','bonus2k','bonus3k','bonus4k','bonus5k','bonus6k','bonus7k','bonus8k','bonus9k', 'bonus10k']
 ####            self.mission_list = [0,0,0,0,0,0,0,0,0,0]
