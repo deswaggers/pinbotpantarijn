@@ -46,7 +46,7 @@ class EjectModestart(game.Mode):
                     # TODO start over again? self.played_modes = []
                     pass
                 self.start_mode(self.next_mode)
-                self.played_modes.append(random_mode)
+                self.played_modes.append(self.modes[self.next_mode])
                 self.game.current_player().mode_running = True
                 self.mode_enabled = False
             else:
