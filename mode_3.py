@@ -39,23 +39,23 @@ class Mode3(game.Mode):
 
     def verticaal_aan1(self):
         for i in self.yellow:
-            self.game.effects.drive_lamp(i, 'fast')
+            self.game.effects.drive_lamp(i, 'medium')
 
     def verticaal_aan2(self):
         for i in self.blue:
-            self.game.effects.drive_lamp(i, 'fast')
+            self.game.effects.drive_lamp(i, 'medium')
 
     def verticaal_aan3(self):
         for i in self.orange:
-            self.game.effects.drive_lamp(i, 'fast')
+            self.game.effects.drive_lamp(i, 'medium')
 
     def verticaal_aan4(self):
         for i in self.green:
-            self.game.effects.drive_lamp(i, 'fast')
+            self.game.effects.drive_lamp(i, 'medium')
 
     def verticaal_aan5(self):
         for i in self.red:
-            self.game.effects.drive_lamp(i, 'fast')
+            self.game.effects.drive_lamp(i, 'medium')
 
     def verticaal_uit1(self):
         for i in self.yellow:
@@ -109,8 +109,8 @@ class Mode3(game.Mode):
             self.visor_check()
             return procgame.game.SwitchStop
     
-    def sw_visor3_active(self, sw)
-        elif self.visor_count == 3:
+    def sw_visor3_active(self, sw):
+        if self.visor_count == 3:
             self.visor_count += 1
             self.verticaal_uit3()
             self.visor_check()
