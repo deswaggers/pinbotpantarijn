@@ -136,4 +136,4 @@ class Mode3(game.Mode):
             self.verticaal_uit5()
             self.game.score(100000)
             self.visor_count = 1
-            self.visor_check
+            self.visor_check()
