@@ -20,14 +20,15 @@ class EjectModestart(game.Mode):
     def mode_started(self):
         self.Mode1_object = Mode1(self.game, 50)
         self.Mode2_object = Mode2(self.game, 51)
+        self.Mode3_object = Mode3(self.game, 52)
 
         self.game.current_player().eject_mode_object = self
 
-        self.modes = [self.Mode1_object, self.Mode2_object]
+        self.modes = [self.Mode1_object, self.Mode2_object, self.Mode3_object]
         self.played_modes = []
         self.mode_enabled = True
         self.random_next()
-        self.game.lampctrl.register_show('startmode', lampshow_path + "Planeten_short_flasher.lampshow")
+        # self.game.lampctrl.register_show('startmode', lampshow_path + "Planeten_short_flasher.lampshow")
         self.update_lamps()
 
     def sw_eject_active_for_500ms(self, sw):
@@ -38,7 +39,7 @@ class EjectModestart(game.Mode):
                 print "no mode running"
                 # Effects and score
                 self.game.sound.fadeout_music(500)
-                self.game.lampctrl.play_show('startmode', repeat=False)
+                # self.game.lampctrl.play_show('startmode', repeat=False)
                 self.game.sound.play("sound_evillaugh")
                 self.game.score(2500)
 
@@ -70,6 +71,8 @@ class EjectModestart(game.Mode):
             self.next_mode = -1  # TODO
 
         self.next_mode = random.choice(unplayed_modes)
+
+        self.next_mode = 2  # Mode 3 for testing
 
     def sw_rampexit_active(self, sw):
         if self.game.current_player().mode_running == False and self.mode_enabled == False:
