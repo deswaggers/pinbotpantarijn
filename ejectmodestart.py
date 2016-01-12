@@ -32,11 +32,9 @@ class EjectModestart(game.Mode):
         self.update_lamps()
 
     def sw_eject_active_for_500ms(self, sw):
-        print "switch activated"
+        print "Eject-switch activated"
         if self.mode_enabled:
-            print "mode enabled"
             if not self.game.current_player().mode_running:
-                print "no mode running"
                 # Effects and score
                 self.game.sound.fadeout_music(500)
                 # self.game.lampctrl.play_show('startmode', repeat=False)
