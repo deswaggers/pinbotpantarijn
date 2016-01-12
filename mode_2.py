@@ -18,7 +18,7 @@ class Mode2(game.Mode):
 
     def mode_started(self):
         self.test_layer = dmd.TextLayer(0, 0, self.game.fonts['num_09Bx7'], "left", opaque=False)
-        self.instruction_layer = dmd.TextLayer(30, 20, selft.game.fonts['Font07x4'], opaque=False)
+        self.instruction_layer = dmd.TextLayer(30, 20, self.game.fonts['Font07x4'], opaque=False)
         self.display_dinges()
         self.delay(name='start_mode2', event_type=None, delay=1.5, handler=self.startmode2)
         self.bumpers_hit()
