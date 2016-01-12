@@ -22,7 +22,6 @@ class Mode3(game.Mode):
         self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.update_lamps()
         ## eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen
-        self.delay(name='Mode_start_na_eject', event_type=None, delay=2, handler=self.mode_start_na_eject)
         self.visor_count = 1
         self.visor_check()
         self.hit()
