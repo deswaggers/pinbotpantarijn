@@ -1,9 +1,9 @@
 # Control for main modes
-#
 
 from procgame import *
 from mode_1 import *
 from mode_2 import *
+from mode_3 import *
 
 # all necessary paths
 game_path = "/home/pi/VXtra_start/"
