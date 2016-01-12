@@ -25,13 +25,18 @@ class EjectModestart(game.Mode):
         self.game.lampctrl.register_show('startmode', lampshow_path + "Planeten_short_flasher.lampshow")
 
     def sw_eject_active_for_500ms(self, sw):
+        print "switch activated"
         if self.mode_enabled:
+            print "mode enabled"
             if not self.game.current_player().mode_running:
+                print "no mode running"
                 # Effects and score
                 self.game.sound.fadeout_music(500)
                 self.game.lampctrl.play_show('startmode', repeat=False)
                 self.game.sound.play("sound_evillaugh")
                 self.game.score(2500)
+
+                print "effects done"
 
                 # Start mode
                 if len(self.played_modes) == len(self.modes):
@@ -58,6 +63,7 @@ class EjectModestart(game.Mode):
     def start_mode(self, mode):
         self.game.modes.add(mode)
         self.update_lamps()
+        print "mode started"
 
     def update_lamps(self):
         if self.game.current_player().mode_running:
