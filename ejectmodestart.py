@@ -61,11 +61,11 @@ class EjectModestart(game.Mode):
     def random_next(self):
         # Ongespeelde modes zoeken
         unplayed_modes = []
-        for i in range(0, len(self.modes) - 1):
+        for i in range(0, len(self.modes)):
             if i not in self.played_modes:
                 unplayed_modes.append(i)
         print "played modes:", self.played_modes
-        print "unplayed modes: ", unplayed_modes
+        print "unplayed modes:", unplayed_modes
 
         # Als alle modes al gespeeld zijn
         if len(unplayed_modes) == 0:
