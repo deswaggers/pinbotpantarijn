@@ -16,8 +16,9 @@ class Mode2(game.Mode):
         def __init__(self, game, priority):
                 super(Mode2, self).__init__(game, priority)
         def mode_started(self):
-                self.test_layer = dmd.TextLayer(90, 20, self.game.fonts['num_09Bx7'], "center", opaque=False)
+                self.test_layer = dmd.TextLayer(0, 0, self.game.fonts['num_09Bx7'], "center", opaque=False)
                 self.display_dinges()
+                self.delay(name='eject_ball', event_type=None, delay=1.5, handler=self.eject_ball)
                 self.bumpers_hit()
 
         # Wtf
