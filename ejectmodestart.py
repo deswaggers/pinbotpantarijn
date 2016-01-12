@@ -54,9 +54,18 @@ class EjectModestart(game.Mode):
             # Mode has stopped running
             self.played_modes.append(self.next_mode)
             self.random_next()
+            if self.next_mode == -1:
+                print "All modes completed"
+                for planet in self.planets:
+                    self.game.effects.drive_lamp(planet, 'medium')
+                return
             self.update_lamps()
 
     def random_next(self):
+        if len(self.played_modes) == len(self.modes):
+            # TODO all modes are played
+            self.next_mode = -1
+
         # Ongespeelde modes zoeken
         unplayed_modes = []
         for i in range(0, len(self.modes)):
@@ -79,7 +88,9 @@ class EjectModestart(game.Mode):
                 self.game.effects.drive_lamp(planet, "off")
 
             self.random_next()
-            self.update_lamps()
+
+            if self.next_mode != -1:
+                self.update_lamps()
 
     def sw_rampexit_active(self, sw):
         if self.game.current_player().mode_running == False and self.mode_enabled == False:
