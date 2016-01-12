@@ -25,7 +25,7 @@ class Mode2(game.Mode):
 
     def mode_stopped(self):
         self.game.sound.play_music('music_starwars_intro', loops=-1)
-        self.game.current_player().mode_running = False
+        self.game.current_player().set_mode_running(False)
         self.layer = None
         # Wtf
 
