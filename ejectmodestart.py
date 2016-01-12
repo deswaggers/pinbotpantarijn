@@ -71,9 +71,7 @@ class EjectModestart(game.Mode):
         self.next_mode = random.choice(unplayed_modes)
 
     def sw_slingL_active(self, sw):
-        self.next_mode += 1
-        if self.next_mode == len(self.modes):
-            self.next_mode = 0
+        self.random_next()
         self.update_lamps()
 
     def sw_rampexit_active(self, sw):
