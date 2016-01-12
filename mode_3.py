@@ -30,7 +30,7 @@ class Mode3(game.Mode):
         # Eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen
         self.visor_count = 1
         self.visor_check()
-        self.hit()
+       
 
     def mode_stopped(self):
         self.game.sound.play_music('music_starwars_intro', loops=-1)
