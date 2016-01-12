@@ -118,9 +118,9 @@ class Mode3(game.Mode):
             
     def sw_visor4_active(self, sw):
          if self.visor_count == 4:
-            self.visor_count += 1
             self.verticaal_uit4()
             self.visor_check()
+            self.visor_count += 1
             return procgame.game.SwitchStop
             
     def sw_visor5_active(self, sw):
