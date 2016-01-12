@@ -92,7 +92,7 @@ class Mode3(game.Mode):
 
         elif self.visor_count == 5:
             self.verticaal_aan5()
-            self.visor_count = 1
+            
             # hierna uitbreiden voor horizontale lijnen.
 
     def sw_visor1_active(self, sw):
@@ -119,12 +119,14 @@ class Mode3(game.Mode):
     def sw_visor4_active(self, sw):
          if self.visor_count == 4:
             self.verticaal_uit4()
-            self.visor_check()
             self.visor_count += 1
+            self.visor_check()
+           
             return procgame.game.SwitchStop
             
     def sw_visor5_active(self, sw):
         if self.visor_count == 5:
             self.verticaal_uit5()
             self.game.score(100000)
+            self.visor_count = 1
     
