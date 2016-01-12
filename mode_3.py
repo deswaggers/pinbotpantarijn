@@ -135,5 +135,6 @@ class Mode3(game.Mode):
         if self.visor_count == 5:
             self.verticaal_uit5()
             self.game.score(100000)
-            self.visor_count = 1
-            self.visor_check()
+            self.game.current_player().set_mode_running(False)
+            # self.visor_count = 1
+            # self.visor_check()
