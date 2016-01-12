@@ -36,6 +36,8 @@ class Mode1(game.Mode):
                 self.bumpers_hit()
                 self.shoot_message=True
 
+                self.game.current_player().set_mode_running(False)
+
         def mode_stopped(self):
                 self.game.sound.play_music('music_starwars_intro', loops=-1)
                 self.game.current_player().set_mode_running(False)

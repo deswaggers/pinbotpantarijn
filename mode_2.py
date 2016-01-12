@@ -43,6 +43,7 @@ class Mode2(game.Mode):
         self.game.sound.play_music('music_starwars_cantina_band', loops=-1)
         self.game.effects.ramp_up()
 
+        self.game.current_player().set_mode_running(False)
         # Bumpers
 
     def bumpers_hit(self):

@@ -40,6 +40,10 @@ class Mode3(game.Mode):
         self.game.current_player().mode_running = False
         self.layer = None
 
+    def final_flash(self):
+        for i in (self.yellow + self.blue + self.orange + self.green + self.red):
+            self.game.effects.drive_lamp(i, 'on')
+
     def verticaal_aan1(self):
         for i in self.yellow:
             self.game.effects.drive_lamp(i, 'medium')
