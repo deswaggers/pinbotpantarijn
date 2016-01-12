@@ -54,7 +54,7 @@ class EjectModestart(game.Mode):
     def mode_running_changed(self, mode_running):
         if not mode_running:
             # Mode has stopped running
-            self.played_modes.append(self.running_mode)
+            self.played_modes.append(self.next_mode)
             self.random_next()
             self.update_lamps()
 
