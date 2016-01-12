@@ -63,12 +63,14 @@ class EjectModestart(game.Mode):
         for i in range(0, len(self.modes) - 1):
             if i not in self.played_modes:
                 unplayed_modes.append(i)
+        print "unplayed modes: ", unplayed_modes
 
         # Als alle modes al gespeeld zijn
         if len(unplayed_modes) == 0:
             self.next_mode = -1  # TODO
 
         self.next_mode = random.choice(unplayed_modes)
+        print "new next mode:", self.next_mode
 
     def sw_slingL_active(self, sw):
         # Alle planeetlampen uitzetten
