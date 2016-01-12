@@ -44,6 +44,12 @@ class Mode3(game.Mode):
         for i in (self.yellow + self.blue + self.orange + self.green + self.red):
             self.game.effects.drive_lamp(i, 'on')
 
+        self.delay(name='final_flash_delay', event_type=None, delay=0.5, handler=self.final_flash_uit)
+
+    def final_flash_uit(self):
+        for i in (self.yellow + self.blue + self.orange + self.green + self.red):
+            self.game.effects.drive_lamp(i, 'off')
+
     def verticaal_aan1(self):
         for i in self.yellow:
             self.game.effects.drive_lamp(i, 'medium')
@@ -134,7 +140,7 @@ class Mode3(game.Mode):
     def sw_visor5_active(self, sw):
         if self.visor_count == 5:
             self.verticaal_uit5()
+            self.final_flash()
             self.game.score(100000)
             self.game.current_player().set_mode_running(False)
-            # self.visor_count = 1
-            # self.visor_check()
+
