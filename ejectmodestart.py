@@ -75,12 +75,13 @@ class EjectModestart(game.Mode):
         print "new next mode:", self.next_mode
 
     def sw_slingL_active(self, sw):
-        # Alle planeetlampen uitzetten
-        for planet in self.planets:
-            self.game.effects.drive_lamp(planet, "off")
+        if not self.game.current_player().mode_running:
+            # Alle planeetlampen uitzetten
+            for planet in self.planets:
+                self.game.effects.drive_lamp(planet, "off")
 
-        self.random_next()
-        self.update_lamps()
+            self.random_next()
+            self.update_lamps()
 
     def sw_rampexit_active(self, sw):
         if self.game.current_player().mode_running == False and self.mode_enabled == False:
