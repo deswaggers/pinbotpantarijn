@@ -71,6 +71,10 @@ class EjectModestart(game.Mode):
         self.next_mode = random.choice(unplayed_modes)
 
     def sw_slingL_active(self, sw):
+        # Alle planeetlampen uitzetten
+        for planet in self.planets:
+            self.game.effects.drive_lamp(planet, "off")
+
         self.random_next()
         self.update_lamps()
 
