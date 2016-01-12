@@ -43,7 +43,6 @@ class EjectModestart(game.Mode):
 
                 self.start_mode(self.next_mode)
                 self.game.current_player().set_mode_running(True)
-                self.mode_enabled = False
                 self.update_lamps()
             else:
                 self.game.score(2500)
