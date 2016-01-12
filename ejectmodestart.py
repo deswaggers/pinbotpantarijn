@@ -65,6 +65,7 @@ class EjectModestart(game.Mode):
         if len(self.played_modes) == len(self.modes):
             # TODO all modes are played
             self.next_mode = -1
+            return
 
         # Ongespeelde modes zoeken
         unplayed_modes = []
