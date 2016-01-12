@@ -101,23 +101,30 @@ class Mode3(game.Mode):
             self.verticaal_uit1()
             self.visor_check()
             return procgame.game.SwitchStop
-
-    def hit(self):
-        if self.visor_count == 1 and self.game.switches.visor1.is_active():
-            self.visor_count += 1
-            self.verticaal_uit1()
-            self.visor_check()
-        elif self.visor_count == 2 and self.game.switches.visor2.is_active():
+            
+    def sw_visor2_active(self, sw):
+        if self.visor_count == 2:
             self.visor_count += 1
             self.verticaal_uit2()
             self.visor_check()
-        elif self.visor_count == 3 and self.game.switches.visor3.is_active():
+            return procgame.game.SwitchStop
+    
+    def sw_visor3_active(self, sw)
+        elif self.visor_count == 3:
             self.visor_count += 1
             self.verticaal_uit3()
             self.visor_check()
-        elif self.visor_count == 4 and self.game.switches.visor4.is_active():
+            return procgame.game.SwitchStop
+            
+    def sw_visor4_active(self, sw):
+         if self.visor_count == 4:
             self.visor_count += 1
             self.verticaal_uit4()
             self.visor_check()
-        elif self.visor_count == 5 and self.game.switches.visor5.is_active():
+            return procgame.game.SwitchStop
+            
+    def sw_visor5_active(self, sw):
+        if self.visor_count == 5:
             self.verticaal_uit5()
+            self.game.score(100000)
+    
