@@ -85,19 +85,19 @@ class Mode3(game.Mode):
             self.game.effects.drive_lamp(i, 'off')
 
     def visor_check(self):
-        if visor_count == 1:
+        if self.visor_count == 1:
             self.verticaal_aan1()
 
-        elif visor_count == 2:
+        elif self.visor_count == 2:
             self.verticaal_aan2()
 
-        elif visor_count == 3:
+        elif self.visor_count == 3:
             self.verticaal_aan3()
 
-        elif visor_count == 4:
+        elif self.visor_count == 4:
             self.verticaal_aan4()
 
-        elif visor_count == 5:
+        elif self.visor_count == 5:
             self.verticaal_aan5()
             self.visor_count = 1
             # hierna uitbreiden voor horizontale lijnen.
