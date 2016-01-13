@@ -158,7 +158,7 @@ class Generalplay(game.Mode):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
         self.game.sound.play_music('music_starwars_theme', loops=-1)
         self.game.sound.play("sound_spin6")
-        anim = dmd.Animation().load(dmd_path+'ufo.dmd')
+        anim = dmd.Animation().load(dmd_path+'ruimteschip.dmd')
         self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=8)
         self.animation_layer.composite_op = "blacksrc"
         self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
