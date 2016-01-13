@@ -57,7 +57,7 @@ class Generalplay(game.Mode):
 
     def mode_started(self):
 
-        startanim = dmd.Animation().load(dmd_path+'intro_starwars.dmd')
+        startanim = dmd.Animation().load(dmd_path+'astronaut.dmd')
 
         self.game.modes.add(self.ejectModestart_rules)
 
@@ -70,7 +70,7 @@ class Generalplay(game.Mode):
             self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
             self.delay(name='clear_layer', event_type=None, delay=4, handler=self.clear_layer)
         self.game.sound.play_music('music_starwars_intro', loops=-1)
-        self.game.sound.play('speech_Prepare_to_fire')
+        self.game.sound.play('speech_welcome')
         self.game.effects.ramp_down()
         print "general play gestart"
 
