@@ -75,6 +75,7 @@ class EjectModestart(game.Mode):
         print "new next mode:", self.next_mode
 
     def all_modes_played(self):
+        print "All modes played"
         self.game.score(100000)
         self.game.current_player().eject_mode_played_modes = []
         self.random_next()
@@ -112,6 +113,10 @@ class EjectModestart(game.Mode):
             self.game.effects.drive_lamp('eject0', 'off')
             self.game.effects.drive_lamp('score_energy', 'medium')
             self.game.effects.drive_lamp('solar_energy', 'medium')
+
+        # First switch off all planets
+        for planet in self.planets:
+            self.game.effects.drive_lamp(planet, 'off')
 
         for mode_index in self.game.current_player().eject_mode_played_modes:
             self.game.effects.drive_lamp(self.planets[mode_index], 'on')
