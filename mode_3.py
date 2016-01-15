@@ -148,3 +148,9 @@ class Mode3(game.Mode):
             self.game.score(100000)
             self.game.current_player().set_mode_running(False)
 
+    def sw_outhole_active(self, sw):
+            self.game.modes.remove(self)
+            return procgame.game.SwitchStop
+    def sw_outhole_active_for_3200ms(self, sw):
+            self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
+            return procgame.game.SwitchStop
