@@ -55,19 +55,9 @@ class EjectModestart(game.Mode):
             # Mode has stopped running
             self.game.current_player().eject_mode_played_modes.append(self.next_mode)
             self.random_next()
-            if self.next_mode == -1:
-                print "All modes completed"
-                for planet in self.planets:
-                    self.game.effects.drive_lamp(planet, 'medium')
-                return
             self.update_lamps()
 
     def random_next(self):
-        if len(self.game.current_player().eject_mode_played_modes) == len(self.game.current_player().eject_mode_modes):
-            # TODO all modes are played
-            self.next_mode = -1
-            return
-
         # Ongespeelde modes zoeken
         unplayed_modes = []
         for i in range(0, len(self.game.current_player().eject_mode_modes)):
@@ -76,12 +66,19 @@ class EjectModestart(game.Mode):
         print "played modes:", self.game.current_player().eject_mode_played_modes
         print "unplayed modes:", unplayed_modes
 
-        # Als alle modes al gespeeld zijn
         if len(unplayed_modes) == 0:
-            self.next_mode = -1  # TODO
+            # TODO all modes are played
+            self.all_modes_played()
+            return
 
         self.next_mode = random.choice(unplayed_modes)
         print "new next mode:", self.next_mode
+
+    def all_modes_played(self):
+        self.game.score(100000)
+        self.game.current_player().eject_mode_played_modes = []
+        self.random_next()
+        self.update_lamps()
 
     def sw_slingL_active(self, sw):
         if not self.game.current_player().mode_running:
