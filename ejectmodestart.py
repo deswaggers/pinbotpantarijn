@@ -24,8 +24,9 @@ class EjectModestart(game.Mode):
 
         self.game.current_player().eject_mode_object = self
 
-        self.modes = [self.Mode1_object, self.Mode2_object, self.Mode3_object]
-        self.played_modes = []
+        if len(self.game.current_player().eject_mode_modes) == 0:
+            self.game.current_player().eject_mode_modes = [self.Mode1_object, self.Mode2_object, self.Mode3_object]
+            self.game.current_player().eject_mode_played_modes = []
         self.mode_enabled = True
         self.random_next()
         # self.game.lampctrl.register_show('startmode', lampshow_path + "Planeten_short_flasher.lampshow")
@@ -52,7 +53,7 @@ class EjectModestart(game.Mode):
         print "mode running changed"
         if not mode_running:
             # Mode has stopped running
-            self.played_modes.append(self.next_mode)
+            self.game.current_player().eject_mode_played_modes.append(self.next_mode)
             self.random_next()
             if self.next_mode == -1:
                 print "All modes completed"
@@ -62,17 +63,17 @@ class EjectModestart(game.Mode):
             self.update_lamps()
 
     def random_next(self):
-        if len(self.played_modes) == len(self.modes):
+        if len(self.game.current_player().eject_mode_played_modes) == len(self.game.current_player().eject_mode_modes):
             # TODO all modes are played
             self.next_mode = -1
             return
 
         # Ongespeelde modes zoeken
         unplayed_modes = []
-        for i in range(0, len(self.modes)):
-            if i not in self.played_modes:
+        for i in range(0, len(self.game.current_player().eject_mode_modes)):
+            if i not in self.game.current_player().eject_mode_played_modes:
                 unplayed_modes.append(i)
-        print "played modes:", self.played_modes
+        print "played modes:", self.game.current_player().eject_mode_played_modes
         print "unplayed modes:", unplayed_modes
 
         # Als alle modes al gespeeld zijn
@@ -100,7 +101,7 @@ class EjectModestart(game.Mode):
             self.update_lamps()
 
     def start_mode(self, mode):
-        self.game.modes.add(self.modes[mode])
+        self.game.modes.add(self.game.current_player().eject_mode_modes[mode])
         print "mode started"
 
     def update_lamps(self):
@@ -115,7 +116,7 @@ class EjectModestart(game.Mode):
             self.game.effects.drive_lamp('score_energy', 'medium')
             self.game.effects.drive_lamp('solar_energy', 'medium')
 
-        for mode_index in self.played_modes:
+        for mode_index in self.game.current_player().eject_mode_played_modes:
             self.game.effects.drive_lamp(self.planets[mode_index], 'on')
 
         if self.game.current_player().mode_running:
