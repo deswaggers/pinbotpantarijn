@@ -21,7 +21,7 @@ class Mode3(game.Mode):
         self.orange = ["orange1", "orange2", "orange3", "orange4", "orange5"]
         self.green = ["green1", "green2", "green3", "green4", "green5"]
         self.red = ["red1", "red2", "red3", "red4", "red5"]
-
+        self.flashers = ["Ejecthole_LeftInsBFlash", "Drops_RightInsBFlash", "RampRaise_LowPlFlash", "RampLow_EnergyFlash", "Lejecthole_LeftPlFlash", "Rejecthole_SunFlash"]
     def mode_started(self):
         self.score_layer = dmd.TextLayer(90, 20, self.game.fonts['num_09Bx7'], "center", opaque=False)
         self.raise_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
@@ -43,7 +43,11 @@ class Mode3(game.Mode):
     def final_flash(self):
         for i in (self.yellow + self.blue + self.orange + self.green + self.red):
             self.game.effects.drive_lamp(i, 'on')
-
+       
+        for i in self.flashers:
+            self.game.switchedCoils.acFlashPulse(i, 200)
+        self.game.effects.drive_flasher("TopFlash4", time=1)
+        self.game.effects.drive_flasher("TopFlash3", time=1)
         self.delay(name='final_flash_delay', event_type=None, delay=0.5, handler=self.final_flash_uit)
 
     def final_flash_uit(self):
