@@ -746,6 +746,8 @@ class rkPlayer(game.Player):
                 self.mode_running = False
                 self.mode_listener = None
                 self.eject_mode_object = None
+                self.eject_mode_modes = []
+                self.eject_mode_played_modes = []
 
     def set_mode_running(self, mode_running):
         self.mode_running = mode_running
