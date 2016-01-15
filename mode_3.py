@@ -45,10 +45,10 @@ class Mode3(game.Mode):
             self.game.effects.drive_lamp(i, 'on')
        
         for i in self.flashers:
-            self.game.switchedCoils.acFlashPulse(i, 200)
-        self.game.effects.drive_flasher("TopFlash4", time=1)
-        self.game.effects.drive_flasher("TopFlash3", time=1)
-        self.delay(name='final_flash_delay', event_type=None, delay=0.5, handler=self.final_flash_uit)
+            self.game.switchedCoils.acFlashPulse(i, 500)
+        self.game.effects.drive_flasher("TopFlash4", time=2, style="fade")
+        self.game.effects.drive_flasher("TopFlash3", time=2, style="fade")
+        self.delay(name='final_flash_delay', event_type=None, delay=1.5, handler=self.final_flash_uit)
 
     def final_flash_uit(self):
         for i in (self.yellow + self.blue + self.orange + self.green + self.red):
