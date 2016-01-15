@@ -46,8 +46,8 @@ class Mode3(game.Mode):
        
         for i in self.flashers:
             self.game.switchedCoils.acFlashPulse(i, 255)
-        self.game.effects.drive_flasher("TopFlash4", time=2, style="fade")
-        self.game.effects.drive_flasher("TopFlash3", time=2, style="fade")
+        self.game.effects.drive_flasher("TopFlash4", time=2, style="chaos")
+        self.game.effects.drive_flasher("TopFlash3", time=2, style="chaos")
         self.delay(name='final_flash_delay', event_type=None, delay=1.5, handler=self.final_flash_uit)
 
     def final_flash_uit(self):
