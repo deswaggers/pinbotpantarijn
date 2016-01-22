@@ -23,7 +23,7 @@ class EjectModestart(game.Mode):
         self.Mode1_object =      Mode1(self.game, 50)
         self.Mode2_object =      Mode2(self.game, 51)
         self.Mode3_object =      Mode3(self.game, 52)
-        self.juggleMode_object = juggleMode(self.game 53)
+        self.juggleMode_object = juggleMode(self.game, 53)
 
         self.game.current_player().eject_mode_object = self
 

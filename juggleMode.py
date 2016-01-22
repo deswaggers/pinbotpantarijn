@@ -128,4 +128,4 @@ class JuggleMode(game.Mode):
         for i in self.red:
             self.game.effects.drive_lamp(i, 'off')
 
-        
+    #Hoi elbun hoeist

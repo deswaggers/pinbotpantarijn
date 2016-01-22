@@ -17,13 +17,36 @@ class Mode2(game.Mode):
         super(Mode2, self).__init__(game, priority)
 
     def mode_started(self):
+        selft.time_left = 20;
         self.test_layer = dmd.TextLayer(0, 0, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.instruction_layer = dmd.TextLayer(30, 20, self.game.fonts['num_07x4'], opaque=False)
+        
+        # de foncties:
         self.display_dinges()
-        self.delay(name='start_mode2', event_type=None, delay=1.5, handler=self.startmode2)
+        self.delay(name='start_mode2', event_type=None, delay=1.5, handler=self.startmode2)  #start startmode2
         self.bumpers_hit()
         self.game.effects.ramp_up()
-
+        selfs.display_instructions()
+        
+    
+    def display_dinges(self):
+        self.test_layer.set_text('HALLO WERELD!', 1, 20)
+        self.layer = self.test_layer
+        # dmd.GroupedLayer(128, 32, [self.animation_layer, self.text_layer])
+        
+    def startmode2(self):
+        self.game.effects.eject_ball('eject')
+        self.game.sound.play_music('music_starwars_cantina_band', loops=-1)
+        self.game.current_player().set_mode_running(False)
+        # Bumpers
+        
+    def bumpers_hit(self):
+        self.game.effects.drive_lamp('advance_planet', 'on')       
+        
+    
+    
+    
+        
     def mode_stopped(self):
         self.game.sound.play_music('music_starwars_intro', loops=-1)
         self.game.current_player().set_mode_running(False)
@@ -31,21 +54,11 @@ class Mode2(game.Mode):
         # Wtf
 
     def display_instructions(self):
-        self.instruction_layer.set_text('Hit the thingy below the ramp')
+        self.instruction_layer.set_text('Hit the thingy below the ramp')    
 
-    def display_dinges(self):
-        self.test_layer.set_text('HALLO WERELD!', 1, 20)
-
-        self.layer = self.test_layer
-        # dmd.GroupedLayer(128, 32, [self.animation_layer, self.text_layer])
-
-    def startmode2(self):
-        self.game.effects.eject_ball('eject')
-        self.game.sound.play_music('music_starwars_cantina_band', loops=-1)
+    
         
 
-        self.game.current_player().set_mode_running(False)
-        # Bumpers
+    
 
-    def bumpers_hit(self):
-        self.game.effects.drive_lamp('advance_planet', 'on')
+    
