@@ -68,7 +68,7 @@ class JuggleMode(game.Mode):
         self.game.modes.remove(self)
 
     
-    def sw_visorTrue_active(self, sw):
+    def sw_visor1_active(self, sw):
         is_hit(False)
     def sw_visor2_active(self, sw):
         is_hit(False)
