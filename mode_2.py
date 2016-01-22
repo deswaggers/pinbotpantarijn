@@ -17,7 +17,7 @@ class Mode2(game.Mode):
         super(Mode2, self).__init__(game, priority)
 
     def mode_started(self):
-        selft.time_left = 20;
+        self.time_left = 20;
         self.test_layer = dmd.TextLayer(0, 0, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.instruction_layer = dmd.TextLayer(30, 20, self.game.fonts['num_07x4'], opaque=False)
         
@@ -26,7 +26,7 @@ class Mode2(game.Mode):
         self.delay(name='start_mode2', event_type=None, delay=1.5, handler=self.startmode2)  #start startmode2
         self.bumpers_hit()
         self.game.effects.ramp_up()
-        selfs.display_instructions()
+        self.display_instructions()
         
     
     def display_dinges(self):

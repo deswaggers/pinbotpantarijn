@@ -173,13 +173,13 @@ class Generalplay(game.Mode):
             self.game.coils.Visormotor.enable()
 
     def sw_slingL_active(self,sw):
-        self.game.switchedCoils.acFlashPulse('RampRaise_LowPlFlash')
+        self.game.switchedCoils.acFlashPulse('RampRaise_LowPlFlash',30)
         self.game.sound.play("sound_slings")
         self.game.score(100)
 
     def sw_slingR_active(self,sw):
         self.game.sound.play("sound_slings")
-        self.game.switchedCoils.acFlashPulse('RampRaise_LowPlFlash')
+        self.game.switchedCoils.acFlashPulse('RampRaise_LowPlFlash',30)
         self.game.score(100)
 
 
