@@ -82,6 +82,12 @@ class EjectModestart(game.Mode):
         self.update_lamps()
 
     def sw_slingL_active(self, sw):
+        self.sling_active()
+
+    def sw_slingR_active(self, sw):
+        self.sling_active()
+
+    def sling_active(self):
         if not self.game.current_player().mode_running:
             # Alle planeetlampen uitzetten
             for planet in self.planets:
