@@ -20,9 +20,12 @@ class JuggleMode(game.Mode):
         self.green = ["green1", "green2", "green3", "green4", "green5"]
         self.red = ["red1", "red2", "red3", "red4", "red5"]
 
-
     def mode_started(self):
             self.update_lamps()                
+            self.multiplier=1
+            self.modescore=0
+            self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
+
             #self.game.lampctrl.register_show('rk_ramp_ready', lampshow_path+"ramp_ready.lampshow")
 
     def sw_eject_active_for_500ms(self, sw):
@@ -48,7 +51,8 @@ class JuggleMode(game.Mode):
             verticaal_aan2()
             verticaal_uit4()
             verticaal_uit5()
-            
+        self.text_layer.set_text(str(self.modescore), 1, 20)
+    
 
 
     def echte_start(self):
@@ -57,7 +61,13 @@ class JuggleMode(game.Mode):
         
         self.kant=False #Linkertwee lichtjes gaan aan, links=False, rechts=True
         update_lamps()
-        
+    
+    #Stopt de mode
+    def sw_outhole_active(self,sw):
+        self.game.score(self.multiplier*self.modescore)
+        self.game.modes.remove(self)
+
+    
     def sw_visorTrue_active(self, sw):
         is_hit(False)
     def sw_visor2_active(self, sw):
@@ -71,8 +81,12 @@ class JuggleMode(game.Mode):
         if index==self.kant:
             self.kant=not self.kant
             update_lamp()
-        
-        
+            self.modescore+=1000
+            self.multiplier+=0.5
+            if self.multiplier==2:
+                self.game.trough.launch_balls(1)
+                self.modescore+=1000
+            
         
     def verticaal_aan1(self):
         for i in self.yellow:
