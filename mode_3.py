@@ -37,7 +37,7 @@ class Mode3(game.Mode):
 
     def mode_stopped(self):
         self.game.sound.play_music('music_starwars_intro', loops=-1)
-        self.game.current_player().mode_running = False
+        self.game.current_player().set_mode_running(False)
         self.layer = None
 
     def final_flash(self):
@@ -114,39 +114,53 @@ class Mode3(game.Mode):
 
     def sw_visor1_active(self, sw):
         if self.visor_count == 1:
+            self.game.sound.play('sound_explosion_spaceship') 
             self.visor_count += 1
             self.verticaal_uit1()
             self.visor_check()
             return procgame.game.SwitchStop
+        else:
+            self.game.sound.play('sound_laser_gun_one_shot')
 
     def sw_visor2_active(self, sw):
         if self.visor_count == 2:
+            self.game.sound.play('sound_explosion_spaceship')
             self.visor_count += 1
             self.verticaal_uit2()
             self.visor_check()
             return procgame.game.SwitchStop
+        else:
+            self.game.sound.play('sound_laser_gun_one_shot')
 
     def sw_visor3_active(self, sw):
         if self.visor_count == 3:
+            self.game.sound.play('sound_explosion_spaceship')
             self.visor_count += 1
             self.verticaal_uit3()
             self.visor_check()
             return procgame.game.SwitchStop
+        else:
+            self.game.sound.play('sound_laser_gun_one_shot')
 
     def sw_visor4_active(self, sw):
         if self.visor_count == 4:
+            self.game.sound.play('sound_explosion_spaceship')
             self.verticaal_uit4()
             self.visor_count += 1
             self.visor_check()
-
             return procgame.game.SwitchStop
+        else:
+            self.game.sound.play('sound_laser_gun_one_shot')
 
     def sw_visor5_active(self, sw):
         if self.visor_count == 5:
+            self.game.sound.play('sound_explosion_spaceship')
             self.verticaal_uit5()
             self.final_flash()
             self.game.score(100000)
             self.game.current_player().set_mode_running(False)
+        else:
+            self.game.sound.play('sound_laser_gun_one_shot')
 
     def sw_outhole_active(self, sw):
             self.game.modes.remove(self)
