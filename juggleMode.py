@@ -13,7 +13,7 @@ dmd_path = game_path +"dmd/"
 class JuggleMode(game.Mode):
 
     def __init__(self, game, priority):
-        super(EjectModestart, self).__init__(game, priority)            
+        super(JuggleMode, self).__init__(game, priority)            
         self.yellow = ["yellow1", "yellow2", "yellow3", "yellow4", "yellow5"]
         self.blue = ["blue1", "blue2", "blue3", "blue4", "blue5"]
         self.orange = ["orange1", "orange2", "orange3", "orange4", "orange5"]
