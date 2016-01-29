@@ -62,6 +62,7 @@ class EjectModestart(game.Mode):
                 self.game.current_player().mode_running = True
             else:
                 self.game.score(2500)
+                self.game.effects.eject_ball('eject')
         self.update_lamps()
 
     def mode_running_changed(self, mode_running):
