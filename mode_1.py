@@ -143,7 +143,7 @@ class Mode1(game.Mode):
                 self.animation_layer.composite_op = "blacksrc"
                 frame=self.time_left
                 anim = dmd.Animation().load(dmd_path+'life_bar.dmd') #Als het goed is kan ie ook rechtstreeks gif-bestanden aan
-                self.animation_layer2 = dmd.AnimatedLayer(frames=anim.frame, opaque=False, repeat=False, hold=False)
+                self.animation_layer2 = dmd.AnimatedLayer(frames=frame, opaque=False, repeat=False, hold=False, frame_time=0)
                 self.animation_layer2.composite_op = "blacksrc"
                 self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.animation_layer2,self.score_layer, self.raise_layer, self.text_layer])
 
@@ -159,6 +159,6 @@ class Mode1(game.Mode):
                 self.animation_layer.composite_op = "blacksrc"
                 frame=self.time_left
                 anim = dmd.Animation().load(dmd_path+'life_bar.dmd') #Als het goed is kan ie ook rechtstreeks gif-bestanden aan
-                self.animation_layer2 = dmd.AnimatedLayer(frames=anim.frame, opaque=False, repeat=False, hold=False)
+                self.animation_layer2 = dmd.AnimatedLayer(frames=frame, opaque=False, repeat=False, hold=False, frame_time=0)
                 self.animation_layer2.composite_op = "blacksrc"
-                self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.animation_layer2, self.score_layer, self.raise_layer, self.text_layer])
+                self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.lifebar_layer, self.score_layer, self.raise_layer, self.text_layer])
