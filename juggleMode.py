@@ -1,6 +1,3 @@
-# Control for main modes
-#
-
 import procgame
 import random
 from procgame import *
