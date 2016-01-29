@@ -85,8 +85,8 @@ class EjectModestart(game.Mode):
                 self.update_lamps()
             except ValueError:
                 raise ValueError('mode_to_stop was not in the ModeQueue')
-        else:
-            raise ValueError('mode_to_stop was not the mode which was running')
+#        else:
+#            raise ValueError('mode_to_stop was not the mode which was running')
 
     def random_next(self):
         print "Finding random next mode"

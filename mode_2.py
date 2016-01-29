@@ -42,7 +42,7 @@ class Mode2(game.Mode):
 
     def sw_scoreEnergy_active(self,sw):
         self.game.score(50000)
-        self.delay(name='EindeMode', event_type=None, delay=2, handler=self.eindemode)
+        self.delay(name='EindeMode', event_type=None, delay=0.5, handler=self.eindemode)
     def eindemode(self):
         self.game.current_player().stop_eject_mode_mode(self)
 
