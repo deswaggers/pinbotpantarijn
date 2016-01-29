@@ -20,10 +20,10 @@ class Mode5(game.Mode):
         self.raise_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.flashers = ["RampLow_EnergyFlash", "Lejecthole_LeftPlFlash", "Rejecthole_SunFlash"]
-        self.flasher_list = ["Lejecthole_LeftPlFlash", "Ejecthole_LeftInsBFlash"]
+        self.flasher_list = ["Lejecthole_LeftPlFlash", "Ejecthole_LeftInsBFlash", "Drops_RightInsBFlash", "RampRaise_LowPlFlash"]
         ## eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen
         self.delay(name='Mode_start_na_eject', event_type=None, delay=2, handler=self.mode_start_na_eject)
-        self.delay(name='flasher_delay', event_type=None, delay=6, handler=self.flasher_drive)
+        self.delay(name='flasher_delay', event_type=None, delay=3, handler=self.flasher_drive)
         self.rampexit_counter = 0
         self.lamplist = ["2x", "3x", "4x", "5x"]
         self.x = 1764
@@ -72,4 +72,4 @@ class Mode5(game.Mode):
     def flasher_drive(self):
         for i in self.flasher_list:
             self.game.switchedCoils.acFlashPulse(i, 255)
-        self.delay(name='flasher_delay', event_type=None, delay=6, handler=self.flasher_drive)
+        self.delay(name='flasher_delay', event_type=None, delay=4, handler=self.flasher_drive)
