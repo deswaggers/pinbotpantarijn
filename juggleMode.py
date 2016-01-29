@@ -42,15 +42,15 @@ class JuggleMode(game.Mode):
         # else:
         #     self.game.effects.drive_lamp('eject0','off')
         if self.kant==True:
-            verticaal_aan4()
-            verticaal_aan5()
-            verticaal_uitTrue()
-            verticaal_uit2()
+            self.verticaal_aan4()
+            self.verticaal_aan5()
+            self.verticaal_uitTrue()
+            self.verticaal_uit2()
         else:
-            verticaal_aanTrue()
-            verticaal_aan2()
-            verticaal_uit4()
-            verticaal_uit5()
+            self.verticaal_aanTrue()
+            self.verticaal_aan2()
+            self.verticaal_uit4()
+            self.verticaal_uit5()
         self.text_layer.set_text(str(self.modescore), 1, 20)
         
     
