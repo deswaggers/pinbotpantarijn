@@ -23,8 +23,8 @@ class JuggleMode(game.Mode):
         self.multiplier = 1
         self.modescore = 0
         self.kant = True
-        self.update_lamps()
         self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
+        self.update_lamps()
         # self.game.lampctrl.register_show('rk_ramp_ready', lampshow_path+"ramp_ready.lampshow")
 
     def update_lamps(self):
