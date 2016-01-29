@@ -28,19 +28,19 @@ class JuggleMode(game.Mode):
             self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
             #self.game.lampctrl.register_show('rk_ramp_ready', lampshow_path+"ramp_ready.lampshow")
 
-    def sw_eject_active_for_500ms(self, sw):
-            if self.game.current_player().mode_running==False:
-                    self.game.score(2500)
-                    self.game.current_player().mode_running=True
-            else:
-                    self.game.score(2500)
-            self.update_lamps()
+    # def sw_eject_active_for_500ms(self, sw):
+    #         if self.game.current_player().mode_running==False:
+    #                 self.game.score(2500)
+    #                 self.game.current_player().mode_running=True
+    #         else:
+    #                 self.game.score(2500)
+    #         self.update_lamps()
             
     def update_lamps(self):
-        if self.game.current_player().mode_running==False:
-            self.game.effects.drive_lamp('eject0','medium')
-        else:
-            self.game.effects.drive_lamp('eject0','off')
+        # if self.game.current_player().mode_running==False:
+        #     self.game.effects.drive_lamp('eject0','medium')
+        # else:
+        #     self.game.effects.drive_lamp('eject0','off')
         if self.kant==True:
             verticaal_aan4()
             verticaal_aan5()

@@ -37,7 +37,7 @@ class Mode2(game.Mode):
     def startmode2(self):
         self.game.effects.eject_ball('eject')
         self.game.sound.play_music('music_starwars_cantina_band', loops=-1)
-        self.game.current_player().set_mode_running(False)
+        self.game.current_player().stop_eject_mode_mode(self)
         # Bumpers
         
     def bumpers_hit(self):
@@ -45,7 +45,6 @@ class Mode2(game.Mode):
         
     def mode_stopped(self):
         self.game.sound.play_music('music_starwars_intro', loops=-1)
-        self.game.current_player().set_mode_running(False)
         self.game.current_player().ramp_status_up = False
         self.layer = None
         # Wtf

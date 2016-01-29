@@ -39,7 +39,6 @@ class Mode3(game.Mode):
 
     def mode_stopped(self):
         self.game.sound.play_music('music_starwars_intro', loops=-1)
-        self.game.current_player().set_mode_running(False)
         self.layer = None
 
     def final_flash(self):
@@ -163,7 +162,7 @@ class Mode3(game.Mode):
             self.verticaal_uit5()
             self.final_flash()
             self.game.score(100000)
-            self.game.current_player().set_mode_running(False)
+            self.game.current_player().stop_eject_mode_mode(self)
         else:
             self.game.sound.play('sound_laser_gun_one_shot')
 

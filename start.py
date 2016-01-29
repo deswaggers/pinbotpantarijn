@@ -764,6 +764,11 @@ class rkPlayer(game.Player):
         if self.eject_mode_object is not None:
             self.eject_mode_object.mode_running_changed(mode_running)
 
+    def stop_eject_mode_mode(self, mode_to_stop):
+        self.mode_running = False
+        if self.eject_mode_object is not None:
+            self.eject_mode_object.stop_this_mode(mode_to_stop)
+
 
 def main():
 

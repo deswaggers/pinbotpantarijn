@@ -36,11 +36,10 @@ class Mode1(game.Mode):
                 self.bumpers_hit()
                 self.shoot_message=True
 
-                self.game.current_player().set_mode_running(False)
+                self.game.current_player().stop_eject_mode_mode(self)
 
         def mode_stopped(self):
                 self.game.sound.play_music('music_starwars_intro', loops=-1)
-                self.game.current_player().set_mode_running(False)
                 self.layer = None
 
 ## switches
@@ -83,7 +82,7 @@ class Mode1(game.Mode):
                 ## pluto, dan voorbij als pluto uit gaat? Bij sluiten mode moet dan de 'oude staat' van het gewone spel hersteld worden.
 
 
-                
+
 ## Mode functions
         def energyflash(self):
                 self.game.coils.Solenoidselect.pulse(90)
