@@ -41,11 +41,7 @@ class Mode2(game.Mode):
         # Bumpers
         
     def bumpers_hit(self):
-        self.game.effects.drive_lamp('advance_planet', 'on')       
-        
-    
-    
-    
+        self.game.effects.drive_lamp('advance_planet', 'on')                  
         
     def mode_stopped(self):
         self.game.sound.play_music('music_starwars_intro', loops=-1)
@@ -56,6 +52,8 @@ class Mode2(game.Mode):
 
     def display_instructions(self):
         self.instruction_layer.set_text('Hit the thingy below the ramp')    
+        
+        
 
     
         
