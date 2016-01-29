@@ -20,12 +20,12 @@ class Mode5(game.Mode):
         self.raise_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.flashers = ["RampLow_EnergyFlash", "Lejecthole_LeftPlFlash", "Rejecthole_SunFlash"]
+        self.flasher_list = ["Lejecthole_LeftPlFlash", "Rejecthole_SunFlash", "Ejecthole_LeftInsBFlash", "RampLow_EnergyFlash"]
         ## eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen
         self.delay(name='Mode_start_na_eject', event_type=None, delay=2, handler=self.mode_start_na_eject)
         self.delay(name='flasher_delay', event_type=None, delay=6, handler=self.flasher_drive)
         self.rampexit_counter = 0
         self.lamplist = ["2x", "3x", "4x", "5x"]
-        self.flasher_list = ["Lejecthole_LeftP1Flash", "Rejecthole_SunFlash", "Ejecthole_LeftInsBFlash", "RampLow_EnergyFlash"]
         self.x = 1764
         self.game.effects.drive_lamp('solar_energy', 'fast')
 
@@ -48,7 +48,7 @@ class Mode5(game.Mode):
     def sw_rampexit_active(self, sw):
         for i in self.flashers:
             self.game.switchedCoils.acFlashPulse(i, 255)
-        self.game.sound.play_sound('sound_bleep02') #bleep05 is ook wel leuk
+        self.game.sound.play('sound_bleep02') #bleep05 is ook wel leuk
         if self.rampexit_counter == 5:
             self.game.current_player().stop_eject_mode_mode(self)
         else:
@@ -71,5 +71,5 @@ class Mode5(game.Mode):
 
     def flasher_drive(self):
         for i in self.flasher_list:
-            self.game.switchedCoils.acFlashPulse('i', 50)
+            self.game.switchedCoils.acFlashPulse(i, 255)
         self.delay(name='flasher_delay', event_type=None, delay=6, handler=self.flasher_drive)
