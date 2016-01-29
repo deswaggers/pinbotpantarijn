@@ -19,8 +19,8 @@ class Mode1(game.Mode):
 
         def mode_started(self):
                 self.score_layer = dmd.TextLayer(90, 20, self.game.fonts['num_09Bx7'], "center", opaque=False)
-                self.raise_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
-                self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
+                self.raise_layer = dmd.TextLayer(8, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
+                self.text_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
                 self.update_lamps()
                 ## eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen
                 self.delay(name='Mode_start_na_eject', event_type=None, delay=2, handler=self.mode_start_na_eject)
@@ -30,7 +30,7 @@ class Mode1(game.Mode):
                 self.game.sound.play_music('music_harp', loops=-1)
                 self.bumperscore=40
                 self.bumperraise=0
-                self.time_left=20
+                self.time_left=25
                 self.totalscore=0
                 self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
                 self.bumpers_hit()
@@ -59,6 +59,8 @@ class Mode1(game.Mode):
 ## Ramp zorgt voor extra tijd:
         def sw_rampexit_active(self, sw):
                 self.time_left+=5
+                if self.time_left>25:
+                        self.time_left=25
                 self.text_layer.set_text("EXTRA 5 SECONDS, " +str(self.time_left)+ "LEFT",True)
                 self.layer = dmd.GroupedLayer(128, 32, [self.text_layer])
                 self.game.sound.play("sound_hand-clap-echo")
@@ -66,7 +68,7 @@ class Mode1(game.Mode):
         def sw_outhole_active(self, sw):
                 self.displaytotalscore()
                 return procgame.game.SwitchStop
-        def sw_outhole_active_for_3200ms(self, sw):
+        def sw_outhole_active_for_1500ms(self, sw):
                 self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
                 return procgame.game.SwitchStop
 
@@ -103,8 +105,8 @@ class Mode1(game.Mode):
                 self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=True, frame_time=4)
                 self.animation_layer.composite_op = "blacksrc"
                 self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.text_layer])
-                self.delay(name='End_mode', event_type=None, delay=3, handler=self.endmode)
-                self.game.sound.fadeout_music(1500)
+                self.delay(name='End_mode', event_type=None, delay=1.4, handler=self.endmode)
+                self.game.sound.fadeout_music(1200)
                 self.game.effects.drive_lamp('score_energy','off')
                 self.game.effects.drive_lamp('solar_energy','off')
         def endmode(self):
@@ -140,7 +142,7 @@ class Mode1(game.Mode):
                 self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
                 self.animation_layer.composite_op = "blacksrc"
                 anim = dmd.Animation().load(dmd_path+'life_bar.dmd') #Als het goed is kan ie ook rechtstreeks gif-bestanden aan
-                self.animation_layer2 = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
+                self.animation_layer2 = dmd.AnimatedLayer(frames=self.time_left, opaque=False, repeat=False, hold=False)
                 self.animation_layer2.composite_op = "blacksrc"
                 self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.animation_layer2,self.score_layer, self.raise_layer, self.text_layer])
 
@@ -155,6 +157,6 @@ class Mode1(game.Mode):
                 self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
                 self.animation_layer.composite_op = "blacksrc"
                 anim = dmd.Animation().load(dmd_path+'life_bar.dmd') #Als het goed is kan ie ook rechtstreeks gif-bestanden aan
-                self.animation_layer2 = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
+                self.animation_layer2 = dmd.AnimatedLayer(frames=self.time_left, opaque=False, repeat=False, hold=False)
                 self.animation_layer2.composite_op = "blacksrc"
                 self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.animation_layer2, self.score_layer, self.raise_layer, self.text_layer])
