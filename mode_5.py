@@ -48,7 +48,7 @@ class Mode5(game.Mode):
     def sw_rampexit_active(self, sw):
         for i in self.flashers:
             self.game.switchedCoils.acFlashPulse(i, 255)
-        self.game.sound.play_sound('sound_bleep02') #bleep05 is ook wel leuk
+        self.game.sound.play('sound_bleep02') #bleep05 is ook wel leuk
         if self.rampexit_counter == 5:
             self.game.current_player().stop_eject_mode_mode(self)
         else:
