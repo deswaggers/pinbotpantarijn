@@ -22,7 +22,6 @@ class Mode2(game.Mode):
         self.instruction_layer = dmd.TextLayer(30, 20, self.game.fonts['num_07x4'], opaque=False)
         self.display_instructions()
         self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)
-        self.bumpers_hit()
         self.game.current_player().ramp_status_up = True
 
     def startmode2(self):
@@ -41,13 +40,22 @@ class Mode2(game.Mode):
         else:
             self.delay(name='timeleft', event_type=None, delay=1, handler=self.time_reduced)
 
-    def bumpers_hit(self):
-        self.game.effects.drive_lamp('advance_planet', 'on')
+    def sw_scoreEnergy_active(self,sw):
+        self.game.score(50000)
+        self.delay(name='EindeMode', event_type=None, delay=2, handler=self.eindemode)
+    def eindemode(self):
+        self.game.current_player().stop_eject_mode_mode(self)
 
     def mode_stopped(self):
         self.game.current_player().ramp_status_up = False
         self.layer = None
+        self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
+
 
     def display_instructions(self):
         self.instruction_layer.set_text('Hit the thingy below the ramp')
         self.layer = self.instruction_layer
+
+    def sw_outhole_active(self, sw):
+        self.game.current_player().stop_eject_mode_mode(self)
+        return procgame.game.SwitchStop
