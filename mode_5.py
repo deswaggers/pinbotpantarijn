@@ -34,6 +34,7 @@ class Mode5(game.Mode):
         self.game.sound.play_music('music_doctorwho', loops=-1)
 
     def mode_stopped(self):
+        print "mode 5 afgesloten"
         self.game.effects.drive_lamp('solar_energy', 'off')
         
         if self.rampexit_counter > 3:
@@ -44,6 +45,7 @@ class Mode5(game.Mode):
             self.game.effects.drive_lamp(i, "off")
         self.game.sound.play_music('music_hitchhiker', loops=-1)
         self.layer = None
+        self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
 
     def sw_rampexit_active(self, sw):
         for i in self.flashers:
@@ -55,7 +57,11 @@ class Mode5(game.Mode):
             self.rampexit_counter += 1
             self.update_lamps()
             self.game.score(2016)
-
+            
+    def sw_outhole_active(self, sw):
+        self.game.current_player().stop_eject_mode_mode(self)
+        return procgame.game.SwitchStop
+        
     def update_lamps(self):
         if self.rampexit_counter == 5:
             self.game.effects.drive_lamp(self.lamplist[self.rampexit_counter - 2], 'on')
