@@ -23,13 +23,14 @@ class JuggleMode(game.Mode):
         self.multiplier = 1
         self.modescore = 0
         self.kant = True
-        self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
+        self.score_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
+        self.mult_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.update_lamps()
         self.delay(name='juggleMode echte start', event_type=None, delay=2, handler=self.echte_start)
         self.game.sound.play_music('music_backtothefuture', loops=-1)
         # self.game.lampctrl.register_show('rk_ramp_ready', lampshow_path+"ramp_ready.lampshow")
 
-    def update_lamps(self):
+    def update_lamps(self): # En layer
         if self.kant:
             self.verticaal_aan4()
             self.verticaal_aan5()
@@ -40,7 +41,10 @@ class JuggleMode(game.Mode):
             self.verticaal_aan2()
             self.verticaal_uit4()
             self.verticaal_uit5()
-        self.text_layer.set_text(str(self.modescore), 1, 20)
+
+        self.score_layer.set_text('score: ' + str(self.modescore))
+        self.mult_layer.set_text('multiplier: ' + str(self.multiplier) + 'x')
+        self.layer = dmd.GroupedLayer(128, 32, [self.score_layer])
 
     def echte_start(self):
         if self.game.switches.visorOpen.is_active():
