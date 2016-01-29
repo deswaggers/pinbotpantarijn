@@ -36,8 +36,6 @@ class Mode1(game.Mode):
                 self.bumpers_hit()
                 self.shoot_message=True
 
-                self.game.current_player().stop_eject_mode_mode(self)
-
         def mode_stopped(self):
                 self.game.sound.play_music('music_starwars_intro', loops=-1)
                 self.layer = None
@@ -111,7 +109,7 @@ class Mode1(game.Mode):
                 self.game.effects.drive_lamp('score_energy','off')
                 self.game.effects.drive_lamp('solar_energy','off')
         def endmode(self):
-                self.game.modes.remove(self)
+                self.game.current_player().stop_eject_mode_mode(self)
 
         def bumpers_hit(self):
                 ## Score-systeem
