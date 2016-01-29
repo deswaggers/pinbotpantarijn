@@ -25,7 +25,7 @@ class Mode2(game.Mode):
         self.display_dinges()
         self.delay(name='start_mode2', event_type=None, delay=1.5, handler=self.startmode2)  #start startmode2
         self.bumpers_hit()
-        self.game.effects.ramp_up()
+        self.game.current_player().ramp_status_up = True
         self.display_instructions()
         
     
@@ -49,6 +49,7 @@ class Mode2(game.Mode):
         
     def mode_stopped(self):
         self.game.sound.play_music('music_starwars_intro', loops=-1)
+        self.game.current_player().ramp_status_up = False
         self.layer = None
         # Wtf
 

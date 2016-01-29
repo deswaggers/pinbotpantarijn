@@ -127,20 +127,29 @@ class Attract(game.Mode):
 
 [Rules and software: ]
 
-[]
+[Tein]
+[Mees]
+[Ket]
+[Alvin]
+[Corijn]
+
+
 [Dots & Animations: ]
 
-[]
-[Lightshows: ]
 
-[]
+[Teun]
+[Tibi]
+
+
 [Music & SFX: ]
 
-[]
+[Sypke]
+
 [Graphic design:]
 
-[]
-[Hardware mods:]
+[Teun]
+[Tibi]
+
 
 """)
 
@@ -748,6 +757,7 @@ class rkPlayer(game.Player):
                 self.eject_mode_object = None
                 self.eject_mode_modes = []
                 self.eject_mode_played_modes = []
+                self.ramp_status_up = False
 
     def set_mode_running(self, mode_running):
         self.mode_running = mode_running

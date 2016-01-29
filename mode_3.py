@@ -22,11 +22,13 @@ class Mode3(game.Mode):
         self.green = ["green1", "green2", "green3", "green4", "green5"]
         self.red = ["red1", "red2", "red3", "red4", "red5"]
         self.flashers = ["RampLow_EnergyFlash", "Lejecthole_LeftPlFlash", "Rejecthole_SunFlash"]
+    
     def mode_started(self):
         self.score_layer = dmd.TextLayer(90, 20, self.game.fonts['num_09Bx7'], "center", opaque=False)
         self.raise_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.delay(name='start_mode_delay', event_type=None, delay=1.5, handler=self.start_mode_delay)
+        self.game.sound.play_music('music_starwars_intro', loops=-1) #zelf muziekje van Sypke kiezen
 
         # Eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen
         self.visor_count = 1

@@ -42,6 +42,7 @@ class Generalplay(game.Mode):
 
 
         self.game.current_player().mode_lamps = 0
+        self.game.current_player().ramp_status_up = False
 
 
         ## Modestart straks naar elders, veel zaken in general_play nog op te schonen.
@@ -71,7 +72,6 @@ class Generalplay(game.Mode):
             self.delay(name='clear_layer', event_type=None, delay=4, handler=self.clear_layer)
         self.game.sound.play_music('music_starwars_intro', loops=-1)
         self.game.sound.play('speech_welcome')
-        self.game.effects.ramp_down()
         print "general play gestart"
 
     def clear_layer(self):
@@ -132,7 +132,16 @@ class Generalplay(game.Mode):
         print 'generalplay stopped'
 
     def mode_tick(self):
-        pass
+        ## Afhankelijk van variabele per speler 'ramp_status_up' wordt de ramp omhoog of omlaat gebracht'
+        if self.game.current_player().ramp_status_up == False:
+            if self.game.switches.rampdown.is_active():
+                pass
+            else:
+                self.game.effects.ramp_down()
+        else:
+            if self.game.switches.rampdown.is_active():
+                self.game.switches.ramp_up()
+
 
 ## lamps and animations
 
