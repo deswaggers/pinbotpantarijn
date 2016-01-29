@@ -25,6 +25,8 @@ class JuggleMode(game.Mode):
         self.kant = True
         self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.update_lamps()
+        self.delay(name='juggleMode echte start', event_type=None, delay=2, handler=self.echte_start)
+        self.game.sound.play_music('music_backtothefuture', loops=-1)
         # self.game.lampctrl.register_show('rk_ramp_ready', lampshow_path+"ramp_ready.lampshow")
 
     def update_lamps(self):
