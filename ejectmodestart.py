@@ -70,7 +70,7 @@ class EjectModestart(game.Mode):
             self.random_next()
             self.update_lamps()
 
-    def stop_eject_mode_mode(self, mode_to_stop):
+    def stop_this_mode(self, mode_to_stop):
         if self.modes[self.next_mode] is mode_to_stop:
             try:
                 self.game.modes.remove(mode_to_stop)
