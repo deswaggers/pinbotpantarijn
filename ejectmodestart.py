@@ -56,8 +56,7 @@ class EjectModestart(game.Mode):
                 self.game.score(2500)
 
                 self.start_mode(self.next_mode)
-                self.game.current_player().set_mode_running(True)
-                self.update_lamps()
+                self.game.current_player().mode_running = True
             else:
                 self.game.score(2500)
         self.update_lamps()
@@ -70,6 +69,19 @@ class EjectModestart(game.Mode):
             self.played_modes.append(self.next_mode)
             self.random_next()
             self.update_lamps()
+
+    def stop_eject_mode_mode(self, mode_to_stop):
+        if self.modes[self.next_mode] is mode_to_stop:
+            try:
+                self.game.modes.remove(mode_to_stop)
+                self.game.current_player().mode_running = False
+                self.played_modes.append(self.next_mode)
+                self.random_next()
+                self.update_lamps()
+            except ValueError:
+                raise ValueError('mode_to_stop was not in the ModeQueue')
+        else:
+            raise ValueError('mode_to_stop was not the mode which was running')
 
     def random_next(self):
         print "Finding random next mode"
