@@ -131,7 +131,7 @@ class Mode1(game.Mode):
                         self.game.sound.play("sound_lasergun3")
                 ## Display
                 self.score_layer.set_text("EACH  " +str(self.bumperscore),True)
-                self.raise_layer.set_text("RAISE AT 6  " +str(self.bumperraise)+ 'time left:'+str(self.time_left),True) ## modetimer met healthbar/tijdbalk doen?
+                self.raise_layer.set_text("RAISE AT 6  " +str(self.bumperraise),True) ## modetimer met healthbar/tijdbalk doen?
                 x=random.random()
                 if x>0.7:
                         self.text_layer.set_text('BAM!',True)
@@ -142,7 +142,10 @@ class Mode1(game.Mode):
                 anim = dmd.Animation().load(dmd_path+'DMD_Mode1_1.gif') #Als het goed is kan ie ook rechtstreeks gif-bestanden aan
                 self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
                 self.animation_layer.composite_op = "blacksrc"
-                self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.score_layer, self.raise_layer, self.text_layer])
+                anim = dmd.Animation().load(dmd_path+'DMD_Mode1_1.gif') #Als het goed is kan ie ook rechtstreeks gif-bestanden aan
+                self.animation_layer2 = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
+                self.animation_layer2.composite_op = "blacksrc"
+                self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.animation_layer2,self.score_layer, self.raise_layer, self.text_layer])
 
         def shoot_bumpers_animation(self):
                 if self.shoot_message==True:
@@ -150,8 +153,10 @@ class Mode1(game.Mode):
                 else:
                         self.text_layer.set_text('SHOOT THE RAMP',True)
                 self.score_layer.set_text("EACH:: " +str(self.bumperscore),True)
-                self.raise_layer.set_text("RAISE AT 6: . " +str(self.bumperraise)+ 'time left:'+str(self.time_left),True) ## modetimer met healthbar/tijdbalk doen?
+                self.raise_layer.set_text("RAISE AT 6: . " +str(self.bumperraise),True) ## modetimer met healthbar/tijdbalk doen?
                 anim = dmd.Animation().load(dmd_path+'DMD_Mode1_2.gif') #Als het goed is kan ie ook rechtstreeks png-bestanden aan
                 self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
                 self.animation_layer.composite_op = "blacksrc"
-                self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.score_layer, self.raise_layer, self.text_layer])
+                self.animation_layer2 = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
+                self.animation_layer2.composite_op = "blacksrc"
+                self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.animation_layer2, self.score_layer, self.raise_layer, self.text_layer])
