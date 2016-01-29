@@ -70,7 +70,7 @@ class Generalplay(game.Mode):
             self.animation_layer = dmd.AnimatedLayer(frames=startanim.frames, opaque=False, repeat=False, hold=False, frame_time=1)
             self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
             self.delay(name='clear_layer', event_type=None, delay=4, handler=self.clear_layer)
-        self.game.sound.play_music('music_starwars_intro', loops=-1)
+        self.game.sound.play_music('music_hitchhiker', loops=-1)
         self.game.sound.play('speech_welcome')
         print "general play gestart"
 
@@ -165,7 +165,7 @@ class Generalplay(game.Mode):
 ## Switches regular gameplay
     def sw_shooterLane_open_for_100ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
-        self.game.sound.play_music('music_starwars_theme', loops=-1)
+        # self.game.sound.play_music('music_hitchhiker', loops=-1)
         self.game.sound.play("rocket-launch")
         anim = dmd.Animation().load(dmd_path+'ruimteschip.dmd')
         self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=8)
