@@ -37,6 +37,7 @@ class Mode1(game.Mode):
                 self.shoot_message=True
 
         def mode_stopped(self):
+                self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
                 self.layer = None
 
 ## switches
@@ -68,9 +69,9 @@ class Mode1(game.Mode):
         def sw_outhole_active(self, sw):
                 self.displaytotalscore()
                 return procgame.game.SwitchStop
-        def sw_outhole_active_for_1500ms(self, sw):
-                self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
-                return procgame.game.SwitchStop
+##        def sw_outhole_active_for_1500ms(self, sw):
+##
+##                return procgame.game.SwitchStop
 
 
 ## Lampen
