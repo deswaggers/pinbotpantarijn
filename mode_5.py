@@ -52,9 +52,9 @@ class Mode5(game.Mode):
 
     def update_lamps(self):
         if self.rampexit_counter > 1:
-            self.game.effects.drive_lamp(self.lamplist[self.game.rampexit_counter - 1], 'fast')
-            self.game.effects.drive_lamp(self.lamplist[self.game.rampexit_counter - 2], 'on')
+            self.game.effects.drive_lamp(self.lamplist[self.rampexit_counter - 1], 'fast')
+            self.game.effects.drive_lamp(self.lamplist[self.rampexit_counter - 2], 'on')
         elif self.rampexit_counter == 1:
-            self.game.effects.drive_lamp(self.lamplist[self.game.rampexit_counter - 1], 'fast')
+            self.game.effects.drive_lamp(self.lamplist[self.rampexit_counter - 1], 'fast')
         else:
             pass
