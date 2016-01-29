@@ -17,43 +17,37 @@ class Mode2(game.Mode):
         super(Mode2, self).__init__(game, priority)
 
     def mode_started(self):
-        self.time_left = 20;
+        self.time_left = 20
         self.test_layer = dmd.TextLayer(0, 0, self.game.fonts['num_09Bx7'], "left", opaque=False)
-        self.instruction_layer = dmd.TextLayer(30, 20, self.game.fonts['num_07x4'], opaque=False)        
-        self.display_dinges()
-        self.delay(name='start_mode2', event_type=None, delay=1.5, handler=self.startmode2)  #start startmode2
+        self.instruction_layer = dmd.TextLayer(30, 20, self.game.fonts['num_07x4'], opaque=False)
+        self.display_instructions()
+        self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)
         self.bumpers_hit()
         self.game.current_player().ramp_status_up = True
-        self.display_instructions()
-        
-    
-    def display_dinges(self):
-        self.test_layer.set_text('HALLO WERELD!', 1, 20)
-        self.layer = self.test_layer
-        # dmd.GroupedLayer(128, 32, [self.animation_layer, self.text_layer])
-        
+
     def startmode2(self):
         self.game.effects.eject_ball('eject')
         self.game.sound.play_music('music_starwars_cantina_band', loops=-1)
         self.game.current_player().set_mode_running(False)
-        # Bumpers
-        
+        self.delay(name='timeleft', event_type=None, delay=1, handler=self.time_reduced)
+
+    def time_reduced(self):
+        self.instruction_layer.set_text('Time left: ' + str(self.time_left))
+        self.layer = self.instruction_layer
+
+        self.time_left -= 1
+        if self.time_left == 0:
+            self.game.current_player().stop_eject_mode_mode(self)
+        else:
+            self.delay(name='timeleft', event_type=None, delay=1, handler=self.time_reduced)
+
     def bumpers_hit(self):
-        self.game.effects.drive_lamp('advance_planet', 'on')                  
-        
+        self.game.effects.drive_lamp('advance_planet', 'on')
+
     def mode_stopped(self):
-        self.game.current_player().set_mode_running(False)
         self.game.current_player().ramp_status_up = False
         self.layer = None
-        
+
     def display_instructions(self):
-        self.instruction_layer.set_text('Hit the thingy below the ramp')    
-        
-        
-
-    
-        
-
-    
-
-    
+        self.instruction_layer.set_text('Hit the thingy below the ramp')
+        self.layer = self.instruction_layer
