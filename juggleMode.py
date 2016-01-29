@@ -48,11 +48,12 @@ class JuggleMode(game.Mode):
 
         self.kant = False  # Linkertwee lichtjes gaan aan, links=False, rechts=True
         self.update_lamps()
+        self.game.effects.eject_ball('eject')
 
     # Stopt de mode
     def sw_outhole_active(self, sw):
         self.game.score(self.multiplier * self.modescore)
-        self.game.modes.remove(self)
+        self.game.current_player().stop_eject_mode_mode(self)
 
     def sw_visor1_active(self, sw):
         self.is_hit(False)
@@ -116,4 +117,3 @@ class JuggleMode(game.Mode):
         for i in self.red:
             self.game.effects.drive_lamp(i, 'off')
 
-            # Hoi elbun hoeist
