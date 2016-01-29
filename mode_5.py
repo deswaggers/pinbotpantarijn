@@ -51,7 +51,10 @@ class Mode5(game.Mode):
         self.game.score(2016)
 
     def update_lamps(self):
-        if self.rampexit_counter > 1:
+        if self.rampexit_counter == 5:
+            self.game.effects.drive_lamp(self.lamplist[self.rampexit_counter - 2], 'on')
+        
+        elif self.rampexit_counter > 1:
             self.game.effects.drive_lamp(self.lamplist[self.rampexit_counter - 1], 'fast')
             self.game.effects.drive_lamp(self.lamplist[self.rampexit_counter - 2], 'on')
         elif self.rampexit_counter == 1:
