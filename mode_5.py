@@ -20,7 +20,7 @@ class Mode5(game.Mode):
         self.raise_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.flashers = ["RampLow_EnergyFlash", "Lejecthole_LeftPlFlash", "Rejecthole_SunFlash"]
-        self.flasher_list = ["Lejecthole_LeftPlFlash", "RampLow_EnergyFlash"]
+        self.flasher_list = ["Lejecthole_LeftPlFlash", "Ejecthole_LeftInsBFlash"]
         ## eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen
         self.delay(name='Mode_start_na_eject', event_type=None, delay=2, handler=self.mode_start_na_eject)
         self.delay(name='flasher_delay', event_type=None, delay=6, handler=self.flasher_drive)
