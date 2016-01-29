@@ -37,13 +37,13 @@ class Mode5(game.Mode):
             self.game.score(self.x * self.rampexit_counter)
         for i in self.lamplist:
             self.game.drive_lamps(i, "off")
-        self.game.sound.play_music('music_starwars_intro', loops=-1)
+        self.game.sound.play_music('music_hitchhiker', loops=-1)
         self.layer = None
 
     def sw_rampexit_active(self, sw):
         for i in self.flashers:
             self.game.switchedCoils.acFlashPulse(i, 255)
-        self.game.sound.play('sound_rocket-launch')
+        self.game.sound.play('sound_bleep02') #bleep05 is ook wel leuk
         if self.rampexit_counter == 5:
             self.game.current_player().stop_eject_mode_mode(self)
         else:
