@@ -40,6 +40,10 @@ class Mode3(game.Mode):
     def mode_stopped(self):
         self.layer = None
         self.game.effects.gi_on()
+        
+    def sw_outhole_active(self, sw):
+        self.game.current_player().stop_eject_mode_mode(self)
+        return procgame.game.SwitchStop
 
     def final_flash(self):
         for i in (self.yellow + self.blue + self.orange + self.green + self.red):
