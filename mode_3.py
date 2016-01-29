@@ -28,7 +28,7 @@ class Mode3(game.Mode):
         self.raise_layer = dmd.TextLayer(5, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.delay(name='start_mode_delay', event_type=None, delay=1.5, handler=self.start_mode_delay)
-        self.game.sound.play_music('music_hitchhiker', loops=-1) #zelf muziekje van Sypke kiezen
+        self.game.sound.play_music('music_mario_invincible', loops=-1) #zelf muziekje van Sypke kiezen
 
         # Eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen
         self.visor_count = 1
