@@ -5,6 +5,7 @@ from mode_1 import *
 from mode_2 import *
 from mode_3 import *
 from juggleMode import *
+from mode_5 import *
 
 # all necessary paths
 game_path = "/home/pi/VXtra_start/"
@@ -20,15 +21,20 @@ class EjectModestart(game.Mode):
 
     def mode_started(self):
         print "ejectmodestart started"
-        self.Mode1_object =      Mode1(self.game, 50)
-        self.Mode2_object =      Mode2(self.game, 51)
-        self.Mode3_object =      Mode3(self.game, 52)
+        self.Mode1_object = Mode1(self.game, 50)
+        self.Mode2_object = Mode2(self.game, 51)
+        self.Mode3_object = Mode3(self.game, 52)
         self.juggleMode_object = JuggleMode(self.game, 53)
+        self.Mode5_object = Mode5(self.game, 54)
 
         self.game.current_player().eject_mode_object = self
 
         if len(self.game.current_player().eject_mode_modes) == 0:
-            self.game.current_player().eject_mode_modes = [self.Mode1_object, self.Mode2_object, self.Mode3_object, self.juggleMode_object]
+            self.game.current_player().eject_mode_modes = [self.Mode1_object,
+                                                           self.Mode2_object,
+                                                           self.Mode3_object,
+                                                           self.juggleMode_object,
+                                                           self.Mode5_object]
             self.game.current_player().eject_mode_played_modes = []
             print "Resetted modes and played modes"
         self.mode_enabled = True
