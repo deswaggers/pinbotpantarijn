@@ -44,7 +44,7 @@ class Mode5(game.Mode):
             self.game.switchedCoils.acFlashPulse(i, 255)
         self.game.sound.play('sound_rocket-launch')
         if self.rampexit_counter == 5:
-            self.game.current_player().stop_eject_mode_mode(self)\
+            self.game.current_player().stop_eject_mode_mode(self)
         else:
             self.rampexit_counter += 1
             self.update_lamps()
