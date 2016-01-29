@@ -40,6 +40,7 @@ class Mode3(game.Mode):
     def mode_stopped(self):
         self.game.sound.play_music('music_starwars_intro', loops=-1)
         self.layer = None
+        self.game.effects.gi_on()
 
     def final_flash(self):
         for i in (self.yellow + self.blue + self.orange + self.green + self.red):

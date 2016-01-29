@@ -28,14 +28,15 @@ class Mode5(game.Mode):
 
     def mode_start_na_eject(self):
         self.game.effects.eject_ball('eject')
-        self.game.sound.play_music('music_doctorwho8bit.mp3', loops=-1)  # zelf muziekje nog kiezen
+        self.game.sound.play_music('music_doctorwho8bit.mp3', loops=-1) 
 
     def mode_stopped(self):
         if self.rampexit_counter > 3:
             self.game.score(self.x * self.rampexit_counter * (self.rampexit_counter - 2))
         else:
             self.game.score(self.x * self.rampexit_counter)
-
+        for i in self.lamplist:
+            self.game.drive_lamps(i, "off")
         self.game.sound.play_music('music_starwars_intro', loops=-1)
         self.layer = None
 
