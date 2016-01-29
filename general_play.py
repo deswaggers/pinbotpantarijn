@@ -10,6 +10,7 @@ from os.path import join, splitext
 from time import time
 from random import randint
 from procgame import *
+import random
 
 # Dit importeert alle regels tijdens het gewone spel. Modes worden in ejectmodestart gestart.
 from ejectmodestart import *
