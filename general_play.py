@@ -140,7 +140,7 @@ class Generalplay(game.Mode):
                 self.game.effects.ramp_down()
         else:
             if self.game.switches.rampdown.is_active():
-                self.game.switches.ramp_up()
+                self.game.effects.ramp_up()
 
 
 ## lamps and animations
