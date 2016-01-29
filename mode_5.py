@@ -36,7 +36,7 @@ class Mode5(game.Mode):
         else:
             self.game.score(self.x * self.rampexit_counter)
         for i in self.lamplist:
-            self.game.drive_lamp(i, "off")
+            self.game.effects.drive_lamp(i, "off")
         self.game.sound.play_music('music_hitchhiker', loops=-1)
         self.layer = None
 
