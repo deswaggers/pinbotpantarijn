@@ -31,10 +31,10 @@ class JuggleMode(game.Mode):
         if self.kant:
             self.verticaal_aan4()
             self.verticaal_aan5()
-            self.verticaal_uitTrue()
+            self.verticaal_uit1()
             self.verticaal_uit2()
         else:
-            self.verticaal_aanTrue()
+            self.verticaal_aan1()
             self.verticaal_aan2()
             self.verticaal_uit4()
             self.verticaal_uit5()
