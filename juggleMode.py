@@ -52,7 +52,7 @@ class JuggleMode(game.Mode):
             verticaal_aan2()
             verticaal_uit4()
             verticaal_uit5()
-        self.text_layer.set_text(str(self.modescore), 1, 20)
+        self.text_layer.set_text(str(self.modescore)++" POINTS", 1, 20)
     
 
 
