@@ -552,7 +552,8 @@ class Game(game.BasicGame):
         self.service_mode = procgame.service.ServiceMode(self,100,font_tiny7,[])
 
         # Highscore sound
-        self.sound.register_sound('high score', speech_path+'bk2k_champion.wav')
+        # self.sound.register_sound('high score', speech_path+'bk2k_champion.wav')
+        self.sound.register_sound('high score', music_path+'galaxysong.wav')
 
         # Setup fonts
         self.fonts = {}
@@ -682,7 +683,7 @@ class Game(game.BasicGame):
         self.modes.add(seq_manager)
 
     def highscore_entry_ready_to_prompt(self, mode, prompt):
-        self.sound.play_voice('high score')
+        self.sound.play_music('high score')
         self.effects.flippers(True)
         banner_mode = game.Mode(game=self, priority=8)
         markup = dmd.MarkupFrameGenerator()
