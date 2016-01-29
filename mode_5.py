@@ -71,5 +71,5 @@ class Mode5(game.Mode):
 
     def flasher_drive(self):
         for i in self.flasher_list:
-            self.game.switchedCoils.acFlashPulse('i', 250)
+            self.game.switchedCoils.acFlashPulse('i', 50)
         self.delay(name='flasher_delay', event_type=None, delay=6, handler=self.flasher_drive)
