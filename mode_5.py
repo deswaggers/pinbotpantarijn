@@ -13,7 +13,7 @@ dmd_path = game_path + "dmd/"
 
 class Mode5(game.Mode):
     def __init__(self, game, priority):
-        super(Mode1, self).__init__(game, priority)
+        super(Mode5, self).__init__(game, priority)
 
     def mode_started(self):
         self.score_layer = dmd.TextLayer(90, 20, self.game.fonts['num_09Bx7'], "center", opaque=False)
@@ -28,7 +28,7 @@ class Mode5(game.Mode):
 
     def mode_start_na_eject(self):
         self.game.effects.eject_ball('eject')
-        self.game.sound.play_music('music_harp', loops=-1)  # zelf muziekje nog kiezen
+        self.game.sound.play_music('music_jabba_laugh', loops=-1)  # zelf muziekje nog kiezen
         self.game.current_player().set_mode_running(False)
 
     def mode_stopped(self):
