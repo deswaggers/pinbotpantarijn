@@ -26,7 +26,6 @@ class JuggleMode(game.Mode):
             self.kant = True
             self.update_lamps()  
             self.text_layer = dmd.TextLayer(5, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
-
             #self.game.lampctrl.register_show('rk_ramp_ready', lampshow_path+"ramp_ready.lampshow")
 
     # def sw_eject_active_for_500ms(self, sw):
@@ -52,7 +51,9 @@ class JuggleMode(game.Mode):
             verticaal_aan2()
             verticaal_uit4()
             verticaal_uit5()
-        self.text_layer.set_text(str(self.modescore)++" POINTS", 1, 20)
+        # self.text_layer.set_text(str(self.modescore), 1, 20)
+        self.text_layer.set_text("lolz", 5, 20)
+        
     
 
 
@@ -61,7 +62,7 @@ class JuggleMode(game.Mode):
             self.game.effects.visor_up_down.visor_move()
         
         self.kant=False #Linkertwee lichtjes gaan aan, links=False, rechts=True
-        update_lamps()
+        self.update_lamps()
     
     #Stopt de mode
     def sw_outhole_active(self,sw):
