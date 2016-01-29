@@ -28,7 +28,7 @@ class Mode5(game.Mode):
 
     def mode_start_na_eject(self):
         self.game.effects.eject_ball('eject')
-        self.game.sound.play_music('music_doctorwho.mp3', loops=-1)  # zelf muziekje nog kiezen
+        self.game.sound.play_music('music_doctorwho8bit.mp3', loops=-1)  # zelf muziekje nog kiezen
 
     def mode_stopped(self):
         if self.rampexit_counter > 3:
