@@ -29,7 +29,6 @@ class Mode5(game.Mode):
     def mode_start_na_eject(self):
         self.game.effects.eject_ball('eject')
         self.game.sound.play_music('music_jabba_laugh', loops=-1)  # zelf muziekje nog kiezen
-        self.game.current_player().stop_eject_mode_mode(self)
 
     def mode_stopped(self):
         if self.rampexit_counter > 3:
@@ -45,7 +44,7 @@ class Mode5(game.Mode):
             self.game.switchedCoils.acFlashPulse(i, 255)
         self.game.sound.play('sound_rocket-launch')
         if self.rampexit_counter == 5:
-            self.game.current_player().set_mode_running(False)
+            self.game.current_player().stop_eject_mode_mode(self)
 
         self.rampexit_counter += 1
         self.update_lamps()
