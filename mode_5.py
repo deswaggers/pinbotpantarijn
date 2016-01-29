@@ -35,7 +35,8 @@ class Mode5(game.Mode):
             self.game.score(self.x * self.rampexit_counter * (self.rampexit_counter - 2))
         else:
             self.game.score(self.x * self.rampexit_counter)
-
+        for i in self.lamplist:
+            self.game.drive_lamps(i, "off")
         self.game.sound.play_music('music_starwars_intro', loops=-1)
         self.layer = None
 
