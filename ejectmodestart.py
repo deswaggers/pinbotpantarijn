@@ -80,6 +80,7 @@ class EjectModestart(game.Mode):
                 self.game.current_player().mode_running = False
                 self.played_modes.append(self.next_mode)
                 self.random_next()
+                self.game.sound.play_music('music_hitchhiker', loops=-1)
                 self.update_lamps()
             except ValueError:
                 raise ValueError('mode_to_stop was not in the ModeQueue')

@@ -42,7 +42,6 @@ class Mode2(game.Mode):
         self.game.effects.drive_lamp('advance_planet', 'on')                  
         
     def mode_stopped(self):
-        self.game.sound.play_music('music_starwars_intro', loops=-1)
         self.game.current_player().set_mode_running(False)
         self.game.current_player().ramp_status_up = False
         self.layer = None

@@ -37,7 +37,6 @@ class Mode1(game.Mode):
                 self.shoot_message=True
 
         def mode_stopped(self):
-                self.game.sound.play_music('music_starwars_intro', loops=-1)
                 self.layer = None
 
 ## switches

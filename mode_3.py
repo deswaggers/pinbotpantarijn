@@ -38,7 +38,6 @@ class Mode3(game.Mode):
         self.game.effects.eject_ball('eject')
 
     def mode_stopped(self):
-        self.game.sound.play_music('music_hitchhiker', loops=-1)
         self.layer = None
         self.game.effects.gi_on()
 
