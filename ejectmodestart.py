@@ -8,6 +8,8 @@ from juggleMode import *
 from mode_5 import *
 import random
 
+# Hoi ik ben er
+
 # all necessary paths
 game_path = "/home/pi/VXtra_start/"
 dmd_path = game_path + "dmd/"
