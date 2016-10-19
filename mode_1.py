@@ -1,11 +1,10 @@
 # Mode bumpers
 import procgame
 from procgame import *
-import locale
 import random
 
 
-# all paths
+# All paths
 game_path = "/home/pi/VXtra_start/"
 speech_path = game_path +"sound/speech/"
 sound_path = game_path +"sound/fx/"
@@ -22,7 +21,7 @@ class Mode1(game.Mode):
                 self.raise_layer = dmd.TextLayer(8, 2, self.game.fonts['num_09Bx7'], "left", opaque=False)
                 self.text_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
                 self.update_lamps()
-                ## eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen
+                # eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen
                 self.delay(name='Mode_start_na_eject', event_type=None, delay=2, handler=self.mode_start_na_eject)
 
         def mode_start_na_eject(self):
@@ -40,7 +39,7 @@ class Mode1(game.Mode):
                 self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
                 self.layer = None
 
-## switches
+# Switches
 
         def sw_Ubumper_active(self,sw):
                 self.bumpers_hit()
@@ -57,33 +56,31 @@ class Mode1(game.Mode):
         def sw_slingL_active(self,sw):
                 self.bumpers_hit()
                 return procgame.game.SwitchStop
-## Ramp zorgt voor extra tijd:
-        def sw_rampexit_active(self, sw):
+
+        def sw_rampexit_active(self, sw): # Ramp zorgt voor extra tijd
                 self.time_left+=5
                 if self.time_left>25:
                         self.time_left=25
                 self.text_layer.set_text("EXTRA 5 SECONDS, " +str(self.time_left)+ "LEFT",True)
                 self.layer = dmd.GroupedLayer(128, 32, [self.text_layer])
                 self.game.sound.play("sound_hand-clap-echo")
-##Als de bal draint tijdens de mode:
+
+# Als de bal draint tijdens de mode:
         def sw_outhole_active(self, sw):
                 self.displaytotalscore()
                 return procgame.game.SwitchStop
-##        def sw_outhole_active_for_1500ms(self, sw):
-##
-##                return procgame.game.SwitchStop
 
 
-## Lampen
+# Lampen
         def update_lamps(self):
                 self.game.effects.drive_lamp('score_energy','fast')
                 self.game.effects.drive_lamp('solar_energy','medium')
-                ## 'tijdbalk' voor hoeveel tijd je nog hebt bij elke getimede mode: planeten van allemaal aan (bovenste knipperen) tot
-                ## pluto, dan voorbij als pluto uit gaat? Bij sluiten mode moet dan de 'oude staat' van het gewone spel hersteld worden.
+                # 'tijdbalk' voor hoeveel tijd je nog hebt bij elke getimede mode: planeten van allemaal aan (bovenste knipperen) tot
+                # pluto, dan voorbij als pluto uit gaat? Bij sluiten mode moet dan de 'oude staat' van het gewone spel hersteld worden.
 
 
 
-## Mode functions
+# Mode functions
         def energyflash(self):
                 self.game.coils.Solenoidselect.pulse(90)
                 self.game.coils.RampLow_EnergyFlash.pulse(70)
@@ -114,22 +111,21 @@ class Mode1(game.Mode):
                 self.game.current_player().stop_eject_mode_mode(self)
 
         def bumpers_hit(self):
-                ## Score-systeem
-                #self.energyflash() #Niet doen omdat dat de eject tegenhoudt met AC-relais. Duurzame oplossing voor vinden. solenoidselect en/of effects herschrijven.
+                # Score-systeem
                 self.bumperraise+=1
                 if self.bumperraise>6:
                         self.bumperscore+=20
                         self.bumperraise=0
                 self.game.score(self.bumperscore)
                 self.totalscore+=self.bumperscore
-                ##geluid
+                # Sound
                 if self.bumperscore<=60:
                         self.game.sound.play("sound_lasergun1")
                 elif self.bumperscore<=100:
                         self.game.sound.play("sound_lasergun2")
                 else:
                         self.game.sound.play("sound_lasergun3")
-                ## Display
+                #  Display
                 self.score_layer.set_text("EACH  " +str(self.bumperscore),True)
                 self.raise_layer.set_text("RAISE AT 6  " +str(self.bumperraise),True) ## modetimer met healthbar/tijdbalk doen?
                 x=random.random()
