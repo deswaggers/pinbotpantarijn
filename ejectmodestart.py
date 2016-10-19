@@ -6,6 +6,9 @@ from mode_2 import *
 from mode_3 import *
 from juggleMode import *
 from mode_5 import *
+import random
+
+# Hoi ik ben er
 
 # all necessary paths
 game_path = "/home/pi/VXtra_start/"
@@ -18,6 +21,9 @@ class EjectModestart(game.Mode):
         super(EjectModestart, self).__init__(game, priority)
         self.planets = ['planet1', 'planet2', 'planet3', 'planet4', 'planet5',
                         'planet6', 'planet7', 'planet8', 'planet9']
+        self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker', 
+                         'music_mario_invincible', 'music_interstellarcornfieldchase', 'music_starwars_theme', 
+                         'music_imperialmarch', 'music_starwars_cantina_band']
 
     def mode_started(self):
         print "ejectmodestart started"
@@ -81,7 +87,8 @@ class EjectModestart(game.Mode):
                 self.game.current_player().mode_running = False
                 self.played_modes.append(self.next_mode)
                 self.random_next()
-                self.game.sound.play_music('music_hitchhiker', loops=-1)
+                music_track = random.choice(self.musicjes)
+                self.game.sound.play_music(music_track, loops=-1)
                 self.update_lamps()
             except ValueError:
                 raise ValueError('mode_to_stop was not in the ModeQueue')

@@ -10,6 +10,7 @@ from os.path import join, splitext
 from time import time
 from random import randint
 from procgame import *
+import random
 
 # Dit importeert alle regels tijdens het gewone spel. Modes worden in ejectmodestart gestart.
 from ejectmodestart import *
@@ -51,6 +52,10 @@ class Generalplay(game.Mode):
 
         self.register_all_sounds()
         self.game.lampctrl.register_show('rampenter_show', lampshow_path+"rampenter.lampshow")
+        
+        self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker', 
+                         'music_mario_invincible', 'music_interstellarcornfieldchase', 'music_starwars_theme', 
+                         'music_imperialmarch', 'music_starwars_cantina_band']
 
 
     def reset(self):
@@ -70,7 +75,9 @@ class Generalplay(game.Mode):
             self.animation_layer = dmd.AnimatedLayer(frames=startanim.frames, opaque=False, repeat=False, hold=False, frame_time=1)
             self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
             self.delay(name='clear_layer', event_type=None, delay=4, handler=self.clear_layer)
-        self.game.sound.play_music('music_hitchhiker', loops=-1)
+        
+        
+        self.game.sound.play_music(random.choice(self.musicjes), loops=-1)
         self.game.sound.play('speech_welcome')
         print "general play gestart"
 

@@ -40,8 +40,8 @@ class Mode3(game.Mode):
     def mode_stopped(self):
         self.layer = None
         self.game.effects.gi_on()
-        self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
-        
+        self.game.switchedCoils.acCoilPulse('outhole_knocker', 45)
+
     def sw_outhole_active(self, sw):
         self.game.current_player().stop_eject_mode_mode(self)
         return procgame.game.SwitchStop
