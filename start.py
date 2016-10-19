@@ -1,5 +1,5 @@
 import sys
-sys.path.append(sys.path[0]+'/../..') # Set the path so we can find procgame.  We are assuming (stupidly?) that the first member is our directory.
+sys.path.append(sys.path[0]+'/../..') # Set the path so we can find procgame.  We are assuming that the first member is our directory.
 import procgame
 import pinproc
 from switchedcoils import *
@@ -78,21 +78,24 @@ class Attract(game.Mode):
                 # run feature lamp patterns
                 self.change_lampshow()
 
-                #check for stuck balls
+                # check for stuck balls
                 self.delay(name='stuck_balls', event_type=None, delay=1, handler=self.game.effects.release_stuck_balls)
 
                 print("Trough is full:" +str(self.game.trough.is_full()))
 
-                #create dmd attract screens
+                # create dmd attract screens
                 self.williams_logo = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/williams_animated.dmd').frames,frame_time=1,hold=True)
-
-                self.proc_logo = dmd.FrameLayer(opaque=True, frame=dmd.Animation().load(game_path+'dmd/Splash.dmd').frames[0])
-                self.proc_logo.transition = dmd.ExpandTransition(direction='vertical')
 
                 self.press_start = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("PRESS START", seconds=None, blink_frames=1)
                 self.free_play = dmd.TextLayer(128/2, 6, font_09Bx7, "center", opaque=False).set_text("FREE PLAY")
                 self.coins_layer = dmd.GroupedLayer(128, 32, [self.free_play, self.press_start])
                 self.coins_layer.transition = dmd.PushTransition(direction='north')
+
+                self.vwo_xtra2017 = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("VWOxtra 2017", seconds=None, blink_frames=1)
+                self.custom_layer = dmd.TextLayer(128/2, 6, font_09Bx7, "center", opaque=False).set_text("CUSTOM RULES")
+                self.vwoxtra_layer = dmd.GroupedLayer(128, 32, [self.vwo_xtra2017, self.custom_layer])
+                self.vwoxtra_layer.transition = dmd.PushTransition(direction='south')
+
 
                 self.p1_layer = dmd.TextLayer(0, 0, self.game.fonts['num_09Bx7'], "left", opaque=False)
                 self.p2_layer = dmd.TextLayer(128, 0, self.game.fonts['num_09Bx7'], "right", opaque=False)
@@ -111,44 +114,32 @@ class Attract(game.Mode):
                 credits_frame = gen.frame_for_markup("""
 
 #CREDITS#
-[VWOxtra:]
-[Tein]
-[Mees]
-[Sypke]
-[Ket]
-[Alvin]
-[Corijn]
-[Teun]
-[Tibi]
+[VWOxtra - Pinball:]
+[Sytse]
+[Luuk]
+[Melle]
+[Eva]
+[Kirsten]
+[Wouter]
+[Koen]
+[Jay]
+[Viktor]
+[Sebastiaan]
+[Jouke]
+[Thijs]
 
 [Begeleiding:]
-[Jelle Besseling]
+
 [Steven van der Staaij]
+[Tein van der Lugt - Git]
 
 [Rules and software: ]
 
-[Tein]
-[Mees]
-[Ket]
-[Alvin]
-[Corijn]
-
-
 [Dots & Animations: ]
-
-
-[Teun]
-[Tibi]
-
 
 [Music & SFX: ]
 
-[Sypke]
-
 [Graphic design:]
-
-[Teun]
-[Tibi]
 
 
 """)
@@ -173,10 +164,10 @@ class Attract(game.Mode):
     def attract_display(self):
             script = list()
 
-            script.append({'seconds':2.0, 'layer':self.proc_logo})
             script.append({'seconds':7.0, 'layer':self.williams_logo})
             script.append({'seconds':3.0, 'layer':self.coins_layer})
-            script.append({'seconds':20.0, 'layer':self.credits_layer})
+            script.append({'seconds':3.0, 'layer':self.vwoxtra_layer})
+            script.append({'seconds':12.0, 'layer':self.credits_layer})
             script.append({'seconds':3.0, 'layer':self.scores_layer})
 
             for frame in highscore.generate_highscore_frames(self.game.highscore_categories):
