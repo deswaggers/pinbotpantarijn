@@ -215,7 +215,7 @@ class Mode1(game.Mode):
                 #############Deze zinnen hieronder nog testen: 2 mogelijkheden
                 #####self.animation_layer = dmd.AnimatedLayer(frames=anim.frames[25-self.time_left], opaque=False, repeat=False, hold=True, frame_time=0)
                 frameNummer = 25-self.time_left
-                self.animation_layer = dmd.FrameLayer(opaque=True, anim.frame.frameNummer
+                self.animation_layer = dmd.FrameLayer(opaque=True, anim.frame.frameNummer)
                 #############
                 self.animation_layer.composite_op = "blacksrc"
                 anim = dmd.Animation().load(dmd_path+'life_bar.dmd') # Een dmd bestand bestaat uit frames van plaatjes die zijn omgezet in iets leesbaars voor PROCGAME
