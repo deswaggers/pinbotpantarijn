@@ -38,7 +38,7 @@ class Mode1(game.Mode):
                 # De bal wordt uit het gat gegooid waar de mode is 'gestart' (linksboven)
                 self.game.effects.eject_ball('eject')
 
-                # Muziek aan (er kan maar één muziekje tegelijk, geluiden afspelen kan wel met meerdere door elkaar.
+                # Muziek aan (er kan maar 1 muziekje tegelijk, geluiden afspelen kan wel met meerdere door elkaar.
                 # music_harp.wav zit in de map 'muziek' en wordt vanzelf ook herkend
                 self.game.sound.play_music('music_harp', loops=-1)
 
@@ -145,7 +145,7 @@ class Mode1(game.Mode):
                 # zorg ervoor dat het 'zwart' in het plaatje doorzichtig wordt
                 self.animation_layer.composite_op = "blacksrc"
                 # self.layer laat het spel standaard zien. Nu maken we self.layer een 'groepslaag': een combinatie van
-                # één plaatje (de animation_layer) en een tekstlaag
+                # 1 plaatje (de animation_layer) en een tekstlaag
                 self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.text_layer])
 
                 # Na 1,4 seconden de score laten zien, voert ie 'endmode' uit
@@ -177,7 +177,7 @@ class Mode1(game.Mode):
                 else:
                         self.game.sound.play("sound_lasergun3")
 
-                # Display: weer verschillende lagen, paar met tekst, waarvan één met willekeurig 3 uitroepen en
+                # Display: weer verschillende lagen, paar met tekst, waarvan 1 met willekeurig 3 uitroepen en
                 # een 'balkje'. Dat balkje moet nog meegaan met de tijd
                 # Let op: deze zitten in de functie 'bumper_hit', dus onderstaande wordt ook steeds uitgevoerd met
                 # het raken van een popbumper of slingshot
