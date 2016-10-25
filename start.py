@@ -91,7 +91,7 @@ class Attract(game.Mode):
                 self.coins_layer = dmd.GroupedLayer(128, 32, [self.free_play, self.press_start])
                 self.coins_layer.transition = dmd.PushTransition(direction='north')
 
-                self.vwo_xtra2017 = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("VWOxtra 2017", seconds=None, blink_frames=1)
+                self.vwo_xtra2017 = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("VWOxtra 2017", seconds=None, blink_frames=4)
                 self.custom_layer = dmd.TextLayer(128/2, 6, font_09Bx7, "center", opaque=False).set_text("CUSTOM RULES")
                 self.vwoxtra_layer = dmd.GroupedLayer(128, 32, [self.vwo_xtra2017, self.custom_layer])
                 self.vwoxtra_layer.transition = dmd.PushTransition(direction='south')
@@ -167,8 +167,11 @@ class Attract(game.Mode):
             script.append({'seconds':7.0, 'layer':self.williams_logo})
             script.append({'seconds':3.0, 'layer':self.coins_layer})
             script.append({'seconds':3.0, 'layer':self.vwoxtra_layer})
-            script.append({'seconds':12.0, 'layer':self.credits_layer})
+            script.append({'seconds':14.0, 'layer':self.credits_layer})
+            script.append({'seconds':4.5, 'layer':self.last_scores_layer})
+            script.append({'seconds':3.0, 'layer':self.game_over_layer})
             script.append({'seconds':3.0, 'layer':self.scores_layer})
+
 
             for frame in highscore.generate_highscore_frames(self.game.highscore_categories):
                 new_layer = dmd.FrameLayer(frame=frame)
