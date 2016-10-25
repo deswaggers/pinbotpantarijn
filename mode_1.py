@@ -45,7 +45,7 @@ class Mode1(game.Mode):
                 # variabelen worden aangemaakt
                 self.bumperscore=40  # dit wordt straks gebruikt bij elke keer dat een bumper wordt geraakt
                 self.bumperraise=0   # kijk later verderop in de code wat deze 3 doen
-                self.time_left=25
+                self.time_left=19
                 self.shoot_message=True
                 self.totalscore=0    # voor aan het einde van de mode: een variabele die bijhoudt hoeveel er totaal wordt gescoord
 
@@ -83,8 +83,8 @@ class Mode1(game.Mode):
         # Als de ramp wordt geraakt, krijg je wat extra tijd, met 25 seconden als maximum
         def sw_rampexit_active(self, sw):
                 self.time_left+=5
-                if self.time_left>25:
-                        self.time_left=25
+                if self.time_left>23:
+                        self.time_left=23
                 self.text_layer.set_text("EXTRA 5 SECONDS, " +str(self.time_left)+ "LEFT",True)
                 self.layer = dmd.GroupedLayer(128, 32, [self.text_layer])
                 self.game.sound.play("sound_hand-clap-echo")
@@ -214,7 +214,7 @@ class Mode1(game.Mode):
                 ##self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
                 #############Deze zinnen hieronder nog testen: 2 mogelijkheden
                 #####self.animation_layer = dmd.AnimatedLayer(frames=anim.frames[25-self.time_left], opaque=False, repeat=False, hold=True, frame_time=0)
-                self.animation_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[25-self.time_left])
+                self.animation_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.time_left])
                 #############
                 self.animation_layer.composite_op = "blacksrc"
                 anim = dmd.Animation().load(dmd_path+'life_bar.dmd') # Een dmd bestand bestaat uit frames van plaatjes die zijn omgezet in iets leesbaars voor PROCGAME
