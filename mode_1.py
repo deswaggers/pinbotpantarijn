@@ -62,7 +62,7 @@ class Mode1(game.Mode):
                 self.layer = None
 
 # Switches
-        # de komende 5 zorgen allemaal dat bumpers_hit wordt uitgevoerd en dat de rest van het spel niet ook beïnvloed
+        # de komende 5 zorgen allemaal dat bumpers_hit wordt uitgevoerd en dat de rest van het spel niet ook beinvloed
         # wordt door het raken van de switch (niet dat je score uit deze mode krijgt EN ook nog van het gewone spel
         def sw_Ubumper_active(self,sw):
                 self.bumpers_hit()
