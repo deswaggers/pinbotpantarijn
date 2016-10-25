@@ -80,7 +80,7 @@ class Mode1(game.Mode):
                 self.bumpers_hit()
                 return procgame.game.SwitchStop
 
-        # Als de ramp wordt geraakt, krijg je wat extra tijd, met 25 seconden als maximum
+        # Als de ramp wordt geraakt, krijg je wat extra tijd, met 23 seconden als maximum
         def sw_rampexit_active(self, sw):
                 self.time_left+=5
                 if self.time_left>23:
@@ -209,15 +209,14 @@ class Mode1(game.Mode):
                         self.text_layer.set_text('SHOOT THE RAMP',True)
                 self.score_layer.set_text("EACH:: " +str(self.bumperscore),True)
                 self.raise_layer.set_text("RAISE AT 6: . " +str(self.bumperraise),True) ## modetimer met healthbar/tijdbalk doen?
-                anim = dmd.Animation().load(dmd_path+'DMD_Mode1_2.gif') #Als het goed is kan ie ook rechtstreeks png-bestanden aan
+                anim = dmd.Animation().load(dmd_path+'life_bar.dmd') # Een dmd bestand bestaat uit frames van plaatjes die zijn omgezet in iets leesbaars voor PROCGAME
+
                 ##########
                 ##self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
                 #############Deze zinnen hieronder nog testen: 2 mogelijkheden
                 #####self.animation_layer = dmd.AnimatedLayer(frames=anim.frames[25-self.time_left], opaque=False, repeat=False, hold=True, frame_time=0)
-                self.animation_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.time_left])
                 #############
-                self.animation_layer.composite_op = "blacksrc"
-                anim = dmd.Animation().load(dmd_path+'life_bar.dmd') # Een dmd bestand bestaat uit frames van plaatjes die zijn omgezet in iets leesbaars voor PROCGAME
-                self.lifebar_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=0)
+
+                self.lifebar_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.time_left])
                 self.lifebar_layer.composite_op = "blacksrc"
-                self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.lifebar_layer, self.score_layer, self.raise_layer, self.text_layer])
+                self.layer = dmd.GroupedLayer(128, 32, [self.lifebar_layer, self.score_layer, self.raise_layer, self.text_layer])
