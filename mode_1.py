@@ -56,8 +56,8 @@ class Mode1(game.Mode):
 
         def mode_stopped(self):
                 # voor het 'doorschieten' van de bal
-                self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
-
+                if self.game.switches.outhole.is_active():
+                        self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
                 # Dit zorgt ervoor dat het scherm weer 'leeg' is en terug gaat naar de basis-score
                 self.layer = None
 
@@ -98,7 +98,7 @@ class Mode1(game.Mode):
 # Lampen
         def update_lamps(self):
                 # lampjes bij de ramp worden aangezet, omdat je daar extra tijd kan halen.
-                self.game.effects.drive_lamp('score_energy','fast')
+                self.game.effects.drive_lamp('score_energy','slow')
                 self.game.effects.drive_lamp('solar_energy','medium')
                 # Wat nog leuk zou zijn, is een 'tijdbalk' voor hoeveel tijd je nog hebt bij elke getimede mode:
                 # planeten van allemaal aan (bovenste knipperen) tot pluto, dan voorbij als pluto uit gaat? Bij

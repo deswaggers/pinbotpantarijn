@@ -141,6 +141,14 @@ class Attract(game.Mode):
 
 [Graphic design:]
 
+[Basic, modestart, etc:]
+[Tein]
+[Mees]
+[Ket]
+[Alvin]
+[Corijn]
+
+
 
 """)
 
@@ -165,11 +173,11 @@ class Attract(game.Mode):
             script = list()
 
             script.append({'seconds':7.0, 'layer':self.williams_logo})
-            script.append({'seconds':3.0, 'layer':self.coins_layer})
-            script.append({'seconds':3.0, 'layer':self.vwoxtra_layer})
-            script.append({'seconds':14.0, 'layer':self.credits_layer})
+            script.append({'seconds':2.5, 'layer':self.coins_layer})
+            script.append({'seconds':3.5, 'layer':self.vwoxtra_layer})
+            script.append({'seconds':20.0, 'layer':self.credits_layer})
             script.append({'seconds':4.5, 'layer':self.last_scores_layer})
-            script.append({'seconds':3.0, 'layer':self.game_over_layer})
+            script.append({'seconds':2.0, 'layer':self.game_over_layer})
             script.append({'seconds':3.0, 'layer':self.scores_layer})
 
 
