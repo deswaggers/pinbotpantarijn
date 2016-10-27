@@ -4,8 +4,10 @@ from procgame import *
 from mode_1 import *
 from mode_2 import *
 from mode_3 import *
-from juggleMode import *
+from mode_4 import *
 from mode_5 import *
+from mode_6 import *
+from mode_7 import *
 import random
 
 # Hoi ik ben er
