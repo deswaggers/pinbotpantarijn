@@ -26,7 +26,10 @@ class Mode2(game.Mode):
         self.game.effects.eject_ball('eject')
         self.game.sound.play_music('music_starwars_cantina_band', loops=-1)
 
-
+    def update_lamps(self):
+        self.game.effects.drive_lamp('score_energy', 'slow')
+        self.game.effects.drive_lamp('solar_energy','medium')
+    
     def mode_stopped(self):
         self.layer = None
         if self.game.switches.outhole.is_active():
@@ -34,7 +37,7 @@ class Mode2(game.Mode):
 
 
     def display_instructions(self):
-        self.instruction_layer.set_text('First instructions here')
+        self.instruction_layer.set_text('WELKOM')
         self.layer = self.instruction_layer
 
     def sw_outhole_active(self, sw):
