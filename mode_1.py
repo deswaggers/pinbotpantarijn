@@ -45,7 +45,7 @@ class Mode1(game.Mode):
                 # variabelen worden aangemaakt
                 self.bumperscore=40  # dit wordt straks gebruikt bij elke keer dat een bumper wordt geraakt
                 self.bumperraise=0   # kijk later verderop in de code wat deze 3 doen
-                self.time_left=19
+                self.time_left=24
                 self.shoot_message=True
                 self.totalscore=0    # voor aan het einde van de mode: een variabele die bijhoudt hoeveel er totaal wordt gescoord
 
@@ -83,8 +83,8 @@ class Mode1(game.Mode):
         # Als de ramp wordt geraakt, krijg je wat extra tijd, met 23 seconden als maximum
         def sw_rampexit_active(self, sw):
                 self.time_left+=5
-                if self.time_left>23:
-                        self.time_left=23
+                if self.time_left>24:
+                        self.time_left=24
                 self.text_layer.set_text("EXTRA 5 SECONDS, " +str(self.time_left)+ "LEFT",True)
                 self.layer = dmd.GroupedLayer(128, 32, [self.text_layer])
                 self.game.sound.play("sound_hand-clap-echo")
@@ -108,10 +108,10 @@ class Mode1(game.Mode):
 
 # Mode functions
 
-        def energyflash(self):
-                # Als deze functie wordt uitgevoerd, wordt de 'flasher' onder de pop-bumpers even aan gezet
-                self.game.coils.Solenoidselect.pulse(90)
-                self.game.coils.RampLow_EnergyFlash.pulse(70)
+        #def energyflash(self):
+        #        # Als deze functie wordt uitgevoerd, wordt de 'flasher' onder de pop-bumpers even aan gezet
+        #        self.game.coils.Solenoidselect.pulse(90)
+        #        self.game.coils.RampLow_EnergyFlash.pulse(70)
 
         def countdown(self): # Door de laatste regel in deze functie, wordt 'countdown' elke seconde uitgevoerd
 
@@ -121,9 +121,9 @@ class Mode1(game.Mode):
                 # De variabele shoot_message begint op True, gaat dan naar False, dan weer naar True, etc...
                 self.shoot_message =  not self.shoot_message
 
-                # Roep de functie shoot_bumpers_animation aan. Dit doet ie dus elke seconde
+                # Roep de functie shoot_bumpers_animation aan. Dit doet ie dus elke seconde. Ook even de flasher bij de pop-bumpers flashen
                 self.shoot_bumpers_animation()
-
+                self.game.effects.energy_flash()
                 # als de timer op 0 staat, voert ie de functie 'displaytotalscore' uit
                 if self.time_left<1:
                         self.displaytotalscore()
@@ -181,24 +181,24 @@ class Mode1(game.Mode):
                 # een 'balkje'. Dat balkje moet nog meegaan met de tijd
                 # Let op: deze zitten in de functie 'bumper_hit', dus onderstaande wordt ook steeds uitgevoerd met
                 # het raken van een popbumper of slingshot
-                self.score_layer.set_text("EACH  " +str(self.bumperscore),True)
+                self.score_layer.set_text(str(self.bumperscore)+" POINTS!",True)
                 self.raise_layer.set_text("RAISE AT 6  " +str(self.bumperraise),True)
                 x=random.random()
                 if x>0.7:
                         self.text_layer.set_text('BAM!',True)
                 elif x>0.4:
-                        self.text_layer.set_text('WHAM',True)
+                        self.text_layer.set_text('WHAM!',True)
                 else:
-                        self.text_layer.set_text('BOOM',True)
-                anim = dmd.Animation().load(dmd_path+'DMD_Mode1_1.gif') #Als het goed is kan ie ook rechtstreeks gif-bestanden aan
-                self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
-                self.animation_layer.composite_op = "blacksrc"
+                        self.text_layer.set_text('BOOM!',True)
+                # anim = dmd.Animation().load(dmd_path+'DMD_Mode1_1.gif') #Als het goed is kan ie ook rechtstreeks gif-bestanden aan
+                # self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
+                # self.animation_layer.composite_op = "blacksrc"
                 ##### deze niet nodig volgens mij: nog niet gecheckt #######
                 # anim = dmd.Animation().load(dmd_path+'life_bar.dmd')
                 # self.lifebar_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=0)
                 # self.lifebar_layer.composite_op = "blacksrc"
                 ############################################################
-                self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.lifebar_layer,self.score_layer, self.raise_layer, self.text_layer])
+                self.layer = dmd.GroupedLayer(128, 32, [self.lifebar_layer,self.score_layer, self.raise_layer, self.text_layer]) # self.animation_layer,
 
         def shoot_bumpers_animation(self):
                 # Deze werd elke seconde aangeroepen. Als er dus geen slingshot of bumper

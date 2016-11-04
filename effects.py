@@ -169,7 +169,7 @@ class Effects(game.Mode):
     def lower_flashers_flash(self, time=1):
         self.game.switchedCoils.acFlashSchedule('RampRaise_LowPlFlash', cycle_seconds=2)
     def energy_flash(self, time=1):
-        self.game.switchedCoils.acFlashSchedule('RampLow_EnergyFlash', cycle_seconds=0)
+        self.game.switchedCoils.acFlashSchedule('RampLow_EnergyFlash', cycle_seconds=0.2)
 
 
 
