@@ -212,17 +212,17 @@ PRCoils:
         number: C15
     TopFlash4:
         number: C16
-    unused1:
+    LowerBumper:
         number: C17
-    unused2:
+    LvisorGI:
         number: C18
-    unused3:
+    LeftBumper:
         number: C19
     slingL:
         number: C20
     slingR:
         number: C21
-    unused4:
+    UpperBumper:
         number: C22
     flipperEnable:
         number: C23
