@@ -85,7 +85,7 @@ class SwitchedCoils(game.Mode):
         self.game.coils[coilname].pulse(pulsetime)
 
 
-    def acFlashSchedule(self,coilname,schedule=0x09090909,cycle_seconds=1.5,now=True):
+    def acFlashSchedule(self,coilname,schedule=0x00090009,cycle_seconds=1,now=True):
         self.game.coils.Solenoidselect.enable()
         self.game.coils[coilname].disable()
         self.game.coils[coilname].schedule(schedule=schedule, cycle_seconds=cycle_seconds, now=now)
