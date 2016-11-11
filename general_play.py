@@ -171,6 +171,7 @@ class Generalplay(game.Mode):
 ## Switches regular gameplay
     def sw_shooterLane_open_for_100ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
+        self.game.coils.LvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=1, now=True)
         # self.game.sound.play_music('music_hitchhiker', loops=-1)
         self.game.sound.play("rocket-launch")
         anim = dmd.Animation().load(dmd_path+'ruimteschip.dmd')
@@ -189,12 +190,14 @@ class Generalplay(game.Mode):
 
     def sw_slingL_active(self,sw):
         # self.game.switchedCoils.acFlashPulse('RampRaise_LowPlFlash',30)
-        self.game.coils.TopFlash3.pulse(50)
+        self.game.coils.TopFlash3.pulse(45)
+        self.game.coils.LvisorGI.pulse(40)
         self.game.sound.play("sound_slings")
         self.game.score(100)
 
     def sw_slingR_active(self,sw):
-        self.game.coils.TopFlash4.pulse(50)
+        self.game.coils.TopFlash4.pulse(45)
+        self.game.coils.RvisorGI.pulse(40)
         self.game.sound.play("sound_slings")
         self.game.score(100)
 
