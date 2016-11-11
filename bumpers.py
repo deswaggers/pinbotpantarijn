@@ -28,21 +28,18 @@ class Bumpers(game.Mode):
         self.game.score(10)
         self.energyflash()
         self.bumpers_animation()
-        self.game.ejectmodestart.sling_active()
 
     def sw_Bbumper_active(self, sw):
         self.game.sound.play("sound_lasergun3")
         self.game.score(10)
         self.energyflash()
         self.bumpers_animation()
-        self.game.ejectmodestart.sling_active()
 
     def sw_Lbumper_active(self, sw):
         self.game.sound.play("sound_lasergun2")
         self.game.score(10)
         self.energyflash()
         self.bumpers_animation()
-        self.game.ejectmodestart.sling_active()
 
     ## Lampen
 

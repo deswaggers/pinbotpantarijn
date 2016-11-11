@@ -128,6 +128,13 @@ class EjectModestart(game.Mode):
     def sw_slingR_active(self, sw):
         self.sling_active()
 
+    def sw_Ubumper_active(self, sw):
+        self.sling_active()
+    def sw_Lbumper_active(self, sw):
+        self.sling_active()
+    def sw_Bbumper_active(self, sw):
+        self.sling_active()
+
     def sling_active(self):
         print "Sling activated"
         if not self.game.current_player().mode_running:
