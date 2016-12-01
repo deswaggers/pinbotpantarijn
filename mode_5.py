@@ -43,13 +43,16 @@ class Mode5(game.Mode):
         if self.numberHits>0:
             self.numberHits-=1
             self.game.sound.play("sound_outlane")
+            self.delay(name='refresh_multiplier', event_type=None, delay=5, handler=self.reset_multiplier)
             
 
     def sw_Rbank1_active(self, sw):
         self.numberHits += 1
         self.game.score(1000 * (2**self.numberHits))
-        self.delay(name='reset_multiplier', event_type=None, delay=5, handler=self.reset_multiplier)
+        self.cancel_delay('refresh_multiplier')
+        self.delay(name='refresh_multiplier', event_type=None, delay=5, handler=self.reset_multiplier)
         self.game.sound.play("sound_hit")
+        return procgame.game.SwitchStop
 
     
 
