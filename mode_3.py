@@ -25,8 +25,24 @@ class Mode3(game.Mode):
         self.game.effects.eject_ball('eject')
         self.game.sound.play_music('music_starwars_cantina_band', loops=-1)
 
-
     def mode_stopped(self):
         self.layer = None
         if self.game.switches.outhole.is_active():
             self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
+
+    def sw_rampexit_active(self, sw):
+        #dit is gwn een random geluid en licht, kan nog veranderd worden
+        self.game.sound.play("sound_hand-clap-echo")
+        self.game.effects.drive_lamp('score_energy','slow')
+        
+    def sw_flipperLwL_active
+        if droptargetdown = 1:
+
+    def sw_flipperLwR
+
+    def sw_droptarget1_active(self, sw):
+        self.game.sound.play("sound_hit")
+        #dit geluid moet nog veranderd worden
+        droptargetdown = 1
+        
+        
