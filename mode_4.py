@@ -20,12 +20,12 @@ class Mode4(game.Mode):
         self.instruction_layer = dmd.TextLayer(30, 20, self.game.fonts['num_07x4'], opaque=False)
         self.display_instructions()
         self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)
-
+        self.rampCount=0
 
     def startmode2(self):
         self.game.effects.eject_ball('eject')
-        self.game.sound.play_music('music_starwars_cantina_band', loops=-1)
-
+        self.game.sound.play_music('music_starwars_imperialmarch', loops=-1)
+        
 
     def mode_stopped(self):
         self.layer = None
@@ -39,4 +39,12 @@ class Mode4(game.Mode):
 
     def sw_outhole_active(self, sw):
         self.game.current_player().stop_eject_mode_mode(self)
+        return procgame.game.SwitchStop
+
+    def sw_rampexit_active(self, sw):
+        self.rampCount+=1
+        self.game.score(100**self.rampCount)
+        self.game.sound.play("sound_ramp_exit")
+        if self.rampCount==3:
+            self.game.current_player().stop_eject_mode_mode(self)
         return procgame.game.SwitchStop
