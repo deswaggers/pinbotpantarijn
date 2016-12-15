@@ -24,6 +24,7 @@ class Mode3(game.Mode):
         self.game.effects.eject_ball('eject')
         self.game.sound.play_music('music_starwars_cantina_band', loops=-1)
         balingat=0
+        health=75
 
     def mode_stopped(self):
         self.layer = None
@@ -42,10 +43,12 @@ class Mode3(game.Mode):
             health-=1
 
     def sw_flipperLwR
+        if balingat = 1:
+            health-=1
 
     def 
+'''
 
 
-    '''
         
         
