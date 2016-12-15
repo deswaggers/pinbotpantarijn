@@ -3,6 +3,7 @@ import procgame
 from procgame import *
 import locale
 import random
+from PIL import Image
 
 # all paths
 game_path = "/home/pi/VXtra_start/"
@@ -21,6 +22,8 @@ class Mode4(game.Mode):
         self.display_instructions()
         self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)
         self.rampCount=0
+        instruction=Image.open("images_for_beamer/shoot_ramp.jpg")
+        instruction.show()
 
     def startmode2(self):
         self.game.effects.eject_ball('eject')
@@ -43,6 +46,7 @@ class Mode4(game.Mode):
         self.layer = self.instruction_layer
 
     def sw_outhole_active(self, sw):
+        self.cancel_delayed('flash_upper')
         self.game.current_player().stop_eject_mode_mode(self)
         return procgame.game.SwitchStop
 
