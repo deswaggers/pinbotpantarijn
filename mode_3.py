@@ -56,11 +56,11 @@ class Mode3(game.Mode):
             #moet nog veranderd worden
         self.game.effects.eject_ball('eject')
 
-    def sw_flipperLwL_active(self,sw)
+    def sw_flipperLwL_active(self,sw):
         if self.balingat = 1:
             self.health-=1
 
-    def sw_flipperLwR
+    def sw_flipperLwR(self,sw):
         if self.balingat = 1:
             self.health-=1
 
