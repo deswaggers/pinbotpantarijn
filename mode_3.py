@@ -20,10 +20,10 @@ class Mode3(game.Mode):
         self.display_instructions()
         self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)
 
-
-    def startmode2(self):
+    def startmode3(self):
         self.game.effects.eject_ball('eject')
         self.game.sound.play_music('music_starwars_cantina_band', loops=-1)
+        balingat=0
 
     def mode_stopped(self):
         self.layer = None
@@ -34,15 +34,18 @@ class Mode3(game.Mode):
         #dit is gwn een random geluid en licht, kan nog veranderd worden
         self.game.sound.play("sound_hand-clap-echo")
         self.game.effects.drive_lamp('score_energy','slow')
-        
+
+
+'''
     def sw_flipperLwL_active
-        if droptargetdown = 1:
+        if balingat = 1:
+            health-=1
 
     def sw_flipperLwR
 
-    def sw_droptarget1_active(self, sw):
-        self.game.sound.play("sound_hit")
-        #dit geluid moet nog veranderd worden
-        droptargetdown = 1
+    def 
+
+
+    '''
         
         
