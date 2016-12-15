@@ -171,7 +171,9 @@ class Effects(game.Mode):
     def energy_flash(self, time=1):
         self.game.switchedCoils.acFlashSchedule('RampLow_EnergyFlash', cycle_seconds=1)
 
-
+    def upperPlayfield_flash(self, time=1):
+        self.game.coils.Solenoidselect.schedule(schedule=0xffffffff, cycle_seconds=time, now=False)
+        self.game.coils.trough.schedule(schedule=0xf00f00f0, cycle_seconds=time, now=False)
 
     # Ball control
 

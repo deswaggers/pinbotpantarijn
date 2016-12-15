@@ -25,6 +25,11 @@ class Mode4(game.Mode):
     def startmode2(self):
         self.game.effects.eject_ball('eject')
         self.game.sound.play_music('music_starwars_imperialmarch', loops=-1)
+        self.flash_upper()
+
+    def flash_upper(self):
+        self.game.effects.upperPlayfield_flash()
+        self.delay(name='flash_upper', event_type=None, delay=1, handler=self.flash_upper)
         
 
     def mode_stopped(self):
