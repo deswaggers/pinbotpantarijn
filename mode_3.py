@@ -20,7 +20,7 @@ class Mode3(game.Mode):
         self.timer_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.balingat=0
         self.schepenkapot = 0
-        self.time_left=10
+        self.time_left=50
         self.update_lamps()
         self.countdown()
         
