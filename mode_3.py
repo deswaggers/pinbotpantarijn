@@ -39,7 +39,12 @@ class Mode3(game.Mode):
     def sw_eject_active_for_500ms(self, sw):
         self.balingat=1
         self.health=30
-        self.delay(name='tijd', event_type=None, delay=5, handler=self.endTime)
+        if self.schepenkapot==0:
+            self.delay(name='tijd', event_type=None, delay=6, handler=self.endTime)
+        elif self.schepenkapot==1
+            self.delay(name='tijd', event_type=None, delay=4, handler=self.endTime)
+        elif self.schepenkapot==2
+            self.delay(name='tijd', event_type=None, delay=5, handler=self.endTime)
         return procgame.game.SwitchStop
 
     def endTime(self):
@@ -52,6 +57,8 @@ class Mode3(game.Mode):
             self.game.sound.play("sound_outlane")
             #moet nog veranderd worden
         self.game.effects.eject_ball('eject')
+        if self.schepenkapot>2:
+            self.endmode()
 
     def sw_flipperLwL_active(self,sw):
         if self.balingat == 1:
@@ -61,6 +68,8 @@ class Mode3(game.Mode):
         if self.balingat == 1:
             self.health-=1
 
+    def endmode(self):
+        self.game.current_player().stop_eject_mode_mode(self)
 
 
 
