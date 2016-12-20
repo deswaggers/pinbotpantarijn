@@ -28,6 +28,7 @@ class Mode4(game.Mode):
     def startmode2(self):
         self.game.effects.eject_ball('eject')
         self.game.sound.play_music('music_starwars_imperialmarch', loops=-1)
+        self.flash_upper()
         
 
     def mode_stopped(self):
@@ -48,11 +49,15 @@ class Mode4(game.Mode):
     def sw_rampexit_active(self, sw):
         self.rampCount+=1
         self.game.score(100**self.rampCount)
-        self.game.sound.play("sound_ramp_exit")
+        
         if self.rampCount==1:
             self.time_left=24
+            self.game.sound.play("sound_2017_biem")
             self.countdown()
+        elif self.rampCount==2:          
+            self.game.sound.play("sound_2017_biem")
         elif self.rampCount==3:
+            self.game.sound.play("sound_2017_explosie") 
             self.game.current_player().stop_eject_mode_mode(self)
         return procgame.game.SwitchStop
 
@@ -60,11 +65,21 @@ class Mode4(game.Mode):
         self.time_left-=1
         # Roep de functie shoot_bumpers_animation aan. Dit doet ie dus elke seconde. Ook even de flasher bij de pop-bumpers flashen
         self.showTime()
-        if self.time_left<1:
-                self.endmode()
+        if self.time_left<6:
+            self.game.sound.play("sound_2017_nuke_alarm")
+        elif self.time_left<1:
+            self.endmode()
         # elke seconde wordt countdown weer gestart
         self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
 
+
+    def flash_upper(self):
+        self.game.effects.upperPlayfield_flash()
+        self.game.effects.leftPlayfield_flash()
+        self.delay(name='flashramps', event_type=None, delay=1, handler=self.flash_upper)
+        
+            
+        
     def endmode(self):
         self.game.current_player().stop_eject_mode_mode(self)
 
