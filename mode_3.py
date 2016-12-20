@@ -19,9 +19,9 @@ class Mode3(game.Mode):
         self.delay(name='start_mode3', event_type=None, delay=2, handler=self.startmode3)
         self.balingat=0
         self.schepenkapot = 0
-        self.countdown()
         self.time_left=50
         self.update_lamps()
+        self.countdown()
         
     def startmode3(self):
         self.game.effects.eject_ball('eject')
