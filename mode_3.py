@@ -29,7 +29,7 @@ class Mode3(game.Mode):
         
     def startmode3(self):
         self.game.effects.eject_ball('eject')
-        self.game.sound.play_music('music_starwars_cantina_band', loops=-1)
+        self.game.sound.play_music('music_2017_Radioactive-Imagine_Dragons', loops=-1)
         
     def mode_stopped(self):
         if self.game.switches.outhole.is_active():
