@@ -72,13 +72,21 @@ class Mode3(game.Mode):
 
     def sw_flipperLwL_active(self,sw):
         if self.balingat == 1:
-            self.health-=1
-            self.showHits()
+            if self.health>0:
+                self.health-=1
+                self.showHits()
+            else:
+                self.cancel_delayed('tijd')
+                self.endTime()
 
     def sw_flipperLwR(self,sw):
         if self.balingat == 1:
-            self.health-=1
-            self.showHits()
+            if self.health>0:
+                self.health-=1
+                self.showHits()
+            else:
+                self.cancel_delayed('tijd')
+                self.endTime()
 
     def countdown(self):
         self.time_left-=1
