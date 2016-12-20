@@ -32,6 +32,9 @@ class Mode3(game.Mode):
         self.game.sound.play_music('music_2017_Radioactive-Imagine_Dragons', loops=-1)
         
     def mode_stopped(self):
+        self.game.lamps['eject1'].disable()
+        self.game.lamps['eject2'].disable()
+        self.game.lamps['eject3'].disable()
         if self.game.switches.outhole.is_active():
             self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
 
@@ -66,7 +69,6 @@ class Mode3(game.Mode):
             self.game.sound.play("sound_outlane")
             #moet nog veranderd worden
         if self.schepenkapot>2:
-            self.update_lamps()
             self.endmode()
         else:
             self.countdown()
@@ -92,7 +94,6 @@ class Mode3(game.Mode):
     def countdown(self):
         self.time_left-=1
         if self.time_left<=1:
-            self.update_lamps()
             self.endmode() #weet nog niet welke van deze goed is
         self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
         self.showTime()
@@ -121,10 +122,7 @@ class Mode3(game.Mode):
         self.game.effects.drive_lamp('eject1','slow')
         self.game.effects.drive_lamp('eject2','medium')
         self.game.effects.drive_lamp('eject3','fast')
-        if self.time_left<1:
-            self.game.lamps['eject1'].disable()
-            self.game.lamps['eject2'].disable()
-            self.game.lamps['eject3'].disable()
+            
             
 
 
