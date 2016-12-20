@@ -80,7 +80,6 @@ class Mode3(game.Mode):
             self.endmode #weet nog niet welke van deze goed is
         self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
 
-             
 
     def showTime(self):
         self.timer_layer.set_text('TIME LEFT: '+ str(self.time_left),True)
@@ -96,6 +95,11 @@ class Mode3(game.Mode):
         self.game.effects.drive_lamp('eject1','slow')
         self.game.effects.drive_lamp('eject2','medium')
         self.game.effects.drive_lamp('eject3','fast')
+        if self.time_left<1:
+            self.game.lamps['eject1'].disable()
+            self.game.lamps['eject2'].disable()
+            self.game.lamps['eject3'].disable()
+            
 
 
         
