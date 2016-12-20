@@ -77,8 +77,10 @@ class Mode3(game.Mode):
     def countdown(self):
         self.time_left-=1
         if self.time_left<1:
+            self.update_lamps()
             self.endmode #weet nog niet welke van deze goed is
         self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
+        self.showTime()
 
 
     def showTime(self):
