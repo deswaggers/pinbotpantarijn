@@ -3,6 +3,7 @@ import procgame
 from procgame import *
 import locale
 import random
+from PIL import Image
 
 # all paths
 game_path = "/home/pi/VXtra_start/"
@@ -23,7 +24,10 @@ class Mode4(game.Mode):
         self.display_instructions()
         self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)
         self.rampCount=0
-        self.game.sound.play("sound_Houston we have got a problem") 
+        self.game.sound.play("sound_2017_houston_we_got")
+        img = Image.open("shoot_ramp.jpg")
+        img.show()
+        
 
     def startmode2(self):
         self.game.effects.eject_ball('eject')

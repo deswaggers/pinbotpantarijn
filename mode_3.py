@@ -61,7 +61,7 @@ class Mode3(game.Mode):
     def endTime(self):
         self.balingat=0
         if self.health <=0:
-            self.game.sound.play("sound_2017_explosie")
+            self.game.sound.play("sound_2017_biem")
             #moet nog veranderd worden
             self.schepenkapot += 1
             self.game.score(self.modeScore*self.schepenkapot)
