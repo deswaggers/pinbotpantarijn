@@ -49,12 +49,12 @@ class Mode4(game.Mode):
         self.rampCount+=1
         self.game.score(100**self.rampCount)
         self.game.sound.play("sound_ramp_exit")
-        if self.rampCount==3:
+        if self.rampCount==1:
+            self.time_left=24
+            self.countdown()
+        elif self.rampCount==3:
             self.game.current_player().stop_eject_mode_mode(self)
         return procgame.game.SwitchStop
-        if self.rampCount==1:
-            self.time_left=30
-            self.countdown()
 
     def countdown(self): 
         self.time_left-=1
@@ -70,8 +70,9 @@ class Mode4(game.Mode):
 
     def showTime(self):
         self.timer_layer.set_text('TIME LEFT: '+ str(self.time_left),True)
-        #anim = dmd.Animation().load(dmd_path+'life_bar.dmd')
-        #self.lifebar_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.time_left])
-        #self.lifebar_layer.composite_op = "blacksrc"
-        self.layer = dmd.GroupedLayer(128, 32, [self.timer_layer])
+        self.lifebar_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.time_left])
+        self.lifebar_layer.composite_op = "blacksrc"
+        self.layer = dmd.GroupedLayer(128, 32, [self.lifebar_layer,self.timer_layer])
+        
+
 
