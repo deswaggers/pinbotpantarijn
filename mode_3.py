@@ -19,6 +19,9 @@ class Mode3(game.Mode):
         self.delay(name='start_mode3', event_type=None, delay=2, handler=self.startmode3)
         self.balingat=0
         self.schepenkapot = 0
+        self.countdown()
+        self.time_left=50
+        self.update_lamps()
         
     def startmode3(self):
         self.game.effects.eject_ball('eject')
@@ -39,6 +42,7 @@ class Mode3(game.Mode):
     def sw_eject_active_for_500ms(self, sw):
         self.balingat=1
         self.health=30
+        self.cancel_delayed('Mode_countdown')
         if self.schepenkapot==0:
             self.delay(name='tijd', event_type=None, delay=10, handler=self.endTime)
         elif self.schepenkapot==1:
@@ -56,9 +60,11 @@ class Mode3(game.Mode):
         else:
             self.game.sound.play("sound_outlane")
             #moet nog veranderd worden
-        self.game.effects.eject_ball('eject')
         if self.schepenkapot>2:
             self.endmode()
+        else:
+            self.countdown()
+        self.game.effects.eject_ball('eject')
 
     def sw_flipperLwL_active(self,sw):
         if self.balingat == 1:
@@ -68,9 +74,28 @@ class Mode3(game.Mode):
         if self.balingat == 1:
             self.health-=1
 
+    def countdown(self):
+        self.time_left-=1
+        if self.time_left<1:
+            self.endmode #weet nog niet welke van deze goed is
+        self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
+
+             
+
+    def showTime(self):
+        self.timer_layer.set_text('TIME LEFT: '+ str(self.time_left),True)
+        anim = dmd.Animation().load(dmd_path+'life_bar.dmd') # Een dmd bestand bestaat uit frames van plaatjes die zijn omgezet in iets leesbaars voor PROCGAME
+        self.lifebar_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[25-(self.time_left/2)])
+        self.lifebar_layer.composite_op = "blacksrc"
+        self.layer = dmd.GroupedLayer(128, 32, [self.lifebar_layer,self.timer_layer])
+            
     def endmode(self):
         self.game.current_player().stop_eject_mode_mode(self)
 
+    def update_lamps(self):
+        self.game.effects.drive_lamp('eject_1','slow')
+        self.game.effects.drive_lamp('eject_2','medium')
+        self.game.effects.drive_lamp('eject_3','fast')
 
 
         
