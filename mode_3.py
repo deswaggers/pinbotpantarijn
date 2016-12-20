@@ -41,9 +41,9 @@ class Mode3(game.Mode):
         self.health=30
         if self.schepenkapot==0:
             self.delay(name='tijd', event_type=None, delay=6, handler=self.endTime)
-        elif self.schepenkapot==1
+        elif self.schepenkapot==1:
             self.delay(name='tijd', event_type=None, delay=4, handler=self.endTime)
-        elif self.schepenkapot==2
+        elif self.schepenkapot==2:
             self.delay(name='tijd', event_type=None, delay=5, handler=self.endTime)
         return procgame.game.SwitchStop
 
