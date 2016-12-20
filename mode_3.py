@@ -17,6 +17,7 @@ class Mode3(game.Mode):
 
     def mode_started(self):
         self.delay(name='start_mode3', event_type=None, delay=2, handler=self.startmode3)
+        self.timer_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.balingat=0
         self.schepenkapot = 0
         self.time_left=10
