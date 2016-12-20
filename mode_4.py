@@ -3,7 +3,7 @@ import procgame
 from procgame import *
 import locale
 import random
-from PIL import Image
+import webbrowser
 
 # all paths
 game_path = "/home/pi/VXtra_start/"
@@ -25,10 +25,8 @@ class Mode4(game.Mode):
         self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)
         self.rampCount=0
         self.game.sound.play("sound_2017_houston_we_got")
-        img = Image.open("images_for_beamer/shoot_ramp.png")
-        img.format = "PNG"
-        img.show()
-        
+        img = "images_for_beamer/shoot_ramp.png"
+        webbrowser.open(img)        
 
     def startmode2(self):
         self.game.effects.eject_ball('eject')
