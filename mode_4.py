@@ -70,6 +70,7 @@ class Mode4(game.Mode):
 
     def showTime(self):
         self.timer_layer.set_text('TIME LEFT: '+ str(self.time_left),True)
+        anim = dmd.Animation().load(dmd_path+'life_bar.dmd') # Een dmd bestand bestaat uit frames van plaatjes die zijn omgezet in iets leesbaars voor PROCGAME
         self.lifebar_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.time_left])
         self.lifebar_layer.composite_op = "blacksrc"
         self.layer = dmd.GroupedLayer(128, 32, [self.lifebar_layer,self.timer_layer])
