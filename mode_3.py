@@ -18,9 +18,12 @@ class Mode3(game.Mode):
     def mode_started(self):
         self.delay(name='start_mode3', event_type=None, delay=2, handler=self.startmode3)
         self.timer_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
+        self.hit_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
+        self.score_layer = dmd.TextLayer(20, 40, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.balingat=0
+        self.modeScore=420000
         self.schepenkapot = 0
-        self.time_left=50
+        self.time_left=48
         self.update_lamps()
         self.countdown()
         
@@ -42,14 +45,14 @@ class Mode3(game.Mode):
 
     def sw_eject_active_for_500ms(self, sw):
         self.balingat=1
-        self.health=30
+        self.health=24
         self.cancel_delayed('Mode_countdown')
         if self.schepenkapot==0:
-            self.delay(name='tijd', event_type=None, delay=10, handler=self.endTime)
+            self.delay(name='tijd', event_type=None, delay=8, handler=self.endTime)
         elif self.schepenkapot==1:
-            self.delay(name='tijd', event_type=None, delay=10, handler=self.endTime)
+            self.delay(name='tijd', event_type=None, delay=6, handler=self.endTime)
         elif self.schepenkapot==2:
-            self.delay(name='tijd', event_type=None, delay=10, handler=self.endTime)
+            self.delay(name='tijd', event_type=None, delay=4, handler=self.endTime)
         return procgame.game.SwitchStop
 
     def endTime(self):
@@ -57,7 +60,7 @@ class Mode3(game.Mode):
             self.game.sound.play("sound_2017_biem")
             #moet nog veranderd worden
             self.schepenkapot += 1
-            self.game.score(420000*self.schepenkapot)
+            self.game.score(self.modeScore*self.schepenkapot)
         else:
             self.game.sound.play("sound_outlane")
             #moet nog veranderd worden
@@ -87,9 +90,17 @@ class Mode3(game.Mode):
     def showTime(self):
         self.timer_layer.set_text('TIME LEFT: '+ str(self.time_left),True)
         anim = dmd.Animation().load(dmd_path+'life_bar.dmd') # Een dmd bestand bestaat uit frames van plaatjes die zijn omgezet in iets leesbaars voor PROCGAME
-        self.lifebar_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[25-(self.time_left/2)])
+        self.lifebar_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-(self.time_left/2)])
         self.lifebar_layer.composite_op = "blacksrc"
         self.layer = dmd.GroupedLayer(128, 32, [self.lifebar_layer,self.timer_layer])
+
+    def showHits(self):
+        self.hit_layer.set_text('NUMBER OF HITS: '+ str(self.health),True)
+        self.score_layer.set_text('COMPLETE FOR: '+ str(self.modeScore*(self.schepenkapot+1)),True)
+        anim = dmd.Animation().load(dmd_path+'life_bar.dmd') # Een dmd bestand bestaat uit frames van plaatjes die zijn omgezet in iets leesbaars voor PROCGAME
+        self.hit_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.health])
+        self.hit_layer.composite_op = "blacksrc"
+        self.layer = dmd.GroupedLayer(128, 32, [self.lifebar_layer,self.hit_layer])
             
     def endmode(self):
         self.game.current_player().stop_eject_mode_mode(self)
