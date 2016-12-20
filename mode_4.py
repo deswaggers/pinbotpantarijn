@@ -26,7 +26,7 @@ class Mode4(game.Mode):
         self.rampCount=0
         self.game.sound.play("sound_2017_houston_we_got")
         img = Image.open("images_for_beamer/shoot_ramp.png")
-        img.format = "PNG") 
+        img.format = "PNG"
         img.show()
         
 
