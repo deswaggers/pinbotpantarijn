@@ -23,7 +23,7 @@ class Mode3(game.Mode):
         self.balingat=0
         self.modeScore=420000
         self.schepenkapot = 0
-        self.time_left=46
+        self.time_left=48
         self.update_lamps()
         self.countdown()
         
@@ -84,7 +84,7 @@ class Mode3(game.Mode):
         self.time_left-=1
         if self.time_left<=1:
             self.update_lamps()
-            self.endmode #weet nog niet welke van deze goed is
+            self.endmode() #weet nog niet welke van deze goed is
         self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
         self.showTime()
 
