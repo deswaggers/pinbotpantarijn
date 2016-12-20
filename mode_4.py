@@ -25,7 +25,7 @@ class Mode4(game.Mode):
         self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)
         self.rampCount=0
         self.game.sound.play("sound_2017_houston_we_got")
-        img = Image.open("shoot_ramp.jpg")
+        img = Image.open("images_for_beamer/shoot_ramp.jpg")
         img.show()
         
 
