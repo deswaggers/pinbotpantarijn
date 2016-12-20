@@ -23,7 +23,7 @@ class Mode3(game.Mode):
         self.balingat=0
         self.modeScore=420000
         self.schepenkapot = 0
-        self.time_left=48
+        self.time_left=46
         self.update_lamps()
         self.countdown()
         
@@ -73,14 +73,16 @@ class Mode3(game.Mode):
     def sw_flipperLwL_active(self,sw):
         if self.balingat == 1:
             self.health-=1
+            self.showHits()
 
     def sw_flipperLwR(self,sw):
         if self.balingat == 1:
             self.health-=1
+            self.showHits()
 
     def countdown(self):
         self.time_left-=1
-        if self.time_left<1:
+        if self.time_left<=1:
             self.update_lamps()
             self.endmode #weet nog niet welke van deze goed is
         self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
@@ -103,6 +105,7 @@ class Mode3(game.Mode):
         self.layer = dmd.GroupedLayer(128, 32, [self.lifebar_layer,self.hit_layer])
             
     def endmode(self):
+        self.layer=None
         self.game.current_player().stop_eject_mode_mode(self)
 
     def update_lamps(self):
