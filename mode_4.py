@@ -3,7 +3,6 @@ import procgame
 from procgame import *
 import locale
 import random
-from PIL import Image
 
 # all paths
 game_path = "/home/pi/VXtra_start/"
@@ -19,20 +18,16 @@ class Mode4(game.Mode):
 
     def mode_started(self):
         self.instruction_layer = dmd.TextLayer(30, 20, self.game.fonts['num_07x4'], opaque=False)
+        self.timer_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
+
         self.display_instructions()
         self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)
         self.rampCount=0
-        instruction=Image.open("images_for_beamer/shoot_ramp.jpg")
-        instruction.show()
+        self.game.sound.play("sound_Houston") #HOUSTON ff regelen
 
     def startmode2(self):
         self.game.effects.eject_ball('eject')
         self.game.sound.play_music('music_starwars_imperialmarch', loops=-1)
-        self.flash_upper()
-
-    def flash_upper(self):
-        self.game.effects.upperPlayfield_flash()
-        self.delay(name='flash_upper', event_type=None, delay=1, handler=self.flash_upper)
         
 
     def mode_stopped(self):
@@ -46,9 +41,9 @@ class Mode4(game.Mode):
         self.layer = self.instruction_layer
 
     def sw_outhole_active(self, sw):
-        self.cancel_delayed('flash_upper')
         self.game.current_player().stop_eject_mode_mode(self)
         return procgame.game.SwitchStop
+
 
     def sw_rampexit_active(self, sw):
         self.rampCount+=1
@@ -57,3 +52,26 @@ class Mode4(game.Mode):
         if self.rampCount==3:
             self.game.current_player().stop_eject_mode_mode(self)
         return procgame.game.SwitchStop
+        if self.rampCount==1:
+            self.time_left=30
+            self.countdown()
+
+    def countdown(self): 
+        self.time_left-=1
+        # Roep de functie shoot_bumpers_animation aan. Dit doet ie dus elke seconde. Ook even de flasher bij de pop-bumpers flashen
+        self.showTime()
+        if self.time_left<1:
+                self.endmode()
+        # elke seconde wordt countdown weer gestart
+        self.delay(name='Mode_countdown', event_type=None, delay=1, handler=self.countdown)
+
+    def endmode(self):
+        self.game.current_player().stop_eject_mode_mode(self)
+
+    def showTime(self):
+        self.timer_layer.set_text('TIME LEFT: '+ str(self.time_left),True)
+        #anim = dmd.Animation().load(dmd_path+'life_bar.dmd')
+        #self.lifebar_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.time_left])
+        #self.lifebar_layer.composite_op = "blacksrc"
+        self.layer = dmd.GroupedLayer(128, 32, [self.timer_layer])
+
