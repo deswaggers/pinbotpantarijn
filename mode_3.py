@@ -93,9 +93,9 @@ class Mode3(game.Mode):
         self.game.current_player().stop_eject_mode_mode(self)
 
     def update_lamps(self):
-        self.game.effects.drive_lamp('eject_1','slow')
-        self.game.effects.drive_lamp('eject_2','medium')
-        self.game.effects.drive_lamp('eject_3','fast')
+        self.game.effects.drive_lamp('eject1','slow')
+        self.game.effects.drive_lamp('eject2','medium')
+        self.game.effects.drive_lamp('eject3','fast')
 
 
         
