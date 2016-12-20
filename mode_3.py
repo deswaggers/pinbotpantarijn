@@ -19,7 +19,7 @@ class Mode3(game.Mode):
         self.delay(name='start_mode3', event_type=None, delay=2, handler=self.startmode3)
         self.timer_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.hitCount_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
-        self.score_layer = dmd.TextLayer(20, 8, self.game.fonts['num_09Bx7'], "left", opaque=False)
+        self.score_layer = dmd.TextLayer(8, 8, self.game.fonts['num_07x4'], "left", opaque=False)
         self.balingat=0
         self.modeScore=420000
         self.schepenkapot = 0
@@ -65,28 +65,28 @@ class Mode3(game.Mode):
             self.game.sound.play("sound_outlane")
             #moet nog veranderd worden
         if self.schepenkapot>2:
+            self.update_lamps()
             self.endmode()
         else:
             self.countdown()
         self.game.effects.eject_ball('eject')
 
-    def sw_flipperLwL_active(self,sw):
+
+    def schot(self):
         if self.balingat == 1:
             if self.health>0:
                 self.health-=1
                 self.showHits()
             else:
+                self.balingat=0
                 self.cancel_delayed('tijd')
                 self.endTime()
+    
+    def sw_flipperLwL_active(self,sw):
+        self.schot()
 
     def sw_flipperLwR(self,sw):
-        if self.balingat == 1:
-            if self.health>0:
-                self.health-=1
-                self.showHits()
-            else:
-                self.cancel_delayed('tijd')
-                self.endTime()
+        self.schot()
 
     def countdown(self):
         self.time_left-=1
