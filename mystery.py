@@ -74,7 +74,7 @@ class Mystery(game.Mode):
              # repeat call to itself to scroll to mysterylist
              if self.index > 0:
                  self.index -= 1
-                 self.game.sound.play(self.game.assets.sfx_spark)
+                 self.game.sound.play("sound_spark")
                  # set display text
                  self.text_layer.set_text(self.temp_list[self.index])
                  self.delay(name='scroll_list', event_type=None, delay=0.3, handler=self.scroll_list)
@@ -99,7 +99,7 @@ class Mystery(game.Mode):
 
              #stop music, play sound and light
              self.game.sound.fadeout_music(time_ms=100)
-             self.game.sound.play(self.game.assets.sfx_mystery)
+             self.game.sound.play("sound_electricity")
              # turn off all lamps and GI
              for lamp in self.game.lamps:
                   lamp.disable()
