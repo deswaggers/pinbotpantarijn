@@ -53,9 +53,6 @@ class Mystery(game.Mode):
                  self.game.effects.drive_lamp('Ctimelock','slow')
                  self.game.effects.drive_flasher('showroomFlash','slow')
 
-        def clear_lamps(self):
-             self.game.effects.drive_lamp('Ctimelock','off')
-             #self.game.effects.drive_lamp('Showroom','off')
 
         def inform_player(self):
              anim = dmd.Animation().load(dmd_path+'mystery_inform.dmd')
@@ -153,19 +150,21 @@ class Mystery(game.Mode):
 
         def mystery_end(self):
              self.clear_layer()
-             self.clear_lamps()
              self.game.effects.gi_on()
-             self.game.effects.eject_ball('Ceject')
+             self.game.effects.eject_ball('eject')
 
              # restart main theme music (not for listnr. 10)
-                          self.game.assets.rk_play_music()
+             self.game.sound.play_music('music_galaxy', loops=-1)
 
              # raise choice nr. and save for next mystery in tournament mode
-             self.game.set_player_stats('mystery_award',self.choice)
+             #self.game.set_player_stats('mystery_award',self.choice)
 
              # reset spinner for mystery
              # self.game.base_game_mode.generalplay.spinner_reset()
              # remove mystery mode
+             # self.game.base_game_mode.EjectModestart.mode_2.stop_mode2_2sec()
+             self.game.base_game_mode.mode_2.stop_mode2_2sec()
+
              self.game.modes.remove(self)
 
 ## switches

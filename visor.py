@@ -15,9 +15,6 @@ class Visor(game.Mode):
 
         def __init__(self, game, priority):
                 super(Visor, self).__init__(game, priority)
-				#Niet meer nodig omdat alle geluiden al zijn geregristreerd bij general_play
-                #self.game.sound.register_sound('visor_aan', sound_path+"lasergun1.wav")
-                #self.game.sound.register_sound('visor_uit', sound_path+"lasergun2.wav")
                 self.game.lampctrl.register_show('lampshow_visor' ,lampshow_path +"Pinbot_1.lampshow")
                 
 

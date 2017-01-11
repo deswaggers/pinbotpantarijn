@@ -14,13 +14,9 @@ class Multiball(game.Mode):
         def __init__(self, game, priority):
             super(Multiball, self).__init__(game, priority)
 
-##            multi_anim = dmd.Animation().load(dmd_path+'mb_layer.dmd')
-##            self.mb_layer = dmd.AnimatedLayer(frames=multi_anim.frames, opaque=False, repeat=True, hold=False, frame_time=2)
             self.score_layer = dmd.TextLayer(125, 6, self.game.fonts['num_14x10'], "right", opaque=False)
             self.total_score_layer = dmd.TextLayer(128/2, 15, self.game.fonts['num_14x10'], "center", opaque=False) #num_09Bx7 num_14x10
             self.value_layer = dmd.TextLayer(126, 22, self.game.fonts['tiny7'], "right", opaque=False) #07x5
-##            self.text_layer1 = dmd.TextLayer(84, 8, self.game.fonts['07x5'], "center", opaque=False) #07x5
-##            self.text_layer2 = dmd.TextLayer(84, 18, self.game.fonts['07x5'], "center", opaque=False) #07x5
 
             self.game.lampctrl.register_show('multiball_start', lampshow_path +"planeten_short.lampshow")
             self.game.lampctrl.register_show('visor_lampshow', lampshow_path +"Pinbot_1.lampshow")
@@ -143,14 +139,14 @@ class Multiball(game.Mode):
              self.clear_layer()
 
         def stop_multiball(self):
-             self.game.sound.play_music('music_starwars_theme')
+             self.game.sound.play_music('music_2017_creepy_alien_music')
              self.game.modes.remove(self)
 ##             self.callback('multiball')
 
 
         def score_jackpot(self):
             # play sound, animation and lightshow
-##            self.game.sound.play()
+            self.game.sound.play("sound_2017_trompet")
 ##            self.jackpot_animation('jackpot')
             self.game.lampctrl.play_show('multiball_start', False, 'None')
             # calculate score
