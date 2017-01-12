@@ -42,7 +42,6 @@ class Mystery(game.Mode):
              self.lit()
 
         def mode_stopped(self):
-            self.game.effects.drive_flasher('showroomFlash','off')
             self.game.update_lamps()
             print("Debug, Mystery Mode Stopped")
 
@@ -98,7 +97,6 @@ class Mystery(game.Mode):
              # turn off all lamps and GI
              for lamp in self.game.lamps:
                   lamp.disable()
-             self.game.effects.drive_flasher('showroomFlash','off')
              self.game.effects.gi_off()
              #play lampshow
              self.game.lampctrl.play_show('mystery_show', False, 'None')
