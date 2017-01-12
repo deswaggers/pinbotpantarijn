@@ -25,6 +25,7 @@ class Mode2(game.Mode):
     def startmode2(self):
         self.game.modes.add(self.mystery)
         self.mystery.start_feature()
+        self.delay(name='stop_mode2', event_type=None, delay=4, handler=self.stop_mode2)
 
     
     def mode_stopped(self):
@@ -33,6 +34,7 @@ class Mode2(game.Mode):
     def stop_mode2_2sec(self):
         self.delay(name='stop_mode2', event_type=None, delay=2, handler=self.stop_mode2)
     def stop_mode2(self):
+        self.game.switchedCoils.acCoilPulse('Ejecthole_LeftInsBFlash')
         self.game.current_player().stop_eject_mode_mode(self)
 
     def sw_outhole_active(self, sw):
