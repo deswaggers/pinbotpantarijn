@@ -99,7 +99,7 @@ class Mystery(game.Mode):
                   lamp.disable()
              self.game.effects.gi_off()
              #play lampshow
-             self.game.lampctrl.play_show('mystery_show', False, 'None')
+
 
 
              # get award for normal mode
