@@ -51,7 +51,7 @@ class Mode4(game.Mode):
 
     def sw_rampexit_active(self, sw):
         self.rampCount+=1
-        self.game.score(2000*(self.rampCount*self.rampCount))
+        self.game.score(10000*(self.rampCount*self.rampCount))
         
         if self.rampCount==1:
             self.time_left=24
@@ -61,14 +61,14 @@ class Mode4(game.Mode):
             self.game.sound.play("sound_2017_biem")
         elif self.rampCount==3:
             self.game.sound.play("sound_2017_explosie") 
-            self.game.current_player().stop_eject_mode_mode(self)
+            self.endmode()
         return procgame.game.SwitchStop
 
     def countdown(self): 
         self.time_left-=1
         # Roep de functie shoot_bumpers_animation aan. Dit doet ie dus elke seconde. Ook even de flasher bij de pop-bumpers flashen
         self.showTime()
-        if self.time_left<6:
+        if self.time_left==6:
             self.game.sound.play("sound_2017_nuke_alarm")
         elif self.time_left<1:
             self.endmode()
