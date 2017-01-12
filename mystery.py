@@ -103,14 +103,13 @@ class Mystery(game.Mode):
 
 
              # get award for normal mode
-             last_award = self.game.get_player_stats('mystery_award')
+             #last_award = self.game.get_player_stats('mystery_award')
              # Generate random award from listitems
              # If award equals last_award try again, so you won't get the same item twice in a row
-             repeat = True
-             while repeat:
-                 self.choice = random.randrange(0, len(self.mysterylist),1)
-                 if self.choice != last_award:
-                     repeat = False
+             #repeat = True
+             self.choice = random.randrange(0, len(self.mysterylist),1)
+                 #if self.choice != last_award:
+                     #repeat = False
              print("mystery_keuze: "+str(self.choice)+" , "+self.mysterylist[self.choice])
 
              # make copy of list to shuffle scrolling list in animation
