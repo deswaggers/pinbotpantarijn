@@ -158,7 +158,7 @@ class Mystery(game.Mode):
              # self.game.base_game_mode.generalplay.spinner_reset()
              # remove mystery mode
              # self.game.base_game_mode.EjectModestart.mode_2.stop_mode2_2sec()
-             self.game.base_game_mode.mode_2.stop_mode2_2sec()
+             self.game.base_game_mode.stop_mode2_2sec()
 
              self.game.modes.remove(self)
 
