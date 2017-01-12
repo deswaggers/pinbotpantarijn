@@ -49,9 +49,7 @@ class Mystery(game.Mode):
 ## lamps & animations
 
         def update_lamps(self):
-             if self.game.get_player_stats('game_feature_running')==False:
-                 self.game.effects.drive_lamp('Ctimelock','slow')
-                 self.game.effects.drive_flasher('showroomFlash','slow')
+            pass
 
 
         def inform_player(self):
