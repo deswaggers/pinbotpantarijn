@@ -18,6 +18,7 @@ class Mode2(game.Mode):
         super(Mode2, self).__init__(game, priority)
 
     def mode_started(self):
+        self.mystery = Mystery(self.game, 20)
         self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)
 
 
