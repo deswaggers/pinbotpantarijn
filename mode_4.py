@@ -53,10 +53,12 @@ class Mode4(game.Mode):
         self.rampCount+=1
         self.game.score(10000*(self.rampCount*self.rampCount))
         
-        if self.rampCount==1:
+        if self.rampCount==0:
             self.time_left=24
-            self.game.sound.play("sound_2017_biem")
             self.countdown()
+            self.game.score(5000)
+        elif self.rampCount==1
+            self.game.sound.play("sound_2017_biem")
         elif self.rampCount==2:          
             self.game.sound.play("sound_2017_biem")
         elif self.rampCount==3:
