@@ -32,6 +32,9 @@ class Mode4(game.Mode):
         self.game.effects.eject_ball('eject')
         self.game.sound.play_music('music_starwars_imperialmarch', loops=-1)
         self.flash_upper()
+        self.time_left=24
+        self.countdown()
+        self.game.score(5000)
         
 
     def mode_stopped(self):
@@ -52,12 +55,7 @@ class Mode4(game.Mode):
     def sw_rampexit_active(self, sw):
         self.rampCount+=1
         self.game.score(10000*(self.rampCount*self.rampCount))
-        
-        if self.rampCount==0:
-            self.time_left=24
-            self.countdown()
-            self.game.score(5000)
-        elif self.rampCount==1
+        if self.rampCount==1:
             self.game.sound.play("sound_2017_biem")
         elif self.rampCount==2:          
             self.game.sound.play("sound_2017_biem")
