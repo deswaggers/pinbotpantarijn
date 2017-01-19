@@ -74,7 +74,7 @@ class Mode3(game.Mode):
 
 
     def schot(self):
-        if schepenkapot==0 and health==24:
+        if self.schepenkapot==0 and self.health==24:
             self.delay(name='tijd', event_type=None, delay=8, handler=self.endTime)
         if self.balingat == 1:
             self.game.sound.play("sound_2017_laser")
