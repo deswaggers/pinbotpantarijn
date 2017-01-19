@@ -39,8 +39,7 @@ class Mode3(game.Mode):
             self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
 
     def sw_rampexit_active(self, sw):
-        #dit is gwn een random geluid en licht, kan nog veranderd worden
-        self.game.sound.play("sound_hand-clap-echo")
+        self.game.sound.play("sound_2017_trompet")
         self.game.effects.drive_lamp('score_energy','slow')
 
     def sw_eject_active(self, sw):
@@ -62,12 +61,10 @@ class Mode3(game.Mode):
         self.balingat=0
         if self.health <=0:
             self.game.sound.play("sound_2017_biem")
-            #moet nog veranderd worden
             self.schepenkapot += 1
             self.game.score(self.modeScore*self.schepenkapot)
         else:
             self.game.sound.play("sound_outlane")
-            #moet nog veranderd worden
         if self.schepenkapot>2:
             self.endmode()
         else:
@@ -77,7 +74,9 @@ class Mode3(game.Mode):
 
     def schot(self):
         if self.balingat == 1:
+            self.game.sound.play("sound_2017_laser")
             if self.health>0:
+                
                 self.health-=1
                 self.showHits()
             else:
