@@ -74,7 +74,7 @@ class Mode3(game.Mode):
 
 
     def schot(self):
-        if schepenkapot==0 and health==24:
+        if self.schepenkapot==0 and self.health==24:
             self.delay(name='tijd', event_type=None, delay=8, handler=self.endTime)
         if self.balingat == 1:
             self.game.sound.play("sound_2017_laser")
@@ -110,7 +110,7 @@ class Mode3(game.Mode):
 
     def showHits(self):
         if self.health==24:
-            self.hitCount_layer.set_text('PRESS FLIPPERS QUICKLY '+ str(self.health),True)
+            self.hitCount_layer.set_text('PRESS FLIPPERS'+ str(self.health),True)
         else:
             self.hitCount_layer.set_text('NUMBER OF HITS: '+ str(self.health),True)
         self.score_layer.set_text('COMPLETE FOR: '+ str(self.modeScore*(self.schepenkapot+1)),True)
