@@ -49,8 +49,9 @@ class Mode3(game.Mode):
         self.balingat=1
         self.health=24
         self.cancel_delayed('Mode_countdown')
+        self.showHits()
         if self.schepenkapot==0:
-            self.delay(name='tijd', event_type=None, delay=8, handler=self.endTime)
+            pass
         elif self.schepenkapot==1:
             self.delay(name='tijd', event_type=None, delay=6, handler=self.endTime)
         elif self.schepenkapot==2:
@@ -73,6 +74,8 @@ class Mode3(game.Mode):
 
 
     def schot(self):
+        if schepenkapot==0 && health==24:
+            self.delay(name='tijd', event_type=None, delay=8, handler=self.endTime)
         if self.balingat == 1:
             self.game.sound.play("sound_2017_laser")
             if self.health>0:
@@ -106,7 +109,10 @@ class Mode3(game.Mode):
         self.layer = dmd.GroupedLayer(128, 32, [self.lifebar_layer,self.timer_layer])
 
     def showHits(self):
-        self.hitCount_layer.set_text('NUMBER OF HITS: '+ str(self.health),True)
+        if self.health==24:
+            self.hitCount_layer.set_text('PRESS FLIPPERS QUICKLY '+ str(self.health),True)
+        else:
+            self.hitCount_layer.set_text('NUMBER OF HITS: '+ str(self.health),True)
         self.score_layer.set_text('COMPLETE FOR: '+ str(self.modeScore*(self.schepenkapot+1)),True)
         anim = dmd.Animation().load(dmd_path+'life_bar.dmd') # Een dmd bestand bestaat uit frames van plaatjes die zijn omgezet in iets leesbaars voor PROCGAME
         self.hit_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.health])
