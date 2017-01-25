@@ -173,11 +173,7 @@ class Generalplay(game.Mode):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
         self.game.coils.LvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=1, now=True)
         # self.game.sound.play_music('music_hitchhiker', loops=-1)
-        self.game.sound.play("rocket-launch")
-        anim = dmd.Animation().load(dmd_path+'ruimteschip.dmd')
-        self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=8)
-        self.animation_layer.composite_op = "blacksrc"
-        self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
+        self.game.animations.space_ship_flies()
 
     def sw_outhole_active_for_500ms(self, sw):
         self.game.switchedCoils.acCoilPulse('outhole_knocker',45)

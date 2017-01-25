@@ -4,6 +4,7 @@ import procgame
 import pinproc
 from switchedcoils import *
 from effects import *
+from animations import *
 from general_play import *
 from match import *
 from visor_up_down import *
@@ -85,11 +86,12 @@ class Attract(game.Mode):
 
                 # create dmd attract screens
                 self.williams_logo = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/williams_animated.dmd').frames,frame_time=1,hold=True)
+                self.space_pinball = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/welcome_space_pinball.dmd').frames, opaque=False, repeat=True, hold=False, frame_time=3))
 
-                self.press_start = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("PRESS START", seconds=None, blink_frames=1)
-                self.free_play = dmd.TextLayer(128/2, 6, font_09Bx7, "center", opaque=False).set_text("FREE PLAY")
-                self.coins_layer = dmd.GroupedLayer(128, 32, [self.free_play, self.press_start])
-                self.coins_layer.transition = dmd.PushTransition(direction='north')
+                # self.press_start = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("PRESS START", seconds=None, blink_frames=1)
+                # self.free_play = dmd.TextLayer(128/2, 6, font_09Bx7, "center", opaque=False).set_text("FREE PLAY")
+                # self.coins_layer = dmd.GroupedLayer(128, 32, [self.free_play, self.press_start])
+                # self.coins_layer.transition = dmd.PushTransition(direction='north')
 
                 self.vwo_xtra2017 = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("VWOxtra 2017", seconds=None, blink_frames=4)
                 self.custom_layer = dmd.TextLayer(128/2, 6, font_09Bx7, "center", opaque=False).set_text("CUSTOM RULES")
@@ -104,29 +106,30 @@ class Attract(game.Mode):
                 self.last_scores_layer = dmd.GroupedLayer(128, 32, [self.p1_layer,self.p2_layer,self.p3_layer,self.p4_layer])
                 self.last_scores_layer.transition = dmd.CrossFadeTransition(width=128,height=32)
 
-                self.game_over_layer = dmd.TextLayer(128/2, 10, font_09Bx7, "center", opaque=True).set_text("GAME OVER")
-                self.game_over_layer.transition = dmd.CrossFadeTransition(width=128,height=32)
+                # self.game_over_layer = dmd.TextLayer(128/2, 10, font_09Bx7, "center", opaque=True).set_text("GAME OVER")
+                # self.game_over_layer.transition = dmd.CrossFadeTransition(width=128,height=32)
 
-                self.scores_layer = dmd.TextLayer(128/2, 11, font_09Bx7, "center", opaque=True).set_text("HIGH SCORES")
-                self.scores_layer.transition = dmd.PushTransition(direction='west')
+                self.high_scores_layer = dmd.TextLayer(128/2, 11, font_09Bx7, "center", opaque=True).set_text("HIGH SCORES")
+                self.high_scores_layer.transition = dmd.PushTransition(direction='west')
 
                 gen = dmd.MarkupFrameGenerator()
                 credits_frame = gen.frame_for_markup("""
 
 #CREDITS#
 [VWOxtra - Pinball:]
-[Sytse]
-[Luuk]
-[Melle]
-[Eva]
-[Kirsten]
-[Wouter]
-[Koen]
-[Jay]
-[Viktor]
-[Sebastiaan]
-[Jouke]
-[Thijs]
+[Sytse Backx]
+[Luuk Bartels]
+[Melle Bolding]
+[Eva Brouwers]
+[Kirsten Hagenaar]
+[Wouter Kortleve]
+[Koen Kranenburg]
+[Jay Loman]
+[Viktor Loomans]
+[Sebastiaan de Roos]
+[Jouke van Veen]
+[Thijs van Veluw]
+[Steven van der Staaij]
 
 [Begeleiding:]
 
@@ -134,21 +137,30 @@ class Attract(game.Mode):
 [Tein van der Lugt - Git]
 
 [Rules and software: ]
+[Sytse]
+[Luuk]
+[Wouter]
+[Viktor]
+[Jouke]
+[Steven]
 
 [Dots & Animations: ]
+[Thijs]
 
 [Music & SFX: ]
+[Piano: Jay]
+[Edit: Wouter]
+[Koen]
+[Sebastiaan]
+[Melle]
 
-[Graphic design:]
+[Backglass and poster:]
+[Eva]
+[Kirsten]
 
-[Basic, modestart, etc:]
-[Tein]
-[Mees]
-[Ket]
-[Alvin]
-[Corijn]
-
-
+[Basics, modestart and more]
+[Tein, Mees, Ket, Alvin]
+[and Corijn]
 
 """)
 
@@ -172,13 +184,15 @@ class Attract(game.Mode):
     def attract_display(self):
             script = list()
 
-            script.append({'seconds':7.0, 'layer':self.williams_logo})
-            script.append({'seconds':2.5, 'layer':self.coins_layer})
+            script.append({'seconds':5.0, 'layer':self.williams_logo})
+            script.append({'seconds':2.0, 'layer':self.space_pinball})
+            #script.append({'seconds':2.5, 'layer':self.coins_layer})
             script.append({'seconds':3.5, 'layer':self.vwoxtra_layer})
             script.append({'seconds':20.0, 'layer':self.credits_layer})
             script.append({'seconds':4.5, 'layer':self.last_scores_layer})
-            script.append({'seconds':2.0, 'layer':self.game_over_layer})
-            script.append({'seconds':3.0, 'layer':self.scores_layer})
+            script.append({'seconds':2.0, 'layer':self.space_pinball})
+            # script.append({'seconds':2.0, 'layer':self.game_over_layer})
+            script.append({'seconds':3.0, 'layer':self.high_scores_layer})
 
 
             for frame in highscore.generate_highscore_frames(self.game.highscore_categories):
@@ -243,6 +257,7 @@ class Attract(game.Mode):
     # initiates a ball search.
     def sw_startButton_active(self, sw):
         if self.game.trough.is_full:
+            self.game.animations.space_pinball_welcome(5)
             # Remove attract mode from mode queue - Necessary?
             self.game.modes.remove(self)
             # Initialize game
@@ -272,8 +287,7 @@ class BaseGameMode(game.Mode):
                 self.game.sound.register_sound('tilt_', sound_path+"tilt.ogg")
                 #register sound effects files
                 self.game.sound.register_sound('ball_saved', speech_path+"ball_saved.aiff")
-                #self.game.sound.register_sound('shooterlane', sound_path+"motor_driveaway.aiff")
-                #self.game.sound.register_music('shooterlane_loop', music_path+"shooterlane_loop.ogg")
+
 
                 self.ball_saved = False
                 self.ball_save_time = self.game.user_settings['Gameplay (Feature)']['Ballsave Timer']
@@ -404,6 +418,7 @@ class BaseGameMode(game.Mode):
 
     def sw_startButton_active(self, sw):
         if self.game.ball == 1 and len(self.game.players)<self.game.max_players:
+            self.game.animations.space_pinball_welcome()
             p = self.game.add_player()
             self.game.set_status(p.name + " added")
 
@@ -612,6 +627,7 @@ class Game(game.BasicGame):
         self.switchedCoils = SwitchedCoils(self,4)
         #effects mode
         self.effects = Effects(self)
+        self.animations = Animations(self)
         #match mode
         self.match = Match(self,10)
         #updown ding
@@ -645,6 +661,7 @@ class Game(game.BasicGame):
         self.modes.add(self.ball_save)
         self.modes.add(self.trough)
         self.modes.add(self.effects)
+        self.modes.add(self.animations)
 
 
     # Empty callback just incase a ball drains into the trough before another

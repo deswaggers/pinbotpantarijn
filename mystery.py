@@ -30,7 +30,7 @@ class Mystery(game.Mode):
              #self.game.lampctrl.register_show('mystery_show', lampshow_path+"mystery.lampshow")
 
 
-             self.mysterylist =['500.000','1 Million','Extra Ball','Ramp Value 200.000']
+             self.mysterylist =['50.000','100.000','Extra Ball','200.000', '150.000']
              self.temp_list =[]
 
              self.choice = 0
@@ -131,17 +131,21 @@ class Mystery(game.Mode):
             # assignment off the awards,
             # first ideas: ['500.000','1 Million','Extra Ball','Ramp Value 200.000']
             if option==self.mysterylist[0]: # 500.000
-                print("Mystery award: 500.000")
-                self.game.score(500000)
-            elif option==self.mysterylist[1]: # 1 million
+                print("Mystery award: 50.000")
+                self.game.score(50000)
+            elif option==self.mysterylist[1]: # 100.000
                 print("Mystery award: 1 million")
-                self.game.score(1000000)
+                self.game.score(100000)
             elif option==self.mysterylist[2]: #Extra Ball
                 print("Mystery award: Extra Ball")
-                pass
-            elif option==self.mysterylist[3]: #Ramp value 200.000
-                print("Mystery award: Ramp Value 200.000")
-                pass
+                self.game.extra_ball_count()
+                self.game.sound.play("speech_2017_extraball")
+            elif option==self.mysterylist[3]: # 200.000
+                print("Mystery award: 200.000")
+                self.game.score(200000)
+            elif option==self.mysterylist[3]: # 250.000
+                print("Mystery award: 250.000")
+                self.game.score(250000)
 
         def mystery_end(self):
              self.clear_layer()

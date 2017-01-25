@@ -13,18 +13,12 @@ class Droptargets(game.Mode):
 
         def __init__(self, game, priority):
                 super(Droptargets, self).__init__(game, priority)
-				#Dit hoeft niet meer omdat alle geluiden nu worden geregistreerd in general_play
-                #self.game.sound.register_sound('bumper1', sound_path+"lasergun1.wav")
-                #self.game.sound.register_sound('bumper2', sound_path+"lasergun2.wav")
-                #self.game.sound.register_sound('bumper3', sound_path+"lasergun3.wav")
                 
 
         def mode_started(self):
                 self.dropscount=0
                 self.game.effects.drive_lamp('drops','medium')
                 self.drops_reset()
-##                self.energyscore=0
-##                self.dropscount=0
 
         def mode_stopped(self):
                 pass
@@ -36,7 +30,7 @@ class Droptargets(game.Mode):
                 self.dropscount=0
                 self.drop_timer = 0
                 self.game.effects.drive_lamp('drops','medium')
-                
+                self.update_lamps()
 
 
         def drops_check(self):
@@ -47,25 +41,31 @@ class Droptargets(game.Mode):
                         #self.cancel_delayed('drop_timer')
                         print "eerste droptarget"
                         self.delay(name='drop_timer', event_type=None, delay=6, handler=self.drops_reset)
-                        
+                        self.game.animations.space_ship_shoots(score=200)
                         
                 elif self.dropscount==1:
                         self.dropscount=2
                         self.game.score(1000)
                         #self.cancel_delayed('drop_timer')
                         self.delay(name='drop_timer', event_type=None, delay=6, handler=self.drops_reset)
+                        self.game.animations.space_ship_shoots(score=1000)
                         print "2e droptarget"
 
                 elif self.dropscount==2:
                         self.game.score(10000)
                         print "3e droptarget"
+                        self.game.animations.space_ship_crashes(score=10000)
                         self.cancel_delayed('drop_timer')
                         self.drops_reset()
-                self.game.sound.play("sound_lasergun1")
+
                 self.update_lamps()
 
         def update_lamps(self):
-                if self.game.switches.droptarget1.is_active() or self.game.switches.droptarget2.is_active() or self.game.switches.droptarget3.is_active():
+                if self.dropscount==0:
+                        self.game.effects.drive_lamp('droptop','slow')
+                        self.game.effects.drive_lamp('dropmid','slow')
+                        self.game.effects.drive_lamp('dropbottom','slow')
+                elif self.game.switches.droptarget1.is_active() or self.game.switches.droptarget2.is_active() or self.game.switches.droptarget3.is_active():
                         if self.game.switches.droptarget1.is_active():
                                 self.game.effects.drive_lamp('droptop','on')
                         elif self.drop_timer >= 4:
@@ -92,20 +92,19 @@ class Droptargets(game.Mode):
                                 self.game.effects.drive_lamp('dropbottom','medium')
                         else:
                                 self.game.effects.drive_lamp('dropbottom','slow')
-                else:
-                        self.game.effects.drive_lamp('drops','slow')
+                        self.game.effects.drive_lamp('drops','fast')
                 # We weten niet zeker of "self.drop_timer >= 2" werkt. Zo niet moeten we een nieuwe delay aanmaken die de lampjes regelt.
                         
                 
 ## switches
                 
-        def sw_droptarget1_active_for_200ms(self,sw):
+        def sw_droptarget1_active_for_70ms(self,sw):
                 self.drops_check()
 
-        def sw_droptarget2_active_for_200ms(self,sw):
+        def sw_droptarget2_active_for_70ms(self,sw):
                 self.drops_check()
 
-        def sw_droptarget3_active_for_200ms(self,sw):
+        def sw_droptarget3_active_for_70ms(self,sw):
                 self.drops_check()
         
 
