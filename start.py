@@ -133,7 +133,7 @@ class Attract(game.Mode):
 
 [Begeleiding:]
 [Steven van der Staaij]
-[Tein van der Lugt - Git]
+[Git by Tein van der Lugt]
 
 [Rules and software: ]
 [Sytse, Luuk, Wouter]
@@ -143,8 +143,8 @@ class Attract(game.Mode):
 [Thijs]
 
 [Music & SFX: ]
-[Piano - Jay]
-[Edit - Wouter]
+[Piano by Jay]
+[Edit by Wouter]
 [Koen, Sebastiaan, Melle]
 
 [Backglass and poster:]
@@ -175,11 +175,11 @@ class Attract(game.Mode):
     def attract_display(self):
             script = list()
 
-            script.append({'seconds':5.5, 'layer':self.williams_logo})
+            script.append({'seconds':4.5, 'layer':self.williams_logo})
             script.append({'seconds':2.8, 'layer':self.space_pinball})
             #script.append({'seconds':2.5, 'layer':self.coins_layer})
             script.append({'seconds':2.0, 'layer':self.vwoxtra_layer})
-            script.append({'seconds':25.0, 'layer':self.credits_layer})
+            script.append({'seconds':26.5, 'layer':self.credits_layer})
             script.append({'seconds':4.5, 'layer':self.last_scores_layer})
             script.append({'seconds':2.8, 'layer':self.space_pinball})
             # script.append({'seconds':2.0, 'layer':self.game_over_layer})
