@@ -17,7 +17,6 @@ class Droptargets(game.Mode):
 
         def mode_started(self):
                 self.dropscount=0
-                self.game.effects.drive_lamp('drops','medium')
                 self.drops_reset()
 
         def mode_stopped(self):
@@ -92,7 +91,6 @@ class Droptargets(game.Mode):
                                 self.game.effects.drive_lamp('dropbottom','medium')
                         else:
                                 self.game.effects.drive_lamp('dropbottom','slow')
-                        self.game.effects.drive_lamp('drops','fast')
                 # We weten niet zeker of "self.drop_timer >= 2" werkt. Zo niet moeten we een nieuwe delay aanmaken die de lampjes regelt.
                         
                 

@@ -88,6 +88,7 @@ class Mode1(game.Mode):
                 self.text_layer.set_text("EXTRA 5 SECONDS, " +str(self.time_left)+ "LEFT",True)
                 self.layer = dmd.GroupedLayer(128, 32, [self.text_layer])
                 self.game.sound.play("sound_hand-clap-echo")
+                return procgame.game.SwitchStop
 
 # Als de bal draint tijdens de mode:
         def sw_outhole_active(self, sw):

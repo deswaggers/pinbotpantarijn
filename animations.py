@@ -42,7 +42,7 @@ class Animations(game.Mode):
 
     def space_ship_shoots(self, score=100, cleartime=1):
         self.text_layer = dmd.TextLayer(126, 8, self.game.fonts['num_09Bx7'], "right", opaque=False)
-        self.text_layer.set_text(str(score)+ "POINTS",True)
+        self.text_layer.set_text(str(score),True)
         self.game.sound.play("sound_2017_lasershot")
         self.animation_layer = dmd.AnimatedLayer(frames=dmd.Animation().load(dmd_path+'schietende_raket_2frames.dmd').frames, opaque=False, repeat=True, hold=False, frame_time=10)
         self.animation_layer.composite_op = "blacksrc"
@@ -52,15 +52,15 @@ class Animations(game.Mode):
 
     def space_ship_crashes(self, score=100, cleartime=4):
         self.text_layer.set_text(str(score),True)
-        self.game.sound.play("sound_2017_explosion")
+        self.delay(name='playSound', event_type=None, delay=1, handler=self.game.sound.play("sound_2017_explosion"))
         self.animation_layer = dmd.AnimatedLayer(frames=dmd.Animation().load(dmd_path+'neerstortende_raket_25frames.dmd').frames, opaque=False, repeat=False, hold=True, frame_time=5)
         self.animation_layer.composite_op = "blacksrc"
         self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer,self.text_layer])
         self.delay(name='clearLayer', event_type=None, delay=cleartime, handler=self.clear_layer)
 
     def space_ship_leaves(self, score=100, cleartime=4):
-        self.text_layer.set_text(str(score)+"POINTS",True)
-        self.game.sound.play("sound_2017_one_step_for_man")
+        self.text_layer.set_text(str(score),True)
+        self.game.sound.play("sound_2017_spaceship_start")
         self.animation_layer = dmd.AnimatedLayer(frames=dmd.Animation().load(dmd_path+'vertrekkende_raket_langs_planeet_22frames.dmd').frames, opaque=False, repeat=False, hold=False, frame_time=8)
         self.animation_layer.composite_op = "blacksrc"
         self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer,self.text_layer])
