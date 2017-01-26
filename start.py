@@ -136,24 +136,23 @@ class Attract(game.Mode):
 [Tein van der Lugt - Git]
 
 [Rules and software: ]
-[Sytse, Luuk,Wouter]
+[Sytse, Luuk, Wouter]
 [Viktor, Jouke, Steven]
 
 [Dots & Animations: ]
 [Thijs]
 
 [Music & SFX: ]
-[Piano: Jay]
-[Edit: Wouter]
+[Piano - Jay]
+[Edit - Wouter]
 [Koen, Sebastiaan, Melle]
 
 [Backglass and poster:]
-[Eva,Kirsten]
+[Eva, Kirsten]
 
 [Basics, modestart and more]
-[Tein, Mees, Ket, Alvin]
-[and Corijn]
-
+[Tein, Mees, Ket]
+[Alvin, Corijn]
 """)
 
                 self.credits_layer = dmd.PanningLayer(width=128, height=32, frame=credits_frame, origin=(0,0), translate=(0,1), bounce=False)
@@ -177,12 +176,12 @@ class Attract(game.Mode):
             script = list()
 
             script.append({'seconds':5.5, 'layer':self.williams_logo})
-            script.append({'seconds':2.5, 'layer':self.space_pinball})
+            script.append({'seconds':2.8, 'layer':self.space_pinball})
             #script.append({'seconds':2.5, 'layer':self.coins_layer})
             script.append({'seconds':2.0, 'layer':self.vwoxtra_layer})
-            script.append({'seconds':22.0, 'layer':self.credits_layer})
+            script.append({'seconds':25.0, 'layer':self.credits_layer})
             script.append({'seconds':4.5, 'layer':self.last_scores_layer})
-            script.append({'seconds':2.0, 'layer':self.space_pinball})
+            script.append({'seconds':2.8, 'layer':self.space_pinball})
             # script.append({'seconds':2.0, 'layer':self.game_over_layer})
             script.append({'seconds':3.0, 'layer':self.high_scores_layer})
 
