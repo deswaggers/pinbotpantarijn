@@ -86,7 +86,7 @@ class Attract(game.Mode):
 
                 # create dmd attract screens
                 self.williams_logo = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/williams_animated.dmd').frames,frame_time=1,hold=True)
-                self.space_pinball = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/welcome_space_pinball.dmd').frames, opaque=False, repeat=True, hold=False, frame_time=3))
+                self.space_pinball = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/welcome_space_pinball.dmd').frames, opaque=False, repeat=True, hold=False, frame_time=3)
 
                 # self.press_start = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("PRESS START", seconds=None, blink_frames=1)
                 # self.free_play = dmd.TextLayer(128/2, 6, font_09Bx7, "center", opaque=False).set_text("FREE PLAY")
