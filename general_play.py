@@ -55,7 +55,7 @@ class Generalplay(game.Mode):
         #self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker',
         #                 'music_mario_invincible', 'music_interstellarcornfieldchase', 'music_starwars_theme',
         #                 'music_imperialmarch', 'music_starwars_cantina_band']
-        self.musicjes = ['music_2017_Jay_Wouter_Knight_of_Cyd']
+        self.musicjes = ['music_2017_Jay_Wouter_Knight_of_Cyd',"2017_Jay_Wouter_New_born_1", "2017_Jay_Wouter_New_born_2"]
 
     def reset(self):
         pass
