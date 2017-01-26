@@ -23,9 +23,7 @@ class EjectModestart(game.Mode):
         super(EjectModestart, self).__init__(game, priority)
         self.planets = ['planet1', 'planet2', 'planet3', 'planet4', 'planet5',
                         'planet6', 'planet7', 'planet8', 'planet9']
-        self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker', 
-                         'music_mario_invincible', 'music_interstellarcornfieldchase', 'music_starwars_theme', 
-                         'music_imperialmarch', 'music_starwars_cantina_band']
+        self.musicjes = ['music_2017_Jay_Wouter_Knight_of_Cyd',"2017_Jay_Wouter_New_born_1", "2017_Jay_Wouter_New_born_2"]
 
     def mode_started(self):
         print "ejectmodestart started"
@@ -33,7 +31,9 @@ class EjectModestart(game.Mode):
         self.Mode2_object = Mode2(self.game, 51)
         self.Mode3_object = Mode3(self.game, 52)
         self.Mode4_object = Mode4(self.game, 53)
-        self.Mode5_object = Mode5(self.game, 54)
+        self.Mode5_object = Mode2(self.game, 54) #2e keer de Mysterymode
+
+        self.Mode7_object = Mode2(self.game, 55) #3e keer de Mysterymode
 
         self.game.current_player().eject_mode_object = self
 
@@ -47,13 +47,14 @@ class EjectModestart(game.Mode):
             self.modes.append(self.Mode3_object)
             self.modes.append(self.Mode4_object)
             self.modes.append(self.Mode5_object)
+            self.modes.append(self.Mode6_object)
 
             del self.played_modes[:]
 
             print "Reset modes and played modes"
         self.mode_enabled = True
         self.random_next()
-        # self.game.lampctrl.register_show('startmode', lampshow_path + "Planeten_short_flasher.lampshow")
+        self.game.lampctrl.register_show('startmode', lampshow_path + "Planeten_short.lampshow")
         self.update_lamps()
 
     def sw_eject_active_for_500ms(self, sw):
@@ -61,17 +62,23 @@ class EjectModestart(game.Mode):
         if self.mode_enabled:
             if not self.game.current_player().mode_running:
                 # Effects and score
+                self.game.effects.gi_off()
                 self.game.sound.fadeout_music(500)
-                # self.game.lampctrl.play_show('startmode', repeat=False)
+                self.game.lampctrl.play_show('startmode', repeat=True)
                 self.game.sound.play("sound_evillaugh")
                 self.game.score(2500)
-
+                self.delay(name='GI_on', event_type=None, delay=1.8, handler=self.GI_on)
                 self.start_mode(self.next_mode)
                 self.game.current_player().mode_running = True
             else:
                 self.game.score(2500)
                 self.game.effects.eject_ball('eject')
         self.update_lamps()
+
+    def GI_on(self):
+        self.game.lampctrl.stop_show()
+        self.update_lamps()
+        self.game.effects.gi_on()
 
     def mode_running_changed(self, mode_running):
         print "mode running changed"

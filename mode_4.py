@@ -21,7 +21,6 @@ class Mode4(game.Mode):
         self.instruction_layer = dmd.TextLayer(30, 20, self.game.fonts['num_07x4'], opaque=False)
         self.timer_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
 
-        self.display_instructions()
         self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)
         self.rampCount=0
         self.game.sound.play("sound_2017_houston_we_got")
@@ -30,7 +29,7 @@ class Mode4(game.Mode):
 
     def startmode2(self):
         self.game.effects.eject_ball('eject')
-        self.game.sound.play_music('music_starwars_imperialmarch', loops=-1)
+        self.game.sound.play_music('music_2017_creepy_alien_music', loops=-1)
         self.flash_upper()
         self.time_left=24
         self.countdown()
@@ -43,11 +42,8 @@ class Mode4(game.Mode):
             self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
 
 
-    def display_instructions(self):
-        self.instruction_layer.set_text('First instructions here')
-        self.layer = self.instruction_layer
-
     def sw_outhole_active(self, sw):
+        self.cancel_delayed("flashramps")
         self.game.current_player().stop_eject_mode_mode(self)
         return procgame.game.SwitchStop
 
@@ -66,6 +62,8 @@ class Mode4(game.Mode):
 
     def countdown(self): 
         self.time_left-=1
+        if self.time_left == 20:
+            self.game.sound.play("2017_shoot_the_ramp")
         # Roep de functie shoot_bumpers_animation aan. Dit doet ie dus elke seconde. Ook even de flasher bij de pop-bumpers flashen
         self.showTime()
         if self.time_left==6:
@@ -78,20 +76,20 @@ class Mode4(game.Mode):
 
     def flash_upper(self):
         self.game.effects.upperPlayfield_flash()
-        self.game.effects.leftPlayfield_flash()
+        self.game.effects.leftPlayfield_flash() #weg vanwege spoelen die mee gaan?
         self.delay(name='flashramps', event_type=None, delay=1, handler=self.flash_upper)
-        
-            
+
         
     def endmode(self):
         self.game.current_player().stop_eject_mode_mode(self)
 
     def showTime(self):
+        self.instruction_layer.set_text('Shoot the ramp ' + str(3-self.rampCount) + ' more times')
         self.timer_layer.set_text('TIME LEFT: '+ str(self.time_left),True)
         anim = dmd.Animation().load(dmd_path+'life_bar.dmd') # Een dmd bestand bestaat uit frames van plaatjes die zijn omgezet in iets leesbaars voor PROCGAME
         self.lifebar_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.time_left])
         self.lifebar_layer.composite_op = "blacksrc"
-        self.layer = dmd.GroupedLayer(128, 32, [self.lifebar_layer,self.timer_layer])
+        self.layer = dmd.GroupedLayer(128, 32, [self.lifebar_layer,self.timer_layer, self.instruction_layer])
         
 
 

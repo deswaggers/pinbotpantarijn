@@ -68,7 +68,7 @@ class Animations(game.Mode):
 
     def saturnus(self, score=100):
         self.text_layer.set_text(str(score),True)
-        self.game.sound.play("sound_2017_spaceship_start")
+        self.game.sound.play("sound_2017_biem")
         anim = dmd.Animation().load(dmd_path+'saturnusbmp.dmd')
         self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=8)
         self.animation_layer.composite_op = "blacksrc"

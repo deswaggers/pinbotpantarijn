@@ -89,7 +89,7 @@ class Mystery(game.Mode):
             self.inform_player()
 
         def start_feature(self):
-             # Mystery feature started from general_play.py
+             # Mystery feature started from mystery.py
 
              #stop music, play sound and light
              self.game.sound.fadeout_music(time_ms=100)

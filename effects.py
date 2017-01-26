@@ -176,7 +176,7 @@ class Effects(game.Mode):
         self.game.coils.trough.schedule(schedule=0x0f00f00f, cycle_seconds=time, now=False)
     def leftPlayfield_flash(self, time=1):
         self.game.coils.Solenoidselect.schedule(schedule=0xffffffff, cycle_seconds=time, now=False)
-        self.game.coils.Lejecthole_LeftPlFlash.schedule(schedule=0xf00f00f0, cycle_seconds=time, now=False)
+        self.game.coils.Lejecthole_LeftPlFlash.schedule(schedule=0x00f00f00, cycle_seconds=time, now=False)
 
 
 
