@@ -213,6 +213,7 @@ class Generalplay(game.Mode):
 
     def sw_advanceplanet_active(self,sw):
         self.game.animations.saturnus(score=1000)
+        self.game.score(1000)
 
     def sw_rampexit_active(self,sw):
         self.game.animations.space_ship_leaves(score=1000*self.rampTimes)
