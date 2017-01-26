@@ -54,7 +54,7 @@ class EjectModestart(game.Mode):
             print "Reset modes and played modes"
         self.mode_enabled = True
         self.random_next()
-        self.game.lampctrl.register_show('startmode', lampshow_path + "Planeten_short.lampshow")
+        self.game.lampctrl.register_show('startmode', lampshow_path + "Planeten_short_flasher.lampshow")
         self.update_lamps()
 
     def sw_eject_active_for_500ms(self, sw):
