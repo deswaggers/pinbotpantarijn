@@ -28,12 +28,12 @@ class Droptargets(game.Mode):
                 self.game.coils.Drops_RightInsBFlash.pulse(120)
                 self.dropscount=0
                 self.drop_timer = 0
-                self.game.effects.drive_lamp('drops','medium')
+                #self.game.effects.drive_lamp('drops','medium')
                 self.update_lamps()
 
 
         def drops_check(self):
-                self.game.effects.drive_lamp('drops','off')
+                #self.game.effects.drive_lamp('drops','off')
                 if self.dropscount==0:
                         self.dropscount=1
                         self.game.score(200)

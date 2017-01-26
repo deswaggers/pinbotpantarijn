@@ -52,10 +52,10 @@ class Generalplay(game.Mode):
         self.register_all_sounds()
         self.game.lampctrl.register_show('rampenter_show', lampshow_path+"rampenter.lampshow")
         
-        self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker', 
-                         'music_mario_invincible', 'music_interstellarcornfieldchase', 'music_starwars_theme', 
-                         'music_imperialmarch', 'music_starwars_cantina_band']
-
+        #self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker',
+        #                 'music_mario_invincible', 'music_interstellarcornfieldchase', 'music_starwars_theme',
+        #                 'music_imperialmarch', 'music_starwars_cantina_band']
+        self.musicjes = ['music_2017_Jay_Wouter_Knight_of_Cyd']
 
     def reset(self):
         pass
@@ -168,7 +168,6 @@ class Generalplay(game.Mode):
     def sw_shooterLane_open_for_100ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
         self.game.coils.LvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=1, now=True)
-        # self.game.sound.play_music('music_hitchhiker', loops=-1)
         self.game.animations.space_ship_flies()
 
     def sw_outhole_active_for_500ms(self, sw):
