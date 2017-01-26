@@ -47,7 +47,7 @@ class EjectModestart(game.Mode):
             self.modes.append(self.Mode3_object)
             self.modes.append(self.Mode4_object)
             self.modes.append(self.Mode5_object)
-            self.modes.append(self.Mode6_object)
+            self.modes.append(self.Mode7_object)
 
             del self.played_modes[:]
 
