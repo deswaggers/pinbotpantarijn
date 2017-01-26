@@ -130,7 +130,7 @@ class Mystery(game.Mode):
 
             # assignment off the awards,
             # first ideas: ['500.000','1 Million','Extra Ball','Ramp Value 200.000']
-            if Treu: #option==self.mysterylist[0]: # 500.000
+            if True: #option==self.mysterylist[0]: # 500.000
                 print("Mystery award: Extra Ball")
                 self.game.extra_ball_count()
                 self.game.sound.play("speech_2017_extraball")
