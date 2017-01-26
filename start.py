@@ -86,7 +86,7 @@ class Attract(game.Mode):
 
                 # create dmd attract screens
                 self.williams_logo = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/williams_animated.dmd').frames,frame_time=1,hold=True)
-                self.space_pinball = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/welcome_space_pinball.dmd').frames, opaque=False, repeat=True, hold=False, frame_time=3)
+                self.space_pinball = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/welcome_space_pinball.dmd').frames, opaque=False, repeat=True, hold=False, frame_time=7)
 
                 # self.press_start = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("PRESS START", seconds=None, blink_frames=1)
                 # self.free_play = dmd.TextLayer(128/2, 6, font_09Bx7, "center", opaque=False).set_text("FREE PLAY")
@@ -132,17 +132,12 @@ class Attract(game.Mode):
 [Steven van der Staaij]
 
 [Begeleiding:]
-
 [Steven van der Staaij]
 [Tein van der Lugt - Git]
 
 [Rules and software: ]
-[Sytse]
-[Luuk]
-[Wouter]
-[Viktor]
-[Jouke]
-[Steven]
+[Sytse, Luuk,Wouter]
+[Viktor, Jouke, Steven]
 
 [Dots & Animations: ]
 [Thijs]
@@ -150,13 +145,10 @@ class Attract(game.Mode):
 [Music & SFX: ]
 [Piano: Jay]
 [Edit: Wouter]
-[Koen]
-[Sebastiaan]
-[Melle]
+[Koen, Sebastiaan, Melle]
 
 [Backglass and poster:]
-[Eva]
-[Kirsten]
+[Eva,Kirsten]
 
 [Basics, modestart and more]
 [Tein, Mees, Ket, Alvin]
@@ -184,11 +176,11 @@ class Attract(game.Mode):
     def attract_display(self):
             script = list()
 
-            script.append({'seconds':5.0, 'layer':self.williams_logo})
-            script.append({'seconds':2.0, 'layer':self.space_pinball})
+            script.append({'seconds':5.5, 'layer':self.williams_logo})
+            script.append({'seconds':2.5, 'layer':self.space_pinball})
             #script.append({'seconds':2.5, 'layer':self.coins_layer})
-            script.append({'seconds':3.5, 'layer':self.vwoxtra_layer})
-            script.append({'seconds':20.0, 'layer':self.credits_layer})
+            script.append({'seconds':2.0, 'layer':self.vwoxtra_layer})
+            script.append({'seconds':22.0, 'layer':self.credits_layer})
             script.append({'seconds':4.5, 'layer':self.last_scores_layer})
             script.append({'seconds':2.0, 'layer':self.space_pinball})
             # script.append({'seconds':2.0, 'layer':self.game_over_layer})
@@ -197,7 +189,7 @@ class Attract(game.Mode):
 
             for frame in highscore.generate_highscore_frames(self.game.highscore_categories):
                 new_layer = dmd.FrameLayer(frame=frame)
-                new_layer.transition = dmd.PushTransition(direction='west')
+                new_layer.transition = dmd.PushTransition(direction='north')
                 script.append({'seconds':2.0, 'layer':new_layer})
 
             #add in the game over screen
