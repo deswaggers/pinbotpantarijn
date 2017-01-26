@@ -64,7 +64,7 @@ class Match(game.Mode):
         def play_anim(self):
 
             anim = dmd.Animation().load(dmd_path+'vertrekkende_raket_langs_planeet_22frames.dmd')
-            self.animation_layer = dmd.AnimatedLayer(frames=anim.frames,opaque=False, opaque=False, repeat=False, hold=False, frame_time=4))
+            self.animation_layer = dmd.AnimatedLayer(frames=anim.frames,opaque=False, opaque=False, repeat=False, hold=False, frame_time=4)
             self.animation_layer.composite_op = "blacksrc"
             self.animation_layer.add_frame_listener(15,self.generate_match)
             #set display layer
