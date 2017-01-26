@@ -257,7 +257,6 @@ class Attract(game.Mode):
     # initiates a ball search.
     def sw_startButton_active(self, sw):
         if self.game.trough.is_full:
-            self.game.animations.space_pinball_welcome(5)
             # Remove attract mode from mode queue - Necessary?
             self.game.modes.remove(self)
             # Initialize game

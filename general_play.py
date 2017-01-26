@@ -61,9 +61,7 @@ class Generalplay(game.Mode):
         pass
 
     def mode_started(self):
-
-        startanim = dmd.Animation().load(dmd_path+'astronaut.dmd')
-
+        self.rampTimes = 1
         self.game.modes.add(self.ejectModestart_rules)
 
         self.game.modes.add(self.bumper_rules)
@@ -71,13 +69,11 @@ class Generalplay(game.Mode):
         self.game.modes.add(self.droptarget_rules)
 
         if self.game.ball==1:
-            self.animation_layer = dmd.AnimatedLayer(frames=startanim.frames, opaque=False, repeat=False, hold=False, frame_time=1)
-            self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
-            self.delay(name='clear_layer', event_type=None, delay=4, handler=self.clear_layer)
+            self.game.animations.space_pinball_welcome()
         
         
         self.game.sound.play_music(random.choice(self.musicjes), loops=-1)
-        self.game.sound.play('speech_welcome')
+        #self.game.sound.play('speech_welcome')
         print "general play gestart"
 
     def clear_layer(self):
@@ -161,10 +157,10 @@ class Generalplay(game.Mode):
                     self.game.effects.drive_lamp('planet' + str(x+2), 'medium')
         #Steven (ook kan: if self.game.ramp_move.ramp_up:
         # wel gaan hier problemen komen met modes: als die ook de lampjes willen aansturen....daarnaast gaat de lampupdate niet vaak genoeg
-        if self.game.current_player().mode_running:
-            self.game.effects.drive_lamp('advance_planet','medium')
-        else:
-            self.game.effects.drive_lamp('advance_planet','off')
+        #if self.game.current_player().mode_running:
+        self.game.effects.drive_lamp('advance_planet','medium')
+        #else:
+        #    self.game.effects.drive_lamp('advance_planet','off')
 
 
 
@@ -216,15 +212,11 @@ class Generalplay(game.Mode):
 
 
     def sw_advanceplanet_active(self,sw):
-        anim = dmd.Animation().load(dmd_path+'saturnus.dmd')
-        self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=6)
-        self.animation_layer.composite_op = "blacksrc"
-        self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
-    def sw_rampenter_active(self,sw):
-        anim = dmd.Animation().load(dmd_path+'saturnusbmp.dmd')
-        self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=8)
-        self.animation_layer.composite_op = "blacksrc"
-        self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
+        self.game.animations.saturnus(score=1000)
+
+    def sw_rampexit_active(self,sw):
+        self.game.animations.space_ship_leaves(score=1000*self.rampTimes)
+        self.rampTimes+=1
 
     def sw_startButton_active_for_1s(self, sw):
         if self.game.switches.flipperLwR.is_active(1):

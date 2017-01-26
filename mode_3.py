@@ -20,10 +20,12 @@ class Mode3(game.Mode):
         self.timer_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.hitCount_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.score_layer = dmd.TextLayer(8, 8, self.game.fonts['07x5'], "left", opaque=False)
-        self.balingat=0
-        self.modeScore=420000
+        self.balingat = 0
+        self.health = 0
+        self.scoreLevel = 0
+        self.modeScore = 420000
         self.schepenkapot = 0
-        self.time_left=48
+        self.time_left = 48
         self.update_lamps()
         self.countdown()
         
@@ -63,11 +65,12 @@ class Mode3(game.Mode):
         if self.health <=0:
             self.game.sound.play("sound_2017_biem")
             self.schepenkapot += 1
-            self.game.score(self.modeScore*self.schepenkapot)
+            self.scoreLevel = self.modeScore*self.schepenkapot
+            self.game.score(self.scoreLevel)
         else:
             self.game.sound.play("sound_outlane")
         if self.schepenkapot>2:
-            self.endmode()
+            self.delay(name='einde_mode', event_type=None, delay=2, handler=self.endmode)
         else:
             self.countdown()
         self.game.effects.eject_ball('eject')
@@ -85,7 +88,8 @@ class Mode3(game.Mode):
             else:
                 self.balingat=0
                 self.cancel_delayed('tijd')
-                self.endTime()
+                self.game.animations.space_ship_crashes(score=self.scoreLevel)
+                self.delay(name='tijd', event_type=None, delay=3, handler=self.endTime)
     
     def sw_flipperLwL_active(self,sw):
         self.schot()
@@ -129,7 +133,9 @@ class Mode3(game.Mode):
         self.game.effects.drive_lamp('eject3','fast')
             
             
-
+    def sw_outhole_active(self, sw):
+        self.game.current_player().stop_eject_mode_mode(self)
+        return procgame.game.SwitchStop
 
         
         

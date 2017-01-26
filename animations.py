@@ -21,6 +21,12 @@ class Animations(game.Mode):
         self.text_layer = dmd.TextLayer(4, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.text_layer.set_text("",True)
 
+    def astronaut(self):
+        #self.game.sound.play('speech_welcome')
+        self.animation_layer = dmd.AnimatedLayer(frames=dmd.Animation().load(dmd_path+'astronaut.dmd').frames, opaque=False, repeat=False, hold=False, frame_time=1)
+        self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer])
+        self.delay(name='clear_layer', event_type=None, delay=4, handler=self.clear_layer)
+
     def space_pinball_welcome(self, cleartime=2):
         self.game.sound.play("sound_2017_launch_flight")
         self.space_pinball = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/welcome_space_pinball.dmd').frames, opaque=False, repeat=True, hold=False, frame_time=3))
@@ -43,12 +49,29 @@ class Animations(game.Mode):
         self.delay(name='clearLayer', event_type=None, delay=cleartime, handler=self.clear_layer)
 
     def space_ship_crashes(self, score=100, cleartime=4):
-        self.text_layer.set_text(str(score)+"POINTS",True)
+        self.text_layer.set_text(str(score),True)
         self.game.sound.play("sound_2017_explosion")
         self.animation_layer = dmd.AnimatedLayer(frames=dmd.Animation().load(dmd_path+'neerstortende_raket_25frames.dmd').frames, opaque=False, repeat=False, hold=True, frame_time=5)
         self.animation_layer.composite_op = "blacksrc"
         self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer,self.text_layer])
         self.delay(name='clearLayer', event_type=None, delay=cleartime, handler=self.clear_layer)
+
+    def space_ship_leaves(self, score=100, cleartime=4):
+        self.text_layer.set_text(str(score)+"POINTS",True)
+        self.game.sound.play("sound_2017_one_step_for_man")
+        self.animation_layer = dmd.AnimatedLayer(frames=dmd.Animation().load(dmd_path+'vertrekkende_raket_langs_planeet_22frames.dmd').frames, opaque=False, repeat=False, hold=False, frame_time=8)
+        self.animation_layer.composite_op = "blacksrc"
+        self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer,self.text_layer])
+        self.delay(name='clearLayer', event_type=None, delay=cleartime, handler=self.clear_layer)
+
+    def saturnus(self, score=100):
+        self.text_layer = dmd.TextLayer(26, 80, self.game.fonts['num_09Bx7'], "left", opaque=False)
+        self.text_layer.set_text(str(score)+"POINTS",True)
+        anim = dmd.Animation().load(dmd_path+'saturnusbmp.dmd')
+        self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=8)
+        self.animation_layer.composite_op = "blacksrc"
+        self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.text_layer])
+        self.text_layer = dmd.TextLayer(4, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
 
     def clear_layer(self):
         self.layer = None
