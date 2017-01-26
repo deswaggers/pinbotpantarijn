@@ -29,7 +29,7 @@ class Animations(game.Mode):
 
     def space_pinball_welcome(self, cleartime=2):
         self.game.sound.play("sound_2017_launch_flight")
-        self.space_pinball = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/welcome_space_pinball.dmd').frames, opaque=False, repeat=True, hold=False, frame_time=3))
+        self.space_pinball = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/welcome_space_pinball.dmd').frames, opaque=False, repeat=True, hold=False, frame_time=3)
         self.layer = dmd.GroupedLayer(128, 32, [self.space_pinball,self.text_layer])
         self.delay(name='clearLayer', event_type=None, delay=cleartime, handler=self.clear_layer)
 
