@@ -329,7 +329,7 @@ class BaseGameMode(game.Mode):
 
     def backup_ball_launch(self):
         if not self.game.switches.shooterLane.is_active():
-            self.effects.throw_ball_delay()
+            self.game.effects.throw_ball_delay()
             self.delay(name='ballCheck', event_type=None, delay=0.4, handler=self.backup_ball_launch)
  #   def throw_ball_delay(self):
  #       self.game.coils.trough.pulse(55)
