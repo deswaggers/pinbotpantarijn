@@ -219,6 +219,20 @@ class Generalplay(game.Mode):
         self.game.animations.space_ship_leaves(score=1000*self.rampTimes)
         self.rampTimes+=1
 
+    def sw_Loutlane_active(self,sw):
+        self.game.sound.play("sound_2017_failure_not_an_option")
+        self.game.score(50)
+    def sw_Routlane_active(self,sw):
+        self.game.sound.play("sound_2017_failure_not_an_option")
+        self.game.score(50)
+    def sw_Rinlane_active(self,sw):
+        self.game.sound.play("sound_2017_lasershot")
+        self.game.score(20)
+    def sw_Linlane_active(self,sw):
+        self.game.sound.play("sound_2017_lasershot")
+        self.game.score(20)
+
+
     def sw_startButton_active_for_1s(self, sw):
         if self.game.switches.flipperLwR.is_active(1):
             self.game.effects.release_stuck_balls()

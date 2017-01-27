@@ -18,14 +18,14 @@ class Mode4(game.Mode):
         super(Mode4, self).__init__(game, priority)
 
     def mode_started(self):
-        self.instruction_layer = dmd.TextLayer(30, 20, self.game.fonts['num_07x4'], opaque=False)
+        self.instruction_layer = dmd.TextLayer(8, 4, self.game.fonts['num_07x4'], "left", opaque=False)
         self.timer_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
 
         self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)
         self.rampCount=0
         self.game.sound.play("sound_2017_houston_we_got")
-        img = "images_for_beamer/shoot_ramp.png"
-        webbrowser.open(img)        
+        #img = "images_for_beamer/shoot_ramp.png"
+        #webbrowser.open(img)
 
     def startmode2(self):
         self.game.effects.eject_ball('eject')
