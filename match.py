@@ -62,7 +62,7 @@ class Match(game.Mode):
              self.p4_layer.set_text('')
 
         def play_anim(self):
-            self.game.sound.play("speech_2017_failure_not_an_option")
+            self.effects.play_sound_match()
             anim = dmd.Animation().load(dmd_path+'vertrekkende_raket_langs_planeet_22frames.dmd')
             self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
             self.animation_layer.composite_op = "blacksrc"

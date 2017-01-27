@@ -698,8 +698,7 @@ class Game(game.BasicGame):
         self.modes.add(seq_manager)
 
     def highscore_entry_ready_to_prompt(self, mode, prompt):
-        self.sound.register_sound('high_score', music_path+'mario_levelcomplete.wav')
-        self.sound.play_music('high_score')
+        self.effects.play_music_high_score()
         self.effects.flippers(True)
         banner_mode = game.Mode(game=self, priority=8)
         markup = dmd.MarkupFrameGenerator()

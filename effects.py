@@ -228,3 +228,14 @@ class Effects(game.Mode):
         self.release_stuck_balls()
 
 
+    def play_music_high_score(self):
+        print 'high score geluid moet nu spelen'
+        self.sound.register_sound('high', sound_path+'2017_trompet.wav')
+        self.game.sound.play('high')
+
+    def play_sound_match(self):
+        print 'match geluid moet nu spelen'
+        self.sound.register_sound('match', sound_path+'2017_gentlemen it has been a pleasure flying with you.wav')
+        self.game.sound.play('match')
+
+
