@@ -280,7 +280,7 @@ class BaseGameMode(game.Mode):
 
 
                 self.ball_saved = False
-                self.ball_save_time = self.game.user_settings['Gameplay (Feature)']['Ballsave Timer']
+                self.ball_save_time = 10 # self.game.user_settings['Gameplay (Feature)']['Ballsave Timer']
                 self.instant_info_on = False
 
     def mode_started(self):
@@ -311,7 +311,8 @@ class BaseGameMode(game.Mode):
 
         # Put the ball into play and start tracking it.
         self.game.trough.launch_balls(1, self.ball_launch_callback)
-
+        self.delay(name='ballCheck', event_type=None, delay=1, handler=self.backup_ball_launch)
+        print "Bal moet nu afgeschoten worden, en anders pver 1 seconde alsnog"
         #Not SYS11: Enable ball search in case a ball gets stuck during gameplay.
         #self.game.ball_search.enable()
 
@@ -325,6 +326,11 @@ class BaseGameMode(game.Mode):
 
         #ball save callback - exp
         self.game.ball_save.callback = self.ball_save_callback
+
+    def backup_ball_launch(self):
+        if not self.game.switches.shooterLane.is_active():
+            self.game.effects.throw_ball_delay()
+            self.delay(name='ballCheck', event_type=None, delay=1, handler=self.backup_ball_launch)
 
     def add_basic_modes(self,ball_in_play):
 
@@ -429,7 +435,7 @@ class BaseGameMode(game.Mode):
     def sw_shooterLane_open_for_1s(self,sw):
         if self.ball_starting:
             self.ball_starting = False
-            #ball_save_time = 10 VIA MENU
+            ball_save_time = 10
             self.game.ball_save.start(num_balls_to_save=1, time=self.ball_save_time, now=True, allow_multiple_saves=False)
 
 
@@ -560,7 +566,7 @@ class Game(game.BasicGame):
 
         # Highscore sound
         # self.sound.register_sound('high score', speech_path+'bk2k_champion.wav')
-        self.sound.register_sound('high score', music_path+'galaxysong.wav')
+        self.sound.register_sound('high score', music_path+'mario_levelcomplete.wav')
 
         # Setup fonts
         self.fonts = {}
@@ -692,7 +698,7 @@ class Game(game.BasicGame):
         self.modes.add(seq_manager)
 
     def highscore_entry_ready_to_prompt(self, mode, prompt):
-        self.sound.play_music('music_mario_invincible')
+        self.sound.play_music('high score')
         self.effects.flippers(True)
         banner_mode = game.Mode(game=self, priority=8)
         markup = dmd.MarkupFrameGenerator()

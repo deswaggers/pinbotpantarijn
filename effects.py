@@ -199,7 +199,7 @@ class Effects(game.Mode):
         self.eject_ball()
 
     def throw_ball_delay(self):
-        self.delay(name='throw_ball' , event_type=None, delay=2, handler=self.game.coils.trough.pulse(55))
+        self.delay(name='throw_ball' , event_type=None, delay=0.4, handler=self.game.coils.trough.pulse(55))
 
     def eject_ball(self, location='all'):
         #self.game.coils.Solenoidselect.disable()
