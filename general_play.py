@@ -14,7 +14,7 @@ from procgame import *
 # Dit importeert alle regels tijdens het gewone spel. Modes worden in ejectmodestart gestart.
 from ejectmodestart import *
 from bumpers import *
-from visor import *
+#from visor import *
 from droptargets import *
 
 # all paths
@@ -37,7 +37,7 @@ class Generalplay(game.Mode):
         # op het normale spel moet hoger zijn, hieronder daarom voor 9,10,11,12 gekozen.
         self.ejectModestart_rules = EjectModestart(self.game, 9)
         self.bumper_rules = Bumpers(self.game, 10)
-        self.visor_rules = Visor(self.game, 11)
+        #self.visor_rules = Visor(self.game, 11)
         self.droptarget_rules = Droptargets(self.game, 12)
 
 
@@ -71,8 +71,9 @@ class Generalplay(game.Mode):
         if self.game.ball==1:
             self.game.animations.space_pinball_welcome()
         
-        
-        self.game.sound.play_music(random.choice(self.musicjes), loops=-1)
+        x = random.choice(self.musicjes)
+        print x
+        self.game.sound.play_music(x, loops=-1)
         #self.game.sound.play('speech_welcome')
         print "general play gestart"
 
