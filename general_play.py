@@ -216,9 +216,9 @@ class Generalplay(game.Mode):
         self.game.score(1000)
 
     def sw_rampexit_active(self,sw):
-        scroreRamp = 1000*self.rampTimes
+        scoreRamp = 1000*self.rampTimes
         self.game.score(scoreRamp)
-        self.game.animations.space_ship_leaves(score=scroreRamp)
+        self.game.animations.space_ship_leaves(score=scoreRamp)
         self.rampTimes+=1
 
     def sw_Loutlane_active(self,sw):
