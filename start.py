@@ -280,7 +280,7 @@ class BaseGameMode(game.Mode):
 
 
                 self.ball_saved = False
-                self.ball_save_time = 16 # self.game.user_settings['Gameplay (Feature)']['Ballsave Timer']
+                self.ball_save_time = 12 # self.game.user_settings['Gameplay (Feature)']['Ballsave Timer']
                 self.instant_info_on = False
 
     def mode_started(self):
@@ -438,7 +438,7 @@ class BaseGameMode(game.Mode):
     def sw_shooterLane_open_for_1s(self,sw):
         if self.ball_starting:
             self.ball_starting = False
-            ball_save_time = 16
+            self.ball_save_time = 11
             self.game.ball_save.start(num_balls_to_save=1, time=self.ball_save_time, now=True, allow_multiple_saves=False)
 
 

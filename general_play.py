@@ -217,6 +217,7 @@ class Generalplay(game.Mode):
 
     def sw_rampexit_active(self,sw):
         scroreRamp = 1000*self.rampTimes
+        self.game.score(scoreRamp)
         self.game.animations.space_ship_leaves(score=scroreRamp)
         self.rampTimes+=1
 
