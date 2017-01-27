@@ -23,7 +23,7 @@ class Visor(game.Mode):
                 self.colors = ['yellow', 'blue', 'orange', 'green', 'red']
                 self.game.lampctrl.play_show('lampshow_visor', repeat=True)
                 self.multiball = Multiball(self.game, 40)
-                self.game.current_player().visor_position='down' #dit wordt niet meer gebruikts
+                self.game.current_player().visor_position='down' #dit wordt niet meer gebruikt
                 self.update_lamps()
 ##                self.multiball.callback = self.mode_callback
                 
@@ -132,17 +132,3 @@ class Visor(game.Mode):
 ## Mode functions
         def start_multiball(self):
                self.game.modes.add(self.multiball) 
-                     
-## Animations
-                
-        def bumpers_animation(self):
-                pass
-##                self.title_layer = dmd.TextLayer(110, 2, self.game.fonts['num_09Bx7'], "center", opaque=False) #num_09Bx7 num_14x10
-##                self.title_layer.set_text(str(self.energyscore),True)  
-##                anim = dmd.Animation().load(dmd_path+'slings.dmd')
-##                self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
-##                self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.title_layer])
-##                self.delay(name='clear_layer', event_type=None, delay=3, handler=self.clear_layer)
-            
-        def clear_layer(self):
-             self.layer = None

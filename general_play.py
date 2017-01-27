@@ -1,14 +1,14 @@
 # General play
 # allerlei import: niet alles is nodig of wordt gebruikt: later op te schonen
 
-import random
+#import random
 import procgame
-import locale
-import logging
+#import locale
+#import logging
 from os import listdir, walk
 from os.path import join, splitext
-from time import time
-from random import randint
+#from time import time
+#from random import randint
 from procgame import *
 
 # Dit importeert alle regels tijdens het gewone spel. Modes worden in ejectmodestart gestart.
@@ -65,7 +65,7 @@ class Generalplay(game.Mode):
         self.game.modes.add(self.ejectModestart_rules)
 
         self.game.modes.add(self.bumper_rules)
-        self.game.modes.add(self.visor_rules)
+        #self.game.modes.add(self.visor_rules)
         self.game.modes.add(self.droptarget_rules)
 
         if self.game.ball==1:
@@ -128,7 +128,7 @@ class Generalplay(game.Mode):
     def mode_stopped(self):
         self.game.modes.remove(self.ejectModestart_rules)
         self.game.modes.remove(self.bumper_rules)
-        self.game.modes.remove(self.visor_rules)
+        #self.game.modes.remove(self.visor_rules)
         self.game.modes.remove(self.droptarget_rules)
 
         print 'generalplay stopped'
