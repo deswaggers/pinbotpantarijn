@@ -280,7 +280,7 @@ class BaseGameMode(game.Mode):
 
 
                 self.ball_saved = False
-                self.ball_save_time = 10 # self.game.user_settings['Gameplay (Feature)']['Ballsave Timer']
+                self.ball_save_time = 16 # self.game.user_settings['Gameplay (Feature)']['Ballsave Timer']
                 self.instant_info_on = False
 
     def mode_started(self):
@@ -329,8 +329,10 @@ class BaseGameMode(game.Mode):
 
     def backup_ball_launch(self):
         if not self.game.switches.shooterLane.is_active():
-            self.game.effects.throw_ball_delay()
+            self.throw_ball_delay()
             self.delay(name='ballCheck', event_type=None, delay=1, handler=self.backup_ball_launch)
+    def throw_ball_delay(self):
+        self.delay(name='throw_ball' , event_type=None, delay=0.4, handler=self.game.coils.trough.pulse(55))
 
     def add_basic_modes(self,ball_in_play):
 
@@ -435,7 +437,7 @@ class BaseGameMode(game.Mode):
     def sw_shooterLane_open_for_1s(self,sw):
         if self.ball_starting:
             self.ball_starting = False
-            ball_save_time = 10
+            ball_save_time = 16
             self.game.ball_save.start(num_balls_to_save=1, time=self.ball_save_time, now=True, allow_multiple_saves=False)
 
 
