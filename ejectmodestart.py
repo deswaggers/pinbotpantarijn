@@ -169,8 +169,8 @@ class EjectModestart(game.Mode):
             self.game.effects.drive_lamp('eject0', 'on')
         elif self.mode_enabled:
             self.game.effects.drive_lamp('eject0', 'medium')
-            self.game.effects.drive_lamp('score_energy', 'on')
-            self.game.effects.drive_lamp('solar_energy', 'on')
+            #self.game.effects.drive_lamp('score_energy', 'on')
+            #self.game.effects.drive_lamp('solar_energy', 'on')
         else:
             self.game.effects.drive_lamp('eject0', 'off')
             self.game.effects.drive_lamp('score_energy', 'medium')
@@ -189,3 +189,6 @@ class EjectModestart(game.Mode):
         else:
             # The self.next_mode mode will be the next to be played
             self.game.effects.drive_lamp(self.planets[self.next_mode], 'medium')
+
+        if self.game.current_player().extra_balls:
+            self.game.effects.drive_lamp('shootAgain','on')

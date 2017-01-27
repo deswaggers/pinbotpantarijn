@@ -18,7 +18,7 @@ class Mode4(game.Mode):
         super(Mode4, self).__init__(game, priority)
 
     def mode_started(self):
-        self.instruction_layer = dmd.TextLayer(8, 4, self.game.fonts['num_07x4'], "left", opaque=False)
+        self.instruction_layer = dmd.TextLayer(8, 4, self.game.fonts['num_09Bx7'], "left", opaque=False)
         self.timer_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
 
         self.delay(name='start_mode2', event_type=None, delay=2, handler=self.startmode2)

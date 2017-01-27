@@ -567,9 +567,6 @@ class Game(game.BasicGame):
         self.sound.register_sound('service_cancel', shared_sound_path+"sfx-menu-cancel.wav")
         self.service_mode = procgame.service.ServiceMode(self,100,font_tiny7,[])
 
-        # Highscore sound
-        # self.sound.register_sound('high score', speech_path+'bk2k_champion.wav')
-        self.sound.register_sound('high score', music_path+'mario_levelcomplete.wav')
 
         # Setup fonts
         self.fonts = {}
@@ -701,7 +698,8 @@ class Game(game.BasicGame):
         self.modes.add(seq_manager)
 
     def highscore_entry_ready_to_prompt(self, mode, prompt):
-        self.sound.play_music('high score')
+        self.sound.register_sound('high_score', music_path+'mario_levelcomplete.wav')
+        self.sound.play_music('high_score')
         self.effects.flippers(True)
         banner_mode = game.Mode(game=self, priority=8)
         markup = dmd.MarkupFrameGenerator()

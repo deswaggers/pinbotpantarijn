@@ -225,12 +225,13 @@ class Generalplay(game.Mode):
     def sw_Routlane_active(self,sw):
         self.game.sound.play("sound_2017_failure_not_an_option")
         self.game.score(50)
-    def sw_Rinlane_active(self,sw):
-        self.game.sound.play("sound_2017_lasershot")
-        self.game.score(20)
     def sw_Linlane_active(self,sw):
         self.game.sound.play("sound_2017_lasershot")
         self.game.score(20)
+    def sw_Rinlane_active(self,sw):
+        self.game.sound.play("sound_2017_lasershot")
+        self.game.score(20)
+
 
 
     def sw_startButton_active_for_1s(self, sw):
