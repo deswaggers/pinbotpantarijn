@@ -18,7 +18,7 @@ class Mode1(game.Mode):
 
         def mode_started(self):
 
-                # Hieronder worden 3 'lagen' gemaakt die later gebruikt worden voor op het scherm.
+                # Hieronder worden 3 objecten met ieder een 'laag' gemaakt die later gebruikt worden voor op het scherm.
                 # De lagen zijn nog niet gevuld, maar er wordt hier alleen gebruik gemaakt van text, en de plaats op het scherm van 128 bij 32 pixels wordt alvast bepaald,
                 # evenals de uitlijning (1 x gecentreerd en 2 keer links)
 
@@ -27,12 +27,36 @@ class Mode1(game.Mode):
                 self.text_layer = dmd.TextLayer(8, 20, self.game.fonts['num_09Bx7'], "left", opaque=False)
 
                 # update_lamps functie wordt aangeroepen om lampjes aan te zetten.
-
                 self.update_lamps()
 
+
+                # Op het display zetten we even wat de speler moet doen deze mode door de volgende functie te starten
+                self.display_instructions()
+
                 # eerst instructies in beeld, daarna na delay pas bal eruit gooien en mode beginnen. Delay is in seconden
-                # na 2 seconden
-                self.delay(name='Mode_start_na_eject', event_type=None, delay=2, handler=self.mode_start_na_eject)
+                # na 3 seconden. Na 3 seconden wordt de functie 'mode_start_na_eject' dus uitgevoerd door de 'handler' op het einde
+                self.delay(name='Mode_start_na_eject', event_type=None, delay=3, handler=self.mode_start_na_eject)
+
+
+        def display_instructions(self):
+
+                # Vul de eerder gemaakte 'text_layer' met de tekst 'BUMPERS SCORE POINTS' (dit lettertype kan alleen
+                # hoofdletters). raise_layer (hier geen logische naam) wordt gebruikt voor 'RAMP ADDS TIME'
+                self.text_layer.set_text('BUMPERS SCORE POINTS',True)
+                self.raise_layer.set_text('RAMP ADDS TIME',True)
+
+                # Maak een animatie-laag aan, waarin een plaatje wordt geladen. Voor nu een 'placeholder'-plaatje
+                anim = dmd.Animation().load(dmd_path+'DMD_Mode1_2.gif')  # Als het goed is kan ie ook rechtstreeks png-bestanden aan
+                self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=True, frame_time=4)
+
+                # zorg ervoor dat het 'zwart' in het plaatje doorzichtig wordt
+                self.animation_layer.composite_op = "blacksrc"
+
+                # self.layer laat het spel standaard zien. Nu maken we self.layer een 'groepslaag': een combinatie van
+                # 1 plaatje (de animation_layer) en twee tekstlagen
+                self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.text_layer, self.raise_layer])
+
+
 
         def mode_start_na_eject(self):
                 # De bal wordt uit het gat gegooid waar de mode is 'gestart' (linksboven)
