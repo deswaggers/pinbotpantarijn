@@ -117,22 +117,15 @@ class Attract(game.Mode):
 
 #CREDITS#
 [VWOxtra - Pinball:]
-[Sytse Backx]
-[Luuk Bartels]
-[Melle Bolding]
-[Eva Brouwers]
-[Kirsten Hagenaar]
-[Wouter Kortleve]
-[Koen Kranenburg]
-[Jay Loman]
-[Viktor Loomans]
-[Sebastiaan de Roos]
-[Jouke van Veen]
-[Thijs van Veluw]
+[Thijs van der Drift]
+[Floris van Hal]
+[Matthijs Kok]
+[Gust Verhees]
+
+[Teacher:]
 [Steven van der Staaij]
 
-[Begeleiding:]
-[Steven van der Staaij]
+[Software 2016]
 [Git by Tein van der Lugt]
 
 [Rules and software: ]
