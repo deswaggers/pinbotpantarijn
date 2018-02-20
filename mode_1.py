@@ -64,7 +64,7 @@ class Mode1(game.Mode):
 
                 # Muziek aan (er kan maar 1 muziekje tegelijk, geluiden afspelen kan wel met meerdere door elkaar.
                 # music_harp.wav zit in de map 'muziek' en wordt vanzelf ook herkend
-                self.game.sound.play_music('music_2017_Indiana_Jones_Theme_Song', loops=-1)
+                self.game.sound.play_music('music_2017_creepy_alien_music', loops=-1)
 
                 # variabelen worden aangemaakt
                 self.bumperscore=40  # dit wordt straks gebruikt bij elke keer dat een bumper wordt geraakt
