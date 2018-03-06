@@ -51,7 +51,7 @@ class Generalplay(game.Mode):
 
         self.register_all_sounds()
         self.game.lampctrl.register_show('rampenter_show', lampshow_path+"rampenter.lampshow")
-        
+
         #self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker',
         #                 'music_mario_invincible', 'music_interstellarcornfieldchase', 'music_starwars_theme',
         #                 'music_imperialmarch', 'music_starwars_cantina_band']
@@ -70,7 +70,7 @@ class Generalplay(game.Mode):
 
         if self.game.ball==1:
             self.game.animations.space_pinball_welcome()
-        
+
         x = random.choice(self.musicjes)
         print x
         self.game.sound.play_music(x, loops=-1)
@@ -169,7 +169,8 @@ class Generalplay(game.Mode):
     def sw_shooterLane_open_for_100ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
         self.game.coils.LvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=1, now=True)
-        self.game.animations.space_ship_flies()
+        self.game.sound.play("speech_Cartoon-10")
+        #self.game.animations.space_ship_flies()
 
     def sw_outhole_active_for_500ms(self, sw):
         self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
@@ -212,8 +213,9 @@ class Generalplay(game.Mode):
 
 
     def sw_advanceplanet_active(self,sw):
-        self.game.animations.saturnus(score=1000)
+        #self.game.animations.saturnus(score=1000)
         self.game.score(1000)
+        self.game.sound.play("sound_cartoon_swirl")
 
     def sw_rampexit_active(self,sw):
         scoreRamp = 1000*self.rampTimes
