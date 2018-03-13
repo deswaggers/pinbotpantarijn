@@ -220,6 +220,7 @@ class Generalplay(game.Mode):
 
     def sw_rampexit_active(self,sw):
         self.game.effects.ramp_up()
+        self.delay(name='Ramp_omlaag', event_type=None, delay=8.5, handler=self.game.effects.ramp_down)
         '''
         scoreRamp = 1000*self.rampTimes
         self.game.score(scoreRamp)
