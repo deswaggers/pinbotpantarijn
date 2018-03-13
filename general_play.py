@@ -136,6 +136,7 @@ class Generalplay(game.Mode):
 
     def mode_tick(self):
         ## Afhankelijk van variabele per speler 'ramp_status_up' wordt de ramp omhoog of omlaat gebracht'
+        '''
         if self.game.current_player().ramp_status_up == False:
             if self.game.switches.rampdown.is_active():
                 pass
@@ -144,7 +145,7 @@ class Generalplay(game.Mode):
         else:
             if self.game.switches.rampdown.is_active():
                 self.game.effects.ramp_up()
-
+        '''
 
 ## lamps and animations
 
@@ -218,10 +219,13 @@ class Generalplay(game.Mode):
         self.game.sound.play("sound_cartoon_swirl")
 
     def sw_rampexit_active(self,sw):
+        self.game.effects.ramp_up()
+        '''
         scoreRamp = 1000*self.rampTimes
         self.game.score(scoreRamp)
         self.game.animations.space_ship_leaves(score=scoreRamp)
         self.rampTimes+=1
+        '''
 
     def sw_Loutlane_active(self,sw):
         self.game.sound.play("sound_2017_failure_not_an_option")
