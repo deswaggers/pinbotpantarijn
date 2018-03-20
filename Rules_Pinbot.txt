@@ -20,12 +20,15 @@ Modes:
 
 
 Te veranderen / toe te voegen:
-- Ramp afmaken: wat hiermee te doen?
-- Mystery andere animatie? Of past accu bij de Tesla?
-- Zelf een mode bedenken (of een huidige mode veranderen)
-- Met 'visor-targets' aan de slag.
-- Een multiball-mode?
-- 
+- 1. Ramp afmaken: wat hiermee te doen?
+- 6. Mystery andere animatie? Of past accu bij de Tesla?
+- 5. Zelf een mode bedenken (of een huidige mode veranderen)
+- 2. Met 'visor-targets' aan de slag.
+- 4. Een multiball-mode bij ramp of vasthoud ding
+- Wanneer het kan. ANDER MUZIEKJE!!!!!
+- 3. Bal verlies is opdracht voor kans gratis bal
+- 2. Gekleurde targets veranderen en de modes eraan koppelen
+- 2. Mode toevoegen visor-targets "shoot the right color"
 
 
-- Elon Musk Space in thema verwerken? Model Tesla op speelveld?
+- Extra tijd. Elon Musk Space in thema verwerken? Model Tesla op speelveld(Arduino)?
