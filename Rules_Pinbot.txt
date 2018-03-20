@@ -1,0 +1,31 @@
+VWOXtra flipperkast
+
+Rules, maart 2018 (hoofdzaken):
+- Drop-targets zijn getimed. Punten als je voor het ‘resetten’ ze alle 3 om hebt
+- Skillshot zijn gewoon punten per switch. Switch registreert niet altijd goed.
+- Ramp opent ramp-flap zodat je target er onder kunt schieten (getimed, nieuw)
+- Pop-bumpers tellen, met animatie. Na aantal geraakt krijg je extra punten.
+- Visor targets (die target-bank die omhoog en omlaag kan) en targets daarnaast maken de matrix ervoor vol. 
+Bijbehorende multiball tijdelijk uitgeschakeld ivm bugs
+- Je start een mode door in het gat links-boven te schieten
+- Per gespeelde mode gaat het bijbehordende planeet-lampje branden. Een andere (willekeurige, wisselt met slingshots(?)) gaat knipperen. 
+Bij elke planeet hoort een mode. 
+
+Modes:
+- opnieuw in gat schieten binnen tijd. Dan zo snel mogelijk flippers gebruiken. Daarna opnieuw en nog minder tijd.
+- Pop-bumpers leveren veel op. Extra tijd door ramp te schieten
+- Mystery: een willekeurige beloning (incl. geluid en animatie van accu)
+- Ramp schieten voor veel punten
+- 
+
+
+Te veranderen / toe te voegen:
+- Ramp afmaken: wat hiermee te doen?
+- Mystery andere animatie? Of past accu bij de Tesla?
+- Zelf een mode bedenken (of een huidige mode veranderen)
+- Met 'visor-targets' aan de slag.
+- Een multiball-mode?
+- 
+
+
+- Elon Musk Space in thema verwerken? Model Tesla op speelveld?
