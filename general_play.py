@@ -83,7 +83,6 @@ class Generalplay(game.Mode):
         self.layer = None
 
     def start_mode(self, index):
-        self.game.effects.ramp_down()
         if not self.game.current_player().mode_running:
             self.game.current_player().mode_running = index
             self.game.modes.add(self.modes[index])
@@ -174,6 +173,7 @@ class Generalplay(game.Mode):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
         self.game.coils.LvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=1, now=True)
         self.game.sound.play("speech_Cartoon-10")
+        self.game.effects.ramp_down()
         #self.game.animations.space_ship_flies()
 
     def sw_outhole_active_for_500ms(self, sw):
@@ -235,7 +235,6 @@ class Generalplay(game.Mode):
 
     def sw_scoreEnergy_active(self,sw):
         # punten? ramp naar beneden? met vertraging, of meteen en start multiball proberen?
-        self.game.effects.ramp_down()
         pass
 
 
