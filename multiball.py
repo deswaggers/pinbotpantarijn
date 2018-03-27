@@ -49,7 +49,7 @@ class Multiball(game.Mode):
             self.game.effects.drive_lamp('eject0','slow')
             self.game.effects.drive_lamp('score_energy','fast')
             self.game.effects.drive_lamp('solar_energy','medium')
-            
+
 
 
 ##        def multiball_animation(self):
@@ -96,7 +96,7 @@ class Multiball(game.Mode):
             self.game.effects.gi_blinking(cycle_seconds=3)
             # Animation
 ##            self.multiball_animation()
-            
+
             #play lightshow
             self.game.lampctrl.play_show('multiball_start', True, 'None')
             # delay multiballstart to wait for end of lampshow and perhaps animation
@@ -105,26 +105,26 @@ class Multiball(game.Mode):
         def setup_multiball(self):
              self.game.sound.play_music('music_mario_invincible')
              #stop lightshow
-             self.game.lampctrl.stop_show()   
-             
+             self.game.lampctrl.stop_show()
+
              #play music
 ##             self.game.sound.play_music()
-             
+
              #update lamps for entire game after lampshow
              self.delay(name='update_lamps', event_type=None, delay=1, handler=self.update_lamps)
 
              # eject balls and close visor
              self.game.coils.Rejecthole_SunFlash.pulse(50)
              self.game.coils.Lejecthole_LeftPlFlash.pulse(50)
-             self.delay(name='visor_closing' , event_type=None, delay=1, handler=self.close_visor)   
+             self.delay(name='visor_closing' , event_type=None, delay=1, handler=self.close_visor)
 
         def close_visor(self):
                 self.game.visor_up_down.visor_move
                 self.game.current_player().visor_lamps = [0,0,0,0,0]
-                
+
         def end_multiball(self):
              self.game.sound.fadeout_music(time_ms=1500)
-             
+
              self.cancel_delayed('display_multiball_layer')
              self.delay(name='stop_multiball', event_type=None, delay=2, handler=self.stop_multiball)
              self.jackpot_status=False
@@ -174,7 +174,7 @@ class Multiball(game.Mode):
         def sw_rampexit_active(self,sw):
              self.score_jackpot()
              return procgame.game.SwitchStop
-        
+
         def sw_Leject_active(self, sw):
              return procgame.game.SwitchStop
         def sw_Leject_active_for_600ms(self,sw):
@@ -186,7 +186,7 @@ class Multiball(game.Mode):
         def sw_Reject_active_for_600ms(self,sw):
              self.game.effects.eject_ball('Reject')
              self.score_jackpot()
-             
+
         def sw_eject_active(self, sw):
              return procgame.game.SwitchStop
         def sw_eject_active_for_600ms(self,sw):
@@ -197,10 +197,10 @@ class Multiball(game.Mode):
 
         def sw_Ubumper_active(self,sw):
             self.bumper()
-            return procgame.game.SwitchStop    
+            return procgame.game.SwitchStop
         def sw_Lbumper_active(self,sw):
             self.bumper()
-            return procgame.game.SwitchStop    
+            return procgame.game.SwitchStop
         def sw_Bbumper_active(self,sw):
             self.bumper()
             return procgame.game.SwitchStop

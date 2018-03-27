@@ -16,6 +16,7 @@ from ejectmodestart import *
 from bumpers import *
 from visor import *
 from droptargets import *
+from ramp_multiball import *
 
 # all paths
 game_path = "/home/pi/VXtra_start/"
@@ -39,6 +40,7 @@ class Generalplay(game.Mode):
         self.bumper_rules = Bumpers(self.game, 10)
         self.visor_rules = Visor(self.game, 11)
         self.droptarget_rules = Droptargets(self.game, 12)
+        self.ramp_multiball = RampMultiball(self.game,13)
 
 
         self.game.current_player().mode_lamps = 0
@@ -61,12 +63,13 @@ class Generalplay(game.Mode):
         pass
 
     def mode_started(self):
-        self.rampTimes = 1
+        # self.rampTimes = 1
         self.game.modes.add(self.ejectModestart_rules)
 
         self.game.modes.add(self.bumper_rules)
         self.game.modes.add(self.visor_rules)
         self.game.modes.add(self.droptarget_rules)
+        self.game.effects.ramp_down()
 
         if self.game.ball==1:
             self.game.animations.space_pinball_welcome()
@@ -219,14 +222,21 @@ class Generalplay(game.Mode):
         self.game.sound.play("sound_cartoon_swirl")
 
     def sw_rampexit_active(self,sw):
+        # willen we GI even laten knipperen? Lampje aanzetten? Hoe wordt die weer uit gezet?
         self.game.effects.ramp_up()
         self.delay(name='Ramp_omlaag', event_type=None, delay=8.5, handler=self.game.effects.ramp_down)
+
         '''
         scoreRamp = 1000*self.rampTimes
         self.game.score(scoreRamp)
         self.game.animations.space_ship_leaves(score=scoreRamp)
         self.rampTimes+=1
         '''
+
+    def sw_scoreEnergy:_active(self,sw):
+        # punten? ramp naar beneden? met vertraging, of meteen en start multiball proberen?
+        pass
+
 
     def sw_Loutlane_active(self,sw):
         self.game.sound.play("sound_2017_failure_not_an_option")
