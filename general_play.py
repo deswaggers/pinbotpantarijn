@@ -166,14 +166,16 @@ class Generalplay(game.Mode):
         #else:
         #    self.game.effects.drive_lamp('advance_planet','off')
 
-
+    def reset_coils(self):
+        self.game.effects.ramp_down()
+        self.game.coils.Drops_RightInsBFlash.pulse(120)
 
 ## Switches regular gameplay
     def sw_shooterLane_open_for_100ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
         self.game.coils.LvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=1, now=True)
         self.game.sound.play("speech_Cartoon-10")
-        self.game.effects.ramp_down()
+        self.reset_coils()
         #self.game.animations.space_ship_flies()
 
     def sw_outhole_active_for_500ms(self, sw):
