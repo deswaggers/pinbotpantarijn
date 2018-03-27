@@ -233,7 +233,7 @@ class Generalplay(game.Mode):
         self.rampTimes+=1
         '''
 
-    def sw_scoreEnergy:_active(self,sw):
+    def sw_scoreEnergy_active(self,sw):
         # punten? ramp naar beneden? met vertraging, of meteen en start multiball proberen?
         pass
 
