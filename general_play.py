@@ -69,7 +69,6 @@ class Generalplay(game.Mode):
         self.game.modes.add(self.bumper_rules)
         self.game.modes.add(self.visor_rules)
         self.game.modes.add(self.droptarget_rules)
-        self.game.effects.ramp_down()
 
         if self.game.ball==1:
             self.game.animations.space_pinball_welcome()
@@ -84,6 +83,7 @@ class Generalplay(game.Mode):
         self.layer = None
 
     def start_mode(self, index):
+        self.game.effects.ramp_down()
         if not self.game.current_player().mode_running:
             self.game.current_player().mode_running = index
             self.game.modes.add(self.modes[index])
@@ -235,6 +235,7 @@ class Generalplay(game.Mode):
 
     def sw_scoreEnergy_active(self,sw):
         # punten? ramp naar beneden? met vertraging, of meteen en start multiball proberen?
+        self.game.effects.ramp_down()
         pass
 
 
