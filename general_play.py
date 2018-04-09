@@ -58,7 +58,7 @@ class Generalplay(game.Mode):
         #                 'music_mario_invincible', 'music_interstellarcornfieldchase', 'music_starwars_theme',
         #                 'music_imperialmarch', 'music_starwars_cantina_band']
         self.musicjes = ['2018_Starlight_achtergrondmuziekje',"2018_TheAlienWhistle_achtergrondmuziekje", "2018_CosmicMessages_achtergrondmuziekje", "2018_SpaceLoop_achtergrondmuziekje", \
-                        "2018_whistlerbackgroundmusic", "2018_spacetrip"]
+                        "2018_whistlerbackgroundmusic", "2018_spacetrip", "2018_Pink-panther-theme"]
 
     def reset(self):
         pass
