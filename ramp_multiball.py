@@ -37,7 +37,7 @@ class RampMultiball(game.Mode):
 
 
     def display_instructions(self):
-        self.instruction_layer.set_text('First instructions here')
+        self.instruction_layer.set_text('Ramp multiball gestart')
         self.layer = self.instruction_layer
 
 

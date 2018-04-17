@@ -216,12 +216,14 @@ class Generalplay(game.Mode):
         self.game.score(1000)
         self.game.sound.play("sound_cartoon_swirl")
 
+
+
     def sw_rampexit_active(self,sw):
         # willen we GI even laten knipperen? Lampje aanzetten? Hoe wordt die weer uit gezet?
         self.game.score(1000)
         self.game.effects.ramp_up()
         self.game.effects.drive_lamp('score_energy','medium')
-        self.delay(name='Ramp_omlaag', event_type=None, delay=9, handler=self.game.effects.ramp_down)
+        self.delay(name='Ramp_omlaag', event_type=None, delay=9, handler=self.ramp_up_finished)
 
 
     def sw_scoreEnergy_active(self,sw):
@@ -229,6 +231,14 @@ class Generalplay(game.Mode):
         self.game.score(10000)
         self.game.effects.drive_lamp('score_energy','off')
         self.game.effects.ramp_down()
+        self.game.modes.add(self.ramp_multiball)
+
+
+    def ramp_up_finished(self):
+        self.game.effects.drive_lamp('score_energy','off')
+        self.game.effects.ramp_down()
+
+
 
 
     def sw_Loutlane_active(self,sw):
