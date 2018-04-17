@@ -10,6 +10,7 @@ speech_path = game_path + "sound/speech/"
 sound_path = game_path + "sound/fx/"
 music_path = game_path + "sound/music/"
 dmd_path = game_path + "dmd/"
+lampshow_path = game_path +"lampshows/"
 
 
 class RampMultiball(game.Mode):
