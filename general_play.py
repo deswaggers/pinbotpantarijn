@@ -139,16 +139,7 @@ class Generalplay(game.Mode):
 
     def mode_tick(self):
         ## Afhankelijk van variabele per speler 'ramp_status_up' wordt de ramp omhoog of omlaat gebracht'
-        '''
-        if self.game.current_player().ramp_status_up == False:
-            if self.game.switches.rampdown.is_active():
-                pass
-            else:
-                self.game.effects.ramp_down()
-        else:
-            if self.game.switches.rampdown.is_active():
-                self.game.effects.ramp_up()
-        '''
+
 
 ## lamps and animations
 
@@ -226,19 +217,17 @@ class Generalplay(game.Mode):
 
     def sw_rampexit_active(self,sw):
         # willen we GI even laten knipperen? Lampje aanzetten? Hoe wordt die weer uit gezet?
+        self.game.score(1000)
         self.game.effects.ramp_up()
-        self.delay(name='Ramp_omlaag', event_type=None, delay=8.5, handler=self.game.effects.ramp_down)
+        self.game.effects.drive_lamp('score_energy','medium')
+        self.delay(name='Ramp_omlaag', event_type=None, delay=9, handler=self.game.effects.ramp_down)
 
-        '''
-        scoreRamp = 1000*self.rampTimes
-        self.game.score(scoreRamp)
-        self.game.animations.space_ship_leaves(score=scoreRamp)
-        self.rampTimes+=1
-        '''
 
     def sw_scoreEnergy_active(self,sw):
         # punten? ramp naar beneden? met vertraging, of meteen en start multiball proberen?
-        pass
+        self.game.score(10000)
+        self.game.effects.drive_lamp('score_energy','off')
+        self.game.effects.ramp_down()
 
 
     def sw_Loutlane_active(self,sw):
