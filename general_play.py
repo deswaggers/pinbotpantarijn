@@ -138,10 +138,11 @@ class Generalplay(game.Mode):
         print 'generalplay stopped'
 
     def mode_tick(self):
+        pass
         ## Afhankelijk van variabele per speler 'ramp_status_up' wordt de ramp omhoog of omlaat gebracht'
 
 
-## lamps and animations
+    ## lamps and animations
 
     def update_lamps(self):
         if self.game.current_player().mode_lamps < 9:
