@@ -46,6 +46,9 @@ class Generalplay(game.Mode):
         self.game.current_player().mode_lamps = 0
         self.game.current_player().ramp_status_up = False
 
+        ## variabelen die nodig zijn
+        self.target_Energy_geraakt = False;
+
 
         ## Modestart straks naar elders, veel zaken in general_play nog op te schonen.
         #self.modes = [None, Mode1 (self.game, 19), Mode2 (self.game, 18), Mode3(self.game, 70)]
@@ -181,7 +184,6 @@ class Generalplay(game.Mode):
             self.game.coils.Visormotor.enable()
 
     def sw_slingL_active(self,sw):
-        # self.game.switchedCoils.acFlashPulse('RampRaise_LowPlFlash',30)
         self.game.coils.TopFlash3.pulse(45)
         self.game.coils.LvisorGI.pulse(40)
         self.game.sound.play("sound_slings")
@@ -228,11 +230,13 @@ class Generalplay(game.Mode):
 
     def sw_scoreEnergy_active(self,sw):
         # punten? ramp naar beneden? met vertraging, of meteen en start multiball proberen?
-        print "Sw score energy geraakt"
-        self.game.score(10000)
-        self.game.effects.drive_lamp('score_energy','off')
-        self.game.effects.ramp_down()
-        self.game.modes.add(self.ramp_multiball)
+        if (!self.target_Energy_geraakt):
+            print "Sw score energy geraakt"
+            self.game.score(10000)
+            self.game.effects.drive_lamp('score_energy','off')
+            self.game.effects.ramp_down()
+            self.game.modes.add(self.ramp_multiball)
+            self.target_Energy_geraakt = True;
 
 
     def ramp_up_finished(self):
