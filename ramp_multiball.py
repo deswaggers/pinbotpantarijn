@@ -27,6 +27,7 @@ class RampMultiball(game.Mode):
 
 
     def start_rampMB(self):
+        print "nu is start_rampMB gestart, dus moet ie een bal geven"
         self.game.trough.launch_balls(1)
         self.game.sound.play_music('music_harp', loops=-1)
 
@@ -37,6 +38,7 @@ class RampMultiball(game.Mode):
     def stop_rampmultiball(self):
         self.game.sound.play_music('music_2017_creepy_alien_music')
         self.game.modes.remove(self)
+
 
     def mode_stopped(self):
         self.layer = None
