@@ -230,7 +230,7 @@ class Generalplay(game.Mode):
 
     def sw_scoreEnergy_active(self,sw):
         # punten? ramp naar beneden? met vertraging, of meteen en start multiball proberen?
-        if (!self.target_Energy_geraakt):
+        if (self.target_Energy_geraakt==False):
             print "Sw score energy geraakt"
             self.game.score(10000)
             self.game.effects.drive_lamp('score_energy','off')
