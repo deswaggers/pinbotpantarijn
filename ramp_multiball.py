@@ -31,9 +31,11 @@ class RampMultiball(game.Mode):
         self.game.trough.launch_balls(1)
         self.game.sound.play_music('music_harp', loops=-1)
 
+    '''
     def mode_tick(self):
         if (self.game.trough.num_balls_in_play<2):
             self.stop_rampmultiball()
+    '''
 
     def stop_rampmultiball(self):
         self.game.sound.play_music('music_2017_creepy_alien_music')
