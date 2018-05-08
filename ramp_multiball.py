@@ -44,7 +44,7 @@ class RampMultiball(game.Mode):
             self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
 
     def display_instructions(self):
-        self.instruction_layer.set_text('Ramp multiball gestart')
+        self.instruction_layer.set_text('RAMP MULTIBALL GESTART')
         self.layer=dmd.GroupedLayer(128,32,[self.instruction_layer])
 
 
