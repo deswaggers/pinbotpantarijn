@@ -24,12 +24,20 @@ class RampMultiball(game.Mode):
         self.game.lampctrl.register_show('visor_lampshow', lampshow_path +"Pinbot_1.lampshow")
         self.delay(name='start_rampMB', event_type=None, delay=5, handler=self.start_rampMB)
         self.display_instructions()
+        self.game.trough.launch_balls(1)
 
 
     def start_rampMB(self):
         self.game.start_ball()
         self.game.sound.play_music('music_harp', loops=-1)
 
+    def mode_tick(self):
+        if (self.game.trough.num_balls_in_play<2):
+            self.stop_rampmultiball()
+
+    def stop_rampmultiball(self):
+        self.game.sound.play_music('music_2017_creepy_alien_music')
+        self.game.modes.remove(self)
 
     def mode_stopped(self):
         self.layer = None
