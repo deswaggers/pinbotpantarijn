@@ -24,11 +24,10 @@ class RampMultiball(game.Mode):
         self.game.lampctrl.register_show('visor_lampshow', lampshow_path +"Pinbot_1.lampshow")
         self.delay(name='start_rampMB', event_type=None, delay=5, handler=self.start_rampMB)
         self.display_instructions()
-        self.game.trough.launch_balls(1)
 
 
     def start_rampMB(self):
-        self.game.start_ball()
+        self.game.trough.launch_balls(1)
         self.game.sound.play_music('music_harp', loops=-1)
 
     def mode_tick(self):
@@ -44,10 +43,9 @@ class RampMultiball(game.Mode):
         if self.game.switches.outhole.is_active():
             self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
 
-
     def display_instructions(self):
         self.instruction_layer.set_text('Ramp multiball gestart')
-        self.layer = self.instruction_layer
+        self.layer=dmd.GroupedLayer(128,32,[self.instruction_layer])
 
 
     def sw_outhole_active(self, sw):
