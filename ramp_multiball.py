@@ -40,9 +40,9 @@ class RampMultiball(game.Mode):
 
     def stop_rampmultiball(self):
         self.game.sound.play_music('music_2017_creepy_alien_music')
+        self.game.effects.ramp_down()
         self.game.modes.remove(self)
         self.layer = None
-
 
     def mode_stopped(self):
         self.layer = None
@@ -53,6 +53,8 @@ class RampMultiball(game.Mode):
         self.instruction_layer.set_text('RAMP MULTIBALL GESTART')
         self.layer=dmd.GroupedLayer(128,32,[self.instruction_layer])
 
+    def sw_scoreEnergy_active(self,sw):
+        return procgame.game.SwitchStop
 
     def sw_shooterLane_open_for_500ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=2, now=True)
