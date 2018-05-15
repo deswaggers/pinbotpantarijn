@@ -34,7 +34,7 @@ class RampMultiball(game.Mode):
 
 
     def mode_tick(self):
-        if ((self.game.trough.num_balls_in_play<2) && self.twoballsinplay):
+        if ((self.game.trough.num_balls_in_play<2) and self.twoballsinplay):
             self.stop_rampmultiball()
 
 
