@@ -56,7 +56,7 @@ class RampMultiball(game.Mode):
     def sw_shooterLane_open_for_500ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=2, now=True)
         self.game.coils.LvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=2, now=True)
-        self.game.effects.ramp_down()
+        self.game.effects.ramp_up()
 
 
     def sw_outhole_active(self, sw):
