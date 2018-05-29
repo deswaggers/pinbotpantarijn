@@ -26,6 +26,12 @@ class RampMultiball(game.Mode):
         self.delay(name='start_rampMB', event_type=None, delay=5, handler=self.start_rampMB)
         self.display_instructions()
         self.twoballsinplay = False
+        self.startLampSituation()
+
+    def startLampSituation(self):
+        ## SAMEN OP EINDE GEDAAN, VERDER UTIWERKEN
+        self.game.effects.drive_lamp('yellow1','fast')
+        self.game.effects.gi_off()
 
 
 
@@ -59,6 +65,9 @@ class RampMultiball(game.Mode):
         self.layer=dmd.GroupedLayer(128,32,[self.hit_layer, self.instruction_layer])
 
     def sw_scoreEnergy_active(self,sw):
+        self.health+=1
+        self.display_instructions()
+        self.game.effects.drive_lamp('eject3','fast')
         return procgame.game.SwitchStop
 
     def sw_shooterLane_open_for_500ms(self,sw):
