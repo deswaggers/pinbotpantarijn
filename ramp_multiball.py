@@ -19,13 +19,14 @@ class RampMultiball(game.Mode):
 
     def mode_started(self):
         print "RampMultiball uit ramp_multiball.py is gestart"
+        self.health=0
         self.instruction_layer = dmd.TextLayer(20, 20, self.game.fonts['num_09Bx7'], opaque=False)
         #self.game.lampctrl.register_show('multiball_start', lampshow_path +"planeten_short.lampshow")
         #self.game.lampctrl.register_show('visor_lampshow', lampshow_path +"Pinbot_1.lampshow")
         self.delay(name='start_rampMB', event_type=None, delay=5, handler=self.start_rampMB)
         self.display_instructions()
         self.twoballsinplay = False
-        self.health=0
+
 
 
     def start_rampMB(self):
