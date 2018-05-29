@@ -146,7 +146,7 @@ class Effects(game.Mode):
     # AC-Select coils: ramp en droptargets in functie / method gezet
 
     def ramp_up(self):
-        if self.game.switches.rampdown.is_active():
+        ##if self.game.switches.rampdown.is_active(): Tijdelijk weggehaald voor rampmultiball, omdat switch soms niet helemaal was ingedrukt door bal er onder
             self.game.switchedCoils.acCoilPulse('RampRaise_LowPlFlash')
             self.game.sound.play("ramp_up")
             print 'rampup'
