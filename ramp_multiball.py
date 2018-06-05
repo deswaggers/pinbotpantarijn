@@ -28,6 +28,10 @@ class RampMultiball(game.Mode):
         self.twoballsinplay = False
         self.startLampSituation()
         self.visor1=0
+        self.visor2=0
+        self.visor3=0
+        self.visor4=0
+        self.visor5=0
 
 
     def startLampSituation(self):
