@@ -70,6 +70,28 @@ class RampMultiball(game.Mode):
     def update_lamps(self):
         if self.visor1==1:
             self.game.effects.drive_lamp('yellow1','on')
+            self.game.effects.drive_lamp('yellow2','fast')
+        elif self.visor1==2:
+            self.game.effects.drive_lamp('yellow1','on')
+            self.game.effects.drive_lamp('yellow2','on')
+            self.game.effects.drive_lamp('yellow3','fast')
+        elif self.visor1==3:
+            self.game.effects.drive_lamp('yellow1','on')
+            self.game.effects.drive_lamp('yellow2','on')
+            self.game.effects.drive_lamp('yellow3','on')
+            self.game.effects.drive_lamp('yellow4','fast')
+        elif self.visor1==4:
+            self.game.effects.drive_lamp('yellow1','on')
+            self.game.effects.drive_lamp('yellow2','on')
+            self.game.effects.drive_lamp('yellow3','on')
+            self.game.effects.drive_lamp('yellow4','on')
+            self.game.effects.drive_lamp('yellow5','fast')
+        elif self.visor1==5:
+            self.game.effects.drive_lamp('yellow1','on')
+            self.game.effects.drive_lamp('yellow2','on')
+            self.game.effects.drive_lamp('yellow3','on')
+            self.game.effects.drive_lamp('yellow4','on')
+            self.game.effects.drive_lamp('yellow5','on')
 
 
 ##Hieronder alle Switches
@@ -81,9 +103,10 @@ class RampMultiball(game.Mode):
 
 
     def sw_visor1_active(self,sw):
-        self.visor1=1
         self.game.score(150)
-        self.update_lamps()
+        if self.visor1<5:
+            self.visor1+=1
+            self.update_lamps()
         return procgame.game.SwitchStop
 
 
