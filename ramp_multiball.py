@@ -27,6 +27,8 @@ class RampMultiball(game.Mode):
         self.display_instructions()
         self.twoballsinplay = False
         self.startLampSituation()
+        self.visor1=0
+
 
     def startLampSituation(self):
         ## SAMEN OP EINDE GEDAAN, VERDER UTIWERKEN
@@ -64,11 +66,27 @@ class RampMultiball(game.Mode):
         self.instruction_layer.set_text('RAMP MULTIBALL GESTART')
         self.layer=dmd.GroupedLayer(128,32,[self.hit_layer, self.instruction_layer])
 
+
+    def update_lamps(self):
+        if self.visor1==1:
+            self.game.effects.drive_lamp('yellow1','on')
+
+
+##Hieronder alle Switches
     def sw_scoreEnergy_active(self,sw):
         self.health+=1
         self.display_instructions()
         self.game.effects.drive_lamp('eject3','fast')
         return procgame.game.SwitchStop
+
+
+    def sw_visor1_active(self,sw):
+        self.visor1=1
+        self.game.score(150)
+        self.update_lamps()
+        return procgame.game.SwitchStop
+
+
 
     def sw_shooterLane_open_for_500ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=2, now=True)
