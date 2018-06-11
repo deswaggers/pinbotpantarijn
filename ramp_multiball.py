@@ -132,78 +132,24 @@ class RampMultiball(game.Mode):
 
     def update_lamps_2(self):
         if self.visor2==1:
-            self.game.effects.drive_lamp('green1','on')
-            self.game.effects.drive_lamp('green2','fast')
-        elif self.visor2==2:
-            self.game.effects.drive_lamp('green1','on')
-            self.game.effects.drive_lamp('green2','on')
-            self.game.effects.drive_lamp('green3','fast')
-        elif self.visor2==3:
-            self.game.effects.drive_lamp('green1','on')
-            self.game.effects.drive_lamp('green2','on')
-            self.game.effects.drive_lamp('green3','on')
-            self.game.effects.drive_lamp('green4','fast')
-        elif self.visor2==4:
-            self.game.effects.drive_lamp('green1','on')
-            self.game.effects.drive_lamp('green2','on')
-            self.game.effects.drive_lamp('green3','on')
-            self.game.effects.drive_lamp('green4','on')
-            self.game.effects.drive_lamp('green5','fast')
-        elif self.visor2==5:
-            self.game.effects.drive_lamp('green1','on')
-            self.game.effects.drive_lamp('green2','on')
-            self.game.effects.drive_lamp('green3','on')
-            self.game.effects.drive_lamp('green4','on')
-            self.game.effects.drive_lamp('green5','on')
-
-
-    def update_lamps_3(self):
-        if self.visor3==1:
-            self.game.effects.drive_lamp('red1','on')
-            self.game.effects.drive_lamp('red2','fast')
-        elif self.visor3==2:
-            self.game.effects.drive_lamp('red1','on')
-            self.game.effects.drive_lamp('red2','on')
-            self.game.effects.drive_lamp('red3','fast')
-        elif self.visor3==3:
-            self.game.effects.drive_lamp('red1','on')
-            self.game.effects.drive_lamp('red2','on')
-            self.game.effects.drive_lamp('red3','on')
-            self.game.effects.drive_lamp('red4','fast')
-        elif self.visor3==4:
-            self.game.effects.drive_lamp('red1','on')
-            self.game.effects.drive_lamp('red2','on')
-            self.game.effects.drive_lamp('red3','on')
-            self.game.effects.drive_lamp('red4','on')
-            self.game.effects.drive_lamp('red5','fast')
-        elif self.visor3==5:
-            self.game.effects.drive_lamp('red1','on')
-            self.game.effects.drive_lamp('red2','on')
-            self.game.effects.drive_lamp('red3','on')
-            self.game.effects.drive_lamp('red4','on')
-            self.game.effects.drive_lamp('red5','on')
-
-
-    def update_lamps_4(self):
-        if self.visor4==1:
             self.game.effects.drive_lamp('blue1','on')
             self.game.effects.drive_lamp('blue2','fast')
-        elif self.visor4==2:
+        elif self.visor2==2:
             self.game.effects.drive_lamp('blue1','on')
             self.game.effects.drive_lamp('blue2','on')
             self.game.effects.drive_lamp('blue3','fast')
-        elif self.visor4==3:
+        elif self.visor2==3:
             self.game.effects.drive_lamp('blue1','on')
             self.game.effects.drive_lamp('blue2','on')
             self.game.effects.drive_lamp('blue3','on')
             self.game.effects.drive_lamp('blue4','fast')
-        elif self.visor4==4:
+        elif self.visor2==4:
             self.game.effects.drive_lamp('blue1','on')
             self.game.effects.drive_lamp('blue2','on')
             self.game.effects.drive_lamp('blue3','on')
             self.game.effects.drive_lamp('blue4','on')
             self.game.effects.drive_lamp('blue5','fast')
-        elif self.visor4==5:
+        elif self.visor2==5:
             self.game.effects.drive_lamp('blue1','on')
             self.game.effects.drive_lamp('blue2','on')
             self.game.effects.drive_lamp('blue3','on')
@@ -211,31 +157,89 @@ class RampMultiball(game.Mode):
             self.game.effects.drive_lamp('blue5','on')
 
 
-    def update_lamps_5(self):
-        if self.visor5==1:
+
+    def update_lamps_3(self):
+        if self.visor3==1:
             self.game.effects.drive_lamp('orange1','on')
             self.game.effects.drive_lamp('orange2','fast')
-        elif self.visor5==2:
+        elif self.visor3==2:
             self.game.effects.drive_lamp('orange1','on')
             self.game.effects.drive_lamp('orange2','on')
             self.game.effects.drive_lamp('orange3','fast')
-        elif self.visor5==3:
+        elif self.visor3==3:
             self.game.effects.drive_lamp('orange1','on')
             self.game.effects.drive_lamp('orange2','on')
             self.game.effects.drive_lamp('orange3','on')
             self.game.effects.drive_lamp('orange4','fast')
-        elif self.visor5==4:
+        elif self.visor3==4:
             self.game.effects.drive_lamp('orange1','on')
             self.game.effects.drive_lamp('orange2','on')
             self.game.effects.drive_lamp('orange3','on')
             self.game.effects.drive_lamp('orange4','on')
             self.game.effects.drive_lamp('orange5','fast')
-        elif self.visor5==5:
+        elif self.visor3==5:
             self.game.effects.drive_lamp('orange1','on')
             self.game.effects.drive_lamp('orange2','on')
             self.game.effects.drive_lamp('orange3','on')
             self.game.effects.drive_lamp('orange4','on')
             self.game.effects.drive_lamp('orange5','on')
+
+
+
+    def update_lamps_4(self):
+        if self.visor4==1:
+            self.game.effects.drive_lamp('green1','on')
+            self.game.effects.drive_lamp('green2','fast')
+        elif self.visor4==2:
+            self.game.effects.drive_lamp('green1','on')
+            self.game.effects.drive_lamp('green2','on')
+            self.game.effects.drive_lamp('green3','fast')
+        elif self.visor4==3:
+            self.game.effects.drive_lamp('green1','on')
+            self.game.effects.drive_lamp('green2','on')
+            self.game.effects.drive_lamp('green3','on')
+            self.game.effects.drive_lamp('green4','fast')
+        elif self.visor4==4:
+            self.game.effects.drive_lamp('green1','on')
+            self.game.effects.drive_lamp('green2','on')
+            self.game.effects.drive_lamp('green3','on')
+            self.game.effects.drive_lamp('green4','on')
+            self.game.effects.drive_lamp('green5','fast')
+        elif self.visor4==5:
+            self.game.effects.drive_lamp('green1','on')
+            self.game.effects.drive_lamp('green2','on')
+            self.game.effects.drive_lamp('green3','on')
+            self.game.effects.drive_lamp('green4','on')
+            self.game.effects.drive_lamp('green5','on')
+
+
+
+    def update_lamps_5(self):
+        if self.visor5==1:
+            self.game.effects.drive_lamp('red1','on')
+            self.game.effects.drive_lamp('red2','fast')
+        elif self.visor5==2:
+            self.game.effects.drive_lamp('red1','on')
+            self.game.effects.drive_lamp('red2','on')
+            self.game.effects.drive_lamp('red3','fast')
+        elif self.visor5==3:
+            self.game.effects.drive_lamp('red1','on')
+            self.game.effects.drive_lamp('red2','on')
+            self.game.effects.drive_lamp('red3','on')
+            self.game.effects.drive_lamp('red4','fast')
+        elif self.visor5==4:
+            self.game.effects.drive_lamp('red1','on')
+            self.game.effects.drive_lamp('red2','on')
+            self.game.effects.drive_lamp('red3','on')
+            self.game.effects.drive_lamp('red4','on')
+            self.game.effects.drive_lamp('red5','fast')
+        elif self.visor5==5:
+            self.game.effects.drive_lamp('red1','on')
+            self.game.effects.drive_lamp('red2','on')
+            self.game.effects.drive_lamp('red3','on')
+            self.game.effects.drive_lamp('red4','on')
+            self.game.effects.drive_lamp('red5','on')
+
 
     def row_points(self, rows):
         if self.visor1>=rows and self.visor2>=rows and self.visor3>=rows and self.visor4>=rows and self.visor5>=rows:
