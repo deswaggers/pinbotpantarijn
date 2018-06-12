@@ -296,11 +296,11 @@ class RampMultiball(game.Mode):
         self.twoballsinplay = True
 
     def sw_outhole_active(self, sw):
-        self.row_points(self, 1)
-        self.row_points(self, 2)
-        self.row_points(self, 3)
-        self.row_points(self, 4)
-        self.row_points(self, 5)
+        self.row_points(1)
+        self.row_points(2)
+        self.row_points(3)
+        self.row_points(4)
+        self.row_points(5)
         self.all_lamps_off()
         self.game.current_player().stop_eject_mode_mode(self)
         return procgame.game.SwitchStop
