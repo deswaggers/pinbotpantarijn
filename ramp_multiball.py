@@ -26,6 +26,7 @@ class RampMultiball(game.Mode):
         self.delay(name='start_rampMB', event_type=None, delay=5, handler=self.start_rampMB)
         self.display_instructions()
         self.twoballsinplay = False
+        self.game.lampctrl.stop_show()
         self.all_lamps_off()
         self.startLampSituation()
 
@@ -296,11 +297,14 @@ class RampMultiball(game.Mode):
         self.twoballsinplay = True
 
     def sw_outhole_active(self, sw):
-        self.row_points(1)
-        self.row_points(2)
+        i=1
+        while (i<=5):
+            self.row_points(i)
+            i+=1
+        '''self.row_points(2)
         self.row_points(3)
         self.row_points(4)
-        self.row_points(5)
+        self.row_points(5)'''
         self.all_lamps_off()
         self.game.current_player().stop_eject_mode_mode(self)
         return procgame.game.SwitchStop
