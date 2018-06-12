@@ -31,11 +31,12 @@ class RampMultiball(game.Mode):
         self.startLampSituation()
 
     def all_lamps_off(self):
-        self.game.effects.drive_lamp('yellow1','off')
-        self.game.effects.drive_lamp('yellow2','off')
-        self.game.effects.drive_lamp('yellow3','off')
-        self.game.effects.drive_lamp('yellow4','off')
-        self.game.effects.drive_lamp('yellow5','off')
+        for x in range(1,6):
+            self.game.effects.drive_lamp('yellow'+x,'off')
+        #self.game.effects.drive_lamp('yellow2','off')
+        #self.game.effects.drive_lamp('yellow3','off')
+        #self.game.effects.drive_lamp('yellow4','off')
+        #self.game.effects.drive_lamp('yellow5','off')
         self.game.effects.drive_lamp('green1','off')
         self.game.effects.drive_lamp('green2','off')
         self.game.effects.drive_lamp('green3','off')
