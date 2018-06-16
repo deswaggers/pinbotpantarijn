@@ -33,30 +33,34 @@ class RampMultiball(game.Mode):
     def all_lamps_off(self):
         for x in range(1,6):
             self.game.effects.drive_lamp('yellow'+x,'off')
+            self.game.effects.drive_lamp('green'+x,'off')
+            self.game.effects.drive_lamp('orange'+x,'off')
+            self.game.effects.drive_lamp('blue'+x,'off')
+            self.game.effects.drive_lamp('red'+x,'off')
         #self.game.effects.drive_lamp('yellow2','off')
         #self.game.effects.drive_lamp('yellow3','off')
         #self.game.effects.drive_lamp('yellow4','off')
         #self.game.effects.drive_lamp('yellow5','off')
-        self.game.effects.drive_lamp('green1','off')
-        self.game.effects.drive_lamp('green2','off')
-        self.game.effects.drive_lamp('green3','off')
-        self.game.effects.drive_lamp('green4','off')
-        self.game.effects.drive_lamp('green5','off')
-        self.game.effects.drive_lamp('orange1','off')
-        self.game.effects.drive_lamp('orange2','off')
-        self.game.effects.drive_lamp('orange3','off')
-        self.game.effects.drive_lamp('orange4','off')
-        self.game.effects.drive_lamp('orange5','off')
-        self.game.effects.drive_lamp('blue1','off')
-        self.game.effects.drive_lamp('blue2','off')
-        self.game.effects.drive_lamp('blue3','off')
-        self.game.effects.drive_lamp('blue4','off')
-        self.game.effects.drive_lamp('blue5','off')
-        self.game.effects.drive_lamp('red1','off')
-        self.game.effects.drive_lamp('red2','off')
-        self.game.effects.drive_lamp('red3','off')
-        self.game.effects.drive_lamp('red4','off')
-        self.game.effects.drive_lamp('red5','off')
+        #self.game.effects.drive_lamp('green1','off')
+        #self.game.effects.drive_lamp('green2','off')
+        #self.game.effects.drive_lamp('green3','off')
+        #self.game.effects.drive_lamp('green4','off')
+        #self.game.effects.drive_lamp('green5','off')
+        #self.game.effects.drive_lamp('orange1','off')
+        #self.game.effects.drive_lamp('orange2','off')
+        #self.game.effects.drive_lamp('orange3','off')
+        #self.game.effects.drive_lamp('orange4','off')
+        #self.game.effects.drive_lamp('orange5','off')
+        #self.game.effects.drive_lamp('blue1','off')
+        #self.game.effects.drive_lamp('blue2','off')
+        #self.game.effects.drive_lamp('blue3','off')
+        #self.game.effects.drive_lamp('blue4','off')
+        #self.game.effects.drive_lamp('blue5','off')
+        #self.game.effects.drive_lamp('red1','off')
+        #self.game.effects.drive_lamp('red2','off')
+        #self.game.effects.drive_lamp('red3','off')
+        #self.game.effects.drive_lamp('red4','off')
+        #self.game.effects.drive_lamp('red5','off')
         self.visor1 = 0
         self.visor2 = 0
         self.visor3 = 0
@@ -106,7 +110,13 @@ class RampMultiball(game.Mode):
 
 
     def update_lamps_1(self):
-        if self.visor1==1:
+        for z in range(1,self.visor1+1):
+            self.game.effects.drive_lamp('yellow'+z,'on')
+        if self.visor1 <5:
+            self.knipperendevisor1 = self.visor1 +1
+            self.game.effects.drive_lamp('yellow'+self.knipperendevisor1,'fast')
+
+        '''if self.visor1==1:
             self.game.effects.drive_lamp('yellow1','on')
             self.game.effects.drive_lamp('yellow2','fast')
         elif self.visor1==2:
@@ -129,11 +139,17 @@ class RampMultiball(game.Mode):
             self.game.effects.drive_lamp('yellow2','on')
             self.game.effects.drive_lamp('yellow3','on')
             self.game.effects.drive_lamp('yellow4','on')
-            self.game.effects.drive_lamp('yellow5','on')
+            self.game.effects.drive_lamp('yellow5','on')'''
 
 
     def update_lamps_2(self):
-        if self.visor2==1:
+        for y in range(1,self.visor2+1):
+            self.game.effects.drive_lamp('blue'+y,'on')
+        if self.visor2 <5:
+            self.knipperendevisor2 = self.visor2 +1
+            self.game.effects.drive_lamp('blue'+self.knipperendevisor2,'fast')
+
+        '''if self.visor2==1:
             self.game.effects.drive_lamp('blue1','on')
             self.game.effects.drive_lamp('blue2','fast')
         elif self.visor2==2:
@@ -156,12 +172,18 @@ class RampMultiball(game.Mode):
             self.game.effects.drive_lamp('blue2','on')
             self.game.effects.drive_lamp('blue3','on')
             self.game.effects.drive_lamp('blue4','on')
-            self.game.effects.drive_lamp('blue5','on')
+            self.game.effects.drive_lamp('blue5','on')'''
 
 
 
     def update_lamps_3(self):
-        if self.visor3==1:
+        for a in range(1,self.visor3+1):
+            self.game.effects.drive_lamp('orange'+a,'on')
+        if self.visor3 <5:
+            self.knipperendevisor3 = self.visor3 +1
+            self.game.effects.drive_lamp('orange'+self.knipperendevisor3,'fast')
+
+        '''if self.visor3==1:
             self.game.effects.drive_lamp('orange1','on')
             self.game.effects.drive_lamp('orange2','fast')
         elif self.visor3==2:
@@ -184,12 +206,18 @@ class RampMultiball(game.Mode):
             self.game.effects.drive_lamp('orange2','on')
             self.game.effects.drive_lamp('orange3','on')
             self.game.effects.drive_lamp('orange4','on')
-            self.game.effects.drive_lamp('orange5','on')
+            self.game.effects.drive_lamp('orange5','on')'''
 
 
 
     def update_lamps_4(self):
-        if self.visor4==1:
+        for b in range(1,self.visor4+1):
+            self.game.effects.drive_lamp('green'+b,'on')
+        if self.visor4 <5:
+            self.knipperendevisor4 = self.visor4 +1
+            self.game.effects.drive_lamp('green'+self.knipperendevisor4,'fast')
+
+        '''if self.visor4==1:
             self.game.effects.drive_lamp('green1','on')
             self.game.effects.drive_lamp('green2','fast')
         elif self.visor4==2:
@@ -212,12 +240,18 @@ class RampMultiball(game.Mode):
             self.game.effects.drive_lamp('green2','on')
             self.game.effects.drive_lamp('green3','on')
             self.game.effects.drive_lamp('green4','on')
-            self.game.effects.drive_lamp('green5','on')
+            self.game.effects.drive_lamp('green5','on')'''
 
 
 
     def update_lamps_5(self):
-        if self.visor5==1:
+        for c in range(1,self.visor5+1):
+            self.game.effects.drive_lamp('red'+c,'on')
+        if self.visor5 <5:
+            self.knipperendevisor5 = self.visor5 +1
+            self.game.effects.drive_lamp('red'+self.knipperendevisor5,'fast')
+
+        '''if self.visor5==1:
             self.game.effects.drive_lamp('red1','on')
             self.game.effects.drive_lamp('red2','fast')
         elif self.visor5==2:
@@ -240,7 +274,7 @@ class RampMultiball(game.Mode):
             self.game.effects.drive_lamp('red2','on')
             self.game.effects.drive_lamp('red3','on')
             self.game.effects.drive_lamp('red4','on')
-            self.game.effects.drive_lamp('red5','on')
+            self.game.effects.drive_lamp('red5','on')'''
 
 
     def row_points(self, rows):
