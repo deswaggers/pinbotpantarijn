@@ -29,6 +29,7 @@ class RampMultiball(game.Mode):
         self.game.lampctrl.stop_show()
         self.all_lamps_off()
         self.startLampSituation()
+        self.game.current_player().mode_running = True
 
     def all_lamps_off(self):
         for x in range(1,6):
@@ -69,6 +70,7 @@ class RampMultiball(game.Mode):
     def stop_rampmultiball(self):
         self.game.sound.play_music('music_2017_creepy_alien_music')
         self.game.effects.ramp_down()
+        self.game.current_player().mode_running = False
         self.game.modes.remove(self)
         self.layer = None
 
