@@ -72,6 +72,7 @@ class RampMultiball(game.Mode):
         self.game.effects.ramp_down()
         self.game.current_player().mode_running = False
         self.game.modes.remove(self)
+        self.all_lamps_off(self)
         self.layer = None
 
     def mode_stopped(self):
