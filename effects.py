@@ -179,11 +179,11 @@ class Effects(game.Mode):
         self.game.coils.Lejecthole_LeftPlFlash.schedule(schedule=0x00f00f00, cycle_seconds=time, now=False)
 
     def nonACFlashersFlash(self, time=1):
-        self.game.coils.RobotFaceInsB.schedule(schedule=0xf0f0f0f0, cycle_seconds=cycle, now=True)
-        self.game.coils.TopFlash3.schedule(schedule=0x0f0f0f0f, cycle_seconds=cycle, now=True)
-        self.game.coils.TopFlash4.schedule(schedule=0xf0f0f0f0, cycle_seconds=cycle, now=True)
-        self.game.coils.LvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
-        self.game.coils.RvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=1, now=True)
+        self.game.coils.RobotFaceInsB.schedule(schedule=0xf0f0f0f0, cycle_seconds=time, now=True)
+        self.game.coils.TopFlash3.schedule(schedule=0x0f0f0f0f, cycle_seconds=time, now=True)
+        self.game.coils.TopFlash4.schedule(schedule=0xf0f0f0f0, cycle_seconds=time, now=True)
+        self.game.coils.LvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=time, now=True)
+        self.game.coils.RvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=time, now=True)
 
 
     # Ball control
