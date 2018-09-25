@@ -2,6 +2,10 @@ import sys
 sys.path.append(sys.path[0]+'/../..') # Set the path so we can find procgame.  We are assuming that the first member is our directory.
 import procgame
 import pinproc
+### toegevoegd voor sounds
+from os import listdir, walk
+from os.path import join, splitext
+
 from switchedcoils import *
 from effects import *
 from animations import *
@@ -494,6 +498,7 @@ class Game(game.BasicGame):
         self.lampctrl = procgame.lamps.LampController(self)
         self.settings = {}
 
+
     def save_settings(self):
         #self.write_settings(settings_path)
         super(Game, self).save_settings(settings_path)
@@ -622,11 +627,34 @@ class Game(game.BasicGame):
         #updown ding
         self.visor_up_down = Visor_up_down(self, 10)
         #------------------
-
+        self.register_all_sounds()
 
         # Instead of resetting everything here as well as when a user initiated reset occurs,
         # do everything in self.reset() and call it now and during a user initiated reset.
         self.reset()
+### Alleen uitgevoerd na elk spel, niet bij start van iedere vbal    
+    def register_all_sounds(self):
+        # Register all sounds!
+        for (dirpath, dirnames, filenames) in walk(speech_path):
+            for filename in filenames:
+                if splitext(filename)[1] in supported_sound:
+                    sound = "speech_" + splitext(filename)[0].replace(" ", "_")
+                    print "SOUND REGISTERED:", sound
+                    self.sound.register_sound(sound, join(dirpath, filename))
+
+        for (dirpath, dirnames, filenames) in walk(sound_path):
+            for filename in filenames:
+                if splitext(filename)[1] in supported_sound:
+                    sound = "sound_" + splitext(filename)[0].replace(" ", "_")
+                    print "SOUND REGISTERED:", sound
+                    self.sound.register_sound(sound, join(dirpath, filename))
+
+        for (dirpath, dirnames, filenames) in walk(music_path):
+            for filename in filenames:
+                if splitext(filename)[1] in supported_sound:
+                    sound = "music_" + splitext(filename)[0].replace(" ", "_")
+                    print "SOUND REGISTERED:", sound
+                    self.sound.register_music(sound, join(dirpath, filename))
 
     def set_player_stats(self,id,value):
         p = self.current_player()
@@ -760,6 +788,7 @@ class rkPlayer(game.Player):
                 self.player_stats['status']=''
                 self.visor_position='up'
                 self.visor_lamps = [0,0,0,0,0]
+                self.visor_lamps_RM = [0,0,0,0,0]
                 self.visor_balls = 0
                 self.mode_running = False
                 self.mode_listener = None
