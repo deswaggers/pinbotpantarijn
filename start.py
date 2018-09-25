@@ -58,7 +58,7 @@ font_09Bx7 = dmd.Font(fonts_path+"Font09Bx7.dmd")
 
 lampshow_files = [lampshow_path +"Pinbot_1.lampshow", \
                   lampshow_path +"Pinbot_1.lampshow", ]
-first_game_started = False
+
 
 class Attract(game.Mode):
     """docstring for AttractMode"""
