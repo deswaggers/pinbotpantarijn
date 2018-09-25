@@ -53,10 +53,10 @@ class Generalplay(game.Mode):
         ## Modestart straks naar elders, veel zaken in general_play nog op te schonen.
         #self.modes = [None, Mode1 (self.game, 19), Mode2 (self.game, 18), Mode3(self.game, 70)]
         #self.register_all_plugins()
-        #if self.first_game_started is not None:
-        self.register_all_sounds()
-        self.game.lampctrl.register_show('rampenter_show', lampshow_path+"rampenter.lampshow")
-            #self.first_game_started=True
+        if self.game.sound.first_game_started ==False:
+            self.register_all_sounds()
+            self.game.lampctrl.register_show('rampenter_show', lampshow_path+"rampenter.lampshow")
+            self.game.sound.first_game_started=True
 
 
         #self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker',

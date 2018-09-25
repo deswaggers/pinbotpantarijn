@@ -560,6 +560,8 @@ class Game(game.BasicGame):
         self.sound.register_sound('service_cancel', shared_sound_path+"sfx-menu-cancel.wav")
         self.service_mode = procgame.service.ServiceMode(self,100,font_tiny7,[])
 
+        self.sound.first_game_started = False
+
 
         # Setup fonts
         self.fonts = {}
