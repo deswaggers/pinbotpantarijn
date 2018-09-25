@@ -5,8 +5,8 @@
 import procgame
 #import locale
 #import logging
-###from os import listdir, walk
-###from os.path import join, splitext
+from os import listdir, walk
+from os.path import join, splitext
 #from time import time
 #from random import randint
 from procgame import *
@@ -54,7 +54,7 @@ class Generalplay(game.Mode):
         #self.modes = [None, Mode1 (self.game, 19), Mode2 (self.game, 18), Mode3(self.game, 70)]
         #self.register_all_plugins()
 
-       ### self.register_all_sounds()
+        self.register_all_sounds()
         self.game.lampctrl.register_show('rampenter_show', lampshow_path+"rampenter.lampshow")
 
         #self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker',
@@ -108,7 +108,7 @@ class Generalplay(game.Mode):
         for mode in modes:
             print "REGISTER MODE:", mode
             self.modes.append(getattr(__import__('.plugins', globals(), locals(), [mode]), mode).Mode(self.game))
-'''
+
     def register_all_sounds(self):
         # Register all sounds!
         for (dirpath, dirnames, filenames) in walk(speech_path):
@@ -131,7 +131,7 @@ class Generalplay(game.Mode):
                     sound = "music_" + splitext(filename)[0].replace(" ", "_")
                     print "SOUND REGISTERED:", sound
                     self.game.sound.register_music(sound, join(dirpath, filename))
-'''
+
     def mode_stopped(self):
         self.game.modes.remove(self.ejectModestart_rules)
         self.game.modes.remove(self.bumper_rules)
