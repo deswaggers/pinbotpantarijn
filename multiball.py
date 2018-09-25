@@ -31,6 +31,9 @@ class Multiball(game.Mode):
             self.multiball_intro()
             self.display_multiball_layer()
             self.game.sound.fadeout_music(time_ms=2800)
+            self.colors = ['yellow', 'blue', 'orange', 'green', 'red']
+            self.game.lampctrl.play_show('lampshow_visor', repeat=True)
+            self.update_lamps()
 
         def mode_stopped(self):
             print("Debug, Multiball Mode Stopped")
@@ -215,3 +218,44 @@ class Multiball(game.Mode):
                 self.game.coils.outhole_knocker.pulse(30)
                 self.end_multiball()
                 return procgame.game.SwitchStop
+
+        def update_visor(self, num):
+                 self.game.lampctrl.stop_show()
+                 self.game.sound.play("sound_lasergun2")
+                 self.game.score(10)
+                 if self.game.current_player().visor_lamps[num] < 5:
+                         self.game.current_player().visor_lamps[num] += 1
+                         self.game.sound.play("sound_visor_hit")
+                 else:
+                         self.game.sound.play("sound_visor_full")
+                 self.update_lamps()
+                 print "Visor", num , "is nu:", self.game.current_player().visor_lamps[num]
+
+        def sw_visor1_active(self,sw):
+             self.update_visor(0)
+
+        def sw_visor2_active(self,sw):
+             self.update_visor(1)
+
+        def sw_visor3_active(self,sw):
+             self.update_visor(2)
+
+        def sw_visor4_active(self,sw):
+             self.update_visor(3)
+
+        def sw_visor5_active(self,sw):
+             self.update_visor(4)
+
+        def update_lamps(self):
+                if sum(self.game.current_player().visor_lamps) == 25:
+                        print ("25 visor lamps!")
+                        self.game.current_player().visor_position='up'
+                if sum(self.game.current_player().visor_lamps) == 25 and self.game.switches.visorClosed.is_active():
+                        self.game.sound.play("sound_visor_down")
+                        #self.game.visor_up_down.visor_move()
+                elif sum(self.game.current_player().visor_lamps) != 25 and not self.game.switches.visorClosed.is_active():
+                        #self.game.visor_up_down.visor_move()
+                        pass
+                for x in range(len(self.game.current_player().visor_lamps)):
+                        for y in range(self.game.current_player().visor_lamps[x]):
+                                self.game.effects.drive_lamp(self.colors[x] + str(y+1), 'on')
