@@ -1,7 +1,8 @@
-Audits: {Avg Ball Time: '0:07', Avg Extra Balls: 0, Avg Game Time: '0:57', Avg Score: 61183,
-  Balls Played: 375, Games Played: 125, Games Started: 108}
+Audits: {Avg Ball Time: '0:07', Avg Extra Balls: 0, Avg Game Time: '1:02', Avg Score: 12670496981,
+  Balls Played: 1279, Games Played: 422, Games Started: 356}
 ClassicHighScoreData:
-- {date: 'Fri Jan 30 19:46:43 2015', inits: CORIJN, score: 10000}
-- {date: 'Fri Jan 29 10:54:23 2016', inits: ALVIN, score: 6350}
-- {date: 'Fri Jan 30 20:48:04 2015', inits: 'MIGIEGEL  ', score: 5000}
-- {date: 'Fri Jan 30 20:42:24 2015', inits: AAAAAAAAAA, score: 4000}
+- {date: 'Tue Apr 17 08:27:32 2018', inits: STE, score: 1593270}
+- {date: 'Tue Jun 19 09:25:39 2018', inits: FLORIS, score: 803110}
+- {date: 'Tue Feb 13 09:43:31 2018', inits: STEVEN, score: 640450}
+- {date: 'Fri Jan 12 15:16:50 2018', inits: MAC, score: 476580}
+- {date: 'Fri Jan 12 16:43:41 2018', inits: TIM, score: 325180}
