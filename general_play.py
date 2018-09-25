@@ -53,10 +53,10 @@ class Generalplay(game.Mode):
         ## Modestart straks naar elders, veel zaken in general_play nog op te schonen.
         #self.modes = [None, Mode1 (self.game, 19), Mode2 (self.game, 18), Mode3(self.game, 70)]
         #self.register_all_plugins()
-        if self.first_game_started is not None:
-            self.register_all_sounds()
-            self.game.lampctrl.register_show('rampenter_show', lampshow_path+"rampenter.lampshow")
-            self.first_game_started=True
+        #if self.first_game_started is not None:
+        self.register_all_sounds()
+        self.game.lampctrl.register_show('rampenter_show', lampshow_path+"rampenter.lampshow")
+            #self.first_game_started=True
 
 
         #self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker',
@@ -249,11 +249,15 @@ class Generalplay(game.Mode):
 
 
     def sw_Loutlane_active(self,sw):
-        self.game.sound.play("sound_2017_failure_not_an_option")
-        self.game.score(50)
+        self.game.sound.play("sound_2018_roblox_death_sound_effect")
+        self.game.score(150)
+        self.game.coils.TopFlash3.pulse(45)
+        self.game.coils.LvisorGI.pulse(40)
     def sw_Routlane_active(self,sw):
-        self.game.sound.play("sound_2017_failure_not_an_option")
-        self.game.score(50)
+        self.game.sound.play("sound_2018_roblox_death_sound_effect")
+        self.game.score(150)
+        self.game.coils.TopFlash3.pulse(45)
+        self.game.coils.LvisorGI.pulse(40)
     def sw_Linlane_active(self,sw):
         self.game.sound.play("sound_2017_lasershot")
         self.game.score(20)
