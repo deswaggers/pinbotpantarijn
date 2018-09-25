@@ -23,7 +23,7 @@ class EjectModestart(game.Mode):
         super(EjectModestart, self).__init__(game, priority)
         self.planets = ['planet1', 'planet2', 'planet3', 'planet4', 'planet5',
                         'planet6', 'planet7', 'planet8', 'planet9']
-        self.musicjes = ['music_2017_Jay_Wouter_Knight_of_Cyd',"music_2017_Jay_Wouter_New_born_1", "music_2017_Jay_Wouter_New_born_2"]
+        self.musicjes = ["music_2018_spacetrip", "music_2018_greek555_sample_120_bpm", "music_2018_Fortnite_Song_Dancing"]
 
     def mode_started(self):
         print "ejectmodestart started"

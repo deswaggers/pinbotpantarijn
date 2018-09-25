@@ -180,8 +180,8 @@ class Effects(game.Mode):
 
     def nonACFlashersFlash(self, time=1):
         self.game.coils.RobotFaceInsB.schedule(schedule=0xf0f0f0f0, cycle_seconds=time, now=True)
-        self.game.coils.TopFlash3.schedule(schedule=0x0f0f0f0f, cycle_seconds=time, now=True)
-        self.game.coils.TopFlash4.schedule(schedule=0xf0f0f0f0, cycle_seconds=time, now=True)
+        self.game.coils.TopFlash3.schedule(schedule=0x11111111, cycle_seconds=time, now=True)
+        self.game.coils.TopFlash4.schedule(schedule=0x55055055, cycle_seconds=time, now=True)
         self.game.coils.LvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=time, now=True)
         self.game.coils.RvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=time, now=True)
 
