@@ -249,7 +249,7 @@ class Generalplay(game.Mode):
 
 
     def sw_Loutlane_active(self,sw):
-        self.game.sound.play("sound_2018_Roblox_death_sound_effect2")
+        self.game.sound.play("sound_2018_Roblox_death_sound_effect")
         self.game.score(150)
         self.game.coils.TopFlash3.pulse(45)
         self.game.coils.LvisorGI.pulse(40)
