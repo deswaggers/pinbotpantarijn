@@ -227,6 +227,7 @@ class Generalplay(game.Mode):
         self.game.score(1000)
         self.game.effects.ramp_up()
         self.game.effects.drive_lamp('score_energy','medium')
+        self.game.effects.nonACFlashersFlash(1)
         self.delay(name='Ramp_omlaag', event_type=None, delay=9, handler=self.ramp_up_finished)
 
 
@@ -238,6 +239,7 @@ class Generalplay(game.Mode):
             self.game.effects.drive_lamp('score_energy','off')
             self.game.effects.ramp_down()
             self.game.modes.add(self.ramp_multiball)
+            self.game.effects.nonACFlashersFlash(3)
             self.target_Energy_geraakt = True;
 
 
@@ -251,13 +253,11 @@ class Generalplay(game.Mode):
     def sw_Loutlane_active(self,sw):
         self.game.sound.play("sound_2018_Roblox_death_sound_effect")
         self.game.score(150)
-        self.game.coils.TopFlash3.pulse(45)
-        self.game.coils.LvisorGI.pulse(40)
+        self.game.effects.nonACFlashersFlash(1.5)
     def sw_Routlane_active(self,sw):
         self.game.sound.play("sound_2018_Roblox_death_sound_effect")
         self.game.score(150)
-        self.game.coils.TopFlash3.pulse(45)
-        self.game.coils.LvisorGI.pulse(40)
+        self.game.effects.nonACFlashersFlash(1.5)
     def sw_Linlane_active(self,sw):
         self.game.sound.play("sound_2017_lasershot")
         self.game.score(20)
