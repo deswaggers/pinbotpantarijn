@@ -78,7 +78,7 @@ class RampMultiball(game.Mode):
 
     def mode_stopped(self):
         self.layer = None
-        self.game.visor_rules.update_lamps()
+        # To-do: iets van self.visor_rules.update_lamps()
         if self.game.switches.outhole.is_active():
             self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
 
@@ -177,6 +177,42 @@ class RampMultiball(game.Mode):
             self.update_lamps_5()
         self.game.score(150*self.visor5)
         return procgame.game.SwitchStop
+
+    def sw_Rbank1_active(self,sw):
+        if self.visor1<5:
+            self.visor1+=1
+            self.update_lamps_1()
+        self.game.score(150*self.visor1)
+        return procgame.game.SwitchStop
+
+    def sw_Rbank2_active(self,sw):
+        if self.visor2<5:
+            self.visor2+=1
+            self.update_lamps_2()
+        self.game.score(150*self.visor2)
+        return procgame.game.SwitchStop
+
+    def sw_Rbank3_active(self,sw):
+        if self.visor3<5:
+            self.visor3+=1
+            self.update_lamps_3()
+        self.game.score(150*self.visor3)
+        return procgame.game.SwitchStop
+
+    def sw_Rbank4_active(self,sw):
+        if self.visor4<5:
+            self.visor4+=1
+            self.update_lamps_4()
+        self.game.score(150*self.visor4)
+        return procgame.game.SwitchStop
+
+    def sw_Rbank5_active(self,sw):
+        if self.visor5<5:
+            self.visor5+=1
+            self.update_lamps_5()
+        self.game.score(150*self.visor5)
+        return procgame.game.SwitchStop
+
 
     def sw_shooterLane_open_for_500ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=2, now=True)
