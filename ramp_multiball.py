@@ -30,11 +30,7 @@ class RampMultiball(game.Mode):
         self.all_lamps_off()
         self.startLampSituation()
         self.game.current_player().mode_running = True
-        self.check()
 
-    def check(self):
-        if self.game.current_player().mode_running == True:
-            print "self.game.current_player().mode_running is true"
 
     def all_lamps_off(self):
         for x in range(1,6):
@@ -77,7 +73,7 @@ class RampMultiball(game.Mode):
         self.game.effects.ramp_down()
         self.game.current_player().mode_running = False
         self.game.modes.remove(self)
-        self.all_lamps_off(self)
+        self.all_lamps_off()
         self.layer = None
 
     def mode_stopped(self):
