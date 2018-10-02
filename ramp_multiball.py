@@ -78,6 +78,7 @@ class RampMultiball(game.Mode):
 
     def mode_stopped(self):
         self.layer = None
+        self.game.visor_rules.update_lamps()
         if self.game.switches.outhole.is_active():
             self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
 
