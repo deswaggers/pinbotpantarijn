@@ -18,7 +18,7 @@ class Multiball(game.Mode):
             self.total_score_layer = dmd.TextLayer(128/2, 15, self.game.fonts['num_14x10'], "center", opaque=False) #num_09Bx7 num_14x10
             self.value_layer = dmd.TextLayer(126, 22, self.game.fonts['tiny7'], "right", opaque=False) #07x5
 
-            self.game.lampctrl.register_show('multiball_start', lampshow_path +"planeten_short.lampshow")
+            self.game.lampctrl.register_show('multiball_start', lampshow_path +"Pinbot_1.lampshow")
             self.game.lampctrl.register_show('visor_lampshow', lampshow_path +"Pinbot_1.lampshow")
 
             self.jackpot_value=100000
@@ -101,7 +101,7 @@ class Multiball(game.Mode):
 ##            self.multiball_animation()
 
             #play lightshow
-            # self.game.lampctrl.play_show('multiball_start', True, 'None')
+            self.game.lampctrl.play_show('multiball_start', True, 'None')
             # delay multiballstart to wait for end of lampshow and perhaps animation
             self.delay(name='setup_multiball', event_type=None, delay=4, handler=self.setup_multiball)
 
