@@ -32,7 +32,7 @@ class Multiball(game.Mode):
             self.display_multiball_layer()
             self.game.sound.fadeout_music(time_ms=2800)
             self.colors = ['yellow', 'blue', 'orange', 'green', 'red']
-            #self.game.lampctrl.play_show('lampshow_visor', repeat=True)
+            self.game.lampctrl.play_show('lampshow_visor', repeat=True)
             self.update_lamps()
 
         def mode_stopped(self):
@@ -101,7 +101,7 @@ class Multiball(game.Mode):
 ##            self.multiball_animation()
 
             #play lightshow
-            self.game.lampctrl.play_show('multiball_start', True, 'None')
+            # self.game.lampctrl.play_show('multiball_start', True, 'None')
             # delay multiballstart to wait for end of lampshow and perhaps animation
             self.delay(name='setup_multiball', event_type=None, delay=4, handler=self.setup_multiball)
 
