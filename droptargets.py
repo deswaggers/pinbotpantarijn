@@ -13,7 +13,7 @@ class Droptargets(game.Mode):
 
         def __init__(self, game, priority):
                 super(Droptargets, self).__init__(game, priority)
-                
+
 
         def mode_started(self):
                 self.dropscount=0
@@ -41,11 +41,11 @@ class Droptargets(game.Mode):
                         print "eerste droptarget"
                         self.delay(name='drop_timer', event_type=None, delay=6, handler=self.drops_reset)
                         self.game.animations.space_ship_shoots(score=200)
-                        
+
                 elif self.dropscount==1:
                         self.dropscount=2
                         self.game.score(1000)
-                        #self.cancel_delayed('drop_timer')
+                        self.cancel_delayed('drop_timer')
                         self.delay(name='drop_timer', event_type=None, delay=6, handler=self.drops_reset)
                         self.game.animations.space_ship_shoots(score=1000)
                         print "2e droptarget"
@@ -55,6 +55,8 @@ class Droptargets(game.Mode):
                         print "3e droptarget"
                         self.game.animations.space_ship_crashes(score=10000)
                         self.cancel_delayed('drop_timer')
+                        if self.game.switches.visorClosed.is_active():
+                            self.game.visor_up_down.visor_move()
                         self.drops_reset()
 
                 self.update_lamps()
@@ -92,38 +94,38 @@ class Droptargets(game.Mode):
                         else:
                                 self.game.effects.drive_lamp('dropbottom','slow')
                 # We weten niet zeker of "self.drop_timer >= 2" werkt. Zo niet moeten we een nieuwe delay aanmaken die de lampjes regelt.
-                        
-                
+
+
 ## switches
-                
-        def sw_droptarget1_active_for_70ms(self,sw):
+
+        def sw_droptarget1_active_for_100ms(self,sw):
                 self.drops_check()
 
-        def sw_droptarget2_active_for_70ms(self,sw):
+        def sw_droptarget2_active_for_100ms(self,sw):
                 self.drops_check()
 
-        def sw_droptarget3_active_for_70ms(self,sw):
+        def sw_droptarget3_active_for_100ms(self,sw):
                 self.drops_check()
-        
+
 
 
 ##        def energyflash(self):
-##             self.game.coils.Solenoidselect.pulse(90)   
+##             self.game.coils.Solenoidselect.pulse(90)
 ##             self.game.coils.RampLow_EnergyFlash.pulse(70)
 ##
-##        
-##                     
+##
+##
 #### Animations
-##                
+##
 ##        def bumpers_animation(self):
 ####                pass
 ##                self.energyscore+=1
 ##                self.title_layer = dmd.TextLayer(110, 2, self.game.fonts['num_09Bx7'], "center", opaque=False) #num_09Bx7 num_14x10
-##                self.title_layer.set_text(str(self.energyscore),True)  
+##                self.title_layer.set_text(str(self.energyscore),True)
 ##                anim = dmd.Animation().load(dmd_path+'yoda.dmd')
 ##                self.animation_layer = dmd.AnimatedLayer(frames=anim.frames, opaque=False, repeat=False, hold=False, frame_time=4)
 ##                self.layer = dmd.GroupedLayer(128, 32, [self.animation_layer, self.title_layer])
 ##                self.delay(name='clear_layer', event_type=None, delay=3, handler=self.clear_layer)
-##            
+##
 ##        def clear_layer(self):
 ##             self.layer = None
