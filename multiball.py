@@ -119,7 +119,7 @@ class Multiball(game.Mode):
              # eject balls and close visor
              self.game.coils.Rejecthole_SunFlash.pulse(50)
              self.game.coils.Lejecthole_LeftPlFlash.pulse(50)
-             self.delay(name='visor_closing' , event_type=None, delay=10, handler=self.close_visor)
+             self.delay(name='visor_closing' , event_type=None, delay=1, handler=self.close_visor)
 
         def close_visor(self):
                 self.game.visor_up_down.visor_move
