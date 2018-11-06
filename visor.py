@@ -88,7 +88,7 @@ class Visor(game.Mode):
                 self.game.coils.Visormotor.disable()
 
         def sw_visorOpen_active(self,sw):
-                self.delay(name='visor_stop' , event_type=None, delay=0.5, handler=self.stop_visor)
+                self.delay(name='visor_stop' , event_type=None, delay=0.8, handler=self.stop_visor)
 
         def sw_Leject_active_for_100ms(self,sw):
                 if self.game.current_player().visor_balls == 0:
