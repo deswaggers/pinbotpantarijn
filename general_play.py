@@ -85,6 +85,16 @@ class Generalplay(game.Mode):
         #self.game.sound.play('speech_welcome')
         print "general play gestart"
 
+        # Toegevoegd: visor altijd omhoog aan start bal als ie naar beneden is:
+        # dit gaat botsen met visor-multiball, maar ik denk dat we het simpel moeten maken
+        # en de regels zo moeten schrijven dat de visor alleen tijdens een bal omhoog kan,
+        # en dat dan bij de volgende bal hij weer omhoog hoort. Anders wordt het ook
+        # ingewikkeld met meerdere spelers
+        if not self.game.switches.visorClosed.is_active():
+            self.game.visor_up_down.visor_move()
+
+
+
     def clear_layer(self):
         self.layer = None
 
