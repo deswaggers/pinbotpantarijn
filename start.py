@@ -762,7 +762,6 @@ class rkPlayer(game.Player):
                 self.player_stats['status']=''
                 self.visor_position='up'
                 self.visor_lamps = [0,0,0,0,0]
-                self.visor_balls = 0
                 self.mode_running = False
                 self.mode_listener = None
                 self.eject_mode_object = None

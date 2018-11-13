@@ -91,25 +91,21 @@ class Visor(game.Mode):
                 self.delay(name='visor_stop' , event_type=None, delay=0.8, handler=self.stop_visor)
 
         def sw_Leject_active_for_100ms(self,sw):
-                if self.game.current_player().visor_balls == 0:
-                        self.game.current_player().visor_balls = 1
+                if not self.game.switches.Reject.is_active():
                         self.game.trough.launch_balls(1)
                         #self.game.switchedCoils.acCoilPulse('trough')
 ##                        self.game.coils.trough.pulse(50)
-                elif self.game.current_player().visor_balls == 1:
+                else:
                         self.delay(name='start_mb' , event_type=None, delay=1, handler=self.start_multiball)
-                        self.game.current_player().visor_balls = 0
                         self.update_lamps()
 
         def sw_Reject_active_for_100ms(self,sw):
-                if self.game.current_player().visor_balls == 0:
-                        self.game.current_player().visor_balls = 1
+                if not self.game.switches.Leject.is_active():
                         self.game.trough.launch_balls(1)
                         #self.game.switchedCoils.acCoilPulse('trough')
 ##                        self.game.coils.trough.pulse(50)
-                elif self.game.current_player().visor_balls == 1:
+                else:
                         self.delay(name='start_mb' , event_type=None, delay=1, handler=self.start_multiball)
-                        self.game.current_player().visor_balls = 0
                         self.update_lamps()
 
 ## Lampen
