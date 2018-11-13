@@ -142,6 +142,11 @@ class Multiball(game.Mode):
              self.clear_layer()
 
         def stop_multiball(self):
+             if self.game.switches.Reject.is_active():
+                self.game.coils.Rejecthole_SunFlash.pulse(50)
+             if self.game.switches.Leject.is_active():
+                self.game.coils.Lejecthole_LeftPlFlash.pulse(50)
+             self.game.current_player().visor_balls = 0
              self.game.sound.play_music('music_2017_creepy_alien_music')
              self.game.modes.remove(self)
 ##             self.callback('multiball')
