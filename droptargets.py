@@ -55,7 +55,7 @@ class Droptargets(game.Mode):
                         print "3e droptarget"
                         self.game.animations.space_ship_crashes(score=10000)
                         self.cancel_delayed('drop_timer')
-                        if self.game.switches.visorClosed.is_active():
+                        if self.game.switches.visorClosed.is_active() and self.game.current_player().mode_running == False:
                             self.game.visor_up_down.visor_move()
                         self.drops_reset()
 
