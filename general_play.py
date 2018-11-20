@@ -188,6 +188,7 @@ class Generalplay(game.Mode):
 
     def sw_outhole_active_for_500ms(self, sw):
         self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
+        self.game.current_player().mode_running = False
         if self.game.switches.Reject.is_active():
             self.game.coils.Rejecthole_SunFlash.pulse(50)
             self.game.coils.Visormotor.enable()
@@ -235,10 +236,11 @@ class Generalplay(game.Mode):
     def sw_rampexit_active(self,sw):
         # willen we GI even laten knipperen? Lampje aanzetten? Hoe wordt die weer uit gezet?
         self.game.score(1000)
-        self.game.effects.ramp_up()
         self.game.effects.drive_lamp('score_energy','medium')
         self.game.effects.nonACFlashersFlash(2)
-        self.delay(name='Ramp_omlaag', event_type=None, delay=9, handler=self.ramp_up_finished)
+        if self.game.current_player().mode_running == False:
+            self.delay(name='Ramp_omlaag', event_type=None, delay=9, handler=self.ramp_up_finished)
+            self.game.effects.ramp_up()
 
 
     def sw_scoreEnergy_active(self,sw):

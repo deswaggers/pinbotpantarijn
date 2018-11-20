@@ -93,6 +93,8 @@ class Visor(game.Mode):
         def sw_Leject_active_for_100ms(self,sw):
                 if not self.game.switches.Reject.is_active():
                         self.game.trough.launch_balls(1)
+                        self.game.current_player().mode_running = True
+                        self.game.effects.ramp_down()
                         #self.game.switchedCoils.acCoilPulse('trough')
 ##                        self.game.coils.trough.pulse(50)
                 else:
@@ -102,6 +104,8 @@ class Visor(game.Mode):
         def sw_Reject_active_for_100ms(self,sw):
                 if not self.game.switches.Leject.is_active():
                         self.game.trough.launch_balls(1)
+                        self.game.current_player().mode_running = True
+                        self.game.effects.ramp_down()
                         #self.game.switchedCoils.acCoilPulse('trough')
 ##                        self.game.coils.trough.pulse(50)
                 else:
