@@ -21,6 +21,7 @@ class RampMultiball(game.Mode):
         print "RampMultiball uit ramp_multiball.py is gestart"
         self.health=0
         if not self.game.switches.visorClosed.is_active():
+            print "De if wordt uitgevoerd van visorClosed check bij start rampmultiball "
             self.game.visor_up_down.visor_move()
         self.instruction_layer = dmd.TextLayer(20, 20, self.game.fonts['num_09Bx7'], opaque=False)
         #self.game.lampctrl.register_show('multiball_start', lampshow_path +"planeten_short.lampshow")
