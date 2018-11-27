@@ -30,7 +30,7 @@ class Mystery(game.Mode):
              #self.game.lampctrl.register_show('mystery_show', lampshow_path+"mystery.lampshow")
 
 
-             self.mysterylist =['50.000','100.000','Extra Ball','200.000', '150.000']
+             self.mysterylist =['5000','10.000','Extra Ball','20.000', '7.500']
              self.temp_list =[]
 
              self.choice = 0
@@ -129,24 +129,23 @@ class Mystery(game.Mode):
             self.delay(name='mystery_end', event_type=None, delay=1, handler=self.mystery_end)
 
             # assignment off the awards,
-            # first ideas: ['500.000','1 Million','Extra Ball','Ramp Value 200.000']
             if option==self.mysterylist[0]: # 500.000
-                print("Mystery award: 50.000")
-                self.game.score(50000)
-            elif option==self.mysterylist[1]: # 100.000
-                print("Mystery award: 1 million")
-                self.game.score(100000)
+                print("Mystery award: 5.000")
+                self.game.score(5000)
+            elif option==self.mysterylist[1]: # 10.000
+                print("Mystery award: 10.000")
+                self.game.score(10000)
             elif option==self.mysterylist[2]: #Extra Ball
                 print("Mystery award: Extra Ball")
                 self.game.extra_ball_count()
                 self.game.sound.play("speech_2017_extraball2")
                 self.game.effects.drive_lamp("shootAgain")
-            elif option==self.mysterylist[3]: # 200.000
-                print("Mystery award: 200.000")
-                self.game.score(200000)
-            elif option==self.mysterylist[3]: # 250.000
-                print("Mystery award: 250.000")
-                self.game.score(250000)
+            elif option==self.mysterylist[3]: # 20.000
+                print("Mystery award: 20.000")
+                self.game.score(20000)
+            elif option==self.mysterylist[3]: # 25.000
+                print("Mystery award: 7.500")
+                self.game.score(7500)
 
         def mystery_end(self):
              self.clear_layer()
