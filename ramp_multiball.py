@@ -89,7 +89,7 @@ class RampMultiball(game.Mode):
         anim = dmd.Animation().load(dmd_path+'life_bar.dmd') # Een dmd bestand bestaat uit frames van plaatjes die zijn omgezet in iets leesbaars voor PROCGAME
         self.hit_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.health])
         self.hit_layer.composite_op = "blacksrc"
-        self.instruction_layer.set_text('RAMP MULTIBALL GESTART')
+        self.instruction_layer.set_text(self.game.current_player().score)
         self.layer=dmd.GroupedLayer(128,32,[self.hit_layer, self.instruction_layer])
 
 
