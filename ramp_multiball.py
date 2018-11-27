@@ -23,7 +23,7 @@ class RampMultiball(game.Mode):
         if not self.game.switches.visorClosed.is_active():
             print "De if wordt uitgevoerd van visorClosed check bij start rampmultiball "
             self.game.visor_up_down.visor_move()
-        self.instruction_layer = dmd.TextLayer(20, 20, self.game.fonts['num_09Bx7'], opaque=False)
+        self.instruction_layer = dmd.TextLayer(20, 70, self.game.fonts['num_09Bx7'], opaque=False)
         #self.game.lampctrl.register_show('multiball_start', lampshow_path +"planeten_short.lampshow")
         #self.game.lampctrl.register_show('visor_lampshow', lampshow_path +"Pinbot_1.lampshow")
         self.delay(name='start_rampMB', event_type=None, delay=5, handler=self.start_rampMB)
@@ -85,13 +85,22 @@ class RampMultiball(game.Mode):
         if self.game.switches.outhole.is_active():
             self.game.switchedCoils.acCoilPulse('outhole_knocker',45)
 
+
+##
     def display_instructions(self):
         anim = dmd.Animation().load(dmd_path+'life_bar.dmd') # Een dmd bestand bestaat uit frames van plaatjes die zijn omgezet in iets leesbaars voor PROCGAME
         self.hit_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.health])
         self.hit_layer.composite_op = "blacksrc"
         self.instruction_layer.set_text(str(self.game.current_player().score))
         self.layer=dmd.GroupedLayer(128,32,[self.hit_layer, self.instruction_layer])
+        self.delay(name='frame_verder', event_type=None, delay=0.1, handler=self.frame_verder)
 
+    def frame_verder(self):
+        if self.health<24:
+            self.health+=1
+        else:
+            self.health = 0
+        self.display_instructions()
 
     def update_lamps_1(self):
         for z in range(1,self.visor1+1):
