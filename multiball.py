@@ -21,7 +21,7 @@ class Multiball(game.Mode):
             self.game.lampctrl.register_show('multiball_start', lampshow_path +"Pinbot_1.lampshow")
             self.game.lampctrl.register_show('visor_lampshow', lampshow_path +"Pinbot_1.lampshow")
 
-            self.jackpot_value=100000
+            self.jackpot_value= 10000
             self.multiball_score = 0
             self.multiball_status = 'restart_enabled'
 
