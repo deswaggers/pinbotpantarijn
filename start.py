@@ -93,7 +93,7 @@ class Attract(game.Mode):
                 # self.coins_layer = dmd.GroupedLayer(128, 32, [self.free_play, self.press_start])
                 # self.coins_layer.transition = dmd.PushTransition(direction='north')
 
-                self.vwo_xtra2017 = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("VWOxtra 2017", seconds=None, blink_frames=4)
+                self.vwo_xtra2017 = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("VWOxtra 2019", seconds=None, blink_frames=4)
                 self.custom_layer = dmd.TextLayer(128/2, 6, font_09Bx7, "center", opaque=False).set_text("CUSTOM RULES")
                 self.vwoxtra_layer = dmd.GroupedLayer(128, 32, [self.vwo_xtra2017, self.custom_layer])
                 self.vwoxtra_layer.transition = dmd.PushTransition(direction='south')
@@ -117,9 +117,10 @@ class Attract(game.Mode):
 
 #CREDITS#
 [VWOxtra - Pinball:]
-[Thijs van der Drift]
-[Floris van Hal]
-[Matthijs Kok]
+[Wilfried Snijders]
+[Daniel van der Lee]
+[Hidde de Vlas]
+[Sam Brouwers]
 [Gust Verhees]
 
 [Teacher:]
@@ -128,24 +129,18 @@ class Attract(game.Mode):
 [Software 2016]
 [Git by Tein van der Lugt]
 
-[Rules and software: ]
-[Sytse, Luuk, Wouter]
-[Viktor, Jouke, Steven]
+[The best:]
+[Gust Verhees]
 
 [Dots & Animations: ]
-[Thijs]
+[Hidde]
 
 [Music & SFX: ]
-[Piano by Jay]
-[Edit by Wouter]
-[Koen, Sebastiaan, Melle]
+[Daniel]
 
-[Backglass and poster:]
-[Eva, Kirsten]
+[Backglass:]
+[Daniel and Hidde]
 
-[Basics, modestart and more]
-[Tein, Mees, Ket]
-[Alvin, Corijn]
 """)
 
                 self.credits_layer = dmd.PanningLayer(width=128, height=32, frame=credits_frame, origin=(0,0), translate=(0,1), bounce=False)
