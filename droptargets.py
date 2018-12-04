@@ -35,6 +35,7 @@ class Droptargets(game.Mode):
         def drops_check(self):
                 #self.game.effects.drive_lamp('drops','off')
                 if self.dropscount==0:
+                        self.game.sound.play("sound_2018_headshot_sound")
                         self.dropscount=1
                         self.game.score(200)
                         #self.cancel_delayed('drop_timer')
@@ -43,6 +44,7 @@ class Droptargets(game.Mode):
                         self.game.animations.space_ship_shoots(score=200)
 
                 elif self.dropscount==1:
+                        self.game.sound.play("sound_2018_headshot_sound")
                         self.dropscount=2
                         self.game.score(1000)
                         self.cancel_delayed('drop_timer')
@@ -51,6 +53,7 @@ class Droptargets(game.Mode):
                         print "2e droptarget"
 
                 elif self.dropscount==2:
+                        self.game.sound.play("sound_2018_oh_baby_a_triple")
                         self.game.score(10000)
                         print "3e droptarget"
                         self.game.animations.space_ship_crashes(score=10000)
@@ -98,13 +101,13 @@ class Droptargets(game.Mode):
 
 ## switches
 
-        def sw_droptarget1_active_for_100ms(self,sw):
+        def sw_droptarget1_active_for_70ms(self,sw):
                 self.drops_check()
 
-        def sw_droptarget2_active_for_100ms(self,sw):
+        def sw_droptarget2_active_for_70ms(self,sw):
                 self.drops_check()
 
-        def sw_droptarget3_active_for_100ms(self,sw):
+        def sw_droptarget3_active_for_70ms(self,sw):
                 self.drops_check()
 
 
