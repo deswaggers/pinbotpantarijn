@@ -53,7 +53,7 @@ class Droptargets(game.Mode):
                         print "2e droptarget"
 
                 elif self.dropscount==2:
-                        self.game.sound.play("sound_2018_oh_baby_a_triple")
+                        self.game.sound.play("speech_2018_oh_baby_a_triple")
                         self.game.score(10000)
                         print "3e droptarget"
                         self.game.animations.space_ship_crashes(score=10000)
