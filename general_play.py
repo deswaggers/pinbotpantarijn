@@ -62,7 +62,7 @@ class Generalplay(game.Mode):
         #self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker',
         #                 'music_mario_invincible', 'music_interstellarcornfieldchase', 'music_starwars_theme',
         #                 'music_imperialmarch', 'music_starwars_cantina_band']
-        self.musicjes = ["2018_overall_muziekje", "2018_fortnite_remix"]
+        self.musicjes = ["2018_overall_muziekje", "2018_fortnite_remix", "Wii_muziek"]
        # ['2018_spacemusicnova', '2018_Starlight_achtergrondmuziekje',"2018_TheAlienWhistle_achtergrondmuziekje", "2018_CosmicMessages_achtergrondmuziekje", "2018_SpaceLoop_achtergrondmuziekje", "2018_whistlerbackgroundmusic", "2018_spacetrip", "2018_Pink-panther-theme"]
 
     def reset(self):
@@ -184,6 +184,9 @@ class Generalplay(game.Mode):
         self.game.coils.LvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=1, now=True)
         self.game.sound.play("speech_Cartoon-10")
         self.reset_coils()
+        x = random.choice(self.musicjes)
+        print x
+        self.game.sound.play_music(x, loops=-1)
         #self.game.animations.space_ship_flies()
 
     def sw_outhole_active_for_500ms(self, sw):
