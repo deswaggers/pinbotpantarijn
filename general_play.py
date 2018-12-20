@@ -62,9 +62,9 @@ class Generalplay(game.Mode):
         #self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker',
         #                 'music_mario_invincible', 'music_interstellarcornfieldchase', 'music_starwars_theme',
         #                 'music_imperialmarch', 'music_starwars_cantina_band']
-        self.musicjes = ["music_Wii_muziek"]
+        self.musicjes = ["music_2018_overall_muziekje", "music_2018_fortnite_remix","music_Wii_muziek"]
        # ['2018_spacemusicnova', '2018_Starlight_achtergrondmuziekje',"2018_TheAlienWhistle_achtergrondmuziekje", "2018_CosmicMessages_achtergrondmuziekje", "2018_SpaceLoop_achtergrondmuziekje", "2018_whistlerbackgroundmusic", "2018_spacetrip", "2018_Pink-panther-theme"]
-        #"music_2018_overall_muziekje", "music_2018_fortnite_remix",
+        #
     def reset(self):
         pass
 
