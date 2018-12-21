@@ -184,9 +184,10 @@ class Generalplay(game.Mode):
         self.game.coils.LvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=1, now=True)
         self.game.sound.play("speech_Cartoon-10")
         self.reset_coils()
-        x = random.choice(self.musicjes)
-        print x
-        self.game.sound.play_music(x, loops=-1)
+        if (self.game.current_player().mode_running == False):
+            x = random.choice(self.musicjes)
+            print x
+            self.game.sound.play_music(x, loops=-1)
         #self.game.animations.space_ship_flies()
 
     def sw_outhole_active_for_500ms(self, sw):
