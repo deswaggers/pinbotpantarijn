@@ -215,12 +215,12 @@ class Generalplay(game.Mode):
     def sw_vortex20k_active(self,sw):
         self.clear_layer()
         self.game.sound.play("sound_starwars_gun")
-        self.game.score(200)
+        self.game.score(1000)
 
     def sw_vortex100k_active(self,sw):
         self.clear_layer()
         self.game.sound.play("sound_starwars_schieten")
-        self.game.score(1000)
+        self.game.score(200)
 
     def sw_vortex5k_active(self,sw):
         self.clear_layer()
