@@ -203,6 +203,7 @@ class Effects(game.Mode):
         if self.game.switches.droptarget1.is_active() or self.game.switches.droptarget2.is_active() or self.game.switches.droptarget3.is_active():
             self.game.coils.Drops_RightInsBFlash.pulse(100)
         self.eject_ball()
+        self.ramp_up()
 
     def throw_ball_delay(self):
         self.game.coils.trough.pulse(55)
