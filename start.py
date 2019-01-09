@@ -86,7 +86,6 @@ class Attract(game.Mode):
 
                 # create dmd attract screens
                 self.williams_logo = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/williams_animated.dmd').frames,frame_time=1,hold=True)
-                self.space_pinball = dmd.AnimatedLayer(frames=dmd.Animation().load(game_path+'dmd/welcome_space_pinball.dmd').frames, opaque=False, repeat=True, hold=False, frame_time=7)
 
                 # self.press_start = dmd.TextLayer(128/2, 18, font_09Bx7, "center", opaque=True).set_text("PRESS START", seconds=None, blink_frames=1)
                 # self.free_play = dmd.TextLayer(128/2, 6, font_09Bx7, "center", opaque=False).set_text("FREE PLAY")
@@ -106,7 +105,7 @@ class Attract(game.Mode):
                 self.last_scores_layer = dmd.GroupedLayer(128, 32, [self.p1_layer,self.p2_layer,self.p3_layer,self.p4_layer])
                 self.last_scores_layer.transition = dmd.CrossFadeTransition(width=128,height=32)
 
-                self.game_over_layer = dmd.TextLayer(128/2, 10, font_09Bx7, "center", opaque=True).set_text("GAME OVER")
+                self.game_over_layer = dmd.TextLayer(128/2, 10, font_09Bx7, "center", opaque=True).set_text("WELCOME TO FORTNITE PINBALL")
                 self.game_over_layer.transition = dmd.CrossFadeTransition(width=128,height=32)
 
                 self.high_scores_layer = dmd.TextLayer(128/2, 11, font_09Bx7, "center", opaque=True).set_text("HIGH SCORES")
@@ -164,13 +163,11 @@ class Attract(game.Mode):
             script = list()
 
             script.append({'seconds':4.5, 'layer':self.williams_logo})
-            script.append({'seconds':2.8, 'layer':self.space_pinball})
-            #script.append({'seconds':2.5, 'layer':self.coins_layer})
+            script.append({'seconds':2.0, 'layer':self.game_over_layer})
             script.append({'seconds':2.0, 'layer':self.vwoxtra_layer})
             script.append({'seconds':26.5, 'layer':self.credits_layer})
             script.append({'seconds':4.5, 'layer':self.last_scores_layer})
-            script.append({'seconds':2.8, 'layer':self.space_pinball})
-            # script.append({'seconds':2.0, 'layer':self.game_over_layer})
+            script.append({'seconds':2.0, 'layer':self.game_over_layer})
             script.append({'seconds':3.0, 'layer':self.high_scores_layer})
 
 

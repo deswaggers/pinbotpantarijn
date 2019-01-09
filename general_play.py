@@ -48,6 +48,7 @@ class Generalplay(game.Mode):
 
         ## variabelen die nodig zijn
         self.target_Energy_geraakt = False;
+        self.skillshotMade = False;
 
 
         ## Modestart straks naar elders, veel zaken in general_play nog op te schonen.
@@ -179,6 +180,9 @@ class Generalplay(game.Mode):
         self.game.coils.Drops_RightInsBFlash.pulse(120)
 
 ## Switches regular gameplay
+    def sw_shooterLane_active(self,sw):
+        self.skillshotMade = True
+
     def sw_shooterLane_open_for_100ms(self,sw):
         self.game.coils.RvisorGI.schedule(schedule=0x0f0f0f0f, cycle_seconds=1, now=True)
         self.game.coils.LvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=1, now=True)
@@ -214,20 +218,26 @@ class Generalplay(game.Mode):
 
 
     def sw_vortex20k_active(self,sw):
-        self.clear_layer()
-        self.game.sound.play("sound_starwars_gun")
-        self.game.score(1000)
+        if self.skillshotMade == False:
+            self.skillshotMade = True
+            self.clear_layer()
+            self.game.sound.play("sound_starwars_gun")
+            self.game.score(1000)
 
     def sw_vortex100k_active(self,sw):
-        self.clear_layer()
-        self.game.sound.play("sound_starwars_schieten")
-        self.game.score(200)
+        if self.skillshotMade == False:
+            self.skillshotMade = True
+            self.clear_layer()
+            self.game.sound.play("sound_starwars_schieten")
+            self.game.score(200)
 
     def sw_vortex5k_active(self,sw):
-        self.clear_layer()
-        if self.game.switches.vortex100k.time_since_change()>2 and self.game.switches.vortex20k.time_since_change()>2:
-            self.game.sound.play("sound_stormtrooper_laser")
-            self.game.score(100)
+        if self.skillshotMade == False:
+            self.skillshotMade = True
+            self.clear_layer()
+            if self.game.switches.vortex100k.time_since_change()>2 and self.game.switches.vortex20k.time_since_change()>2:
+                self.game.sound.play("sound_stormtrooper_laser")
+                self.game.score(100)
 
 
     def sw_advanceplanet_active(self,sw):
