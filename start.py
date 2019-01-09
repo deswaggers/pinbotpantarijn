@@ -105,7 +105,7 @@ class Attract(game.Mode):
                 self.last_scores_layer = dmd.GroupedLayer(128, 32, [self.p1_layer,self.p2_layer,self.p3_layer,self.p4_layer])
                 self.last_scores_layer.transition = dmd.CrossFadeTransition(width=128,height=32)
 
-                self.game_over_layer = dmd.TextLayer(128/2, 10, font_09Bx7, "center", opaque=True).set_text("WELCOME TO FORTNITE PINBALL")
+                self.game_over_layer = dmd.TextLayer(128/2, 10, font_09Bx7, "center", opaque=True).set_text("FORTNITE PINBALL")
                 self.game_over_layer.transition = dmd.CrossFadeTransition(width=128,height=32)
 
                 self.high_scores_layer = dmd.TextLayer(128/2, 11, font_09Bx7, "center", opaque=True).set_text("HIGH SCORES")

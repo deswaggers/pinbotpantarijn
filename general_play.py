@@ -294,7 +294,7 @@ class Generalplay(game.Mode):
 
 
     def sw_startButton_active_for_1s(self, sw):
-        if self.game.switches.flipperLwR.is_active(1):
+        if self.game.switches.flipperLwR.is_active() or self.game.switches.flipperLwR.is_active():
             self.game.effects.release_stuck_balls()
             self.game.coils.Ejecthole_LeftInsBFlash.pulse(30)
             print 'nu moet ejecthole gaan'
