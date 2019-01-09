@@ -40,7 +40,7 @@ class Droptargets(game.Mode):
                         self.game.score(200)
                         #self.cancel_delayed('drop_timer')
                         print "eerste droptarget"
-                        self.delay(name='drop_timer', event_type=None, delay=6, handler=self.drops_reset)
+                        self.delay(name='drop_timer', event_type=None, delay=9, handler=self.drops_reset)
                         self.game.animations.space_ship_shoots(score=200)
 
                 elif self.dropscount==1:
@@ -48,7 +48,7 @@ class Droptargets(game.Mode):
                         self.dropscount=2
                         self.game.score(1000)
                         self.cancel_delayed('drop_timer')
-                        self.delay(name='drop_timer', event_type=None, delay=6, handler=self.drops_reset)
+                        self.delay(name='drop_timer', event_type=None, delay=9, handler=self.drops_reset)
                         self.game.animations.space_ship_shoots(score=1000)
                         print "2e droptarget"
 

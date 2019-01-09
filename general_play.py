@@ -239,7 +239,7 @@ class Generalplay(game.Mode):
         self.game.effects.drive_lamp('score_energy','medium')
         self.game.effects.nonACFlashersFlash(2)
         if self.game.current_player().mode_running == False and self.target_Energy_geraakt==False:
-            self.delay(name='Ramp_omlaag', event_type=None, delay=9, handler=self.ramp_up_finished)
+            self.delay(name='Ramp_omlaag', event_type=None, delay=12, handler=self.ramp_up_finished)
             self.game.effects.ramp_up()
 
 
