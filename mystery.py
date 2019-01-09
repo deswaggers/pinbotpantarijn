@@ -143,7 +143,7 @@ class Mystery(game.Mode):
             elif option==self.mysterylist[3]: # 20.000
                 print("Mystery award: 20.000")
                 self.game.score(20000)
-            elif option==self.mysterylist[3]: # 25.000
+            elif option==self.mysterylist[4]: # 25.000
                 print("Mystery award: 7.500")
                 self.game.score(7500)
 

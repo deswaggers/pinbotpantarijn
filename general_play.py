@@ -62,9 +62,9 @@ class Generalplay(game.Mode):
         #self.musicjes = ['music_backtothefuture', 'music_doctorwho', 'music_galaxysong', 'music_hitchhiker',
         #                 'music_mario_invincible', 'music_interstellarcornfieldchase', 'music_starwars_theme',
         #                 'music_imperialmarch', 'music_starwars_cantina_band']
-        self.musicjes = ["2018_overall_muziekje", "2018_fortnite_remix"]
+        self.musicjes = ["music_2018_overall_muziekje", "music_2018_fortnite_remix","music_Wii_muziek"]
        # ['2018_spacemusicnova', '2018_Starlight_achtergrondmuziekje',"2018_TheAlienWhistle_achtergrondmuziekje", "2018_CosmicMessages_achtergrondmuziekje", "2018_SpaceLoop_achtergrondmuziekje", "2018_whistlerbackgroundmusic", "2018_spacetrip", "2018_Pink-panther-theme"]
-
+        #
     def reset(self):
         pass
 
@@ -184,6 +184,10 @@ class Generalplay(game.Mode):
         self.game.coils.LvisorGI.schedule(schedule=0xf0f0f0f0, cycle_seconds=1, now=True)
         self.game.sound.play("speech_Cartoon-10")
         self.reset_coils()
+        if (self.game.current_player().mode_running == False):
+            x = random.choice(self.musicjes)
+            print x
+            self.game.sound.play_music(x, loops=-1)
         #self.game.animations.space_ship_flies()
 
     def sw_outhole_active_for_500ms(self, sw):
@@ -212,18 +216,18 @@ class Generalplay(game.Mode):
     def sw_vortex20k_active(self,sw):
         self.clear_layer()
         self.game.sound.play("sound_starwars_gun")
-        self.game.score(2000)
+        self.game.score(1000)
 
     def sw_vortex100k_active(self,sw):
         self.clear_layer()
         self.game.sound.play("sound_starwars_schieten")
-        self.game.score(10000)
+        self.game.score(200)
 
     def sw_vortex5k_active(self,sw):
         self.clear_layer()
         if self.game.switches.vortex100k.time_since_change()>2 and self.game.switches.vortex20k.time_since_change()>2:
             self.game.sound.play("sound_stormtrooper_laser")
-            self.game.score(500)
+            self.game.score(100)
 
 
     def sw_advanceplanet_active(self,sw):
