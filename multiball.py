@@ -156,8 +156,8 @@ class Multiball(game.Mode):
             self.game.sound.play("sound_2017_trompet")
 ##            self.jackpot_animation('jackpot')
             self.game.lampctrl.play_show('multiball_start', False, 'None')
+            self.game.effects.nonACFlashersFlash(time=2)
             # calculate score
-            self.game.effects.flashers_flash(time=2)
             self.game.score(self.jackpot_value)
             self.multiball_score += self.jackpot_value
             self.jackpot_animation()
