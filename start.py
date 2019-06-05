@@ -265,7 +265,7 @@ class BaseGameMode(game.Mode):
 
 
                 self.ball_saved = False
-                self.ball_save_time = 12 # self.game.user_settings['Gameplay (Feature)']['Ballsave Timer']
+                self.ball_save_time = 15 # self.game.user_settings['Gameplay (Feature)']['Ballsave Timer']
                 self.instant_info_on = False
 
     def mode_started(self):
