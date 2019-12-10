@@ -30,7 +30,7 @@ class Mystery(game.Mode):
              #self.game.lampctrl.register_show('mystery_show', lampshow_path+"mystery.lampshow")
 
 
-             self.mysterylist =['5000','10.000','Extra Ball','20.000', '7.500']
+             self.mysterylist =['5000','10.000','Extra Ball','2.500', '7.500']
              self.temp_list =[]
 
              self.choice = 0

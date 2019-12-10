@@ -35,7 +35,7 @@ class Generalplay(game.Mode):
 
         # register modes: hij maakt van de code die onder 'visor_rules' staat een object. Het nummer gaat over prioriteit die bv belangrijk is voor animaties:
         # Hogere prioriteit wordt als eerste behandeld, dus een 'mode' die voorrang heeft
-        # op het normale spel moet hoger zijn, hieronder daarom voor 9,10,11,12 gekozen.
+        # op het normale spel moet hoger zijn, hieronder daarom voor 9,10,11,12,13 gekozen.
         self.ejectModestart_rules = EjectModestart(self.game, 9)
         self.bumper_rules = Bumpers(self.game, 10)
         self.visor_rules = Visor(self.game, 11)
