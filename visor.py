@@ -1,14 +1,12 @@
 # Visor
 
-from procgame import *
+ from procgame import *
 from multiball import *
 
 # all paths
 game_path = "/home/pi/VXtra_start/"
 speech_path = game_path +"sound/speech/"
 sound_path = game_path +"sound/fx/"
-music_path = game_path +"sound/music/"
-dmd_path = game_path +"dmd/"
 lampshow_path = game_path +"lampshows/"
 
 class Visor(game.Mode):
@@ -121,6 +119,7 @@ class Visor(game.Mode):
                 if sum(self.game.current_player().visor_lamps) == 25 and self.game.switches.visorClosed.is_active():
                         self.game.sound.play("sound_visor_down")
                         self.game.visor_up_down.visor_move()
+                        self.game.current_player().visor_lamps = [0,0,0,0,0]
                 #elif sum(self.game.current_player().visor_lamps) != 25 and not self.game.switches.visorClosed.is_active():
                 #        self.game.visor_up_down.visor_move()
                 #        pass

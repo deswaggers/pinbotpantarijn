@@ -23,16 +23,18 @@ class Mode3(game.Mode):
         self.balingat = 0
         self.health = 0
         self.scoreLevel = 0
-        self.modeScore = 420000
+        self.modeScore = 6900
         self.schepenkapot = 0
-        self.time_left = 48
+        self.time_left = 15
+
+
         self.update_lamps()
         self.countdown()
-        
+
     def startmode3(self):
         self.game.effects.eject_ball('eject')
         self.game.sound.play_music('music_2017_Radioactive-Imagine_Dragons', loops=-1)
-        
+
     def mode_stopped(self):
         self.game.lamps['eject1'].disable()
         self.game.lamps['eject2'].disable()
@@ -82,7 +84,7 @@ class Mode3(game.Mode):
         if self.balingat == 1:
             self.game.sound.play("sound_2017_laser")
             if self.health>0:
-                
+
                 self.health-=1
                 self.showHits()
             else:
@@ -90,7 +92,7 @@ class Mode3(game.Mode):
                 self.cancel_delayed('tijd')
                 self.game.animations.space_ship_crashes(score=self.scoreLevel)
                 self.delay(name='tijd', event_type=None, delay=3, handler=self.endTime)
-    
+
     def sw_flipperLwL_active(self,sw):
         self.schot()
 
@@ -122,7 +124,7 @@ class Mode3(game.Mode):
         self.hit_layer = dmd.FrameLayer(opaque=True, frame = anim.frames[24-self.health])
         self.hit_layer.composite_op = "blacksrc"
         self.layer = dmd.GroupedLayer(128, 32, [self.hit_layer, self.score_layer, self.hitCount_layer])
-            
+
     def endmode(self):
         self.layer=None
         self.game.current_player().stop_eject_mode_mode(self)
@@ -131,11 +133,11 @@ class Mode3(game.Mode):
         self.game.effects.drive_lamp('eject1','slow')
         self.game.effects.drive_lamp('eject2','medium')
         self.game.effects.drive_lamp('eject3','fast')
-            
-            
+
+
     def sw_outhole_active(self, sw):
         self.game.current_player().stop_eject_mode_mode(self)
         return procgame.game.SwitchStop
 
-        
-        
+
+

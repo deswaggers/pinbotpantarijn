@@ -129,7 +129,7 @@ class Mystery(game.Mode):
             self.delay(name='mystery_end', event_type=None, delay=1, handler=self.mystery_end)
 
             # assignment off the awards,
-            if option==self.mysterylist[0]: # 500.000
+            if option==self.mysterylist[0]: # 5.000
                 print("Mystery award: 5.000")
                 self.game.score(5000)
             elif option==self.mysterylist[1]: # 10.000
@@ -140,10 +140,10 @@ class Mystery(game.Mode):
                 self.game.extra_ball_count()
                 self.game.sound.play("speech_2017_extraball2")
                 self.game.effects.drive_lamp("shootAgain")
-            elif option==self.mysterylist[3]: # 20.000
-                print("Mystery award: 20.000")
-                self.game.score(20000)
-            elif option==self.mysterylist[4]: # 25.000
+            elif option==self.mysterylist[3]: # 2.500
+                print("Mystery award: 2.500")
+                self.game.score(2500)
+            elif option==self.mysterylist[4]: # 7.500
                 print("Mystery award: 7.500")
                 self.game.score(7500)
 

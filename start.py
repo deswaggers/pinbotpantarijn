@@ -105,7 +105,7 @@ class Attract(game.Mode):
                 self.last_scores_layer = dmd.GroupedLayer(128, 32, [self.p1_layer,self.p2_layer,self.p3_layer,self.p4_layer])
                 self.last_scores_layer.transition = dmd.CrossFadeTransition(width=128,height=32)
 
-                self.game_over_layer = dmd.TextLayer(128/2, 10, font_09Bx7, "center", opaque=True).set_text("FORTNITE PINBALL")
+                self.game_over_layer = dmd.TextLayer(128/2, 10, font_09Bx7, "center", opaque=True).set_text("STAR WARS PINBALL")
                 self.game_over_layer.transition = dmd.CrossFadeTransition(width=128,height=32)
 
                 self.high_scores_layer = dmd.TextLayer(128/2, 11, font_09Bx7, "center", opaque=True).set_text("HIGH SCORES")
@@ -760,6 +760,8 @@ class rkPlayer(game.Player):
                 self.eject_mode_modes = []
                 self.eject_mode_played_modes = []
                 self.ramp_status_up = False
+                self.multiballs_requirement = 0
+                self.multiball_count = 0;
 
     def set_mode_running(self, mode_running):
         self.mode_running = mode_running
